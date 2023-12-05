@@ -1,99 +1,194 @@
-<!doctype html>
-<html lang="es-ES">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>SKX⅃⅃</title>
+
+		<!-- meta -->
+		<meta charset="UTF-8">
+	    <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0,user-scalable=no,viewport-fit=cover" />
+		<meta name="description" content="Blog dedicado a temáticas Linux, DevOps, Hardening, retos CTF y Hacking" />
+		<meta name="keywords" content="hacking, hardening, linux, devops, ctf" />
+
+	    <!-- css -->
+		<link rel="icon" type="/image/png" href="img/skxll-little.png">
+		<link rel="stylesheet" href="css/bootstrap.min.css">
+		<link rel="stylesheet" href="css/ionicons.min.css">
+		<link rel="stylesheet" href="css/pace.css">
+	    <link rel="stylesheet" href="css/custom.css">
+		<link rel="stylesheet" href="css/grid.css">
+		<link rel="stylesheet" href="css/zwrapper.css">
+
+	    <!-- js -->
+	    <script src="js/jquery-2.1.3.min.js"></script>
+	    <script src="js/bootstrap.min.js"></script>
+	    <script src="js/pace.min.js"></script>
+	    <script src="js/modernizr.custom.js"></script>
+
+	</head>
+	
+	<style>
+		
+		* {box-sizing: border-box}
+		.mySlides1 {display: none;}
+		img {vertical-align: middle;}
+
+		/* Slideshow container */
+		.slideshow-container {
+			max-width: 1000px;
+			position: relative;
+			margin: auto;
+		}
+
+		/* Next & previous buttons */
+		.prev, .next {
+			cursor: pointer;
+			position: absolute;
+			top: 50%;
+			width: auto;
+			padding: 20px;
+			margin-top: -22px;
+			color: gold;
+			font-weight: bold;
+			font-size: 18px;
+			transition: 0.6s ease;
+			border-radius: 0 3px 3px 0;
+			user-select: none;
+			margin-right: 1%;
+		}
+
+		/* Posiciona botón next a la derecha */
+		.next {
+			right: 0;
+			border-radius: 3px 0 0 3px;
+		}
+
+		/* On hover, add a grey background color */
+		.prev:hover, .next:hover {
+			background-color: #f1f1f1;
+			color: black;
+		}
+	</style>
+
+	<body>
+		<div class="container">	
+	<header id="site-header">
+		<div class="row">
+			<div class="col-md-4 col-sm-5 col-8">
+				<div class="logo">
+					<a href="index"><img src="/img/logo-grey.png" width="55px"height="70px" /></a>
+				</div>
+			</div><!-- col-md-4 -->
+			<div class="col-md-8 col-sm-7 col-4">
+				<nav class="navbar navbar-expand-lg navbar-light">
+					<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#bs-example-navbar-collapse-1" aria-controls="bs-example-navbar-collapse-1" aria-expanded="false" aria-label="Toggle navigation">
+						<span class="navbar-toggler-icon"></span>
+					</button>
+					<div class="collapse navbar-collapse justify-content-end" id="bs-example-navbar-collapse-1">
+						<ul class="navbar-nav">
+							<li class="nav-item">
+								<a style="font-size: 25px;" class="nav-link" href="linux" data-hover="☣Linux"><span style="color: rgb(82, 163, 0); font-size: 25px;">☣</span>Linux</a>
+							</li>
+							<li class="nav-item">
+								<a style="font-size: 25px;" class="nav-link" href="devops" data-hover="Dev∅ps">Dev<span style="color: #b57c02; font-size: 25px;">∅</span>ps</a>
+							</li>
+							<li class="nav-item">
+								<a style="font-size: 25px;" class="nav-link" href="hardening" data-hover="☰Hardening"><span style="color: rgb(194, 0, 194); font-size: 25px;">☰</span>Hardening</a>
+							</li>
+							<li class="nav-item">
+								<a style="font-size: 25px;" class="nav-link" href="ctf" data-hover="☢CTF"><span style="color: rgba(255,191,0,1);; font-size: 25px;">☢</span>CTF</a>
+							</li>
+							<li class="nav-item">
+								<a style="font-size: 25px;" class="nav-link" href="hacking" data-hover="H☠cking">H<span style="color: #DB0000; font-size: 25px;">☠</span>cking</a>
+							</li>
+						</ul>
+					</div><!--- .navbar-collapse --->
+				</nav>
+			</div><!-- .col-md-8 -->
+		</div>
+	</header>
+</div>
+
+		
+		<div class="container">
+				<div class="row">
+					<div class="content-body"> <!--- web content --->
+						<h2 style="margin-left: 50%;">ÚLTIMOS POSTS</h2>
+						
+						<!--------- GRID ÚLTIMOS POSTS --------->
+						<div class="wrappper">
+							<div class="contenedor">
+								<div class="vertical zum wr"><a href="blog/article/devops/ansible-ad-hoc"><h3>Ansible: AD HOC</h3></a><img src="img/adhoc.jpg" alt="adhoc"></div>
+								<div class="big zum wr"><a href="blog/article/hardening/openscap"><h3>OpenSCAP: Auditorías de Cumplimiento de Configuración y Vulnerabilidades</h3></a><img src="img/openscap.avif" alt="openscap"></div>
+								<div class="vertical zum wr"><a href="blog/article/hacking/cve-2021-43798"><h3>Grafana 8.X : {CVE-2021-43798} Path Traversal</h3></a><img src="img/cve-2021-43798.jpg" alt="cve-2021-43798"></div>
+								<div class="vertical zum wr"><a href="blog/article/linux/openldap-cn-config"><h3>Instalar WordPress en Debian</h3></a><img src="img/wordpress-debian.jpeg" alt="wordpress"></div>
+								<div class="vertical zum wr"><a href="blog/article/hacking/dns-poisoning-spoofing"><h3>ÐNS : Pøisoning ⥐ Spøøfing</h3></a><img src="img/dns-poisoning.jpg" alt="dns poison"></div>
+								<div class="big zum wr"><a href="blog/article/hardening/chroot"><h3>Jaula CHROOT {SFTP-SSH}</h3></a><img src="/img/chroot.avif" alt="chroot"></div>
+							</div>
+						</div> <!--------- /.GRID POSTS RECIENTES --------->
 
 
-    <title>Bogart | Cibersecurity</title>
-    <meta property="og:title" content="Bogart | Cibersecurity" />
-    <meta property="og:locale" content="es_ES" />
-    <link rel="canonical" href="https://skxll.github.io/" />
-    <meta property="og:url" content="https://skxll.github.io/" />
-    <meta property="og:site_name" content="skxll.github.io" />
-    <meta name="twitter:card" content="summary" />
-    <meta property="twitter:title" content="Welcome to GitHub Pages" />
-    <script type="application/ld+json">
-      {"url":"https://0xbogart.github.io/","@type":"WebSite","headline":"Welcome to GitHub Pages","name":"0xbogart.github.io","@context":"https://schema.org"}</script>
+						<!--------- SLIDE CHEAT SHEETS --------->
+						<div style="margin-top: 15%;" class="mg-top">
+							<h1 style="margin-top: 10%;">CHEAT SHEETS</h1>
+							<aside>
+								<div class="slideshow-container">
+									<div class="mySlides1">
+										<a href="blog/cheatsheets/iptables"><img class="wr" src="img/iptables.jpg" style="width: 32%;"></a>
+										<a href="blog/cheatsheets/iptables"><img class="wr" src="img/iptables.jpg" style="width: 32%;"></a>
+										<a href="blog/cheatsheets/iptables"><img class="wr" src="img/iptables.jpg" style="width: 32%;"></a>
+									
+									</div>
 
-    <link rel="stylesheet" href="/assets/css/style.css?v=160f5bb4704b2db97f097e005ad719869fe86da6">
-    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
-    <script src="/assets/js/respond.js"></script>
-    <!--[if lt IE 9]>
-      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <!--[if lt IE 8]>
-    <link rel="stylesheet" href="/assets/css/ie.css">
-    <![endif]-->
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+									<div class="mySlides1">
+										<img src="/img/sed.jpg" style="width: 32.45%;">
+										<img class="wr" src="/img/cURL.jpg" style="width: 32.45%;">
+										<img src="/img/sed.jpg" style="width: 32.45%;">
+									</div>
 
-<!-- Setup theme-color -->
-<!-- start theme color meta headers -->
-<meta name="theme-color" content="#353535">
-<meta name="msapplication-navbutton-color" content="#353535">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<!-- end theme color meta headers -->
+									<a class="prev" onclick="plusSlides(-1, 0)">&#10094;</a>
+									<a class="next" onclick="plusSlides(1, 0)">&#10095;</a>
+								</div>
+							</aside>
+						</div> <!--------- /.SLIDE CHEAT SHEETS --------->
+					</div>
+			</div>
 
-  </head>
-  <body>
-    <div id="header">
-      <nav>
-        <ul>
-          <li class="fork"><a href="https://github.com/0xBogart/0xbogart.github.io">View On GitHub</a></li>
-        </ul>
-      </nav>
-    </div><!-- end header -->
+			<footer id="site-footer">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="copyright">
+								<a class="nodeco" href="index"><img style="margin-top: -5px;" src="/img/skxll-little.png" weight="19px" height="19px"> skxll.net</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</footer>
 
-    <div class="wrapper">
-      <section>
-        <div id="title">
-          <h1>Bogart<br>Cybersecurity</h1
-          <hr>
-          <span class="credits left">Project maintained by <a href="https://github.com/0xbogart">Skxll</a></span>
-          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/mattgraham">mattgraham</a></span>
-        </div>
+      <script>
+				let slideIndex = [1,1];
+				let slideId = ["mySlides1", "mySlides2"]
+				showSlides(1, 0);
+				showSlides(1, 1);
 
-        <h2 id="welcome-to-github-pages">Welcome to GitHub Pages</h2>
-
-<p>You can use the <a href="https://github.com/Skxll/skxll.github.io/edit/index/index.md">editor on GitHub</a> to maintain and preview the content for your website in Markdown files.</p>
-
-<p>Whenever you commit to this repository, GitHub Pages will run <a href="https://jekyllrb.com/">Jekyll</a> to rebuild the pages in your site, from the content in your Markdown files.</p>
-
-<h3 id="markdown">Markdown</h3>
-
-<p>Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for</p>
-
-<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Syntax highlighted code block
-
-<span class="gh"># Header 1</span>
-<span class="gu">## Header 2</span>
-<span class="gu">### Header 3</span>
-<span class="p">
--</span> Bulleted
-<span class="p">-</span> List
-<span class="p">
-1.</span> Numbered
-<span class="p">2.</span> List
-
-<span class="gs">**Bold**</span> and _Italic_ and <span class="sb">`Code`</span> text
-
-<span class="p">[</span><span class="nv">Link</span><span class="p">](</span><span class="sx">url</span><span class="p">)</span> and !<span class="p">[</span><span class="nv">Image</span><span class="p">](</span><span class="sx">src</span><span class="p">)</span>
-</code></pre></div></div>
-
-<p>For more details see <a href="https://guides.github.com/features/mastering-markdown/">GitHub Flavored Markdown</a>.</p>
-
-<h3 id="jekyll-themes">Jekyll Themes</h3>
-
-<p>Your Pages site will use the layout and styles from the Jekyll theme you have selected in your <a href="https://github.com/Skxll/skxll.github.io/settings/pages">repository settings</a>. The name of this theme is saved in the Jekyll <code class="language-plaintext highlighter-rouge">_config.yml</code> configuration file.</p>
-
-<h3 id="support-or-contact">Support or Contact</h3>
-
-<p>Having trouble with Pages? Check out our <a href="https://docs.github.com/categories/github-pages-basics/">documentation</a> or <a href="https://support.github.com/contact">contact support</a> and we’ll help you sort it out.</p>
-
-
-      </section>
-
+				function plusSlides(n, no) {
+					showSlides(slideIndex[no] += n, no);
+				}
+				
+				function showSlides(n, no) {
+          let i;
+          let x = document.getElementsByClassName(slideId[no]);
+          if (n > x.length) {slideIndex[no] = 1}    
+          if (n < 1) {slideIndex[no] = x.length}
+          for (i = 0; i < x.length; i++) {
+            x[i].style.display = "none";  
+          }
+          if (x[slideIndex[no]-1]) { // verifica si el elemento existe
+            x[slideIndex[no]-1].style.display = "block";
+          }
+        }
+      </script>
     </div>
-  </body>
+	</body>
 </html>

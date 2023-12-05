@@ -3,31 +3,29 @@
 	<head>
 		<title>Bogart | Cybersecurity</title>
 
-    <!-- meta -->
+		<!-- meta -->
 		<meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0,user-scalable=no,viewport-fit=cover" />
+		<meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0,user-scalable=no,viewport-fit=cover" />
 		<meta name="description" content="Blog dedicado a temáticas Linux, DevOps, Hardening, retos CTF y Hacking" />
 		<meta name="keywords" content="hacking, hardening, linux, devops, ctf" />
 
-    <!-- css -->
+		<!-- css -->
 		<link rel="icon" type="/image/png" href="img/skxll-little.png">
 		<link rel="stylesheet" href="css/bootstrap.min.css">
 		<link rel="stylesheet" href="css/ionicons.min.css">
 		<link rel="stylesheet" href="css/pace.css">
-    <link rel="stylesheet" href="css/custom.css">
+		<link rel="stylesheet" href="css/custom.css">
 		<link rel="stylesheet" href="css/grid.css">
 		<link rel="stylesheet" href="css/zwrapper.css">
 
-	    <!-- js -->
-	    <script src="js/jquery-2.1.3.min.js"></script>
-	    <script src="js/bootstrap.min.js"></script>
-	    <script src="js/pace.min.js"></script>
-	    <script src="js/modernizr.custom.js"></script>
-
+		<!-- js -->
+		<script src="js/jquery-2.1.3.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<script src="js/pace.min.js"></script>
+		<script src="js/modernizr.custom.js"></script>
 	</head>
 	
 	<style>
-		
 		* {box-sizing: border-box}
 		.mySlides1 {display: none;}
 		img {vertical-align: middle;}
@@ -71,86 +69,85 @@
 
 	<body>
 		<div class="container">	
-	<header id="site-header">
-		<div class="row">
-			<div class="col-md-4 col-sm-5 col-8">
-				<div class="logo">
-					<a href="index"><img src="/img/logo-grey.png" width="55px"height="70px" /></a>
+			<header id="site-header">
+				<div class="row">
+					<div class="col-md-4 col-sm-5 col-8">
+						<div class="logo">
+							<a href="index"><img src="/img/logo-grey.png" width="55px"height="70px" /></a>
+						</div>
+					</div><!-- col-md-4 -->
+					<div class="col-md-8 col-sm-7 col-4">
+						<nav class="navbar navbar-expand-lg navbar-light">
+							<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#bs-example-navbar-collapse-1" aria-controls="bs-example-navbar-collapse-1" aria-expanded="false" aria-label="Toggle navigation">
+								<span class="navbar-toggler-icon"></span>
+							</button>
+							
+							<div class="collapse navbar-collapse justify-content-end" id="bs-example-navbar-collapse-1">
+								<ul class="navbar-nav">
+									<li class="nav-item">
+										<a style="font-size: 25px;" class="nav-link" href="linux" data-hover="☣Linux"><span style="color: rgb(82, 163, 0); font-size: 25px;">☣</span>Linux</a>
+									</li>
+									<li class="nav-item">
+										<a style="font-size: 25px;" class="nav-link" href="devops" data-hover="Dev∅ps">Dev<span style="color: #b57c02; font-size: 25px;">∅</span>ps</a>
+									</li>
+									<li class="nav-item">
+										<a style="font-size: 25px;" class="nav-link" href="hardening" data-hover="☰Hardening"><span style="color: rgb(194, 0, 194); font-size: 25px;">☰</span>Hardening</a>
+									</li>
+									<li class="nav-item">
+										<a style="font-size: 25px;" class="nav-link" href="ctf" data-hover="☢CTF"><span style="color: rgba(255,191,0,1);; font-size: 25px;">☢</span>CTF</a>
+									</li>
+									<li class="nav-item">
+										<a style="font-size: 25px;" class="nav-link" href="hacking" data-hover="H☠cking">H<span style="color: #DB0000; font-size: 25px;">☠</span>cking</a>
+									</li>
+								</ul>
+							</div><!--- .navbar-collapse --->
+						</nav>
+					</div><!-- .col-md-8 -->
 				</div>
-			</div><!-- col-md-4 -->
-			<div class="col-md-8 col-sm-7 col-4">
-				<nav class="navbar navbar-expand-lg navbar-light">
-					<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#bs-example-navbar-collapse-1" aria-controls="bs-example-navbar-collapse-1" aria-expanded="false" aria-label="Toggle navigation">
-						<span class="navbar-toggler-icon"></span>
-					</button>
-					<div class="collapse navbar-collapse justify-content-end" id="bs-example-navbar-collapse-1">
-						<ul class="navbar-nav">
-							<li class="nav-item">
-								<a style="font-size: 25px;" class="nav-link" href="linux" data-hover="☣Linux"><span style="color: rgb(82, 163, 0); font-size: 25px;">☣</span>Linux</a>
-							</li>
-							<li class="nav-item">
-								<a style="font-size: 25px;" class="nav-link" href="devops" data-hover="Dev∅ps">Dev<span style="color: #b57c02; font-size: 25px;">∅</span>ps</a>
-							</li>
-							<li class="nav-item">
-								<a style="font-size: 25px;" class="nav-link" href="hardening" data-hover="☰Hardening"><span style="color: rgb(194, 0, 194); font-size: 25px;">☰</span>Hardening</a>
-							</li>
-							<li class="nav-item">
-								<a style="font-size: 25px;" class="nav-link" href="ctf" data-hover="☢CTF"><span style="color: rgba(255,191,0,1);; font-size: 25px;">☢</span>CTF</a>
-							</li>
-							<li class="nav-item">
-								<a style="font-size: 25px;" class="nav-link" href="hacking" data-hover="H☠cking">H<span style="color: #DB0000; font-size: 25px;">☠</span>cking</a>
-							</li>
-						</ul>
-					</div><!--- .navbar-collapse --->
-				</nav>
-			</div><!-- .col-md-8 -->
+			</header>
 		</div>
-	</header>
-</div>
-
 		
 		<div class="container">
-				<div class="row">
-					<div class="content-body"> <!--- web content --->
-						<h2 style="margin-left: 50%;">ÚLTIMOS POSTS</h2>
+			<div class="row">
+				<div class="content-body"> <!--- web content --->
+					<h2 style="margin-left: 50%;">ÚLTIMOS POSTS</h2>
 						
-						<!--------- GRID ÚLTIMOS POSTS --------->
-						<div class="wrappper">
-							<div class="contenedor">
-								<div class="vertical zum wr"><a href="blog/article/devops/ansible-ad-hoc"><h3>Ansible: AD HOC</h3></a><img src="img/adhoc.jpg" alt="adhoc"></div>
-								<div class="big zum wr"><a href="blog/article/hardening/openscap"><h3>OpenSCAP: Auditorías de Cumplimiento de Configuración y Vulnerabilidades</h3></a><img src="img/openscap.avif" alt="openscap"></div>
-								<div class="vertical zum wr"><a href="blog/article/hacking/cve-2021-43798"><h3>Grafana 8.X : {CVE-2021-43798} Path Traversal</h3></a><img src="img/cve-2021-43798.jpg" alt="cve-2021-43798"></div>
-								<div class="vertical zum wr"><a href="blog/article/linux/openldap-cn-config"><h3>Instalar WordPress en Debian</h3></a><img src="img/wordpress-debian.jpeg" alt="wordpress"></div>
-								<div class="vertical zum wr"><a href="blog/article/hacking/dns-poisoning-spoofing"><h3>ÐNS : Pøisoning ⥐ Spøøfing</h3></a><img src="img/dns-poisoning.jpg" alt="dns poison"></div>
-								<div class="big zum wr"><a href="blog/article/hardening/chroot"><h3>Jaula CHROOT {SFTP-SSH}</h3></a><img src="/img/chroot.avif" alt="chroot"></div>
-							</div>
-						</div> <!--------- /.GRID POSTS RECIENTES --------->
+					<!--------- GRID ÚLTIMOS POSTS --------->
+					<div class="wrappper">
+						<div class="contenedor">
+							<div class="vertical zum wr"><a href="blog/article/devops/ansible-ad-hoc"><h3>Ansible: AD HOC</h3></a><img src="img/adhoc.jpg" alt="adhoc"></div>
+							<div class="big zum wr"><a href="blog/article/hardening/openscap"><h3>OpenSCAP: Auditorías de Cumplimiento de Configuración y Vulnerabilidades</h3></a><img src="img/openscap.avif" alt="openscap"></div>
+							<div class="vertical zum wr"><a href="blog/article/hacking/cve-2021-43798"><h3>Grafana 8.X : {CVE-2021-43798} Path Traversal</h3></a><img src="img/cve-2021-43798.jpg" alt="cve-2021-43798"></div>
+							<div class="vertical zum wr"><a href="blog/article/linux/openldap-cn-config"><h3>Instalar WordPress en Debian</h3></a><img src="img/wordpress-debian.jpeg" alt="wordpress"></div>
+							<div class="vertical zum wr"><a href="blog/article/hacking/dns-poisoning-spoofing"><h3>ÐNS : Pøisoning ⥐ Spøøfing</h3></a><img src="img/dns-poisoning.jpg" alt="dns poison"></div>
+							<div class="big zum wr"><a href="blog/article/hardening/chroot"><h3>Jaula CHROOT {SFTP-SSH}</h3></a><img src="/img/chroot.avif" alt="chroot"></div>
+						</div>
+					</div> <!--------- /.GRID POSTS RECIENTES --------->
 
 
-						<!--------- SLIDE CHEAT SHEETS --------->
-						<div style="margin-top: 15%;" class="mg-top">
-							<h1 style="margin-top: 10%;">CHEAT SHEETS</h1>
-							<aside>
-								<div class="slideshow-container">
-									<div class="mySlides1">
-										<a href="blog/cheatsheets/iptables"><img class="wr" src="img/iptables.jpg" style="width: 32%;"></a>
-										<a href="blog/cheatsheets/iptables"><img class="wr" src="img/iptables.jpg" style="width: 32%;"></a>
-										<a href="blog/cheatsheets/iptables"><img class="wr" src="img/iptables.jpg" style="width: 32%;"></a>
-									
-									</div>
-
-									<div class="mySlides1">
-										<img src="/img/sed.jpg" style="width: 32.45%;">
-										<img class="wr" src="/img/cURL.jpg" style="width: 32.45%;">
-										<img src="/img/sed.jpg" style="width: 32.45%;">
-									</div>
-
-									<a class="prev" onclick="plusSlides(-1, 0)">&#10094;</a>
-									<a class="next" onclick="plusSlides(1, 0)">&#10095;</a>
+					<!--------- SLIDE CHEAT SHEETS --------->
+					<div style="margin-top: 15%;" class="mg-top">
+						<h1 style="margin-top: 10%;">CHEAT SHEETS</h1>
+						<aside>
+							<div class="slideshow-container">
+								<div class="mySlides1">
+									<a href="blog/cheatsheets/iptables"><img class="wr" src="img/iptables.jpg" style="width: 32%;"></a>
+									<a href="blog/cheatsheets/iptables"><img class="wr" src="img/iptables.jpg" style="width: 32%;"></a>
+									<a href="blog/cheatsheets/iptables"><img class="wr" src="img/iptables.jpg" style="width: 32%;"></a>
 								</div>
-							</aside>
-						</div> <!--------- /.SLIDE CHEAT SHEETS --------->
-					</div>
+
+								<div class="mySlides1">
+									<img src="/img/sed.jpg" style="width: 32.45%;">
+									<img class="wr" src="/img/cURL.jpg" style="width: 32.45%;">
+									<img src="/img/sed.jpg" style="width: 32.45%;">
+								</div>
+
+								<a class="prev" onclick="plusSlides(-1, 0)">&#10094;</a>
+								<a class="next" onclick="plusSlides(1, 0)">&#10095;</a>
+							</div>
+						</aside>
+					</div> <!--------- /.SLIDE CHEAT SHEETS --------->
+				</div>
 			</div>
 
 			<footer id="site-footer">
@@ -176,20 +173,18 @@
 				}
 				
 				function showSlides(n, no) {
-  let i;
-  let x = document.getElementsByClassName(slideId[no]);
-  if (n > x.length) {slideIndex[no] = 1}    
-  if (n < 1) {slideIndex[no] = x.length}
-  for (i = 0; i < x.length; i++) {
-    x[i].style.display = "none";  
-  }
-  if (x[slideIndex[no]-1]) { // verifica si el elemento existe
-    x[slideIndex[no]-1].style.display = "block";
-  }
-}
-
-</script>
-			
+					let i;
+					let x = document.getElementsByClassName(slideId[no]);
+					if (n > x.length) {slideIndex[no] = 1}    
+					if (n < 1) {slideIndex[no] = x.length}
+					for (i = 0; i < x.length; i++) {
+						x[i].style.display = "none";  
+					}
+					if (x[slideIndex[no]-1]) { // verifica si el elemento existe
+						x[slideIndex[no]-1].style.display = "block";
+					}
+				}
+			</script>
 		</div>
 	</body>
 </html>

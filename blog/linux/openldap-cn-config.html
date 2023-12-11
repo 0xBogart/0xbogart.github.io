@@ -1,0 +1,1016 @@
+
+<!DOCTYPE html>
+<html lang="es-ES">
+	<head>
+
+    <meta charset="utf-8">
+    <title>OpenLDAP: Conversión de slapd.conf a slapd.d mediante cn=config</title>
+
+    <!-- meta -->
+    <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0,user-scalable=no,viewport-fit=cover" />
+    <link rel="icon" type="/image/png" href="/blog/img/skull.png">
+    <meta content="summary_large_image" name="twitter:card">
+    <meta name="twitter:site" content="@jfb0gart">
+    <meta name="twitter:creator" content="@jfb0gart">
+    <meta property="og:url" content="https://0xbogart.github.io/blog/linux/openldap-cn-config">
+    <meta property="og:title" content="OpenLDAP: Conversión de slapd.conf a slapd.d mediante cn=config">
+    <meta property="og:description" content="OpenLDAP: cn=config">
+    <meta name="description" content="OpenLDAP: Conversión de slapd.conf a slapd.d mediante cn=config">
+    <meta name="keywords" content="OpenLDAP cn=config config CentOS ldap slapd.conf slapd slapd.d">
+    <meta content="https://0xbogart.github.io/img/OpenLDAP.avif.jpg" property="og:image">
+    <meta name="twitter:image" content="https://0xbogart.github.io/img/OpenLDAP.avif">
+    <meta content="https://0xbogart.github.io/img/OpenLDAP.avif" name="twitter:image:src">
+    <link href="https://0xbogart.github.io/blog/linux/openldap-cn-config" rel="canonical">		
+
+    <!-- css -->
+		<link rel="stylesheet" href="/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/css/ionicons.min.css">
+		<link rel="stylesheet" href="/css/pace.css">
+    <link rel="stylesheet" href="/css/custom.css">
+		<link rel="stylesheet" href="/css/rhterm.css">
+		<link rel="stylesheet" href="/css/rhvoid.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <!-- js -->
+    <script src="/js/jquery-2.1.3.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/pace.min.js"></script>
+    <script src="/js/modernizr.custom.js"></script>
+    <script src="/js/asgreenlight.js"></script>
+		
+<style>
+	.left {
+		text-align: left;
+		margin-right: 8%;
+		margin-left: 4%;
+		overflow: hidden;
+		font-size: 16px;
+	}
+
+	.centext {
+		text-align: center;
+		font-size: 16px;
+		letter-spacing: 1px;
+	}
+</style>
+	</head>
+
+	<body class="bg">
+		<div class="container">	
+			<header id="site-header">
+				<div class="row">
+					<div style="margin-top: -2%; margin-bottom: -3%;">
+						<h1><a class="nodeco" href="https://0xbogart.github.io/blog/linux" style="color: rgb(88, 177, 0);">☣</a>LINUX</h1>
+					</div><!-- col-4 -->
+				</div>
+				<div class="row justify-content-end">
+					<div style="margin-top: -3%; margin-bottom: -3%;" class="col-3">
+						<nav class="navbar navbar-expand-lg navbar-light">
+							<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#bs-example-navbar-collapse-1" aria-controls="bs-example-navbar-collapse-1" aria-expanded="false" aria-label="Toggle navigation">
+								<span class="navbar-toggler-icon"></span>
+							</button>
+							<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+								<ul class="navbar-nav">
+									<li class="nav-item">
+										<a style="font-size: 25px;" class="nav-link" href="https://skxll.net" data-hover="Home">Home</a>
+									</li>
+								</ul>
+							</div><!--- .navbar-collapse --->
+						</nav>
+					</div><!-- col-md-8 -->
+				</div>
+			</header>
+
+		<div class="content-body">
+			<div class="container">
+				<div class="row">
+					<main class="col-md-8">
+						<article class="post post-1">
+							<header  class="entry-header">
+								<h1 class="blh1">OpenLDAP 2.4</h1>
+								<h2 class="blh2">Conversión de SLAPD.CONF a SLAPD.D mediante cn=config</h2>
+							</header>
+							
+							<div class="entry-content clearfix">
+								
+								<a href="https://skxll.net/img/cnconfig.png" target="_blank"><img style="margin-top: 40px;" src="/img/cnconfig.png" alt="cn=config" width="100%"></a>
+								
+								<section style="margin-top: 130px;" class="centext" id="INSTALLDAP">
+								<div>
+									<a style="font-size: 19px; color: rgb(88, 177, 0);">☣ </a><span class="green-bg" style="font-size: 19px;">INSTALACIÓN DE OPENLDAP</span>
+								</div>
+								
+									<div style="margin-top: 10px;" id="terminal">
+									  <!-- Terminal Bar -->
+									  <section id="terminal__bar">
+										<div id="bar__buttons">
+										  <button class="bar__button" id="bar__button--exit">&#10005;</button>
+										  <button class="bar__button">&#9472;</button>
+										  <button class="bar__button">&#9723;</button>
+										</div>
+									  </section>        
+									  <!-- Terminal Body -->
+									  <section id="terminal__body">
+										<div id="terminal__prompt">
+											<span id="terminal__prompt--user"><a style="color: #3EFF00;">☣</a>&nbsp;</span>
+											<span id="terminal__prompt--bling"><b>yum install <a style="color: #3EFF00">-y</a> epel-release</b></span>
+										</div>
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--user"><a style="color: #3EFF00;">☣</a>&nbsp;</span>
+											  <span id="terminal__prompt--bling"><b>yum update <a style="color: #3EFF00;">-y</a></b></span>
+										</div>
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--user"><a style="color: #3EFF00;">☣</a>&nbsp;</span>
+											  <span id="terminal__prompt--bling"><b>yum install <a style="color: #3EFF00;">-y</a> openldap openldap-clients openldap-servers</b></span>
+										  <span id="terminal__prompt--cursor"></span>
+										</div>
+									  </section>
+								</div>
+							
+									<div style="margin-top: 10px;" id="terminal">
+									  <!-- Terminal Bar -->       
+									  <section id="terminal__bar">          
+										<div id="bar__buttons">            
+										  <button class="bar__button" id="bar__button--exit">&#10005;</button>            
+										  <button class="bar__button">&#9472;</button>                
+										  <button class="bar__button">&#9723;</button>          
+										</div>
+									  </section>        
+									  <!-- Terminal Body -->
+									  <section id="terminal__body">
+										<div id="terminal__prompt">
+											<span id="terminal__prompt--user"><a style="color: #3EFF00;">☣</a>&nbsp;</span>
+											<span id="terminal__prompt--bling"><b>slapd <a style="color: #3EFF00;">-V</a></b></span>
+										</div>
+										  
+										<div id="terminal__prompt">
+											<span id="terminal__prompt--bling">&nbsp;<b>@(#) $OpenLDAP: slapd 2.4.44</b></span>
+										</div>
+										  
+										<div id="terminal__prompt">
+											<span id="terminal__prompt--user"><a style="color: #3EFF00">☣</a>&nbsp;</span>
+											<span id="terminal__prompt--bling"><b>chown <a style="color: #3EFF00">-R</a> ldap:ldap /var/lib/ldap/</b></span>
+									   </div>
+									  </section>
+									</div>
+								</section>
+								
+								<section style="margin-top: 160px;" id="SLAPD">
+								<div>
+								<a style="font-size: 19px; color: rgb(88, 177, 0);">☣ </a><span  class="green-bg" style="font-size: 19px;">CONVERSIÓN DE SLAPD.CONF A SLAPD.D</span>
+								</div>
+								
+								<div class="centext">
+							<span>Desde la versión 2.3 <strong>OpenLDAP</strong> ha pasado a utilizar un motor de configuración de tiempo de ejecución dinámico y ya no lee la configuración desde <strong>/etc/openldap/slapd.conf</strong></span>
+										<br>
+							<span>En su lugar, utiliza una base de datos de configuración estructurada y ubicada en <strong>/etc/openldap/slapd.d/</strong></span>
+									</div>
+								<br>
+								
+								<div id="terminal">
+									  <!-- Terminal Bar -->       
+									  <section id="terminal__bar">          
+										<div id="bar__buttons">            
+										  <button class="bar__button" id="bar__button--exit">&#10005;</button>            
+										  <button class="bar__button">&#9472;</button>                
+										  <button class="bar__button">&#9723;</button>          
+										</div>
+									  </section>        
+									  <!-- Terminal Body -->
+									  <section id="terminal__body">
+										<div id="terminal__prompt">
+											<span id="terminal__prompt--user"><a style="color: #3EFF00;">☣&nbsp;</a></span>
+											<span id="terminal__prompt--bling"><b>ls -l /etc/openldap/slap.d</b></span>
+										</div>
+										  <br>
+										<div id="terminal__prompt">
+											<span id="terminal__prompt--bling"><b>drwx-x--. ldap ldap</b>&nbsp;</span>
+											<span id="terminal__prompt--location-cyan"><b>cn=config</b></span>
+									   </div>
+										  
+										  <div id="terminal__prompt">
+											<span id="terminal__prompt--bling"><b>-rw-----. ldap ldap&nbsp;</b></span>
+											  <span id="terminal__prompt--location-cyan"><b>cn=config.ldif</b>&nbsp;</span>
+									   </div>
+									  </section>
+									</div>
+								<br><br>
+								<div id="terminal">
+									  <!-- Terminal Bar -->       
+									  <section id="terminal__bar">          
+										<div id="bar__buttons">            
+										  <button class="bar__button" id="bar__button--exit">&#10005;</button>            
+										  <button class="bar__button">&#9472;</button>                
+										  <button class="bar__button">&#9723;</button>          
+										</div>
+									  </section>        
+									  <!-- Terminal Body -->
+									  <section id="terminal__body">
+										<div id="terminal__prompt">
+											<span id="terminal__prompt--user"><a style="color: #3EFF00;">☣</a>&nbsp;</span>
+											<span id="terminal__prompt--bling"><b>ls -l /etc/openldap/slap.d/cn=config/</b></span>
+										</div>
+										  <br>
+										<div id="terminal__prompt">
+											<span id="terminal__prompt--bling"><b>drwx-x--. ldap ldap</b>&nbsp;</span>
+											<span id="terminal__prompt--location-cyan"><b>cn=schema</b></span>
+									   </div>
+										  
+										  <div id="terminal__prompt">
+											<span id="terminal__prompt--bling"><b>-rw-----. ldap ldap</b>&nbsp;</span>
+											  <span id="terminal__prompt--location-cyan"><b>cn=schema.ldif</b></span>
+									   </div>
+										  <div id="terminal__prompt">
+											<span id="terminal__prompt--bling"><b>-rw-----. ldap ldap</b>&nbsp;</span>
+											  <span id="terminal__prompt--location-cyan"><b>olcDatabase={0}config.ldif</b></span>
+									   </div>
+										  <div id="terminal__prompt">
+											<span id="terminal__prompt--bling"><b>-rw-----. ldap ldap</b>&nbsp;</span>
+											  <span id="terminal__prompt--location-cyan"><b>olcDatabase={-1}frontend.ldif</b>&nbsp;</span>
+									   </div>
+										  <div id="terminal__prompt">
+											<span id="terminal__prompt--bling"><b>-rw-----. ldap ldap</b>&nbsp;</span>
+											  <span id="terminal__prompt--location-cyan"><b>olcDatabase={1}monitor.ldif</b></span>
+									   </div>
+										  <div id="terminal__prompt">
+											<span id="terminal__prompt--bling"><b>-rw-----. ldap ldap</b>&nbsp;</span>
+											  <span id="terminal__prompt--location-cyan"><b>olcDatabase={2}hdb.ldif</b></span>
+									   </div>
+									  </section>
+									</div>
+								<br>
+								<br>
+								<br>
+								
+								<div class="centext">
+									<span><strong>CONVERSIÓN</strong>: Si tienes un archivo <strong>slapd.conf</strong> existente de una instalación anterior, puedes convertirlo al nuevo formato usando <strong>slaptest</strong>:</span>
+									</div>
+								
+								<div id="terminal">
+									  <!-- Terminal Bar -->       
+									  <section id="terminal__bar">          
+										<div id="bar__buttons">            
+										  <button class="bar__button" id="bar__button--exit">&#10005;</button>            
+										  <button class="bar__button">&#9472;</button>                
+										  <button class="bar__button">&#9723;</button>          
+										</div>
+									  </section>        
+									  <!-- Terminal Body -->
+									  <section id="terminal__body">
+										<div id="terminal__prompt">
+											<span id="terminal__prompt--user"><a style="color: #3EFF00;">☣</a>&nbsp;</span>
+											<span id="terminal__prompt--bling"><b>slaptest <a style="color: #3EFF00;">-f</a> ldap:ldap /etc/openldap/slapd.conf <a style="color: #3EFF00;">-F</a> /etc/openldap/slapd.d&nbsp;</b></span>					
+										</div>
+									  </section>
+									</div><br><br>
+								
+								<div class="centext">
+								<span>Prueba el acceso a las entradas en <strong>cn=config</strong> utilizando el <strong>RootDN</strong> predeterminado y el <strong>RootPW</strong> configurado anteriormente:</span>
+								</div>
+
+								<div id="terminal">
+									  <!-- Terminal Bar -->       
+									  <section id="terminal__bar">          
+										<div id="bar__buttons">            
+										  <button class="bar__button" id="bar__button--exit">&#10005;</button>            
+										  <button class="bar__button">&#9472;</button>                
+										  <button class="bar__button">&#9723;</button>          
+										</div>
+									  </section>        
+									  <!-- Terminal Body -->
+									  <section id="terminal__body">
+										<div id="terminal__prompt">
+											<span id="terminal__prompt--user"><a style="color: #3EFF00;">☣</a>&nbsp;</span>
+											<span id="terminal__prompt--bling"><b>ldapsearch <a style="color: #3EFF00;">-x -D</a> cn=config <a style="color: #3EFF00;">-w</a> Passw0rd<a style="color: #3EFF00;"> -b</a> cn=config</b>&nbsp;</span>					
+										</div>
+									  </section>
+									</div><br>
+								
+								<div class="centext">
+									<span><strong>NOTA</strong>: A continuación, puedes descartar el antiguo archivo <strong>slapd.conf</strong>. Asegurate de iniciar slapd con la opción <a style="color: #1AAB00;"><strong>-F</strong></a> para especificar el directorio de configuración si no estás utilizando la ruta del directorio predeterminado.</span>
+									</div>
+								</section>
+								
+								<section style="margin-top: 160px;" id="HDB" class="centext">
+								<div>
+								<a style="font-size: 19px; color: rgb(88, 177, 0);">☣ </a><span class="green-bg" style="font-size: 19px;">HDB {DIRECTIVAS DEL BACK-END}</span>
+									<br>
+	                <span>De forma predeterminada, el servidor OpenLDAP utiliza el <strong>hdb</strong> como <strong>back-end</strong> de la base de datos.</span>
+									<br>
+					<span>Las <strong>directivas</strong> necesarias para su configuración se encuentran en <strong>/etc/openldap/slapd.d/cn=config/olcDatabase={2}hdb.ldif</strong></span>
+									</div>
+								<br>
+								<div id="terminal">
+									  <!-- Terminal Bar -->       
+									  <section id="terminal__bar">          
+										<div id="bar__buttons">            
+										  <button class="bar__button" id="bar__button--exit">&#10005;</button>            
+										  <button class="bar__button">&#9472;</button>                
+										  <button class="bar__button">&#9723;</button>          
+										</div>
+									  </section>        
+									  <!-- Terminal Body -->
+									  <section id="terminal__body">
+										<div id="terminal__prompt">
+											<span id="terminal__prompt--user" ><a style="color: #3EFF00;">☣</a>&nbsp;</span>
+											<span id="terminal__prompt--bling"><b>cat /etc/openldap/slapd.d/cn\=config/olcDatabase\=\{2\}hdb.ldif&nbsp;</b></span>
+										</div>
+										  <br>
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--location-cyan"><b>dn:</b>&nbsp;</span>
+											<span id="terminal__prompt--bling"><b>olcDatabase={2}hdb</b></span>
+										</div>
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--location-cyan"><b>objectClass:</b>&nbsp;</span>
+											<span id="terminal__prompt--bling"><b>olcDatabaseConfig</b></span>
+										</div>
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--location-cyan"><b>objectClass:</b>&nbsp;</span>
+											<span id="terminal__prompt--bling"><b>olcHdbConfig</b></span>
+										</div>
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--location-cyan"><b>olcDatabase:</b>&nbsp;</span>
+											<span id="terminal__prompt--bling"><b>{2}hdb</b></span>
+										</div>
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--location-cyan"><b>olcDbDirectory:</b>&nbsp;</span>
+											<span id="terminal__prompt--bling"><b>/var/lib/ldap</b></span>
+										</div>
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--location-cyan"><b>olcSuffix:</b>&nbsp;</span>
+											<span id="terminal__prompt--bling"><b>dc=my-domain,dc=com</b></span>
+										</div>
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--location-cyan"><b>olcRootDN:</b>&nbsp;</span>
+											<span id="terminal__prompt--bling"><b>cn=Manager,dc=my-domain,dc=com</b></span>
+										</div>
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--location-cyan"><b>olcDbIndex:</b>&nbsp;</span>
+											<span id="terminal__prompt--bling"><b>ObjectClass eq,pres</b></span>
+										</div>
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--location-cyan"><b>olcDbIndex:</b>&nbsp;</span>
+											<span id="terminal__prompt--bling"><b>ou,cn,mail,surname,givenname eq,pres,sub</b></span>
+										</div>
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--location-cyan"><b>StructuralObjectClass:</b>&nbsp;</span>
+											<span id="terminal__prompt--bling"><b>olcHdbConfig</b></span>
+										</div>
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--location-cyan"><b>entryUUID:</b>&nbsp;</span>
+											<span id="terminal__prompt--bling"><b>8d1ee0d0-f7d8-103b-9f14-5fb98d4ca810</b></span>
+										</div>
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--location-cyan"><b>creatorsName:</b>&nbsp;</span>
+											<span id="terminal__prompt--bling"><b>cn=config</b></span>
+										  <!--<span id="terminal__prompt--cursor"></span>-->
+										</div>
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--location-cyan"><b>createTimestamp:</b>&nbsp;</span>
+											<span id="terminal__prompt--bling"><b>20211223010815Z</b></span>
+										</div>
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--location-cyan"><b>entryCSN:</b>&nbsp;</span>
+											<span id="terminal__prompt--bling"><b>20211223010815.353637Z#000000#000#000000</b></span>
+										</div>
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--location-cyan"><b>modifiersName:</b>&nbsp;</span>
+											<span id="terminal__prompt--bling"><b>cn=config</b></span>
+										</div>
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--location-cyan"><b>modifyTimestamp:</b>&nbsp;</span>
+											<span id="terminal__prompt--bling"><b>20211223010815Z</b></span>
+										</div>
+									  </section>
+									</div>
+								<br>
+								<br>
+								
+								<div class="left">
+<span>• <b><u>Directiva olcSuffix</u>:</b> Permite especificar el dominio para el que se debe proporcionar información:</span>
+								</div>
+								
+								<div id="terminal">
+									  <!-- Terminal Bar -->       
+									  <section id="terminal__bar">          
+										<div id="bar__buttons">            
+										  <button class="bar__button" id="bar__button--exit">&#10005;</button>            
+										  <button class="bar__button">&#9472;</button>                
+										  <button class="bar__button">&#9723;</button>          
+										</div>
+									  </section>        
+									  <!-- Terminal Body -->
+									  <section id="terminal__body">
+										<div id="terminal__prompt">
+										  <span id="terminal__prompt--location">&nbsp;</span>
+											<span id="terminal__prompt--location-cyan"><b>olcSuffix:</b>&nbsp;</span>
+											<span id="terminal__prompt--bling"><b>dc=skxll,dc=net&nbsp;</b></span>
+										</div>
+									  </section>
+									</div><br><br>
+								
+								<div class="left">
+<span>• <b><u>Directiva olcRootDN</u>:</b> Permite especificar la cuenta de usuario dedicada con todos los permisos para las operaciones en la base de datos y el directorio LDAP:</span>
+								</div>
+								
+								<div id="terminal">
+									  <!-- Terminal Bar -->       
+									  <section id="terminal__bar">          
+										<div id="bar__buttons">            
+										  <button class="bar__button" id="bar__button--exit">&#10005;</button>            
+										  <button class="bar__button">&#9472;</button>                
+										  <button class="bar__button">&#9723;</button>          
+										</div>
+									  </section>        
+									  <!-- Terminal Body -->
+									  <section id="terminal__body">
+										<div id="terminal__prompt">
+										  <span id="terminal__prompt--location">&nbsp;</span>
+											<span id="terminal__prompt--location-cyan"><b>olcRootDN:</b>&nbsp;</span>
+											<span id="terminal__prompt--bling"><b>cn=root,dc=skxll,dc=net&nbsp;</b></span>
+										</div>
+									  </section>
+									</div>
+								<br><br>
+
+								<div class="left">
+<span>• <b><u>Directiva olcRootPW</u>:</b> Permite establecer una contraseña para el usuario especificado en la directiva anterior:</span>
+								</div>
+
+								<div id="terminal">
+									  <!-- Terminal Bar -->       
+									  <section id="terminal__bar">          
+										<div id="bar__buttons">            
+										  <button class="bar__button" id="bar__button--exit">&#10005;</button>            
+										  <button class="bar__button">&#9472;</button>                
+										  <button class="bar__button">&#9723;</button>          
+										</div>
+									  </section>        
+									  <!-- Terminal Body -->
+									  <section id="terminal__body">
+										<div id="terminal__prompt">
+										  <span id="terminal__prompt--location">&nbsp;</span>
+											<span id="terminal__prompt--location-cyan"><b>olcRootPW:</b>&nbsp;</span>
+											<span id="terminal__prompt--bling"><b>Passw0rd</b>&nbsp;</span>
+										</div>
+									  </section>
+									</div>
+								<br><br>
+								<div class="centext">
+									<p>Si en lugar de usar una contraseña en texto plano, prefieres generar un <strong style="font-size: 15.2px;">hash</strong> {Recomendable}, se puede hacer con <strong style="font-size: 15.2px;">slappasswd</strong>.</p>
+									</div>
+								
+								<div id="terminal">
+									  <!-- Terminal Bar -->       
+									  <section id="terminal__bar">          
+										<div id="bar__buttons">            
+										  <button class="bar__button" id="bar__button--exit">&#10005;</button>            
+										  <button class="bar__button">&#9472;</button>                
+										  <button class="bar__button">&#9723;</button>          
+										</div>
+									  </section>        
+									  <!-- Terminal Body -->
+									  <section id="terminal__body">
+										<div id="terminal__prompt">
+											<span id="terminal__prompt--user"><a style="color: #3EFF00">☣</a>&nbsp;</span>
+											<span id="terminal__prompt--bling"><b>slappasswd</b></span>
+										</div>
+										  <div id="terminal__prompt">
+											<span id="terminal__prompt--bling"><b>New password:</b>&nbsp;</span>
+										</div>
+										  <div id="terminal__prompt">
+											<span id="terminal__prompt--bling"><b>Re-enter new password:
+</b>&nbsp;</span>
+										</div>
+										  <div id="terminal__prompt">
+								<span id="terminal__prompt--bling"><b>{SSHA}F/mM0wfsejiJXdZvbsJpMxxfKijZsox</b>&nbsp;</span>
+										</div>
+									  </section>
+									</div>
+								<br><br>
+								<div id="terminal">
+									  <!-- Terminal Bar -->       
+									  <section id="terminal__bar">          
+										<div id="bar__buttons">            
+										  <button class="bar__button" id="bar__button--exit">&#10005;</button>            
+										  <button class="bar__button">&#9472;</button>                
+										  <button class="bar__button">&#9723;</button>          
+										</div>
+									  </section>
+									  <!-- Terminal Body -->
+									  <section id="terminal__body">
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--location-cyan"><b>&nbsp;olcRootPW:</b>&nbsp;</span>
+								<span id="terminal__prompt--bling"><b>{SSHA}F/mM0wfsejiJXdZvbsJpMxxfKijZsox</b>&nbsp;</span>
+										</div>
+									  </section>
+									</div>
+								</section>
+
+								<section style="margin-top: 160px;" id="SLAPTEST" class="centext">
+								<div>
+								<a style="font-size: 19px; color: rgb(88, 177, 0);">☣ </a><span class="green-bg" style="font-size: 19px;">SLAPTEST: VERIFICAR LA CONFIGURACIÓN</span><br>
+									<p><strong>slaptest</strong> verifica el archivo de configuración. Si la configuración es correcta devolerá el mensaje: <strong>config file testing succeeded</strong></p>
+									<p>Ahora se puede iniciar el servidor <strong>OpenLDAP</strong></p>
+									</div>
+
+								<div id="terminal">
+									  <!-- Terminal Bar -->
+									  <section id="terminal__bar">
+										<div id="bar__buttons">
+										  <button class="bar__button" id="bar__button--exit">&#10005;</button>
+										  <button class="bar__button">&#9472;</button>
+										  <button class="bar__button">&#9723;</button>
+										</div>
+									  </section>        
+									  <!-- Terminal Body -->
+									  <section id="terminal__body">
+										<div id="terminal__prompt">
+											<span id="terminal__prompt--user"><a style="color: #3EFF00;">☣</a>&nbsp;</span>
+											<span id="terminal__prompt--bling"><b>slaptest <a style="color: #3EFF00">-u</a></b></span>				
+										</div>
+										  <div id="terminal__prompt">
+											<span id="terminal__prompt--bling"><b>config file testing succeded</b>&nbsp;</span>	
+										</div>
+										  <br>
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--user"><a style="color: #3EFF00">☣</a>&nbsp;</span>
+											  <span id="terminal__prompt--bling"><b>systemctl <a style="color: #3EFF00">start</a> slapd</b></span>					
+										</div>
+									  </section>
+									</div>
+								</section>
+
+								<section style="margin-top: 160px;" id="BASELDIF" >
+								<div class="centext">
+								<a style="font-size: 19px; color: rgb(88, 177, 0);">☣ </a><span class="green-bg" style="font-size: 19px;">ESTRUCTURAR LA BASE DE DATOS</span>
+									<p>Crear un fichero <strong>base.ldif</strong> en <strong>/var/tmp/</strong> que contrendrá la estructura de la base de datos</p>
+									</div>
+
+								<div id="terminal">
+									  <!-- Terminal Bar -->
+									  <section id="terminal__bar">
+										<div id="bar__buttons">
+										  <button class="bar__button" id="bar__button--exit">&#10005;</button>
+										  <button class="bar__button">&#9472;</button>
+										  <button class="bar__button">&#9723;</button>
+										</div>
+									  </section>
+									  <!-- Terminal Body -->
+									  <section id="terminal__body">
+										<div id="terminal__prompt">
+											<span id="terminal__prompt--user"><a style="color: #3EFF00">☣</a>&nbsp;</span>
+											<span id="terminal__prompt--bling"><b>cat /var/tmp/base.ldif</b></span>					
+										</div>
+										  <br>
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--location-cyan"><b>dn:</b>&nbsp;</span>
+											  <span id="terminal__prompt--bling"><b>dc=skxll,dc=net</b></span>
+										</div>
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--location-cyan"><b>ObjectClass:</b>&nbsp;</span>
+											  <span id="terminal__prompt--bling"><b>dcObject</b></span>
+										</div>
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--location-cyan"><b>ObjectClass:</b>&nbsp;</span>
+											  <span id="terminal__prompt--bling"><b>organization</b></span>
+										</div>
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--location-cyan"><b>o:</b>&nbsp;</span>
+											  <span id="terminal__prompt--bling"><b>skxll.net</b></span>
+										  <!--<span id="terminal__prompt--cursor"></span>-->
+										</div>
+										  <br>
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--location-cyan"><b>dn:</b>&nbsp;</span>
+											  <span id="terminal__prompt--bling"><b>ou=users,dc=skxll,dc=net</b></span>
+										</div>
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--location-cyan"><b>objectClass:</b>&nbsp;</span>
+											  <span id="terminal__prompt--bling"><b>organizationalUnit</b>&nbsp;</span>
+										</div>
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--location-cyan"><b>objectClass:</b>&nbsp;</span>
+											  <span id="terminal__prompt--bling"><b>top</b>&nbsp;</span>
+										</div>
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--location-cyan"><b>ou:</b>&nbsp;</span>
+											  <span id="terminal__prompt--bling"><b>users</b>&nbsp;</span>
+										</div>
+										  <br>
+										  <div id="terminal__prompt">
+									<span id="terminal__prompt--location-cyan"><b>dn:</b>&nbsp;</span>
+									<span id="terminal__prompt--bling"><b>ou=groups,dc=skxll,dc=net</b>&nbsp;</span>
+										</div>
+										  <div id="terminal__prompt">
+										<span id="terminal__prompt--location-cyan"><b>objectClass:</b>&nbsp;</span>
+										<span id="terminal__prompt--bling"><b>organizationalUnit</b>&nbsp;</span>
+										</div>
+										  <div id="terminal__prompt">
+										<span id="terminal__prompt--location-cyan"><b>objectClass:</b>&nbsp;</span>
+										<span id="terminal__prompt--bling"><b>top</b>&nbsp;</span>
+										</div>
+										  <div id="terminal__prompt">
+										<span id="terminal__prompt--location-cyan"><b>ou:</b>&nbsp;</span>
+										<span id="terminal__prompt--bling"><b>groups</b></span>
+										</div>
+									  </section>
+									</div>
+								<br><br>
+
+								<div class="centext">
+				<span>Importar la estructura base en el <strong>directorio LDAP</strong> con <strong>ldapadd</strong></span>
+									</div>
+								<div id="terminal">
+									  <!-- Terminal Bar -->
+									  <section id="terminal__bar">
+										<div id="bar__buttons">
+										  <button class="bar__button" id="bar__button--exit">&#10005;</button>
+										  <button class="bar__button">&#9472;</button>
+										  <button class="bar__button">&#9723;</button>
+										</div>
+									  </section>
+									  <!-- Terminal Body -->
+									  <section id="terminal__body">
+										<div id="terminal__prompt">
+											<span id="terminal__prompt--user"><a style="color: #3EFF00;">☣</a>&nbsp;</span>
+											<span id="terminal__prompt--bling"><b>ldapadd <a style="color: #3EFF00;">-x -D </a>"cn=root,dc=example,dc=com" <a style="color: #3EFF00;">-w </a>Passw0rd <a style="color: #3EFF00;">-f </a> base.ldif</b>&nbsp;</span>						
+										</div>
+										  <div id="terminal__prompt">
+											<span id="terminal__prompt--bling"><b>adding new entry "dc=skxll,dc=net"</b>&nbsp;</span>					
+										</div>
+										  <div id="terminal__prompt">
+											<span id="terminal__prompt--bling"><b>adding new entry "ou=users,dc=skxll,dc=net"</b>&nbsp;</span>						
+										</div>
+										  <div id="terminal__prompt">
+											<span id="terminal__prompt--bling"><b>adding new entry "ou=groups,dc=skxll,dc=net"</b>&nbsp;</span>						
+										</div>
+									  </section>
+									</div>
+								<br><br>
+								
+								<div class="centext">
+									<span>Verificar la estructura base con <strong>ldapsearch</strong> para confirmar que las <strong>OU</strong> <strong>{</strong>Organizational unit<strong>}</strong> han sido creadas con éxito</span>
+									</div>
+
+								<div id="terminal">
+									  <!-- Terminal Bar -->
+									  <section id="terminal__bar">
+										<div id="bar__buttons">
+										  <button class="bar__button" id="bar__button--exit">&#10005;</button>
+										  <button class="bar__button">&#9472;</button>
+										  <button class="bar__button">&#9723;</button>
+										</div>
+									  </section>
+									  <!-- Terminal Body -->
+									  <section id="terminal__body">
+										<div id="terminal__prompt">
+											<span id="terminal__prompt--user"><a style="color: #3EFF00">☣</a>&nbsp;</span>
+											<span id="terminal__prompt--bling"><b>ldapsearch <a style="color: #3EFF00">-x -D </a>'cn=root,dc=example,dc=com'<a style="color: #3EFF00;">-b </a> dc=skxll,dc=net <a style="color: #3EFF00">-w </a>Passw0rd</b>&nbsp;</span>						
+										</div>
+									  </section>
+									</div>
+								<br><br>
+								
+								<div class="centext">
+									<span>Importar los siguientes esquemas al servidor de directorios para evitar errores de «<strong>object class not defined</strong>» al importar los usuarios.</span>
+								</div>
+
+								<!--- ldapadd ldapi:/// --->
+								<div id="terminal">
+									  <!-- Terminal Bar -->
+									  <section id="terminal__bar">
+										<div id="bar__buttons">
+										  <button class="bar__button" id="bar__button--exit">&#10005;</button>
+										  <button class="bar__button">&#9472;</button>
+										  <button class="bar__button">&#9723;</button>
+										</div>
+									  </section>
+									  <!-- Terminal Body -->
+									  <section id="terminal__body">
+										<div id="terminal__prompt">
+											<span id="terminal__prompt--user"><a style="color: #3EFF00;">☣</a>&nbsp;</span>
+											<span id="terminal__prompt--bling"><b>ldapadd <a style="color: #3EFF00">-Y </a>EXTERNAL <a style="color: #3EFF00;">-H </a> ldapi:/// <a style="color: #3EFF00">-f </a> /etc/openldap/schema/cosine.ldif</b>&nbsp;</span>					
+										</div>
+										  
+										  <div id="terminal__prompt">
+											<span id="terminal__prompt--user"><a style="color: #3EFF00;">☣</a>&nbsp;</span>
+											<span id="terminal__prompt--bling"><b>ldapadd <a style="color: #3EFF00;">-Y </a>EXTERNAL <a style="color: #3EFF00;">-H </a> ldapi:/// <a style="color: #3EFF00">-f </a> /etc/openldap/schema/nis.ldif</b>&nbsp;</span>					
+										</div>
+										  
+										  <div id="terminal__prompt">
+											<span id="terminal__prompt--user"><a style="color: #3EFF00;">☣</a>&nbsp;</span>
+											<span id="terminal__prompt--bling"><b>ldapadd <a style="color: #3EFF00;">-Y </a>EXTERNAL <a style="color: #3EFF00;">-H </a> ldapi:/// <a style="color: #3EFF00;">-f </a> /etc/openldap/schema/inetorgperson.ldif</b>&nbsp;</span>				
+										</div>
+									  </section>
+									</div>
+								<!--- ldapadd ldapi:/// END --->
+								</section>
+								
+								<section style="margin-top: 155px;" id="USERGROUP">
+								<div class="centext">
+								<a style="font-size: 19px; color: rgb(88, 177, 0);">☣ </a><span class="green-bg" style="font-size: 19px;">CREAR USUARIO Y GRUPO</span>
+									</div>
+								
+								<div class="left">
+									<span>• <b><u>Generar Password para el usuario</u>:</b></span>
+								</div>
+								
+								<div id="terminal">
+									  <!-- Terminal Bar -->       
+									  <section id="terminal__bar">          
+										<div id="bar__buttons">            
+										  <button class="bar__button" id="bar__button--exit">&#10005;</button>            
+										  <button class="bar__button">&#9472;</button>                
+										  <button class="bar__button">&#9723;</button>          
+										</div>
+									  </section>        
+									  <!-- Terminal Body -->
+									  <section id="terminal__body">
+										<div id="terminal__prompt">
+											<span id="terminal__prompt--user"><a style="color: #3EFF00">☣</a>&nbsp;</span>
+											<span id="terminal__prompt--bling"><b>slappasswd <a style="color: #3EFF00">-s </a>Passw0rd</b></span>				
+										</div>
+										  <div id="terminal__prompt">
+											<span id="terminal__prompt--bling"><b>{SSHA}P2UGF0W6Dr/s031AFCVeb5vyiuq5dMB9</b>&nbsp;</span>
+										</div>
+									  </section>
+									</div>
+								
+								<div style="margin-top: 40px;" class="left">
+									<span>• <b><u>Crear usuario 'user1' en users.ldif</u>:</b></span>
+								</div>
+								
+								<!--- cat users.ldif --->
+								<div style="margin-top: 10px;" id="terminal">
+									  <!-- Terminal Bar -->       
+									  <section id="terminal__bar">          
+										<div id="bar__buttons">            
+										  <button class="bar__button" id="bar__button--exit">&#10005;</button>            
+										  <button class="bar__button">&#9472;</button>                
+										  <button class="bar__button">&#9723;</button>          
+										</div>
+									  </section>        
+									  <!-- Terminal Body -->
+									  <section id="terminal__body">
+										<div id="terminal__prompt">
+											<span id="terminal__prompt--user"><a style="color: #3EFF00">☣</a>&nbsp;</span>
+										<span id="terminal__prompt--bling"><b>cat /var/tmp/users.ldif</b></span>
+										</div>
+										  <br>
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--location-cyan"><b>dn:</b>&nbsp;</span>
+											  <span id="terminal__prompt--bling"><b>uid=user1,ou=users,dc=skxll,dc=net</b></span>
+										</div>
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--location-cyan"><b>uid:</b>&nbsp;</span>
+											  <span id="terminal__prompt--bling"><b>user1</b></span>
+										</div>
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--location-cyan"><b>cn:</b>&nbsp;</span>
+											  <span id="terminal__prompt--bling"><b>user1</b></span>
+										</div>
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--location-cyan"><b>objectClass:</b>&nbsp;</span>
+											  <span id="terminal__prompt--bling"><b>shadowAccount</b></span>
+										</div>
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--location-cyan"><b>objectClass:</b>&nbsp;</span>
+											  <span id="terminal__prompt--bling"><b>top</b></span>
+										</div>
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--location-cyan"><b>objectClass:</b>&nbsp;</span>
+											  <span id="terminal__prompt--bling"><b>person</b>&nbsp;</span>
+										</div>
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--location-cyan"><b>objectClass:</b>&nbsp;</span>
+											  <span id="terminal__prompt--bling"><b>inetOrgPerson</b></span>
+										</div>
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--location-cyan"><b>objectClass:</b>&nbsp;</span>
+											  <span id="terminal__prompt--bling"><b>posixAccount</b></span>
+										</div>
+										  <div id="terminal__prompt">
+									<span id="terminal__prompt--location-cyan"><b>userPassword:</b>&nbsp;</span>
+									<span id="terminal__prompt--bling"><b>{SSHA}P2UGF0W6Dr/s031AFCVeb5vyiuq5dMB9</b>&nbsp;</span>
+										</div>
+										  <div id="terminal__prompt">
+										<span id="terminal__prompt--location-cyan"><b>shadowLastChange:</b>&nbsp;</span>
+										<span id="terminal__prompt--bling"><b>17016</b></span>
+										</div>
+										  <div id="terminal__prompt">
+										<span id="terminal__prompt--location-cyan"><b>shadowMin:</b>&nbsp;</span>
+										<span id="terminal__prompt--bling"><b>0</b></span>
+										</div>
+										  <div id="terminal__prompt">
+										<span id="terminal__prompt--location-cyan"><b>shadowMax:</b>&nbsp;</span>
+										<span id="terminal__prompt--bling"><b>99999</b></span>
+										</div>
+										  <div id="terminal__prompt">
+										<span id="terminal__prompt--location-cyan"><b>shadowWarning:</b>&nbsp;</span>
+										<span id="terminal__prompt--bling"><b>7</b></span>
+										</div>
+										  <div id="terminal__prompt">
+										<span id="terminal__prompt--location-cyan"><b>loginShell:</b>&nbsp;</span>
+										<span id="terminal__prompt--bling"><b>/bin/bash</b></span>
+										</div>
+										  <div id="terminal__prompt">
+										<span id="terminal__prompt--location-cyan"><b>uidNumber:</b>&nbsp;</span>
+										<span id="terminal__prompt--bling"><b>1000</b></span>
+										</div>
+										  <div id="terminal__prompt">
+										<span id="terminal__prompt--location-cyan"><b>uidNumber:</b>&nbsp;</span>
+										<span id="terminal__prompt--bling"><b>1000</b></span>
+										</div>
+										  <div id="terminal__prompt">
+										<span id="terminal__prompt--location-cyan"><b>gidNumber:</b>&nbsp;</span>
+										<span id="terminal__prompt--bling"><b>1000</b></span>
+										</div>
+										  <div id="terminal__prompt">
+										<span id="terminal__prompt--location-cyan"><b>homeDirectory:</b>&nbsp;</span>
+										<span id="terminal__prompt--bling"><b>/home/user1</b></span>
+										</div>
+										  <div id="terminal__prompt">
+										<span id="terminal__prompt--location-cyan"><b>sn:</b>&nbsp;</span>
+										<span id="terminal__prompt--bling"><b>user1</b></span>
+										</div>
+										  <div id="terminal__prompt">
+										<span id="terminal__prompt--location-cyan"><b>mail:</b>&nbsp;</span>
+										<span id="terminal__prompt--bling"><b>user1@skxll.net</b></span>
+										</div>
+									  </section>
+									</div>
+								<!--- END cat users.ldif --->
+
+								<br><br>
+								<div class="left">
+									<span>• <b><u>Crear grupo en groups.ldif</u>:</b></span>
+								</div>
+
+								<!--- cat groups.ldif --->
+								<div id="terminal">
+									  <!-- Terminal Bar -->       
+									  <section id="terminal__bar">          
+										<div id="bar__buttons">            
+										  <button class="bar__button" id="bar__button--exit">&#10005;</button>            
+										  <button class="bar__button">&#9472;</button>                
+										  <button class="bar__button">&#9723;</button>          
+										</div>
+									  </section>        
+									  <!-- Terminal Body -->
+									  <section id="terminal__body">
+										<div id="terminal__prompt">
+											<span id="terminal__prompt--user"><a style="color: #3EFF00">☣</a>&nbsp;</span>
+										<span id="terminal__prompt--bling"><b>cat /var/tmp/groups.ldif</b></span>
+										</div>
+										  <br>
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--location-cyan"><b>dn:</b>&nbsp;</span>
+											  <span id="terminal__prompt--bling"><b>cn=user1,ou=groups,dc=skxll,dc=net&nbsp;</b></span>
+										</div>
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--location-cyan"><b>objectClass:</b>&nbsp;</span>
+											  <span id="terminal__prompt--bling"><b>posixGroup</b></span>
+										</div>
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--location-cyan"><b>objectClass:</b>&nbsp;</span>
+											  <span id="terminal__prompt--bling"><b>top</b></span>
+										</div>
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--location-cyan"><b>cn:</b>&nbsp;</span>
+											  <span id="terminal__prompt--bling"><b>user1</b></span>
+										</div>
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--location-cyan"><b>userPassword:</b>&nbsp;</span>
+											  <span id="terminal__prompt--bling"><b>{crypt}x</b></span>
+										</div>
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--location-cyan"><b>gidNumber:</b>&nbsp;</span>
+											  <span id="terminal__prompt--bling"><b>1000</b></span>
+										</div>
+									  </section>
+									</div>
+								<!--- END cat groups.ldif --->
+								<br><br>
+
+								<div class="left">
+									<span>• <b><u>Añadir usuario y grupo al directorio LDAP</u>:</b></span>
+								</div>
+
+								<div id="terminal">
+									  <!-- Terminal Bar -->       
+									  <section id="terminal__bar">          
+										<div id="bar__buttons">            
+										  <button class="bar__button" id="bar__button--exit">&#10005;</button>            
+										  <button class="bar__button">&#9472;</button>                
+										  <button class="bar__button">&#9723;</button>          
+										</div>
+									  </section>        
+									  <!-- Terminal Body -->
+									  <section id="terminal__body">
+										<div id="terminal__prompt">
+											<span id="terminal__prompt--user"><a style="color: #3EFF00;">☣</a>&nbsp;</span>
+											<span id="terminal__prompt--bling"><b>ldapadd <a style="color: #3EFF00;">-x -D </a>cn=root,dc=skxll,dc=net <a style="color: #3EFF00;">-f </a>/var/tmp/users.ldif <a style="color: #3EFF00;">-w </a>Passw0rd&nbsp;</b></span>
+										</div>
+
+										  <div id="terminal__prompt">
+			<span id="terminal__prompt--bling"><b>adding new entry "uid=user1,ou=users,dc=skxll,dc=net"&nbsp;</b></span>
+											
+										</div>
+									</section>
+								</div>
+								<br><br>
+
+								<div class="left">
+									<span>• <b><u>Verificación de usuario y grupo</u>:</b></span>
+								</div>
+
+								<div id="terminal">
+									  <!-- Terminal Bar -->       
+									  <section id="terminal__bar">          
+										<div id="bar__buttons">            
+										  <button class="bar__button" id="bar__button--exit">&#10005;</button>            
+										  <button class="bar__button">&#9472;</button>                
+										  <button class="bar__button">&#9723;</button>          
+										</div>
+									  </section>        
+									  <!-- Terminal Body -->
+									  <section id="terminal__body">
+										<div id="terminal__prompt">
+											<span id="terminal__prompt--user"><a style="color: #3EFF00;">☣</a>&nbsp;</span>
+											<span id="terminal__prompt--bling"><b>ldapsearch <a style="color: #3EFF00;">-x -D </a>cn=root,dc=skxll,dc=net <a style="color: #3EFF00;">-b </a>dc=skxll,dc=net <a style="color: #3EFF00;">-w </a>Passw0rd&nbsp;</b></span>
+										  </div>
+									</section>
+								</div>
+								</section>
+							</div>
+						</article>
+					</main>
+
+					<aside class="col-md-4 stk-post-lx">
+						<div class="widget widget-recent-posts">
+							<h3 class="widget-title"><a style="color: rgb(82, 163, 0);">↳ </a>Tabla de Contenido:</h3>		
+							<ul>
+								<li>
+									<a class="nodeco" class="nodeco" class="nodeco" class="nodeco" href="#INSTALLDAP">INSTALACIÓN OpenLDAP</a>
+								</li>
+								<li>
+									<a class="nodeco" class="nodeco" class="nodeco" href="#SLAPD">SLAPD.D: Migrar al nuevo formato</a>
+								</li>
+								<li>
+									<a class="nodeco" class="nodeco" href="#HDB">HDB: Directivas del Back-End</a>
+								</li>
+								<li>
+									<a class="nodeco" href="#SLAPTEST">SLAPTEST: Verificar Configuración</a>
+								</li>
+								<li>
+									<a class="nodeco" class="nodeco" href="#BASELDIF">BASE.LDIF: Estructurar la BBDD</a>
+								</li>
+								<li>
+									<a class="nodeco" href="#USERGROUP">CREAR USUARIO Y GRUPO</a>
+								</li>
+							</ul>
+						</div>
+						
+						<div class="widget widget-category">
+							<h3 class="widget-title"><a style="color: rgb(82, 163, 0);">✎ </a>Notas:</h3>		
+							<ul>
+								<li>
+									<a><strong>slapd.conf</strong>: Archivo de configuración anterior a versiones 2.3 de OpenLDAP</a>
+								</li>
+								<li>
+									<a><strong>slapd.d</strong>: Nuevo formato de configuración en versiones 2.3 y posteriores de OpenLDAP</a>
+								</li>
+								<li>
+									<a><strong>hdb</strong>: Back-End de OpenLDAP</a>
+								</li>
+								<li>
+									<a><strong>base.ldif</strong>: Fichero que estructura la BBDD</a>
+								</li>
+								<li>
+									<a><strong>users.ldif</strong>: Fichero de configuración de usuarios</a>
+								</li>
+								<li>
+									<a><strong>groups.ldif</strong>: Fichero de configuración de grupos</a>
+								</li>
+							</ul>
+						</div>
+					</aside>
+				</div>
+			</div>
+			</div>
+		</div>
+
+
+		<footer id="site-footer">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-8">
+						<p class="copyright"><a href="https://0xbogart.github.io"><img style="margin-top: -5px;" src="/blog/img/skull.png" weight="19px" height="19px"> 0xbogart.github.io</a></p>
+					</div>
+				</div>
+			</div>
+		</footer>
+		<a href="#" id="scrollToTopButtonGreen"><i class="fas fa-arrow-up"></i></a>
+	</body>
+</html>

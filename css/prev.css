@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:600&display=swap');
+
+/*** prev ***/
+.prv{
+  position: relative;
+  display: inline-flex;
+  width: 180px;
+  height: 55px;
+  margin: 0 0px;
+  top: 40px;
+  perspective: 1000px;
+}
+.prv a{
+  font-size: 19px;
+  letter-spacing: 1px;
+  transform-style: preserve-3d;
+  transform: translateZ(-25px);
+  transition: transform .25s;
+  font-family: 'Montserrat', sans-serif;
+}
+.prv a:before,
+.prv a:after{
+  position: absolute;
+  content: "â–¼";
+  height: 52px;
+  width: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 5px solid black;
+  box-sizing: border-box;
+  border-radius: 5px;
+}
+.prv a:before{
+  color: #fff;
+  background: #000;
+  transform: rotateY(0deg) translateZ(25px);
+}
+.prv a:after{
+  color: #000;
+  transform: rotateX(90deg) translateZ(25px);
+}
+.prv a:hover{
+  transform: translateZ(-25px) rotateX(-90deg);
+}
+
+/*** next ***/
+.nxt{
+    position: relative;
+    display: inline-flex;
+    width: 180px;
+    height: 55px;
+    margin: 0 0px;
+    margin-right: 60%;
+    top: 60px;
+    perspective: 1000px;
+  }
+  .nxt a{
+    font-size: 19px;
+    letter-spacing: 1px;
+    transform-style: preserve-3d;
+    transform: translateZ(-25px);
+    transition: transform .25s;
+    font-family: 'Montserrat', sans-serif;
+    
+  }
+  .nxt a:before,
+  .nxt a:after{
+    position: absolute;
+    content: ">>";
+    height: 52px;
+    width: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 5px solid black;
+    box-sizing: border-box;
+    border-radius: 5px;
+  }
+  .nxt a:before{
+    color: #fff;
+    background: #000;
+    transform: rotateY(0deg) translateZ(25px);
+  }
+  .nxt a:after{
+    color: #000;
+    transform: rotateX(90deg) translateZ(25px);
+  }
+  .nxt a:hover{
+    transform: translateZ(-25px) rotateX(-90deg);
+  }

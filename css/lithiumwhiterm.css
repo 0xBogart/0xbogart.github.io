@@ -1,0 +1,147 @@
+@import url('https://fonts.googleapis.com/css?family=Ubuntu');
+@import url('https://fonts.googleapis.com/css?family=Ubuntu+Mono'); 
+
+#container {
+  display: block;
+  justify-content: center;  
+  align-items: center;  
+  height: 50px;
+} 
+#terminal {
+  display: inline-block;
+  white-space: nowrap;
+  margin: 0 auto;
+  width: auto;
+  height: auto;
+  box-shadow: 2px 4px 10px rgba(0,0,0,0.5);
+}
+#long-terminal {
+  display: inline-block;
+  white-space: nowrap;
+  margin: 0 auto;
+  width: 100%;
+  height: auto;
+  box-shadow: 2px 4px 10px rgba(0,0,0,0.5);
+} 
+#terminal__bar {  
+  display: flex;  
+  width: 100%;  
+  height: 20px;  
+  align-items: center;  
+  padding: 0 8px;  
+  box-sizing: border-box;  
+  border-top-left-radius: 5px;  
+  border-top-right-radius: 5px;  
+  background: linear-gradient(#504b45 0%,#3c3b37 100%);
+} 
+#bar__buttons {  
+  display: flex;  
+  align-items: center;
+} 
+.bar__button {  
+  display: flex;  
+  justify-content: center;  
+  align-items: center;  
+  padding: 0;  
+  margin-right: 5px;  
+  font-size: 16px;  
+  height: 12px;  
+  width: 12px;  
+  box-sizing: border-box;  
+  border: none;  
+  border-radius: 10%;  
+  background: linear-gradient(#ffffff 0%, #595953 100%);  
+  text-shadow: 0px 1px 0px rgba(255,255,255,0.2);  
+  box-shadow: 0px 0px 1px 0px #41403A, 0px 1px 1px 0px #474642;
+}
+.bar__button:hover {  
+  cursor: pointer;
+}
+.bar__button:focus {  
+  outline: none;
+}
+#bar__button--exit {  
+  background: linear-gradient(#ffffff 0%, #595953 100%);    
+  background-clip: padding-box;
+} 
+#bar__user {
+  color: #d5d0ce;
+  margin-top: 9px;
+  margin-left: 30%;
+  margin-right: 10%;
+  font-size: 14px;  
+  line-height: 15px;
+} 
+#terminal__body {
+  width: auto;
+  white-space: nowrap;
+  overflow: auto;
+  background: rgba(250, 250, 250, 0.8);
+  font-family: 'Ubuntu Mono';
+  height: calc(100% - 30px);
+  padding-top: 2px;
+  margin-top: -1px;
+}
+
+/** COOL SCROLL **/
+#terminal__body::-webkit-scrollbar {
+            width: 1px;
+	        height: 9px;
+}
+        
+#terminal__body::-webkit-scrollbar-track {
+            border-radius: 1px;
+            background-color: #404040;
+            border: 1px solid #ffffff;
+}
+        
+#terminal__body::-webkit-scrollbar-thumb {
+            border-radius: 1px;
+            background-color: #e8e8e8;
+}
+/** END Cool Scroll **/
+
+#terminal__prompt {
+  display: flex;
+}
+#terminal__prompt--user {
+  color: #000;
+  margin-top: 1px;
+}
+#terminal__prompt--location { 
+  color: #000;
+  margin-top: 1px;
+}
+#terminal__prompt--bling {
+  color: #595959;
+}
+#terminal__prompt--cursor {  
+  display: flex;  
+  height: 17px;  
+  width: 8px;  
+  margin-top: 9px;
+  margin-left: 9px;  
+  animation: blink 1200ms linear infinite;
+}
+@keyframes blink {
+  0% {
+    background: #FF9E00;
+  }
+  49% {
+    background: #FF9E00;
+  }
+  60% {
+    background: transparent;
+  }  
+  99% {    
+    background: transparent;
+  }  100% {    
+    background: #FF9E00;  
+  }
+}
+@media (max-width: 600px) {
+  #terminal {
+    max-height: 90%;
+    width: 90%;
+  }
+}

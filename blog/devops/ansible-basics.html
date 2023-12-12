@@ -1,0 +1,555 @@
+
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+
+		<!-- meta -->
+		<meta charset="utf-8">
+		<title>Ansible: Conceptos Básicos | 0xBogart</title>
+		<meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0,user-scalable=no,viewport-fit=cover">
+		<link rel="icon" type="/image/png" href="/blog/img/skull.png">
+		<meta name="twitter:card" content="summary_large_image">
+		<meta name="twitter:site" content="@jfb0gart">
+		<meta name="twitter:creator" content="@jfb0gart">
+		<meta property="og:url" content="https://0xbogart.github.io/blog/devops/ansible-basics">
+		<meta property="og:title" content="Ansible: Conceptos Básicos">
+		<meta property="og:description" content="Ansible: Conceptos Básicos">
+		<meta content="https://0xbogart.github.io/img/ansible.png" property="og:image">
+		<meta name="twitter:image" content="https://0xbogart.github.io/blog/img/ansible.png">
+		<meta content="https://0xbogart.github.io/blog/img/ansible.png" name="twitter:image:src">
+
+
+	    <!-- css -->
+		<link rel="canonical" href="https://0xbogart.github.io/blog/devops/ansible-ad-hoc">
+		<meta name="description" content="Ansible AD HOC">
+		<meta name="keywords" content="ad hoc">
+		<link rel="stylesheet" href="/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/css/ionicons.min.css">
+		<link rel="stylesheet" href="/css/pace.css">
+	  <link rel="stylesheet" href="/css/custom.css">
+		<link rel="stylesheet" href="/css/lithiumwhiterm.css">
+		<link rel="stylesheet" href="/css/lithiumvoid.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+	    <!-- js -->
+	    <script src="/js/jquery-2.1.3.min.js"></script>
+	    <script src="/js/bootstrap.min.js"></script>
+	    <script src="/js/pace.min.js"></script>
+	    <script src="/js/modernizr.custom.js"></script>
+      <script src="/js/asgoldlight.js"></script>
+		
+<style>
+/* texto max izquierda */
+	.left {
+		text-align: left;
+		margin-right: 8%;
+		margin-left: -5%;
+		overflow: hidden;
+		font-size: 16px;
+	}
+	
+	/* texto izquierda */
+	.leftl {
+  text-align: left;
+  margin-right: 8%;
+  overflow: hidden;
+  font-size: 16px;
+	}
+	
+	/* centrar texto */
+	.centext {
+		text-align: center;
+		font-size: 16px;
+		letter-spacing: 1px;
+	}
+</style>
+	</head>
+
+	<body>
+		<div class="container">	
+			<header id="site-header">
+				<div class="row">
+			<div style="margin-top: -2%; margin-bottom: -3%;">
+					<h1>Dev<a style="text-decoration: none; color: #b57c02;" href="/blog/devops">∅</a>ps</h1>
+			</div><!-- col-4 -->
+		</div>
+		<div class="row justify-content-end">
+			<div style="margin-top: -3%; margin-bottom: -3%;" class="col-3">
+				<nav class="navbar navbar-expand-lg navbar-light">
+					<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#bs-example-navbar-collapse-1" aria-controls="bs-example-navbar-collapse-1" aria-expanded="false" aria-label="Toggle navigation">
+						<span class="navbar-toggler-icon"></span>
+					</button>
+					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+						<ul class="navbar-nav">
+							<li class="nav-item">
+								<a style="font-size: 25px;" class="nav-link" href="/index" data-hover="Home">Home</a>
+							</li>
+						</ul>
+					</div><!--- .navbar-collapse --->
+				</nav>
+			</div><!-- col-md-8 -->
+		</div>
+			</header>
+		</div>
+
+		<div class="content-body">
+			<div class="container">
+				<div class="row">
+					<main class="col-md-8">
+						<article class="post post-1">
+							<header  class="entry-header">
+								<h1 class="blh1">Ansible</h1>
+								<h2 class="blh2">CONCEPTOS BÁSICOS</h2>
+							</header>
+							
+							<div class="entry-content clearfix">
+								<section id="Ansible">
+									<div style="margin-top: 80px;" class="centext">
+										<a>∅ </a><span class="white-bg" style="font-size: 19px;">¿QUÉ ES ANSIBLE?</span><p></p>
+									
+										<span>Ansible es un motor Open Source que automatiza los procesos de gestión de la configuración e implementa aplicaciones y sistemas para una infraestructura.</span><p></p>
+									
+										<span>Su automatización permite instalar sistemas de software, automatizar tareas diarias, mejorar la seguridad y el cumplimiento, ejecutar parches en los sistemas y compartir la automatización en toda la empresa.</span><p></p>
+									
+										<span>Ansible se conecta a los nodos y les inserta pequeños programas denominados módulos, que permiten llevar a cabo tareas de automatización en la plataforma.</span>
+									</div>
+								</section>
+								
+								<section id="conceptos">
+									<div style="margin-top: 150px;" class="centext">
+										<a>∅ </a><span class="white-bg" style="font-size: 19px;">CONCEPTOS ANSIBLE</span>
+									</div>
+								
+									<div style="margin-top: 20px;" class="left">
+										<span><strong>• NODO DE CONTROL:</strong> Es cualquier máquina con Python y Ansible instalado. Puedes ejecutar comandos y playbooks de Ansible invocando el comando ansible o ansible-playbook desde cualquier nodo de control. Sin embargo, una máquina Windows no puede usarse como nodo de control.</span><p></p>
+									
+										<span><strong>• NODOS GESTIONADOS:</strong> Son dispositivos de red y/o servidores/hosts gestionados con Ansible. Ansible no se instala en los nodos gestionados.</span><p></p>
+									
+										<span><strong>• INVENTARIO:</strong> Un archivo de inventario {o archivo de host} es una lista de nodos administrados. Puede contener las direcciones IP o el FQDN de cada nodo administrado y los organiza anidados por grupos para facilitar el escalado.</span><p></p>
+									
+										<span><strong>• AD HOC:</strong> Un comando ad hoc de Ansible utiliza la herramienta de línea de comandos /usr/bin/ansible para automatizar una sola tarea en uno o más nodos administrados.</span><p></p>
+									
+										<span><strong>• COLECCIONES:</strong> Las colecciones son un formato de distribución para el contenido de Ansible que puede incluir playbooks, roles, módulos y plugins. Puede instalarse a través de Ansible Galaxy.</span><p></p>
+									
+										<span><strong>• MÓDULOS:</strong> Son unidades de código ejecutadas por Ansible. Cada módulo tiene un uso particular, desde la administración de usuarios en un tipo específico de base de datos hasta la gestión de interfaces VLAN en un tipo específico de dispositivo de red. Se puede invocar un solo módulo con una tarea, o invocar varios módulos diferentes en un Playbook. </span><p></p>
+									
+										<span><strong>• TAREAS:</strong> Son las unidades de acción en Ansible. Puedes ejecutar una sola tarea una vez con un comando ad hoc o construir un Playbook que contenga múltiples tareas en cascada.</span><p></p>
+									
+										<span><strong>• PLAYBOOKS:</strong> Listas ordenadas de tareas, guardadas para poder ejecutar esas tareas en orden repetidamente. Los playbooks pueden incluir tanto variables como tareas y están escritos en YAML.</span>
+									</div>
+								</section>
+								
+								<section id="install">
+									<div style="margin-top: 150px;" class="centext">
+										<a>∅ </a><span class="white-bg" style="font-size: 19px;">INSTALAR ANSIBLE</span>
+									</div>
+								
+									<div style="margin-top: 10px;" id="long-terminal">
+										<!-- Terminal Bar -->       
+										<section id="terminal__bar">          
+											<div id="bar__buttons">            
+												<button class="bar__button" id="bar__button--exit">&#10005;</button>            
+												<button class="bar__button">&#9472;</button>                
+												<button class="bar__button">&#9723;</button>          
+											</div>
+										</section>        
+									  <!-- Terminal Body -->
+									  <section id="terminal__body">
+										<div id="terminal__prompt">
+											<span id="terminal__prompt--location">∅&nbsp;</span>
+											<span id="terminal__prompt--bling"><b><a style="color: #b57c02;">Fedora:</a> dnf install ansible</b></span>
+										</div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--location">∅&nbsp;</span>
+											  <span id="terminal__prompt--bling"><b><a style="color: #b57c02;">RHEL\CentOS:</a> yum install ansible</b></span>
+										  </div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--location">∅&nbsp;</span>
+											  <span id="terminal__prompt--bling"><b><a style="color: #b57c02;">Ubuntu:</a> apt install software-properties-common &amp;&amp; add-apt-repository --yes --update ppa:ansible/ansible &amp;&amp; apt-get install ansible</b></span>
+										</div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--location">∅&nbsp;</span>
+											  <span id="terminal__prompt--bling"><b><a style="color: #b57c02;">Debian:</a> apt-get install ansible</b></span>
+										  </div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--location">∅&nbsp;</span>
+											  <span id="terminal__prompt--bling"><b><a style="color: #b57c02;">Arch Linux:</a> pacman -S ansible</b></span>
+										  </div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--location">∅&nbsp;</span>
+											  <span id="terminal__prompt--bling"><b><a style="color: #b57c02;">Solaris:</a> pkgadd -d http://get.opencsw.org/now</b></span>
+										  </div>
+
+										  <div style="margin-left: 90px;" id="terminal__prompt">
+											  <span id="terminal__prompt--bling"><b>/opt/csw/bin/pkgutil -i ansible</b></span>
+										  </div>
+										</section>
+									</div>
+								</section>
+
+								<section id="inventario">
+									<div style="margin-top: 150px;" class="centext">
+										<a>∅ </a><span class="white-bg" style="font-size: 19px;">TRABAJAR CON EL INVENTARIO</span>
+									</div>
+
+									<div style="margin-top: 10px;" class="centext">
+										<span>Ansible lee la información sobre las máquinas que quiere gestionar desde su inventario.</span><p></p>
+									
+										<span>Aunque se puede pasar una dirección IP a un comando ad hoc, necesita el inventario para aprovechar toda la flexibilidad y repetibilidad de Ansible.</span>
+									</div>
+								
+									<div style="margin-top: 40px;" class="left">
+										<span><strong>• CREAR UN INVENTARIO BÁSICO</strong></span>
+									</div>
+								
+									<div style="margin-top: 10px;" class="centext">
+										<span>Se puede editar el fichero <strong>/etc/ansible/hosts</strong> o crear uno nuevo llamado <strong>inventario</strong> ubicado donde prefieras.</span><br><br>
+									
+										<span>En caso de crear un inventario personalizado en cualquier otra ubicación, por ejemplo en <strong>/tmp/miinventario</strong>, será necesario especificar la opción <strong>-i</strong> /tmp/miinventario para indicar a Ansible dónde se encuentra el inventario con el que se quiere trabajar.</span><br><br>
+									
+										<span>El inventario trabaja con <strong>direcciones IP</strong> y/o con nombres de dominio completo<strong> FQDN</strong></span><p></p>
+									
+										<span>Para trabajar con <strong>FQDN</strong> asegurate de tener el fichero <strong>/etc/hosts</strong> bien configurado</span>
+									</div>
+
+								<div style="margin-top: 10px;" id="terminal">
+									<!-- Terminal Bar -->       
+									<section id="terminal__bar">          
+										<div id="bar__buttons">            
+											<button class="bar__button" id="bar__button--exit">&#10005;</button>            
+											<button class="bar__button">&#9472;</button>                
+											<button class="bar__button">&#9723;</button>          
+										</div>
+									</section>        
+									<!-- Terminal Body -->
+									<section id="terminal__body">
+										<div id="terminal__prompt">
+											<span id="terminal__prompt--location"><b>∅&nbsp;</b></span>
+											<span id="terminal__prompt--bling"><a style="color: #b57c02;">cat </a>/etc/hosts</span>
+										</div>
+										  
+										<div style="margin-left: 1px;" id="terminal__prompt">
+											<span id="terminal__prompt--bling">192.168.1.54<a style="color: #b57c02;"> centos8.ansible.com</a></span>
+										</div><br>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--location"><b>∅&nbsp;</b></span>
+											  <span id="terminal__prompt--bling"><a style="color: #b57c02;">cat </a>/etc/ansible/hosts</span>
+										  </div>
+										  
+										  <div id="terminal__prompt">
+											  <span style="margin-left: 1px;" id="terminal__prompt--bling">[<a style="color: #b57c02;">laboratorio</a>]</span>
+										  </div>
+										  
+										  <div style="margin-left: 1px;" id="terminal__prompt">
+											  <span id="terminal__prompt--bling">192.168.1.115 <a style="color: #b57c02;">ansible_user</a>=ansible</span>
+										  </div>
+										  
+										  <div style="margin-left: 1px;" id="terminal__prompt">
+											  <span id="terminal__prompt--bling">centos8.ansible.com <a style="color: #b57c02;">ansible_user</a>=ansible&nbsp;</span>
+										  </div>
+									</section>
+								</div>
+								
+									<div style="margin-top: 10px;" class="leftl">
+										<span><strong>• [laboratorio]:</strong> Nombre del grupo al que pertenecen los nodos administrados</span><p></p>
+										<span><strong>• ansible_user:</strong> Variable que especifica el usuario con el que Ansible conectará mediante SSH al nodo administrado</span><p></p>
+										<span><strong>• 192.168.1.115:</strong> Nodo administrado por dirección IP</span><p></p>
+										<span><strong>• centos8.ansible.com:</strong> Nodo administrado por FQDN</span>
+									</div>
+								</section>
+								
+								<section id="connect">
+									<div style="margin-top: 150px;" class="centext">
+										<a>∅ </a><span class="white-bg" style="font-size: 19px;">CONECTAR CON LOS NODOS ADMINISTRADOS</span><p></p>
+										<span>Ansible se comunica con máquinas remotas a través del <strong>protocolo SSH</strong>. Por defecto, utiliza <strong>OpenSSH</strong> nativo y se conecta a las máquinas remotas utilizando su nombre de usuario actual, al igual que <strong>SSH</strong>.</span><br><br>
+									
+										<span>Para evitar que Ansible solicite la password SSH cada vez que ejecuta una tarea, añade la <strong>clave</strong> SSH <strong>pública</strong> del usuario al archivo <strong>authorized_keys</strong> del nodo administrado:</span>
+									</div>
+								
+									<div style="margin-top: 10px;" id="terminal">
+										<!-- Terminal Bar -->       
+										<section id="terminal__bar">          
+											<div id="bar__buttons">            
+												<button class="bar__button" id="bar__button--exit">&#10005;</button>            
+												<button class="bar__button">&#9472;</button>                
+												<button class="bar__button">&#9723;</button>          
+											</div>
+										</section>        
+										<!-- Terminal Body -->
+										<section id="terminal__body">
+											<div id="terminal__prompt">
+												<span id="terminal__prompt--location"><b>∅&nbsp;</b></span>
+												<span id="terminal__prompt--bling"><a style="color: #b57c02;">ssh-copy-id </a>ansible<a style="color: #000;">@</a>192.168.1.115</span>
+											</div>
+										  
+										  <div style="margin-left: 1px;" id="terminal__prompt">
+											  <span id="terminal__prompt--bling">/usr/bin/sshd-copy-id: INFO: 1 key(s) remain to be installed&nbsp;</span>
+										  </div>
+										  
+										  <div style="margin-left: 1px;" id="terminal__prompt">
+											  <span id="terminal__prompt--bling"><a style="color: #000;">ansible@192.168.1.115</a>`s password:</span>
+										</div>
+										  
+										  <div style="margin-left: 1px;" id="terminal__prompt">
+											<span id="terminal__prompt--bling">Number of key(s) added: 1</span>
+										</div><br>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--location"><b>∅&nbsp;</b></span>
+											  <span id="terminal__prompt--bling"><a style="color: #b57c02;">ssh-copy-id </a>ansible<a style="color: #000;">@</a>centos8.ansible.com</span>
+										  </div>
+										  
+										  <div style="margin-left: 1px;" id="terminal__prompt">
+											  <span id="terminal__prompt--bling">/usr/bin/sshd-copy-id: INFO: 1 key(s) remain to be installed&nbsp;</span>
+										  </div>
+										  
+										  <div style="margin-left: 1px;" id="terminal__prompt">
+											<span id="terminal__prompt--bling"><a style="color: #000;">ansible@centos8.ansible.com</a>`s password:</span>
+										</div>
+										  
+										  <div style="margin-left: 1px;" id="terminal__prompt">
+											<span id="terminal__prompt--bling">Number of key(s) added: 1</span>
+										</div>
+									  </section>
+									</div>
+								</section>
+								
+								<section id="ansible_python_interpreter">
+								<div style="margin-top: 150px;" class="centext">
+									<a>∅ </a><span class="white-bg" style="font-size: 19px;">ANSIBLE_PYTHON_INTERPRETER</span>
+								</div>
+								
+							<div style="margin-top: 15px;" class="centext">
+								<span>La mayoría de los <strong>módulos</strong> de <strong>Ansible</strong> que se ejecutan en un entorno <strong>POSIX</strong> requieren un intérprete de <strong>Python</strong> en el host de destino. A menos que se configure de otra manera, Ansible intentará descubrir un intérprete de Python adecuado en cada host de destino.</span><br><br>
+								
+								<span>Si Ansible no es capaz de encontrar el intérprete de Python en el nodo administrado, será necesario definir la variable <strong>ansible_python_interpreter</strong> en el <strong>inventario</strong> o en el comando <strong>ad hoc</strong> para que Ansible sepa dónde se ubica.</span>
+								</div>
+								
+								<div style="margin-top: 50px;" class="left">
+									<span><strong>• ANSIBLE_PYTHON_INTERPRETER EN AD HOC</strong></span>
+								</div>
+
+								<div style="margin-top: 10px;" id="terminal">
+									<!-- Terminal Bar -->       
+									<section id="terminal__bar">          
+										<div id="bar__buttons">            
+											<button class="bar__button" id="bar__button--exit">&#10005;</button>            
+											<button class="bar__button">&#9472;</button>                
+											<button class="bar__button">&#9723;</button>          
+										</div>
+									</section>        
+									<!-- Terminal Body -->
+									<section id="terminal__body">
+										<div id="terminal__prompt">
+											<span id="terminal__prompt--location"><b>∅&nbsp;</b></span>
+											<span id="terminal__prompt--bling"><a style="color: #b57c02;">ansible</a> laboratorio <a style="color: #000;">-m </a>ping <a style="color: #000;">-e </a> <strong>"</strong>ansible_python_interpreter<strong>=</strong>/usr/bin/python3<strong>"</strong>&nbsp;</span>
+										</div><p></p>
+										  
+										<div style="margin-left: 1px;" id="terminal__prompt">
+											<span id="terminal__prompt--location"><a style="color: #b57c02;">centos8.ansible.com</a> | SUCCESS =&gt; {</span>
+										</div>
+
+										<div style="margin-left: 20px;" id="terminal__prompt">
+											<span id="terminal__prompt--location">"<a style="color: #b57c02;">changed</a>": false,</span>
+										</div>
+										  
+										<div style="margin-left: 20px;" id="terminal__prompt">
+											<span id="terminal__prompt--location">"<a style="color: #b57c02;">ping</a>": "pong"</span>
+										</div>
+										  
+										<div style="margin-left: 1px;" id="terminal__prompt">
+											<span id="terminal__prompt--location">}</span>
+										</div>
+										  
+										<div style="margin-left: 1px;" id="terminal__prompt">
+											<span id="terminal__prompt--location"><a style="color: #b57c02;">192.168.1.115</a> | SUCCESS =&gt; {</span>
+										</div>
+
+										<div style="margin-left: 20px;" id="terminal__prompt">
+											<span id="terminal__prompt--location">"<a style="color: #b57c02;">changed</a>": false,</span>
+										</div>
+										  
+										<div style="margin-left: 20px;" id="terminal__prompt">
+											<span id="terminal__prompt--location">"<a style="color: #b57c02;">ping</a>": "pong"</span>
+										</div>
+										  
+										<div style="margin-left: 1px;" id="terminal__prompt">
+											<span id="terminal__prompt--location">}</span>
+										</div>
+									</section>
+								</div>
+								
+								<div style="margin-top: 50px;" class="left">
+									<span><strong>• ANSIBLE_PYTHON_INTERPRETER DEFINIDO EN INVENTARIO</strong></span>
+								</div>
+
+								<div style="margin-top: 10px;" id="long-terminal">
+									<!-- Terminal Bar -->       
+									<section id="terminal__bar">          
+										<div id="bar__buttons">            
+											<button class="bar__button" id="bar__button--exit">&#10005;</button>            
+											<button class="bar__button">&#9472;</button>                
+											<button class="bar__button">&#9723;</button>          
+										</div>
+									</section>        
+									<!-- Terminal Body -->
+									<section id="terminal__body">										  
+										<div id="terminal__prompt">
+											<span id="terminal__prompt--location"><b>∅&nbsp;</b></span>
+											<span id="terminal__prompt--bling"><a style="color: #b57c02;">cat </a>/etc/ansible/hosts</span>
+										</div><p></p>
+										  
+										<div id="terminal__prompt">
+											<span style="margin-left: 1px;" id="terminal__prompt--bling">[<a style="color: #b57c02;">laboratorio</a>]</span>
+										</div>
+										  
+										<div style="margin-left: 1px;" id="terminal__prompt">
+											<span id="terminal__prompt--bling">192.168.1.115 <a style="color: #b57c02;">ansible_user</a>=ansible <a style="color: #b57c02;">ansible_python_interpreter</a>=/usr/bin/python3</span>
+										</div>
+										  
+										<div style="margin-left: 1px;" id="terminal__prompt">
+											<span id="terminal__prompt--bling">centos8.ansible.com <a style="color: #b57c02;">ansible_user</a>=ansible <a style="color: #b57c02;">ansible_python_interpreter</a>=/usr/bin/python3&nbsp;</span>
+										</div>
+									</section>
+								</div>
+								
+								<div style="margin-top: 50px;" class="centext">
+									<span>Ahora al haber definido la variable <strong>ansible_python_interpreter</strong> en el inventario, no es necesario especificarla al lanzar un comando ad hoc</span>
+								</div>
+								
+								<div style="margin-top: 10px;" id="terminal">
+									<!-- Terminal Bar -->       
+									<section id="terminal__bar">          
+										<div id="bar__buttons">            
+											<button class="bar__button" id="bar__button--exit">&#10005;</button>            
+											<button class="bar__button">&#9472;</button>                
+											<button class="bar__button">&#9723;</button>          
+										</div>
+									</section>        
+									<!-- Terminal Body -->
+									<section id="terminal__body">
+										<div id="terminal__prompt">
+											<span id="terminal__prompt--location"><b>∅&nbsp;</b></span>
+											<span id="terminal__prompt--bling"><a style="color: #b57c02;">ansible</a> laboratorio <a style="color: #000;">-m </a>ping</span>
+										</div><p></p>
+										  
+										  <div style="margin-left: 1px;" id="terminal__prompt">
+											  <span id="terminal__prompt--location"><a style="color: #b57c02;">centos8.ansible.com</a> | SUCCESS =&gt; {&nbsp;</span>
+										  </div>
+
+										  <div style="margin-left: 20px;" id="terminal__prompt">
+											  <span id="terminal__prompt--location">"<a style="color: #b57c02;">changed</a>": false,</span>
+										  </div>
+										  
+										  <div style="margin-left: 20px;" id="terminal__prompt">
+											  <span id="terminal__prompt--location">"<a style="color: #b57c02;">ping</a>": "pong"</span>
+										  </div>
+										  
+										  <div style="margin-left: 1px;" id="terminal__prompt">
+											  <span id="terminal__prompt--location">}</span>
+										  </div>
+										  
+										  <div style="margin-left: 1px;" id="terminal__prompt">
+											  <span id="terminal__prompt--location"><a style="color: #b57c02;">192.168.1.115</a> | SUCCESS =&gt; {</span>
+										  </div>
+
+										  <div style="margin-left: 20px;" id="terminal__prompt">
+											  <span id="terminal__prompt--location">"<a style="color: #b57c02;">changed</a>": false,</span>
+										  </div>
+										  
+										  <div style="margin-left: 20px;" id="terminal__prompt">
+											  <span id="terminal__prompt--location">"<a style="color: #b57c02;">ping</a>": "pong"</span>
+										  </div>
+										  
+										<div style="margin-left: 1px;" id="terminal__prompt">
+											<span id="terminal__prompt--location">}</span>
+										</div>
+									</section>
+									</div>
+								</section>
+							</div>
+						</article>
+					</main>
+					
+
+					<!--- aside --->
+					<aside class="col-md-4 stk-post-dv">
+						<div class="widget widget-recent-posts">
+							<h3 class="widget-title">↳ Tabla de Contenido:</h3>		
+							<ul>
+								<li>
+									<a class="nodeco" href="#Ansible">¿QUÉ ES ANSIBLE?</a>
+								</li>
+								<li>
+									<a class="nodeco" class="nodeco" class="nodeco" class="nodeco" class="nodeco" href="#conceptos">CONCEPTOS ANSIBLE</a>
+								</li>
+								<li>
+									<a class="nodeco" class="nodeco" class="nodeco" class="nodeco" href="#install">INSTALAR ANSIBLE</a>
+								</li>
+								<li>
+									<a class="nodeco" class="nodeco" class="nodeco" href="#inventario">TRABAJAR CON EL INVENTARIO</a>
+								</li>
+								<li>
+									<a class="nodeco" class="nodeco" href="#connect">CONECTAR CON LOS NODOS ADMINISTRADOS</a>
+								</li>
+								<li>
+									<a class="nodeco" href="#ansible_python_interpreter">ANSIBLE_PYTHON_INTERPRETER</a>
+								</li>
+							</ul>
+						</div>
+						
+						<div class="widget widget-category">
+							<h3 class="widget-title">✎ Notas:</h3>		
+							<ul>
+								<li>
+									<a><strong>192.168.1.115</strong>: IP del nodo administrado</a>
+								</li>
+								<li>
+									<a><strong>centos8.ansible.com</strong>: Nodo administrado por FQDN</a>
+								</li>
+								<li>
+									<a><strong>-i</strong>: Opción de Ansible para especificar la ruta al inventario con el que se quiere trabajar</a>
+								</li>
+								<li>
+									<a><strong>-m</strong>: Opción de Ansible para especificar un módulo</a>
+								</li>
+								<li>
+									<a><strong>/etc/ansible/hosts</strong>: Inventario de Ansible por defecto</a>
+								</li>
+								<li>
+									<a><strong>ansible_user</strong>: Variable del inventario que define el usuario que por defecto ejecutará las tareas en el nodo administrado</a>
+								</li>
+								<li>
+									<a><strong>ansible_python_interpreter</strong>: Variable del inventario que define la ruta del intérprete de Python en el nodo administrado</a>
+								</li>
+								<li>
+									<a><strong>ad hoc</strong>: Comando de Ansible para ejecutar una única tarea</a>
+								</li>
+								<li>
+									<a><strong>FQDN</strong>: Nombre de dominio completo</a>
+								</li>
+							</ul>
+						</div>
+					</aside>
+				</div>
+			</div>
+		</div>
+
+		<footer id="site-footer">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<p class="copyright"><a href="https://0xbogart.github.io"><img style="margin-top: -5px;" src="/blog/img/skull.png" weight="19px" height="19px"> 0xbogart</a></p>
+					</div>
+				</div>
+			</div>
+		</footer>
+		<a href="#" id="scrollToTopButtonGold"><i class="fas fa-arrow-up"></i></a>
+	</body>
+</html>

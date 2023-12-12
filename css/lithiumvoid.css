@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css?family=Ubuntu');
+@import url('https://fonts.googleapis.com/css?family=Ubuntu+Mono'); 
+
+#container {
+  display: block;
+  justify-content: center;  
+  align-items: center;  
+  height: 50px;
+}
+
+#terminal_body {
+  width: auto;
+  white-space: nowrap;
+  overflow: auto;
+  background: rgba(78, 78, 78, 1);
+  font-family: 'Ubuntu Mono';
+  height: calc(100% - 30px);
+  padding-top: 2px;
+  margin-top: -1px;
+}
+
+#terminal__prompt {
+  display: flex;
+}
+#terminal__prompt--user-white {
+  color: #fff;
+}
+#terminal__prompt--location-white { 
+  color: #4878c0;
+}
+#terminal__prompt--location-light-orange { 
+  color: #FFAB3A;
+}
+#terminal__prompt--bling-green {
+  color: #64FF00;
+}
+#terminal__prompt--cursor {  
+  display: flex;  
+  height: 17px;  
+  width: 8px;  
+  margin-top: 9px;
+  margin-left: 9px;  
+  animation: blink 1200ms linear infinite;
+}
+
+@keyframes blink {
+  0% {
+    background: #FF9E00;
+  }
+  49% {
+    background: #FF9E00;
+  }
+  60% {
+    background: transparent;
+  }  
+  99% {    
+    background: transparent;
+  }  100% {    
+    background: #FF9E00;  
+  }
+}
+
+@media (max-width: 600px) {
+  #terminal {
+    max-height: 90%;
+    width: 90%;
+  }
+}

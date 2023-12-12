@@ -1,0 +1,1077 @@
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		
+		<!-- meta -->
+		<meta charset="UTF-8">
+		<title>Ansible AD HOC</title>
+		<meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0,user-scalable=no,viewport-fit=cover" />
+		<link rel="icon" type="/image/png" href="/blog/img/skull.png">
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:site" content="@jfb0gart" />
+		<meta name="twitter:creator" content="@jfb0gart" />
+		<meta property="og:url" content="https://0xbogart.github.io/blog/devops/ansible-ad-hoc" />
+		<meta property="og:title" content="Ansible AD HOC" />
+		<meta property="og:description" content="Ansible AD HOC" />
+		<meta content="https://0xbogart.github.io/blog/img/adhoc.jpg" property="og:image" />
+		<meta name="twitter:image" content="https://0xbogart.github.io/blog/img/adhoc.jpg" />
+		<meta content="https://0xbogart.github.io/blog/img/adhoc.jpg" name="twitter:image:src" />
+
+
+	    <!-- css -->
+		<link rel="canonical" href="https://0xbogart.github.io/blog/devops/ansible-ad-hoc">
+		<meta name="description" content="Ansible AD HOC">
+		<meta name="keywords" content="ad hoc">
+		<link rel="stylesheet" href="/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="/css/ionicons.min.css" />
+		<link rel="stylesheet" href="/css/pace.css" />
+	    <link rel="stylesheet" href="/css/custom.css">
+		<link rel="stylesheet" href="/css/lithiumwhiterm.css" />
+		<link rel="stylesheet" href="/css/lithiumvoid.css" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+	    <!-- js -->
+	    <script src="/js/jquery-2.1.3.min.js"></script>
+	    <script src="/js/bootstrap.min.js"></script>
+	    <script src="/js/pace.min.js"></script>
+	    <script src="/js/modernizr.custom.js"></script>
+		<script src="/js/asgoldlight.js"></script>
+		
+<style>	
+/* texto a izquierda */
+.left {
+  text-align: left;
+  margin-right: 8%;
+  margin-left: -5%;
+  overflow: hidden;
+  font-size: 16px;
+}
+	
+/* centrar texto */
+.centext {
+	text-align: center;
+	font-size: 16px;
+	letter-spacing: 1px;
+}
+</style>
+	</head>
+
+	<body>
+		<div class="container">	
+	<header id="site-header">
+		<div class="row">
+			<div style="margin-top: -2%; margin-bottom: -3%;">
+					<h1>Dev<a style="text-decoration: none; color: #b57c02;" href="/blog/devops">∅</a>ps</h1>
+			</div><!-- col-4 -->
+		</div>
+		<div class="row justify-content-end">
+			<div style="margin-top: -3%; margin-bottom: -3%;" class="col-3">
+				<nav class="navbar navbar-expand-lg navbar-light">
+					<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#bs-example-navbar-collapse-1" aria-controls="bs-example-navbar-collapse-1" aria-expanded="false" aria-label="Toggle navigation">
+						<span class="navbar-toggler-icon"></span>
+					</button>
+					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+						<ul class="navbar-nav">
+							<li class="nav-item">
+								<a style="font-size: 25px;" class="nav-link" href="/index" data-hover="Home">Home</a>
+							</li>
+						</ul>
+					</div><!--- .navbar-collapse --->
+				</nav>
+			</div><!-- col-md-8 -->
+		</div>
+	</header>
+</div>
+
+
+		<div class="content-body">
+			<div class="container">
+				<div class="row">
+					<main class="col-md-8">
+						<article class="post post-1">
+							<header  class="entry-header">
+								<h1 class="blh1">Ansible</h1>
+								<h2 class="blh2">AD HOC</h2>
+							</header>
+							<div class="entry-content clearfix">								
+								<br><br>
+								<section id="WHY">
+								<div class="centext">
+									<a>∅ </a><span class="white-bg" style="font-size: 19px;">¿POR QUÉ AD HOC?</span><p></p>
+									<span>Un comando <strong>ad hoc</strong> de Ansible utiliza la herramienta de línea de comandos <strong>/usr/bin/ansible</strong> para automatizar una única tarea en uno o más nodos gestionados.</span><p></p>
+									<span>Los comandos <strong>ad hoc</strong> son rápidos y fáciles, pero no son reutilizables.</span><p></p>
+									<span>Entonces, ¿<strong>por qué</strong> aprender primero los comandos <strong>ad hoc</strong>? Los comandos ad hoc demuestran la <strong>simplicidad</strong> y el poder de Ansible. Los conceptos que se aprenden aquí se trasladan directamente al lenguaje de <strong>playbook</strong>.</span><p></p>
+									<span>Son ideales para tareas que se repiten con poca frecuencia. Por ejemplo, si quieres apagar todas las máquinas de un laboratorio para las vacaciones, puedes ejecutar una línea rápida en <strong>Ansible sin escribir</strong> un <strong>playbook</strong>. Un comando ad hoc tiene este aspecto:</span><p></p>
+								</div>
+								<p></p>
+								
+								<div id="terminal">
+									  <!-- Terminal Bar -->       
+									  <section id="terminal__bar">          
+										<div id="bar__buttons">            
+										  <button class="bar__button" id="bar__button--exit">&#10005;</button>            
+										  <button class="bar__button">&#9472;</button>                
+										  <button class="bar__button">&#9723;</button>          
+										</div>
+									  </section>        
+									  <!-- Terminal Body -->
+									  <section id="terminal__body">
+										<div id="terminal__prompt">
+											<span id="terminal__prompt--location">∅&nbsp;</span>
+											<span id="terminal__prompt--bling"><a style="color: #b57c02;">ansible</a> [pattern]<a style="color: #000;">-m </a>[module] <a style="color: #000;">-a</a> "[<a style="color: #000;">module-options</a>]"&nbsp;</span>
+										</div>
+									  </section>
+									</div>
+								</section>
+
+								<section style="margin-top: 160px;" id="BUILTIN">
+								<div class="centext">
+									<a>∅ </a><span class="white-bg" style="font-size: 19px;">REINICIAR SERVIDORES</span><p></p>
+									<span>El <strong>módulo por defecto</strong> para la utilidad de línea de comandos de Ansible es el módulo <strong>ansible.builtin.command</strong>.</span><p></p>
+									<span>Una tarea ad hoc puede llamar al módulo de comandos y reiniciar todos los servidores web del grupo <strong>[laboratorio]</strong>, de <strong>10 en 10</strong>.</span><br><br>
+									<span>Antes de que Ansible pueda hacer esto, se debe <strong>crear un inventario</strong> con todos los servidores listados en un grupo llamado, por ejemplo, <strong>[laboratorio]</strong>, y se debe copiar la <strong>ssh-key</strong> del nodo de control en el fichero <strong>authorized_keys</strong> de los nodos administrados.</span>
+								</div><br>
+								
+								<div class="left">
+									<span><strong>• INVENTARIO:</strong></span>
+								</div><p></p>
+								
+								<div class="centext">
+									<span>El inventario de este post contiene un nodo administrado con dirección IP <strong>192.168.1.115</strong> y versión <strong>Python39</strong> instalada</span><p></p>
+									<span><strong>ansible_python_interpreter</strong> indica en qué ruta se encuentra Python en el nodo administrado.</span><p></p>
+									<span><strong>ansible_user</strong> especifica el usuario que ejecutará las tareas en el nodo administrado.</span>
+								</div>
+								
+								<div id="terminal">
+									  <!-- Terminal Bar -->       
+									  <section id="terminal__bar">          
+										<div id="bar__buttons">            
+										  <button class="bar__button" id="bar__button--exit">&#10005;</button>            
+										  <button class="bar__button">&#9472;</button>                
+										  <button class="bar__button">&#9723;</button>          
+										</div>
+									  </section>        
+									  <!-- Terminal Body -->
+									  <section id="terminal__body">
+										<div id="terminal__prompt">
+											<span id="terminal__prompt--location"><b>∅&nbsp;</b></span>
+											<span id="terminal__prompt--bling"><a style="color: #b57c02;">cat </a>/tmp/inventario</span>
+										  </div><p></p>
+										  
+										  <div id="terminal__prompt">
+											<span id="terminal__prompt--bling">[<a style="color: #b57c02;">laboratorio</a>]</span>
+										</div>
+										  
+										  <div id="terminal__prompt">
+											<span id="terminal__prompt--bling">192.168.1.115 <a style="color: #b57c02;">ansible_python_interpreter</a>=/usr/bin/python3 <a style="color: #b57c02;">ansible_user</a>=root&nbsp;</span>
+										</div>
+									  </section>
+									</div><br><br>
+								
+								<div class="left">
+									<span><strong>• SSH-KEYS:</strong></span>
+								</div><p></p>
+								
+								<div class="centext">
+									<span>Es necesario copiar las <strong>ssh-keys</strong> del nodo de gestión a los nodos administrados para que Ansible pueda comunicarse con ellos:</span>
+								</div><p></p>
+								
+								<div id="terminal">
+									  <!-- Terminal Bar -->       
+									  <section id="terminal__bar">          
+										<div id="bar__buttons">            
+										  <button class="bar__button" id="bar__button--exit">&#10005;</button>            
+										  <button class="bar__button">&#9472;</button>                
+										  <button class="bar__button">&#9723;</button>          
+										</div>
+									  </section>        
+									  <!-- Terminal Body -->
+									  <section id="terminal__body">
+										<div id="terminal__prompt">
+											<span id="terminal__prompt--location"><b>∅&nbsp;</b></span>
+											<span id="terminal__prompt--bling"><a style="color: #b57c02;">ssh-copy-id </a>root<a style="color: #000;">@</a>192.168.1.115</span>
+										  </div><p></p>
+										  
+										  <div id="terminal__prompt">
+											<span id="terminal__prompt--bling">/usr/bin/sshd-copy-id: INFO: 1 key(s) remain to be installed&nbsp;</span>
+										</div>
+										  
+										  <div id="terminal__prompt">
+											<span id="terminal__prompt--bling">root@192.168.1.115`s password:</span>
+										</div>
+										  
+										  <div id="terminal__prompt">
+											<span id="terminal__prompt--bling">Number of key(s) added: 1</span>
+										</div>
+									  </section>
+									</div><br><br>
+								
+							<div class="centext">
+									<span>Para reiniciar todos los servidores del grupo <strong>[laboratorio]</strong>:</span>
+								</div>
+
+								<div id="terminal">
+									  <!-- Terminal Bar -->       
+									  <section id="terminal__bar">          
+										<div id="bar__buttons">            
+										  <button class="bar__button" id="bar__button--exit">&#10005;</button>            
+										  <button class="bar__button">&#9472;</button>                
+										  <button class="bar__button">&#9723;</button>          
+										</div>
+									  </section>        
+									  <!-- Terminal Body -->
+									  <section id="terminal__body">
+										<div id="terminal__prompt">
+											<span id="terminal__prompt--location"><b>∅&nbsp;</b></span>
+											<span id="terminal__prompt--bling"><a style="color: #b57c02;">ansible</a> laboratorio <a style="color: #000;">-i </a>/tmp/inventario <a style="color: #000;">-a </a> <strong>"</strong>/sbin/reboot<strong>"</strong>&nbsp;</span>
+										</div>
+									  </section>
+									</div>
+								<br><br>
+
+								<div class="centext">
+									<span>Por defecto, Ansible realiza <strong>5</strong> procesos simultáneos <strong>{forks}</strong>.</span><p></p>
+									<span>Si el inventario contiene, por ejemplo, <strong>10 hosts</strong>, para reiniciar los servidores del grupo <strong>[laboratorio]</strong> de <strong>10 en 10</strong>:</span>
+								</div>
+
+								<div id="terminal">
+									  <!-- Terminal Bar -->       
+									  <section id="terminal__bar">          
+										<div id="bar__buttons">            
+										  <button class="bar__button" id="bar__button--exit">&#10005;</button>            
+										  <button class="bar__button">&#9472;</button>                
+										  <button class="bar__button">&#9723;</button>          
+										</div>
+									  </section>        
+									  <!-- Terminal Body -->
+									  <section id="terminal__body">
+										<div id="terminal__prompt">
+											<span id="terminal__prompt--location"><b>∅&nbsp;</b></span>
+											<span id="terminal__prompt--bling"><a style="color: #b57c02;">ansible</a> laboratorio <a style="color: #000;">-i </a>/tmp/inventario <a style="color: #000;">-a </a> <strong>"</strong>/sbin/reboot<strong>"</strong> <a style="color: #000;">-f</a> 10&nbsp;</span>
+										</div>
+									  </section>
+									</div><br><br><br>
+								
+								<div class="centext">
+									<span>Si no se ha definido un usuario en la variable <strong>ansible_user</strong> del <strong>inventario</strong>, se deberá especificar el usuario usando la opción <strong>-u</strong> en cada tarea:</span>
+								</div>
+								
+								<div id="terminal">
+									  <!-- Terminal Bar -->       
+									  <section id="terminal__bar">          
+										<div id="bar__buttons">            
+										  <button class="bar__button" id="bar__button--exit">&#10005;</button>            
+										  <button class="bar__button">&#9472;</button>                
+										  <button class="bar__button">&#9723;</button>          
+										</div>
+									  </section>        
+									  <!-- Terminal Body -->
+									  <section id="terminal__body">
+										<div id="terminal__prompt">
+											<span id="terminal__prompt--location">∅&nbsp;</span>
+											<span id="terminal__prompt--bling"><a style="color: #b57c02;">ansible</a> laboratorio <a style="color: #000;">-i </a>/tmp/inventario <a style="color: #000;">-a </a> <strong>"</strong>whoami<strong>"</strong> <a style="color: #000;">-u </a>usuario&nbsp;</span>
+										</div>
+									  </section>
+									</div><br><br>
+								
+								<div class="centext">
+									<span>Tareas como el reinicio de servidores pueden requerir <strong>privilegios</strong> elevados como <strong>sudo</strong>, por parte de un usuario.</span><p></p>
+									<span>La opción <strong>become</strong> le dice a Ansible que la tarea requiere una <strong>escalada de privilegios</strong> para llevarse a cabo, pero <strong>no pedirá la password</strong> del usuario privilegiado:</span>
+								</div><p></p>
+								
+								<div id="long-terminal">
+									  <!-- Terminal Bar -->       
+									  <section id="terminal__bar">          
+										<div id="bar__buttons">            
+										  <button class="bar__button" id="bar__button--exit">&#10005;</button>            
+										  <button class="bar__button">&#9472;</button>                
+										  <button class="bar__button">&#9723;</button>          
+										</div>
+									  </section>        
+									  <!-- Terminal Body -->
+									  <section id="terminal__body">
+										<div id="terminal__prompt">
+											<span id="terminal__prompt--location">∅&nbsp;</span>
+											<span id="terminal__prompt--bling"><a style="color: #b57c02;">ansible</a> laboratorio <a style="color: #000;">-i </a>/tmp/inventario <a style="color: #000;">-a </a> <strong>"</strong>/sbin/reboot<strong>"</strong> <a style="color: #000;">-f</a> 10 <a style="color: #000;">-u</a> usuario <a style="color: #000;">--become</a></span>
+										</div>
+									  </section>
+									</div><br><br>
+								
+								<div class="centext">
+									<span>Si la tarea requiere introducir la password del usuario privilegiado, será necesaria la opción <strong>--ask-become-pass</strong> o <strong>-K</strong>:</span>
+								</div><p></p>
+								
+								<div id="long-terminal">
+									  <!-- Terminal Bar -->       
+									  <section id="terminal__bar">          
+										<div id="bar__buttons">            
+										  <button class="bar__button" id="bar__button--exit">&#10005;</button>            
+										  <button class="bar__button">&#9472;</button>                
+										  <button class="bar__button">&#9723;</button>          
+										</div>
+									  </section>        
+									  <!-- Terminal Body -->
+									  <section id="terminal__body">
+										<div id="terminal__prompt">
+											<span id="terminal__prompt--location"><b>∅&nbsp;</b></span>
+											<span id="terminal__prompt--bling"><a style="color: #b57c02;">ansible</a> laboratorio <a style="color: #000;">-i </a>/tmp/inventario <a style="color: #000;">-a </a> <strong>"</strong>/sbin/reboot<strong>"</strong> <a style="color: #000;">-f</a> 10 <a style="color: #000;">-u</a> usuario <a style="color: #000;">--become -K</a></span>
+										</div>
+									  </section>
+								</div><p></p>
+								
+								<div class="centext">
+									<span><strong>NOTA</strong>: Si el usuario especificado <strong>no</strong> tiene privilegios <strong>sudo</strong> en el nodo administrado, la tarea <strong>no se ejecutará</strong> aún especificando la opción <strong>--become</strong>.</span>
+									</div>
+								</section>
+								
+								<section style="margin-top: 160px;" id="COPY">
+								<div class="centext">
+									<a>∅ </a><span class="white-bg" style="font-size: 19px;">ADMINISTRAR FICHEROS</span><p></p>
+								</div>
+								<p></p>
+								
+								<div class="left">
+									<span><strong>• TRANSFERIR ARCHIVOS:</strong></span>
+								</div><p></p>
+								
+								<div class="centext">
+									<span>Una tarea ad hoc puede aprovechar la potencia de <strong>Ansible</strong> y <strong>SCP</strong> para <strong>transferir múltiples archivos</strong> a varias máquinas <strong>en paralelo</strong>. Para transferir un archivo directamente a todos los servidores del grupo <strong>[laboratorio]</strong> con el módulo <strong>ansible.builtin.copy</strong>:</span>
+								</div><p></p>
+								
+								<div id="long-terminal">
+									  <!-- Terminal Bar -->       
+									  <section id="terminal__bar">          
+										<div id="bar__buttons">            
+										  <button class="bar__button" id="bar__button--exit">&#10005;</button>            
+										  <button class="bar__button">&#9472;</button>                
+										  <button class="bar__button">&#9723;</button>          
+										</div>
+									  </section>        
+									  <!-- Terminal Body -->
+									  <section id="terminal__body">
+										<div id="terminal__prompt">
+											<span id="terminal__prompt--location"><b>∅&nbsp;</b></span>
+											<span id="terminal__prompt--bling">ansible laboratorio <a style="color: #000;">-i </a>/tmp/inventario <a style="color: #000;">-m </a> copy <a style="color: #000;">-a</a> <strong>"</strong>src=/etc/hosts dest=/tmp<strong>"</strong> <a style="color: #000;">-u</a> usuario</span>
+										</div>
+										
+										<div id="terminal__prompt">
+											<span id="terminal__prompt--location"><a style="color: #b57c02;">centos8.ansible.com</a> | CHANGED =&gt; {</span>
+										</div>
+
+										<div id="terminal__prompt">
+											<span id="terminal__prompt--location">&nbsp;&nbsp;"<a style="color: #b57c02;">changed</a>": true,</span>
+										</div>
+										  
+										  <div id="terminal__prompt">
+											<span id="terminal__prompt--location">&nbsp;&nbsp;"<a style="color: #b57c02;">checksum</a>": "79a346fa6a42c3eda6c2d3d92fbc5703f0aa6112",</span>
+										</div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--location">&nbsp;&nbsp;"<a style="color: #b57c02;">dest</a>": "/tmp/hosts",</span>
+										</div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--location">&nbsp;&nbsp;"<a style="color: #b57c02;">gid</a>": "1000",</span>
+										</div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--location">&nbsp;&nbsp;"<a style="color: #b57c02;">group</a>": "usuario",</span>
+										</div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--location">&nbsp;&nbsp;"<a style="color: #b57c02;">md5sum</a>": "2a1e044414497a05118b5ad4eff720435",</span>
+										</div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--location">&nbsp;&nbsp;"<a style="color: #b57c02;">mode</a>": "0664",</span>
+										</div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--location">&nbsp;&nbsp;"<a style="color: #b57c02;">owner</a>": "usuario",</span>
+										</div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--location">&nbsp;&nbsp;"<a style="color: #b57c02;">size</a>": 233,</span>
+										</div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--location">&nbsp;&nbsp;"<a style="color: #b57c02;">src</a>": "/home/ansible/.ansible/tmp/ansible-tmp-1646582979.8903153-2853-276474933588938/source",</span>
+										</div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--location">&nbsp;&nbsp;"<a style="color: #b57c02;">state</a>": "file",</span>
+										</div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--location">&nbsp;&nbsp;"<a style="color: #b57c02;">uuid</a>": 1000</span>
+										</div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--location">}</span>
+										</div>
+									  </section>
+									</div><br><br>
+								
+								<div class="left">
+									<span><strong>• MODIFICAR PERMISOS:</strong></span>
+								</div><p></p>
+								
+								<div class="centext">
+									<span>El módulo <strong>ansible.builtin.file</strong> permite modificar los permisos de archivos:</span>
+								</div><p></p>
+								
+								<div id="long-terminal">
+									  <!-- Terminal Bar -->       
+									  <section id="terminal__bar">          
+										<div id="bar__buttons">            
+										  <button class="bar__button" id="bar__button--exit">&#10005;</button>            
+										  <button class="bar__button">&#9472;</button>                
+										  <button class="bar__button">&#9723;</button>          
+										</div>
+									  </section>        
+									  <!-- Terminal Body -->
+									  <section id="terminal__body">
+										<div id="terminal__prompt">
+											<span id="terminal__prompt--location">∅&nbsp;</span>
+											<span id="terminal__prompt--bling"><a style="color: #b57c02;">ansible</a> laboratorio <a style="color: #000;">-i </a>/tmp/inventario <a style="color: #000;">-m </a> file <a style="color: #000;">-a</a> <strong>"</strong>dest=/tmp/hosts mode=600<strong>"</strong> <a style="color: #000;">-u </a>usuario <a style="color: #000;">--become -K</a>&nbsp;</span>
+										</div>
+										  
+										  <div id="terminal__prompt">
+											<span id="terminal__prompt--location">SUDO password:</span>
+										</div>
+										  
+										  <div id="terminal__prompt">
+											<span id="terminal__prompt--location"><a style="color: #b57c02;">centos8.ansible.com</a> | CHANGED =&gt; {</span>
+										</div>
+
+										<div id="terminal__prompt">
+											<span id="terminal__prompt--location">&nbsp;&nbsp;"<a style="color: #b57c02;">changed</a>": true,</span>
+										</div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--location">&nbsp;&nbsp;"<a style="color: #b57c02;">gid</a>": "1000",</span>
+										</div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--location">&nbsp;&nbsp;"<a style="color: #b57c02;">group</a>": "grupousuario",</span>
+										</div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--location">&nbsp;&nbsp;"<a style="color: #b57c02;">mode</a>": "0600",</span>
+										</div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--location">&nbsp;&nbsp;"<a style="color: #b57c02;">owner</a>": "usuario",</span>
+										</div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--location">&nbsp;&nbsp;"<a style="color: #b57c02;">path</a>": "/tmp/hosts",</span>
+										</div>
+
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--location">&nbsp;&nbsp;"<a style="color: #b57c02;">size</a>": 233,</span>
+										</div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--location">&nbsp;&nbsp;"<a style="color: #b57c02;">state</a>": "file",</span>
+										</div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--location">&nbsp;&nbsp;"<a style="color: #b57c02;">uuid</a>": 1000</span>
+										</div>
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--location">}</span>
+										</div>
+									  </section>
+								</div><br><br>
+								
+								<div class="left">
+									<span><strong>• MODIFICAR PROPIETARIO:</strong></span>
+								</div><p></p>
+								
+								
+								<!-- **** TERMINAL MODIFICAR PROPIETARIO **** -->
+								<div id="long-terminal">
+									  <!-- Terminal Bar -->       
+									  <section id="terminal__bar">          
+										<div id="bar__buttons">            
+										  <button class="bar__button" id="bar__button--exit">&#10005;</button>            
+										  <button class="bar__button">&#9472;</button>                
+										  <button class="bar__button">&#9723;</button>          
+										</div>
+									  </section>        
+									  <!-- Terminal Body -->
+									  <section id="terminal__body">
+										<div id="terminal__prompt">
+											<span id="terminal__prompt--location">∅&nbsp;</span>
+											<span id="terminal__prompt--bling"><a style="color: #b57c02;">ansible</a> laboratorio <a style="color: #000;">-i </a>/tmp/inventario <a style="color: #000;">-m </a> file <a style="color: #000;">-a</a> <strong>"</strong>dest=/tmp/hosts mode=777 owner=usuario group=grupousuario<strong>"</strong> <a style="color: #000;">-u </a>usuario <a style="color: #000;">--become -K</a>&nbsp;</span>
+										</div>
+										  
+										  <div id="terminal__prompt">
+											<span id="terminal__prompt--location">SUDO password:</span>
+										</div>
+										  
+										  <div id="terminal__prompt">
+											<span id="terminal__prompt--location"><a style="color: #b57c02;">centos8.ansible.com</a> | SUCCESS =&gt; {</span>
+										</div>
+
+										<div id="terminal__prompt">
+											<span id="terminal__prompt--location">&nbsp;&nbsp;"<a style="color: #b57c02;">changed</a>": true,</span>
+										</div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--location">&nbsp;&nbsp;"<a style="color: #b57c02;">gid</a>": "1000",</span>
+										</div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--location">&nbsp;&nbsp;"<a style="color: #b57c02;">group</a>": "grupousuario",</span>
+										</div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--location">&nbsp;&nbsp;"<a style="color: #b57c02;">mode</a>": "0777",</span>
+										</div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--location">&nbsp;&nbsp;"<a style="color: #b57c02;">owner</a>": "usuario",</span>
+										</div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--location">&nbsp;&nbsp;"<a style="color: #b57c02;">path</a>": "/tmp/hosts",</span>
+										</div>
+
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--location">&nbsp;&nbsp;"<a style="color: #b57c02;">size</a>": 223,</span>
+										</div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--location">&nbsp;&nbsp;"<a style="color: #b57c02;">state</a>": "file",</span>
+										</div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--location">&nbsp;&nbsp;"<a style="color: #b57c02;">uuid</a>": 1000</span>
+										</div>
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--location">}</span>
+										</div>
+									  </section>
+								</div><br><br>
+								<!-- **** END TERMINAL MODIFICAR PROPIETARIO **** -->
+								
+								<div class="left">
+									<span><strong>• ELIMINAR ARCHIVOS:</strong></span>
+								</div><p></p>
+								
+								<div class="centext">
+									<span><strong>NOTA</strong>: Para eliminar el archivo <strong>/tmp/hosts</strong> en este punto, <strong>no</strong> será necesario especificar la opción <strong>--become</strong> porque en el paso anterior le hemos dado <strong>permisos 777</strong>. Cualquier usuario puede manipular el fichero <strong>sin</strong> necesidad de <strong>privilegios</strong>:</span>
+								</div>
+								
+								<!-- **** TERMINAL ELIMINAR ARCHIVOS **** -->
+								<div id="long-terminal">
+									  <!-- Terminal Bar -->       
+									  <section id="terminal__bar">          
+										<div id="bar__buttons">            
+										  <button class="bar__button" id="bar__button--exit">&#10005;</button>            
+										  <button class="bar__button">&#9472;</button>                
+										  <button class="bar__button">&#9723;</button>          
+										</div>
+									  </section>        
+									  <!-- Terminal Body -->
+									  <section id="terminal__body">
+										<div id="terminal__prompt">
+											<span id="terminal__prompt--location">∅&nbsp;</span>
+											<span id="terminal__prompt--bling"><a style="color: #b57c02;">ansible</a> laboratorio <a style="color: #000;">-i </a>/tmp/inventario <a style="color: #000;">-m </a> file <a style="color: #000;">-a</a> <strong>"</strong>dest=/tmp/hosts state=absent<strong>"</strong> <a style="color: #000;">-u </a>usuario&nbsp;</span>
+										</div>
+										  
+										  <div id="terminal__prompt">
+											<span id="terminal__prompt--location">SUDO password:</span>
+										</div>
+										  
+										  <div id="terminal__prompt">
+											<span id="terminal__prompt--location"><a style="color: #b57c02;">192.168.1.115</a> | CHANGED =&gt; {</span>
+										</div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--location">&nbsp;&nbsp;"<a style="color: #b57c02;">path</a>": "/tmp/hosts",</span>
+										</div>
+
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--location">&nbsp;&nbsp;"<a style="color: #b57c02;">state</a>": "absent",</span>
+										</div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--location">}</span>
+										  </div>
+									</section>
+									</div>
+								</section>
+								<!-- **** END TERMINAL ELIMINAR ARCHIVOS **** -->
+								
+								<section style="margin-top: 160px;" id="USER">
+									<div class="centext">
+										<a>∅ </a><span class="white-bg" style="font-size: 19px;">ADMINISTRAR USUARIOS Y GRUPOS</span>
+									</div><br>
+								
+									<div class="left">
+										<span><strong>• CREAR NUEVO USUARIO:</strong></span>
+									</div><p></p>
+								
+									<div class="centext">
+										<span>Nombre del nuevo usuario creado: <strong>ansible3</strong></span>
+									</div>
+								
+									<div id="long-terminal">
+										<!-- Terminal Bar -->       
+										<section id="terminal__bar">          
+											<div id="bar__buttons">            
+												<button class="bar__button" id="bar__button--exit">&#10005;</button>            
+												<button class="bar__button">&#9472;</button>                
+												<button class="bar__button">&#9723;</button>          
+											</div>
+										</section>        
+										<!-- Terminal Body -->
+									  <section id="terminal__body">
+										<div id="terminal__prompt">
+											<span id="terminal__prompt--location">∅&nbsp;</span>
+											<span id="terminal__prompt--bling"><a style="color: #b57c02;">ansible</a> laboratorio <a style="color: #000;">-i </a>/tmp/inventario <a style="color: #000;">-m </a> user <a style="color: #000;">-a</a> <strong>"</strong>name=ansible3 password=P4ssw0rd<strong>"</strong> <a style="color: #000;">--become -K</a>&nbsp;</span>
+										</div>
+										  
+										  <div id="terminal__prompt">
+											<span id="terminal__prompt--location">SUDO password:</span>
+										</div>
+										  
+										  <div id="terminal__prompt">
+											<span id="terminal__prompt--location"><a style="color: #b57c02;">centos8.ansible.com</a> | CHANGED =&gt; {</span>
+										</div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--location">&nbsp;&nbsp;"<a style="color: #b57c02;">changed</a>": true,</span>
+										</div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--location">&nbsp;&nbsp;"<a style="color: #b57c02;">comment</a>": "",</span>
+										</div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--location">&nbsp;&nbsp;"<a style="color: #b57c02;">create_home</a>": true,</span>
+										</div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--location">&nbsp;&nbsp;"<a style="color: #b57c02;">group</a>": 1004,</span>
+										</div>
+
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--location">&nbsp;&nbsp;"<a style="color: #b57c02;">home</a>": "/home/ansible3",</span>
+										</div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--location">&nbsp;&nbsp;"<a style="color: #b57c02;">name</a>": "ansible3",</span>
+										</div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--location">&nbsp;&nbsp;"<a style="color: #b57c02;">password</a>": "NOT_LOGGING_PASSWORD",</span>
+										</div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--location">&nbsp;&nbsp;"<a style="color: #b57c02;">shell</a>": "/bin/bash",</span>
+										</div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--location">&nbsp;&nbsp;"<a style="color: #b57c02;">state</a>": "present",</span>
+										</div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--location">&nbsp;&nbsp;"<a style="color: #b57c02;">system</a>": false,</span>
+										</div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--location">&nbsp;&nbsp;"<a style="color: #b57c02;">uuid</a>": 1004</span>
+										</div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--location">}</span>
+										</div>
+									  </section>
+								</div><br><br>
+								
+								<div class="left">
+									<span><strong>• ELIMINAR USUARIO:</strong></span>
+								</div><p></p>
+								
+								<div class="centext">
+									<span>Usuario eliminado: <strong>ansible3</strong></span>
+								</div>
+								
+								<div id="long-terminal">
+									  <!-- Terminal Bar -->       
+									  <section id="terminal__bar">          
+										<div id="bar__buttons">            
+										  <button class="bar__button" id="bar__button--exit">&#10005;</button>            
+										  <button class="bar__button">&#9472;</button>                
+										  <button class="bar__button">&#9723;</button>          
+										</div>
+									  </section>        
+									  <!-- Terminal Body -->
+									  <section id="terminal__body">
+										<div id="terminal__prompt">
+											<span id="terminal__prompt--location">∅&nbsp;</span>
+											<span id="terminal__prompt--bling"><a style="color: #b57c02;">ansible</a> laboratorio <a style="color: #000;">-i </a>/tmp/inventario <a style="color: #000;">-m </a> user <a style="color: #000;">-a</a> <strong>"</strong>name=ansible3 state=absent remove=yes<strong>"</strong> <a style="color: #000;">--become -K</a>&nbsp;</span>
+										</div>
+										  
+										  <div id="terminal__prompt">
+											<span id="terminal__prompt--location">SUDO password:</span>
+										</div>
+										  
+										  <div id="terminal__prompt">
+											<span id="terminal__prompt--location"><a style="color: #b57c02;">centos8.ansible.com</a> | CHANGED =&gt; {</span>
+										</div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--location">&nbsp;&nbsp;"<a style="color: #b57c02;">changed</a>": true,</span>
+										</div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--location">&nbsp;&nbsp;"<a style="color: #b57c02;">force</a>": false,</span>
+										</div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--location">&nbsp;&nbsp;"<a style="color: #b57c02;">name</a>": "ansible3",</span>
+										</div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--location">&nbsp;&nbsp;"<a style="color: #b57c02;">remove</a>": true,</span>
+										</div>
+
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--location">&nbsp;&nbsp;"<a style="color: #b57c02;">home</a>": "/home/ansible3",</span>
+										</div>
+
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--location">&nbsp;&nbsp;"<a style="color: #b57c02;">name</a>": "ansible3",</span>
+										</div>
+
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--location">&nbsp;&nbsp;"<a style="color: #b57c02;">state</a>": "absent"</span>
+										</div>
+
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--location">}</span>
+										</div>
+									  </section>
+								</div><p></p>
+								
+								<div class="centext">
+									<span><strong>Nota</strong>: Si el usuario tiene una sesión iniciada en el nodo administrado, al momento de eliminarlo, arrojará un error similar a:</span>
+									<span><strong>"msg": "userdel: user ansible3 is currently used by process 16575\n"</strong></span>
+								</div>
+								</section>
+								
+								<section style="margin-top: 160px;" id="SERVICE">
+								<div class="centext">
+									<a>∅ </a><span class="white-bg" style="font-size: 19px;">ADMINISTRAR SERVICIOS</span><p></p>
+									<span>El módulo <strong>service</strong> permite administrar servicios en el nodo adminsitrado.</span>
+								</div><br>
+								
+								<div class="left">
+									<span><strong>• INICIAR UN SERVICIO:</strong></span>
+								</div><p></p>
+								
+								<div id="long-terminal">
+									  <!-- Terminal Bar -->       
+									  <section id="terminal__bar">          
+										<div id="bar__buttons">            
+										  <button class="bar__button" id="bar__button--exit">&#10005;</button>            
+										  <button class="bar__button">&#9472;</button>                
+										  <button class="bar__button">&#9723;</button>          
+										</div>
+									  </section>        
+									  <!-- Terminal Body -->
+									  <section id="terminal__body">
+										<div id="terminal__prompt">
+											<span id="terminal__prompt--location">∅&nbsp;</span>
+											<span id="terminal__prompt--bling"><a style="color: #b57c02;">ansible</a> laboratorio <a style="color: #000;">-i </a>/tmp/inventario <a style="color: #000;">-m </a> service <a style="color: #000;">-a</a> <strong>"</strong>name=nginx state=started<strong>"</strong> <a style="color: #000;">--become -K</a>&nbsp;</span>
+										</div>
+										  
+										  <div id="terminal__prompt">
+											<span id="terminal__prompt--location">SUDO password:</span>
+										</div>
+										  
+										  <div id="terminal__prompt">
+											<span id="terminal__prompt--location"><a style="color: #b57c02;">centos8.ansible.com</a> | CHANGED =&gt; {</span>
+										</div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--location">&nbsp;&nbsp;"<a style="color: #b57c02;">changed</a>": true,</span>
+										</div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--location">&nbsp;&nbsp;"<a style="color: #b57c02;">name</a>": "nginx",</span>
+										</div>
+
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--location">&nbsp;&nbsp;"<a style="color: #b57c02;">state</a>": "started"</span>
+										</div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--location">&nbsp;&nbsp;"<a style="color: #b57c02;">status</a>": {</span>
+										</div>
+
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--location">}</span>
+										</div>
+									  </section>
+								</div><br><br>
+								
+								<div class="left">
+									<span><strong>• REINICIAR UN SERVICIO:</strong></span>
+								</div><p></p>
+								
+								<div id="terminal">
+									  <!-- Terminal Bar -->       
+									  <section id="terminal__bar">          
+										<div id="bar__buttons">            
+										  <button class="bar__button" id="bar__button--exit">&#10005;</button>            
+										  <button class="bar__button">&#9472;</button>                
+										  <button class="bar__button">&#9723;</button>          
+										</div>
+									  </section>        
+									  <!-- Terminal Body -->
+									  <section id="terminal__body">
+										<div id="terminal__prompt">
+											<span id="terminal__prompt--location">∅&nbsp;</span>
+											<span id="terminal__prompt--bling"><a style="color: #b57c02;">ansible</a> laboratorio <a style="color: #000;">-i </a>/tmp/inventario <a style="color: #000;">-m </a> service <a style="color: #000;">-a</a> <strong>"</strong>name=nginx state=restarted<strong>"</strong> <a style="color: #000;">--become -K</a>&nbsp;</span>
+										</div>
+										  
+										  <div id="terminal__prompt">
+											<span id="terminal__prompt--location">SUDO password:</span>
+										</div>
+										  
+										  <div id="terminal__prompt">
+											<span id="terminal__prompt--location"><a style="color: #b57c02;">centos8.ansible.com</a> | CHANGED =&gt; {</span>
+										</div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--location">&nbsp;&nbsp;"<a style="color: #b57c02;">changed</a>": true,</span>
+										</div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--location">&nbsp;&nbsp;"<a style="color: #b57c02;">name</a>": "nginx",</span>
+										</div>
+
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--location">&nbsp;&nbsp;"<a style="color: #b57c02;">state</a>": "started"</span>
+										</div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--location">&nbsp;&nbsp;"<a style="color: #b57c02;">status</a>": {</span>
+										</div>
+
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--location">}</span>
+										</div>
+									  </section>
+								</div><br><br>
+								
+								<div class="left">
+									<span><strong>• DETENER UN SERVICIO:</strong></span>
+								</div><p></p>
+								
+								<div id="long-terminal">
+									  <!-- Terminal Bar -->       
+									  <section id="terminal__bar">          
+										<div id="bar__buttons">            
+										  <button class="bar__button" id="bar__button--exit">&#10005;</button>            
+										  <button class="bar__button">&#9472;</button>                
+										  <button class="bar__button">&#9723;</button>          
+										</div>
+									  </section>        
+									  <!-- Terminal Body -->
+									  <section id="terminal__body">
+										<div id="terminal__prompt">
+											<span id="terminal__prompt--location">∅&nbsp;</span>
+											<span id="terminal__prompt--bling"><a style="color: #b57c02;">ansible</a> laboratorio <a style="color: #000;">-i </a>/tmp/inventario <a style="color: #000;">-m </a> service <a style="color: #000;">-a</a> <strong>"</strong>name=nginx state=stopped<strong>"</strong> <a style="color: #000;">--become -K</a>&nbsp;</span>
+										</div>
+										  
+										  <div id="terminal__prompt">
+											<span id="terminal__prompt--location">SUDO password:</span>
+										</div>
+										  
+										  <div id="terminal__prompt">
+											<span id="terminal__prompt--location"><a style="color: #b57c02;">centos8.ansible.com</a> | CHANGED =&gt; {</span>
+										</div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--location">&nbsp;&nbsp;"<a style="color: #b57c02;">changed</a>": true,</span>
+										</div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--location">&nbsp;&nbsp;"<a style="color: #b57c02;">name</a>": "nginx",</span>
+										</div>
+
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--location">&nbsp;&nbsp;"<a style="color: #b57c02;">state</a>": "stopped"</span>
+										</div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--location">&nbsp;&nbsp;"<a style="color: #b57c02;">status</a>": {</span>
+										</div>
+
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--location">}</span>
+										</div>
+									  </section>
+								</div>
+								</section>
+								
+								<section style="margin-top: 160px;" id="FACTS">
+								<div class="centext">
+									<a>∅ </a><span class="white-bg" style="font-size: 19px;">FACTS</span><p></p>
+									<span>Los <strong>facts</strong> representan <strong>variables descubiertas</strong> sobre un sistema. Los facts permiten implementar la ejecución condicional de tareas y obtener información ad hoc sobre los sistemas.</span>
+									<p></p>
+									<span>El módulo <strong>ansible.builtin.setup</strong> es el encargado de trabajar con <strong>facts</strong>:</span>
+								</div><br>
+								
+								<div id="terminal">
+									  <!-- Terminal Bar -->       
+									  <section id="terminal__bar">          
+										<div id="bar__buttons">            
+										  <button class="bar__button" id="bar__button--exit">&#10005;</button>            
+										  <button class="bar__button">&#9472;</button>                
+										  <button class="bar__button">&#9723;</button>          
+										</div>
+									  </section>        
+									  <!-- Terminal Body -->
+									  <section id="terminal__body">
+										<div id="terminal__prompt">
+											<span id="terminal__prompt--location">∅&nbsp;</span>
+											<span id="terminal__prompt--bling"><a style="color: #b57c02;">ansible</a> laboratorio <a style="color: #000;">-i </a>/tmp/inventario <a style="color: #000;">-m </a> setup&nbsp;</span>
+										</div>
+										  
+										  <div id="terminal__prompt">
+											<span id="terminal__prompt--location"><a style="color: #b57c02;">centos8.ansible.com</a> | SUCCESS =&gt; {</span>
+										</div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--location">&nbsp;&nbsp;"<a style="color: #b57c02;">ansible_facts</a>": {</span>
+										</div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--location">&nbsp;&nbsp;&nbsp;&nbsp;"<a style="color: #b57c02;">ansible_all_ipv4_addresses</a>": [</span>
+										</div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--location">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"<a style="color: #b57c02;">192.168.1.54</a>"</span>
+										</div>
+
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--location">&nbsp;&nbsp;<a style="color: #b57c02;">]</a>,</span>
+										</div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--location">&nbsp;&nbsp;"<a style="color: #b57c02;">ansible_all_ipv6_addresses</a>": [],</span>
+										</div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--location">&nbsp;&nbsp;"<a style="color: #b57c02;">ansible_apparmor</a>": {</span>
+										</div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--location">&nbsp;&nbsp;"<a style="color: #b57c02;">status</a>": "disabled"</span>
+										</div>
+
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--location">},</span>
+										</div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--location">&nbsp;&nbsp;"<a style="color: #b57c02;">ansible_architecture</a>": "x86_64"</span>
+										</div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--location">&nbsp;&nbsp;"<a style="color: #b57c02;">ansible_bios_date</a>": "12/01/2006"</span>
+										  </div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--location">&nbsp;&nbsp;"<a style="color: #b57c02;">ansible_bios_version</a>": "VirtualBox"&nbsp;</span>
+										  </div>
+									</section>
+									</div>
+								</section>
+							</div>
+						</article>
+					</main>
+					<!--- ASIDE --->
+					<aside class="col-md-4 stk-post-dv">
+						<div class="widget widget-recent-posts">
+							<h3 class="widget-title">↳ Tabla de Contenido:</h3>		
+							<ul>
+								<li>
+									<a class="nodeco" href="#WHY">¿POR QUÉ AD-HOC?</a>
+								</li>
+								<li>
+									<a class="nodeco" href="#BUILTIN">REINICIAR SERVIDORES</a>
+								</li>
+								<li>
+									<a class="nodeco" href="#COPY">ADMINISTRAR FICHEROS</a>
+								</li>
+								<li>
+									<a class="nodeco" href="#USER">ADMINISTRAR USUARIOS Y GRUPOS</a>
+								</li>
+								<li>
+									<a class="nodeco" href="#SERVICE">ADMINISTRAR SERVICIOS</a>
+								</li>
+								<li>
+									<a class="nodeco" href="#FACTS">FACTS</a>
+								</li>
+							</ul>
+						</div>
+						
+						<div class="widget widget-category">
+							<h3 class="widget-title">✎ Notas:</h3>		
+							<ul>
+								<li>
+									<a><strong>192.168.1.115</strong>: IP del nodo administrado</a>
+								</li>
+								<li>
+									<a><strong>-i</strong>: Inventario</a>
+								</li>
+								<li>
+									<a><strong>-m</strong>: Módulo</a>
+								</li>
+								<li>
+									<a><strong>-m</strong>: Forks</a>
+								</li>
+								<li>
+									<a><strong>ansible_python_interpreter</strong>: Variable del inventario que define la ruta del intérprete de Python en el nodo administrado</a>
+								</li>
+								<li>
+									<a><strong>ansible_user</strong>: Variable del inventario que define el usuario que por defecto ejecutará las tareas en el nodo administrado</a>
+								</li>
+								<li>
+									<a><strong>--become</strong>: Ejecuta tareas como usuario sudo</a>
+								</li>
+								<li>
+									<a><strong>--ask-become-pass</strong>: Solicita la password del usuario sudo</a>
+								</li>
+								<li>
+									<a><strong>-K</strong>: Opción abreviada de --ask-become-pass</a>
+								</li>
+							</ul>
+						</div>
+					</aside>
+				</div>
+			</div>
+		</div>
+
+		<footer id="site-footer">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<p class="copyright"><a href="/index"><img style="margin-top: -5px;" src="/blog/img/skull.png" weight="19px" height="19px" /> 0xbogart</a></p>
+					</div>
+				</div>
+			</div>
+		</footer>
+		<a href="#" id="scrollToTopButtonGold"><i class="fas fa-arrow-up"></i></a>
+	</body>
+</html>

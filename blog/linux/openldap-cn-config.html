@@ -1,13 +1,11 @@
-
 <!DOCTYPE html>
-<html lang="es-ES">
-	<head>
-
-    <meta charset="utf-8">
-    <title>OpenLDAP: Conversión de slapd.conf a slapd.d mediante cn=config</title>
+<html lang="es">
+<head>
+	<meta charset="utf-8">
+	<title>OpenLDAP: Conversión de slapd.conf a slapd.d mediante cn=config | 0xBogart</title>
 
     <!-- meta -->
-    <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0,user-scalable=no,viewport-fit=cover" />
+    <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0,user-scalable=no,viewport-fit=cover">
     <link rel="icon" type="/image/png" href="/blog/img/skull.png">
     <meta content="summary_large_image" name="twitter:card">
     <meta name="twitter:site" content="@jfb0gart">
@@ -18,41 +16,40 @@
     <meta name="description" content="OpenLDAP: Conversión de slapd.conf a slapd.d mediante cn=config">
     <meta name="keywords" content="OpenLDAP cn=config config CentOS ldap slapd.conf slapd slapd.d">
     <meta content="https://0xbogart.github.io/img/OpenLDAP.avif.jpg" property="og:image">
-    <meta name="twitter:image" content="https://0xbogart.github.io/img/OpenLDAP.avif">
-    <meta content="https://0xbogart.github.io/img/OpenLDAP.avif" name="twitter:image:src">
+    <meta name="twitter:image" content="https://0xbogart.github.io/blog/img/OpenLDAP.avif">
+    <meta content="https://0xbogart.github.io/blog/img/OpenLDAP.avif" name="twitter:image:src">
     <link href="https://0xbogart.github.io/blog/linux/openldap-cn-config" rel="canonical">		
 
-    <!-- css -->
-		<link rel="stylesheet" href="/css/bootstrap.min.css">
-		<link rel="stylesheet" href="/css/ionicons.min.css">
-		<link rel="stylesheet" href="/css/pace.css">
-    <link rel="stylesheet" href="/css/custom.css">
-		<link rel="stylesheet" href="/css/rhterm.css">
-		<link rel="stylesheet" href="/css/rhvoid.css">
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+	<!-- css -->
+	<link rel="stylesheet" href="/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/css/ionicons.min.css">
+	<link rel="stylesheet" href="/css/pace.css">
+	<link rel="stylesheet" href="/css/custom.css">
+	<link rel="stylesheet" href="/css/rhterm.css">
+	<link rel="stylesheet" href="/css/rhvoid.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
-    <!-- js -->
-    <script src="/js/jquery-2.1.3.min.js"></script>
-    <script src="/js/bootstrap.min.js"></script>
-    <script src="/js/pace.min.js"></script>
-    <script src="/js/modernizr.custom.js"></script>
-    <script src="/js/asgreenlight.js"></script>
-		
+	<!-- js -->
+	<script src="/js/jquery-2.1.3.min.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
+	<script src="/js/pace.min.js"></script>
+	<script src="/js/modernizr.custom.js"></script>
+	<script src="/js/asgreenlight.js"></script>
 <style>
-	.left {
-		text-align: left;
-		margin-right: 8%;
-		margin-left: 4%;
-		overflow: hidden;
-		font-size: 16px;
-	}
+.left {
+	text-align: left;
+	margin-right: 8%;
+	margin-left: 4%;
+	overflow: hidden;
+	font-size: 16px;
+}
 
-	.centext {
-		text-align: center;
-		font-size: 16px;
-		letter-spacing: 1px;
+.centext {
+	text-align: center;
+	font-size: 16px;
+	letter-spacing: 1px;
 	}
-</style>
+	</style>
 	</head>
 
 	<body class="bg">
@@ -60,7 +57,7 @@
 			<header id="site-header">
 				<div class="row">
 					<div style="margin-top: -2%; margin-bottom: -3%;">
-						<h1><a class="nodeco" href="https://0xbogart.github.io/blog/linux" style="color: rgb(88, 177, 0);">☣</a>LINUX</h1>
+						<h1><a class="nodeco" href="/blog/linux" style="color: rgb(88, 177, 0);">☣</a>LINUX</h1>
 					</div><!-- col-4 -->
 				</div>
 				<div class="row justify-content-end">
@@ -72,7 +69,7 @@
 							<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 								<ul class="navbar-nav">
 									<li class="nav-item">
-										<a style="font-size: 25px;" class="nav-link" href="https://skxll.net" data-hover="Home">Home</a>
+										<a style="font-size: 25px;" class="nav-link" href="/index" data-hover="Home">Home</a>
 									</li>
 								</ul>
 							</div><!--- .navbar-collapse --->
@@ -93,7 +90,7 @@
 							
 							<div class="entry-content clearfix">
 								
-								<a href="https://skxll.net/img/cnconfig.png" target="_blank"><img style="margin-top: 40px;" src="/img/cnconfig.png" alt="cn=config" width="100%"></a>
+								<a href="/blog/linux/img/cnconfig.png" target="_blank"><img style="margin-top: 40px;" src="/blog/linux/img/cnconfig.png" alt="cn=config" width="100%"></a>
 								
 								<section style="margin-top: 130px;" class="centext" id="INSTALLDAP">
 								<div>
@@ -577,7 +574,7 @@
 										</div>
 										  <div id="terminal__prompt">
 											  <span id="terminal__prompt--location-cyan"><b>o:</b>&nbsp;</span>
-											  <span id="terminal__prompt--bling"><b>skxll.net</b></span>
+											  <span id="terminal__prompt--bling"><b>0xbogart.github.io</b></span>
 										  <!--<span id="terminal__prompt--cursor"></span>-->
 										</div>
 										  <br>
@@ -836,7 +833,7 @@
 										</div>
 										  <div id="terminal__prompt">
 										<span id="terminal__prompt--location-cyan"><b>mail:</b>&nbsp;</span>
-										<span id="terminal__prompt--bling"><b>user1@skxll.net</b></span>
+										<span id="terminal__prompt--bling"><b>user1@0xbogart.github.io</b></span>
 										</div>
 									  </section>
 									</div>
@@ -1006,7 +1003,7 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-md-8">
-						<p class="copyright"><a href="https://0xbogart.github.io"><img style="margin-top: -5px;" src="/blog/img/skull.png" weight="19px" height="19px"> 0xbogart.github.io</a></p>
+						<p class="copyright"><a href="/index"><img style="margin-top: -5px;" src="/blog/img/skull.png" weight="19px" height="19px"> 0xbogart.github.io</a></p>
 					</div>
 				</div>
 			</div>

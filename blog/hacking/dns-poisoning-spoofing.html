@@ -1,21 +1,21 @@
 <!DOCTYPE html>
-<html lang="es_ES">
+<html lang="es">
 	<head>
 		<title>DNS Poisoning &amp; Spoofing | 0xBogart</title>
 
 		<!-- meta -->
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0,user-scalable=no,viewport-fit=cover" />
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0,user-scalable=no,viewport-fit=cover">
 		<link rel="icon" type="/image/png" href="/blog/img/skull.png">
-		<meta name="twitter:card" content="summary_large_image" />
-		<meta name="twitter:site" content="@jfb0gart" />
-		<meta name="twitter:creator" content="@jfb0gart" />
-		<meta property="og:url" content="https://skxll.net/blog/hacking/dns-poisoning-spoofing" />
+		<meta name="twitter:card" content="summary_large_image">
+		<meta name="twitter:site" content="@jfb0gart">
+		<meta name="twitter:creator" content="@jfb0gart">
+		<meta property="og:url" content="https://0xbogart.github.io/blog/hacking/dns-poisoning-spoofing">
 		<meta property="og:title" content="DNS Poisoning & Spoofing" />
 		<meta property="og:description" content="DNS Poisoning & Spoofing" />
-		<meta content="https://skxll.net/img/dns-poisoning.jpg" property="og:image" />
-		<meta name="twitter:image" content="https://skxll.net/img/dns-poisoning.jpg" />
-		<meta content="https://skxll.net/img/dns-poisoning.jpg" name="twitter:image:src" />
+		<meta content="https://0xbogart.github.io/img/dns-poisoning.jpg" property="og:image" />
+		<meta name="twitter:image" content="https://0xbogart.github.io/img/dns-poisoning.jpg" />
+		<meta content="https://0xbogart.github.io/img/dns-poisoning.jpg" name="twitter:image:src" />
 		<meta name="description" content="DNS Poisoning & Spoofing">
 		<meta name="keywords" content="DNS Poisoning & Spoofing">
 		<link rel="canonical" href="https://0xbogart.github.io/blog/hacking/dns-poisoning-spoofing">
@@ -59,52 +59,53 @@
 	letter-spacing: 1px;
 }
 </style>
-	</head>
+</head>
 
-	<body>
-		<div class="container">	
-			<header id="site-header">
-				<div class="row">
-					<div style="margin-top: -2%; margin-bottom: -3%;">
-						<h1>H<a href="https://0xbogart.github.io/blog/hacking"><img src="/blog/img/skull.png" width="30px" height="40px" style="margin-top: -9px;" /></a>CKING</h1>
-					</div><!-- col-4 -->
-				</div>
-				<div class="row justify-content-end">
-					<div style="margin-top: -3%; margin-bottom: -3%;" class="col-3">
-						<nav class="navbar navbar-expand-lg navbar-light">
-							<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#bs-example-navbar-collapse-1" aria-controls="bs-example-navbar-collapse-1" aria-expanded="false" aria-label="Toggle navigation">
-								<span class="navbar-toggler-icon"></span>
-							</button>
-							<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-								<ul class="navbar-nav">
-									<li class="nav-item">
-										<a style="font-size: 25px;" class="nav-link" href="https://0xbogart.github.io" data-hover="Home">Home</a>
-									</li>
-								</ul>
-							</div><!--- .navbar-collapse --->
-						</nav>
-					</div><!-- col-md-8 -->
-				</div>
-			</header>
-		</div>
+<body>
+	<div class="container">	
+		<header id="site-header">
+			<div class="row">
+				<div style="margin-top: -2%; margin-bottom: -3%;">
+					<h1>H<a href="https://0xbogart.github.io/blog/hacking"><img src="/blog/img/skull.png" width="30px" height="40px" style="margin-top: -9px;" /></a>CKING</h1>
+				</div><!-- col-4 -->
+			</div>
+			
+			<div class="row justify-content-end">
+				<div style="margin-top: -3%; margin-bottom: -3%;" class="col-3">
+					<nav class="navbar navbar-expand-lg navbar-light">
+						<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#bs-example-navbar-collapse-1" aria-controls="bs-example-navbar-collapse-1" aria-expanded="false" aria-label="Toggle navigation">
+							<span class="navbar-toggler-icon"></span>
+						</button>
+						<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+							<ul class="navbar-nav">
+								<li class="nav-item">
+									<a style="font-size: 25px;" class="nav-link" href="https://0xbogart.github.io" data-hover="Home">Home</a>
+								</li>
+							</ul>
+						</div><!--- .navbar-collapse --->
+					</nav>
+				</div><!-- col-md-8 -->
+			</div>
+		</header>
+	</div>
 
-		<div class="content-body">
-			<div class="container">
-				<div class="row">
-					<main class="col-md-8">
-						<article class="post post-1">
-							<header  class="entry-header">
-								<h1 class="blh1">DNS</h1>
-								<h2 class="blh2"><a style="color: #DB0000;">Poisoning </a>&amp;<a style="color: #DB0000;"> Spoofing</a></h2>
-							</header>
-							<div class="entry-content clearfix">
-								<br><br>
-								<section id="INTRO">
+	<div class="content-body">
+		<div class="container">
+			<div class="row">
+				<main class="col-md-8">
+					<article class="post post-1">
+						<header  class="entry-header">
+							<h1 class="blh1">DNS</h1>
+							<h2 class="blh2"><a style="color: #DB0000;">Poisoning </a>&amp;<a style="color: #DB0000;"> Spoofing</a></h2>
+						</header>
+						<div class="entry-content clearfix"><br><br>
+
+							<section id="INTRO">
 								<div class="centext">
 									<a style="font-size: 19px; color: rgb(189, 0, 38);">☠ </a><span class="red-bg" style="font-size: 19px;">INTRO</span>
-								<br><br>
-								<span><strong>DNS Pøisøning</strong> y <strong>DNS Spøøfing</strong> son sinónimos pero para entenderlos se debe pensar en ellos como acción y reacción o el <strong>cómo</strong> y el <strong>por qué</strong>.</span><br><br>
-									
+									<br><br>
+									<span><strong>DNS Pøisøning</strong> y <strong>DNS Spøøfing</strong> son sinónimos pero para entenderlos se debe pensar en ellos como acción y reacción o el <strong>cómo</strong> y el <strong>por qué</strong>.</span><br><br>
+
 									<span>Cuando esta técnica se lleva a cabo, lo que ocurre es que los datos del DNS de un sitio web son falsificados\reemplazados, por lo que la petición de un usuario a esa web se redirecciona hacia el servidor del atacante en lugar de al servidor web legítimo.</span><br><br>
 									
 									<span>DNS es el catálogo mundial de direcciones IP y nombres de dominio. Como una guía telefónica en Internet. Traduce URL fáciles de usar para el usuario final. Cada servidor almacena una lista de registros DNS que conoce, esto se denomina caché.</span><br><br>
@@ -113,9 +114,9 @@
 								</div><br>
 								
 								<a href="img/dns_poison_spoofing.jpg" target="_blank"><img src="img/dns_poison_spoofing.jpg" width="80%"></a>
-									</section>
+							</section>
 								
-								<section id="ettercap">
+							<section id="ettercap">
 								<div style="margin-top: 160px;" class="centext">
 									<a style="font-size: 19px; color: rgb(189, 0, 38);">☠ </a><span class="red-bg" style="font-size: 19px;">ETTERCAP</span><br><br>
 									
@@ -123,71 +124,67 @@
 									
 									<span>Soporta la disección activa y pasiva de diferentes protocolos <strong>{</strong>incluso los cifrados<strong>}</strong> e incluye características para el análisis de la red y del host <strong>{</strong>como la huella digital del sistema operativo<strong>}</strong></span>
 								</div>
-								</section>
+							</section>
 								
-								<section id="etterconf">
+							<section id="etterconf">
 								<div class="centext">
 									<div style="margin-top: 160px;" class="centext">
-									<a style="font-size: 19px; color: rgb(189, 0, 38);">☠ </a><span class="red-bg" style="font-size: 19px;">ETTER.CONF</span><p></p>
-										<span><strong>etter.conf</strong> es el archivo de configuración que determina el comportamiento de <strong>Ettercap</strong>. Se carga siempre al inicio y configura algunos atributos utilizados en tiempo de ejecución y es el único archivo que se lee con permisos de <strong><a style="color: #C80000;">root</a></strong>.</span><br><br>
-									
-									<span>Hay que asegurarse de que el <strong>UID</strong> especificado tiene suficientes privilegios para leer otros archivos {<strong>etter.*</strong>}</span><p></p>
-									
-									<span>Aunque esto se puede omitir estableciendo la variable de entorno <strong>EC_UID=0</strong></span><br><br>
-									
-									<span><strong>Ettercap</strong> necesita privilegios de <strong><a style="color: #C80000;">root</a></strong> para iniciar los sockets de la capa de enlace y tras esta inicialización, los privilegios de root ya no son necesarios</span><br><br>
-									
-									<span>Es cuando <strong>Ettercap</strong> vuelve a reducir los privilegios a <strong>UID=65534</strong> {<strong>nobody</strong>}</span>
-								</div>
+										<a style="font-size: 19px; color: rgb(189, 0, 38);">☠ </a><span class="red-bg" style="font-size: 19px;">ETTER.CONF</span><p></p>
+										<span><strong>etter.conf</strong> es el archivo de configuración que determina el comportamiento de <strong>Ettercap</strong>. Se carga siempre al inicio y configura algunos atributos utilizados en tiempo de ejecución y es el único archivo que se lee con permisos de <strong><a style="color: #C80000;">root</a></strong>.</span>
+										<br><br>
+										<span>Hay que asegurarse de que el <strong>UID</strong> especificado tiene suficientes privilegios para leer otros archivos {<strong>etter.*</strong>}</span><p></p>
+										<span>Aunque esto se puede omitir estableciendo la variable de entorno <strong>EC_UID=0</strong></span>
+										<br><br>
+										<span><strong>Ettercap</strong> necesita privilegios de <strong><a style="color: #C80000;">root</a></strong> para iniciar los sockets de la capa de enlace y tras esta inicialización, los privilegios de root ya no son necesarios</span>
+										<br><br>
+										<span>Es cuando <strong>Ettercap</strong> vuelve a reducir los privilegios a <strong>UID=65534</strong> {<strong>nobody</strong>}</span>
+									</div>
 								</div><br><br>
 								
-									<div class="left">
+								<div class="left">
 									<span><strong><a style="color: #DB0000;">•</a> CONFIGURAR etter.conf</strong></span>
 								</div><p></p>
 									
-								<a href="https://skxll.net/blog/article/hacking/img/etterconf.png" target="_blank"><img src="img/etterconf.png" width="50%"></a><p></p>
-								<a href="https://skxll.net/blog/article/hacking/img/etternobody.png" target="_blank"><img src="img/etternobody.png" width="67%"></a><p></p>
-								<a href="https://skxll.net/blog/article/hacking/img/etter0.png" target="_blank"><img src="img/etter0.png" width="67%"></a><p></p>
-								<a href="https://skxll.net/blog/article/hacking/img/redir.png" target="_blank"><img src="img/redir.png" width="67%"></a><p></p>
-								<a href="https://skxll.net/blog/article/hacking/img/redir2.png" target="_blank"><img src="img/redir2.png" width="67%"></a><p></p>
+								<a href="https://0xbogart.github.io/blog/article/hacking/img/etterconf.png" target="_blank"><img src="img/etterconf.png" width="50%"></a><p></p>
+								<a href="https://0xbogart.github.io/blog/article/hacking/img/etternobody.png" target="_blank"><img src="img/etternobody.png" width="67%"></a><p></p>
+								<a href="https://0xbogart.github.io/blog/article/hacking/img/etter0.png" target="_blank"><img src="img/etter0.png" width="67%"></a><p></p>
+								<a href="https://0xbogart.github.io/blog/article/hacking/img/redir.png" target="_blank"><img src="img/redir.png" width="67%"></a><p></p>
+								<a href="https://0xbogart.github.io/blog/article/hacking/img/redir2.png" target="_blank"><img src="img/redir2.png" width="67%"></a><p></p>
 								
 								<div class="centext">
 									<span>Como <strong>Ettercap</strong> necesita crear archivos de registro, debe ejecutarse en un directorio con permisos suficientes como <strong>/tmp</strong></span>
 								</div>
-								</section>
+							</section>
 								
-								<section id="etterdns">
-									<div class="centext">
-										<div style="margin-top: 160px;" class="centext">
-											<a style="font-size: 19px; color: rgb(189, 0, 38);">☠ </a><span class="red-bg" style="font-size: 19px;">ETTER.DNS</span><p></p>
-											
-											<span><strong>etter.dns</strong> es el archivo de configuración para la <strong>suplantación DNS</strong> {<strong>Spøøfing</strong>} de Ettercap y actúa como <strong>DNS caché</strong> para redirigir las solicitud del usuario al servidor local malicioso <strong>{</strong>atacante<strong>}</strong></span><br><br>
-										</div>
+							<section id="etterdns">
+								<div class="centext">
+									<div style="margin-top: 160px;" class="centext">
+										<a style="font-size: 19px; color: rgb(189, 0, 38);">☠ </a><span class="red-bg" style="font-size: 19px;">ETTER.DNS</span><p></p>
+										<span><strong>etter.dns</strong> es el archivo de configuración para la <strong>suplantación DNS</strong> {<strong>Spøøfing</strong>} de Ettercap y actúa como <strong>DNS caché</strong> para redirigir las solicitud del usuario al servidor local malicioso <strong>{</strong>atacante<strong>}</strong></span><br><br>
 									</div>
+								</div>
 										
-										<div class="left">
+								<div class="left">
 									<span><strong><a style="color: #DB0000;">•</a> CONFIGURAR etter.dns</strong></span>
 								</div><p></p>
 									
-									<div>
-									<a href="https://skxll.net/blog/article/hacking/img/etterdns.png" target="_blank"><img src="img/etterdns.png" width="46%"></a><p></p>
-									<a href="https://skxll.net/blog/article/hacking/img/etterdns2.png" target="_blank"><img src="img/etterdns2.png" width="100%"></a><br><br>
-									
+								<div>
+									<a href="https://0xbogart.github.io/blog/article/hacking/img/etterdns.png" target="_blank"><img src="img/etterdns.png" width="46%"></a><p></p>
+									<a href="https://0xbogart.github.io/blog/article/hacking/img/etterdns2.png" target="_blank"><img src="img/etterdns2.png" width="100%"></a>
+									<br><br>
 									<span>Cuando la <strong>caché DNS</strong> sea <strong>falsicifada</strong>, la petición del usuario a <strong>instagram.com</strong> será <strong>redireccionada</strong> a mi IP local</span><p></p>
-									<a href="https://skxll.net/blog/article/hacking/img/dnscache.png" target="_blank"><img src="img/dnscache.png" width="55%"></a>
+									<a href="https://0xbogart.github.io/blog/article/hacking/img/dnscache.png" target="_blank"><img src="img/dnscache.png" width="55%"></a>
 								</div>
-								</section>
+							</section>
 								
-								<section id="poisoning">
+							<section id="poisoning">
 								<div style="margin-top: 160px;" class="centext">
 									<a style="font-size: 19px; color: rgb(189, 0, 38);">☠ </a><span class="red-bg" style="font-size: 19px;">FASE DE ENVENENAMIENTO\SUPLANTACIÓN DNS</span><p></p>
-									
 									<span>Antes del <strong>DNS Pøisøning</strong>, este es el estado de la <strong>tabla ARP</strong> del usuario y la respuesta de ping a <strong>instagram.com</strong></span><p></p>
-									
-									<a href="https://skxll.net/blog/article/hacking/img/arp1.png" target="_blank"><img src="img/arp1.png" width="80%"></a><p></p>
-									<a href="https://skxll.net/blog/article/hacking/img/arp2.png" target="_blank"><img src="img/arp2.png" width="80%"></a><p></p>
-									<a href="https://skxll.net/blog/article/hacking/img/instagram.png" target="_blank"><img src="img/instagram.png" width="100%"></a><p></p>
-									<a href="https://skxll.net/blog/article/hacking/img/arp3.png" target="_blank"><img src="img/arp3.png" width="100%"></a>
+									<a href="https://0xbogart.github.io/blog/article/hacking/img/arp1.png" target="_blank"><img src="img/arp1.png" width="80%"></a><p></p>
+									<a href="https://0xbogart.github.io/blog/article/hacking/img/arp2.png" target="_blank"><img src="img/arp2.png" width="80%"></a><p></p>
+									<a href="https://0xbogart.github.io/blog/article/hacking/img/instagram.png" target="_blank"><img src="img/instagram.png" width="100%"></a><p></p>
+									<a href="https://0xbogart.github.io/blog/article/hacking/img/arp3.png" target="_blank"><img src="img/arp3.png" width="100%"></a>
 								</div><p></p>
 								
 								<div class="left">
@@ -199,86 +196,86 @@
 								</div><br>
 								
 								<div class="centext">
-									<a href="https://skxll.net/blog/article/hacking/img/arp5.png" target="_blank"><img src="img/arp5.png" width="90%"></a><br><br>
+									<a href="https://0xbogart.github.io/blog/article/hacking/img/arp5.png" target="_blank"><img src="img/arp5.png" width="90%"></a><br><br>
 									
 									<span>En este momento la <strong>caché DNS</strong> del usuario ha sido <strong>falsificada</strong>. En su <strong>tabla ARP</strong> se refleja la IP de mi servidor local y cree que <strong>instagram.com</strong> es mi servidor local, donde he montado un <strong>servidor NGINX</strong></span><p></p>
 									
-									<a href="https://skxll.net/blog/article/hacking/img/arp6.png" target="_blank"><img src="img/arp6.png" width="80%"></a><p></p>
-									<a href="https://skxll.net/blog/article/hacking/img/arp7.png" target="_blank"><img src="img/arp7.png" width="80%"></a><br><br>
-									<a href="https://skxll.net/blog/article/hacking/img/fakeinstagram.png" target="_blank"><img src="img/fakeinstagram.png" width="100%"></a>
+									<a href="https://0xbogart.github.io/blog/article/hacking/img/arp6.png" target="_blank"><img src="img/arp6.png" width="80%"></a><p></p>
+									<a href="https://0xbogart.github.io/blog/article/hacking/img/arp7.png" target="_blank"><img src="img/arp7.png" width="80%"></a><br><br>
+									<a href="https://0xbogart.github.io/blog/article/hacking/img/fakeinstagram.png" target="_blank"><img src="img/fakeinstagram.png" width="100%"></a>
 								</div>
-								</section>
-							</div>
-						</article>
-					</main>
-					
-					<!--- aside --->
-					<aside class="col-md-4 stk-post-hck">
-						<div class="widget widget-recent-posts">
-							<h3 class="widget-title"><a style="color: rgb(189, 0, 38);">↳ </a>Tabla de Contenido:</h3>		
-							<ul>
-								<li>
-									<a class="nodeco" href="#INTRO">INTRO</a>
-								</li>
-								<li>
-									<a class="nodeco" href="#ettercap">ETTERCAP</a>
-								</li>
-								<li>
-									<a class="nodeco" href="#etterconf">ETTER.CONF</a>
-								</li>
-								<li>
-									<a class="nodeco" href="#etterdns">ETTER.DNS</a>
-								</li>
-								<li>
-									<a class="nodeco" href="#poisoning">FASE DE SUPLANTACIÓN DNS</a>
-								</li>
-							</ul>
-						</div><br>
-						
-						<div class="widget widget-category">
-							<h3 class="widget-title"><a style="color: rgb(189, 0, 38);">✎ </a>Notas:</h3>		
-							<ul>
-								<li>
-									<a><strong>etter.conf</strong>: Archivo de configuración que determina el comportamiento de Ettercap.</a>
-								</li>
-								<li>
-									<a><strong>etter.dns</strong>: Archivo de configuración para la suplantación DNS {Spøøfing} de Ettercap</a>
-								</li>
-								<li>
-									<a><strong>ARP</strong>: Protocolo de Resolución de Direcciones. Permite manipular la caché de vecinos o la tabla ARP</a>
-								</li>
-								<li>
-									<a><strong>192.168.1.37</strong>: IP máquina Víctima</a>
-								</li>
-								<li>
-									<a><strong>192.168.1.38</strong>: IP máquina Atacante</a>
-								</li>
-							</ul>
+							</section>
 						</div>
-					</aside>
-				</div>
-			</div>
-		</div>
-
-		<footer id="site-footer">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-12">
-						<p class="copyright"><a href="https://0xbogart.github.io"><img style="margin-top: -5px;" src="/blog/img/skull.png" width="17px" height="20px">0xbogart.github.io</a></p>
+					</article>
+				</main>
+					
+				<!--- aside --->
+				<aside class="col-md-4 stk-post-hck">
+					<div class="widget widget-recent-posts">
+						<h3 class="widget-title"><a style="color: rgb(189, 0, 38);">↳ </a>Tabla de Contenido:</h3>		
+						<ul>
+							<li>
+								<a class="nodeco" href="#INTRO">INTRO</a>
+							</li>
+							<li>
+								<a class="nodeco" href="#ettercap">ETTERCAP</a>
+							</li>
+							<li>
+								<a class="nodeco" href="#etterconf">ETTER.CONF</a>
+							</li>
+							<li>
+								<a class="nodeco" href="#etterdns">ETTER.DNS</a>
+							</li>
+							<li>
+								<a class="nodeco" href="#poisoning">FASE DE SUPLANTACIÓN DNS</a>
+							</li>
+						</ul>
+					</div><br>
+						
+					<div class="widget widget-category">
+						<h3 class="widget-title"><a style="color: rgb(189, 0, 38);">✎ </a>Notas:</h3>		
+						<ul>
+							<li>
+								<a><strong>etter.conf</strong>: Archivo de configuración que determina el comportamiento de Ettercap.</a>
+							</li>
+							<li>
+								<a><strong>etter.dns</strong>: Archivo de configuración para la suplantación DNS {Spøøfing} de Ettercap</a>
+							</li>
+							<li>
+								<a><strong>ARP</strong>: Protocolo de Resolución de Direcciones. Permite manipular la caché de vecinos o la tabla ARP</a>
+							</li>
+							<li>
+								<a><strong>192.168.1.37</strong>: IP máquina Víctima</a>
+							</li>
+							<li>
+								<a><strong>192.168.1.38</strong>: IP máquina Atacante</a>
+							</li>
+						</ul>
 					</div>
+				</aside>
+			</div>
+		</div>
+	</div>
+
+	<footer id="site-footer">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<p class="copyright"><a href="https://0xbogart.github.io"><img style="margin-top: -5px;" src="/blog/img/skull.png" width="17px" height="20px">0xbogart.github.io</a></p>
 				</div>
 			</div>
-		</footer>
-
-		<!-- Mobile Menu -->
-		<div class="overlay overlay-hugeinc">
-			<button type="button" class="overlay-close"><span class="ion-ios-close-empty"></span></button>
-			<nav>
-				<ul>
-					<li><a href="https://0xbogart.github.io">Home</a></li>
-				</ul>
-			</nav>
 		</div>
-		<a href="#" id="scrollToTopButtonRed"><i class="fas fa-arrow-up"></i></a>
-	</body>
+	</footer>
+
+	<!-- Mobile Menu -->
+	<div class="overlay overlay-hugeinc">
+		<button type="button" class="overlay-close"><span class="ion-ios-close-empty"></span></button>
+		<nav>
+			<ul>
+				<li><a href="https://0xbogart.github.io">Home</a></li>
+			</ul>
+		</nav>
+	</div>
+	<a href="#" id="scrollToTopButtonRed"><i class="fas fa-arrow-up"></i></a>
+</body>
 </html>

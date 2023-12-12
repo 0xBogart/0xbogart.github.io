@@ -1,0 +1,151 @@
+#container {
+  display: block;
+  justify-content: center;  
+  align-items: center;  
+  height: 50px;
+} 
+#terminal {
+  display: inline-block;
+  white-space: nowrap;
+  margin: 0 auto;
+  width: auto;
+  height: auto;
+  box-shadow: 2px 4px 10px rgb(0, 0, 0);
+}
+
+#long-terminal {
+  display: inline-block;
+  white-space: nowrap;
+  margin: 0 auto;
+  width: 100%;
+  height: auto;
+  box-shadow: 2px 4px 10px rgba(0,0,0,0);
+} 
+
+#terminal__bar {  
+  display: flex;  
+  width: 101%;  
+  height: 15px;  
+  align-items: center;  
+  padding: 0;
+  box-sizing: border-box;  
+  border-top-left-radius: 0%;  
+  border-top-right-radius: 0%;  
+  background: linear-gradient(#000000 0%,#000000 100%);
+} 
+#bar__buttons {  
+  display: flex;  
+  align-items: center;
+  margin-bottom: 2.5px;
+}
+/*** BUTTONS ***/
+.bar__button {  
+  display: flex;  
+  justify-content: center;  
+  align-items: center;  
+  padding: 0;  
+  margin-right: 5px;  
+  font-size: 8px;  
+  height: 7px;  
+  width: 9px;  
+  box-sizing: border-box;  
+  border: none;  
+  border-radius: 0%;  
+  background: linear-gradient(#7d7871 0%, #595953 100%);  
+  text-shadow: 0px 1px 0px rgba(255,255,255,0.2);  
+  box-shadow: 0px 0px 1px 0px #41403A, 0px 1px 1px 0px #ff0000;
+}
+.bar__button:hover {  
+  cursor: pointer;
+}
+.bar__button:focus {  
+  outline: none;
+}
+#bar__button--exit {  
+  background: linear-gradient(#ffffff 0%, #ffffff 100%);    
+  background-clip: padding-box;
+} 
+#bar__user {
+  color: #d5d0ce;
+  margin-top: 9px;
+  margin-left: 30%;
+  margin-right: 10%;
+  font-size: 14px;  
+  line-height: 15px;
+} 
+#terminal__body {
+  width: 101%;
+  white-space: nowrap;
+  overflow: auto;
+  background: #F7F7F7;
+  font-family: monospace;
+  font-size: 14px;
+  height: calc(100% - 30px);
+  padding-top: 2px;
+  margin-top: -1px;
+}
+
+/** Cool Scroll **/
+#terminal__body::-webkit-scrollbar {
+            width: 1px;
+			height: 5px;
+}
+        
+#terminal__body::-webkit-scrollbar-track {
+            border-radius: 1px;
+            background-color: #404040;
+            border: 1px solid #ffffff;
+}
+        
+#terminal__body::-webkit-scrollbar-thumb {
+            border-radius: 1px;
+            background-color: #E00000;
+}
+/** END Cool Scroll **/
+
+#terminal__prompt {
+  display: flex;
+}
+#terminal__prompt--user {
+  color: #7eda28;
+}
+#terminal__prompt--location { 
+  color: #cacaca;
+}
+#terminal__prompt--location-cyan { 
+  color: #00FFFF;
+}
+#terminal__prompt--bling {
+  color: #cacaca;
+}
+#terminal__prompt--cursor {  
+  display: flex;
+  height: 17px;
+  width: 8px;
+  margin-top: 5px;
+  margin-left: 9px;
+  margin-right: 8px;
+  animation: blink 1200ms linear infinite;
+}
+@keyframes blink {
+  0% {
+    background: #48FF00;
+  }
+  49% {
+    background: #48FF00;
+  }
+  60% {
+    background: transparent;
+  }  
+  99% {    
+    background: transparent;
+  }  100% {    
+    background: #48FF00;  
+  }
+}
+@media (max-width: 600px) {
+  #terminal {
+    max-height: 90%;
+    width: 90%;
+  }
+}

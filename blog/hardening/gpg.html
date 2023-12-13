@@ -1,0 +1,730 @@
+
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+
+		<title>GPG | 0xBogart</title>
+
+		<!-- meta -->
+		<meta charset="UTF-8">
+	    <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0,user-scalable=no,viewport-fit=cover">
+		<link rel="icon" type="/image/png" href="/blog/img/skull.png">
+		<meta name="twitter:card" content="summary_large_image">
+		<meta name="twitter:site" content="@jfb0gart">
+		<meta name="twitter:creator" content="@jfb0gart">
+		<meta property="og:url" content="https://0xbogart.github.io/blog/hardening/gpg">
+		<meta property="og:title" content="gpg" />
+		<meta property="og:description" content="gpg" />
+		<meta content="https://0xbogart.github.io/blog/img/gpg.webp" property="og:image">
+		<meta name="twitter:image" content="https://0xbogart.github.io/blog/img/gpg.webp">
+		<meta content="https://0xbogart.github.io/blog/img/gpg.webp" name="twitter:image:src">
+		<meta name="description" content="gpg">
+		<meta name="keywords" content="gpg">
+		<link rel="canonical" href="https://0xbogart.github.io/blog/hardening/gpg">
+		
+
+	    <!-- css -->
+		<link rel="stylesheet" href="/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/css/ionicons.min.css">
+		<link rel="stylesheet" href="/css/pace.css">
+	    <link rel="stylesheet" href="/css/custom.css">
+		<link rel="stylesheet" href="/css/lithiumterm.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+	    <!-- js -->
+	    <script src="/js/jquery-2.1.3.min.js"></script>
+	    <script src="/js/bootstrap.min.js"></script>
+	    <script src="/js/pace.min.js"></script>
+	    <script src="/js/modernizr.custom.js"></script>
+		<script src="/js/aspurplelight.js"></script>
+
+<style>
+/* texto izquiera máx */
+.left {
+  text-align: left;
+  margin-right: 8%;
+  margin-left: -5%;
+  overflow: hidden;
+  font-size: 16px;
+}
+	
+/* texto izquiera */
+.leftl {
+  text-align: left;
+  margin-right: 8%;
+  overflow: hidden;
+  font-size: 16px;
+}
+	
+.centext {
+	text-align: center;
+	font-size: 16px;
+	letter-spacing: 1px;
+	}
+</style>
+	</head>
+
+	<body>
+		<div class="container">	
+			<header id="site-header">
+				<div class="row">
+					<div style="margin-top: -2%; margin-bottom: -3%;">
+						<h1><a class="nodeco" href="/blog/hardening" style="color: rgb(194, 0, 194);">☰</a>Hardening</h1>
+					</div><!-- col-4 -->
+				</div>
+				<div class="row justify-content-end">
+					<div style="margin-top: -3%; margin-bottom: -3%;" class="col-3">
+						<nav class="navbar navbar-expand-lg navbar-light">
+							<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#bs-example-navbar-collapse-1" aria-controls="bs-example-navbar-collapse-1" aria-expanded="false" aria-label="Toggle navigation">
+								<span class="navbar-toggler-icon"></span>
+							</button>
+							<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+								<ul class="navbar-nav">
+									<li class="nav-item">
+										<a style="font-size: 25px;" class="nav-link" href="/index" data-hover="Home">Home</a>
+									</li>
+								</ul>
+							</div><!--- .navbar-collapse --->
+						</nav>
+					</div><!-- col-md-8 -->
+				</div>
+			</header>
+		</div>
+
+		<div class="content-body">
+			<div class="container">
+				<div class="row">
+					<main class="col-md-8">
+						<article class="post post-1">
+							<header  class="entry-header">
+								<h1 class="blh1">GPG [GNU Privacy Guard]</h1>
+								<h2 class="blh2">CIFRADO Y FIRMA DE FICHEROS</h2>
+							</header>
+							
+							<div class="entry-content clearfix">
+								<section style="margin-top: 50px;" id="intro">
+									<div class="centext">
+										<!--- INTRO --->
+										<span>Se trata de una herramienta de cifrado y firmado de ficheros, sucesor de <strong>PGP</strong> {<strong>P</strong>retty <strong>G</strong>ood <strong>P</strong>rivacy}</span>
+									</div>
+								</section>
+								<!--- ./INTRO --->
+								
+								<section style="margin-top: 150px;" id="gpg">
+									<div class="centext">
+										<a style="font-size: 19px; color: rgb(194, 0, 194);">☰ </a><span class="purple-bg" style="font-size: 19px;">¿QUÉ PERMITE HACER GPG?</span>
+									</div><p></p>
+								
+									<div class="left">
+										<span><strong><a style="color: #AD009E;">•</a> Cifrar ficheros por passphrase:</strong> Utiliza una misma clave para cifrar y descifrar <strong>{</strong>CIFRADO SIMÉTRICO<strong>}</strong></span><p></p>
+									
+										<span><strong><a style="color: #AD009E;">•</a> Cifrar ficheros por clave pública:</strong> El fichero se cifra completamente con una clave pública <strong>{</strong>CIFRADO ASIMÉTRICO<strong>}</strong></span><p></p>
+									
+										<span><strong><a style="color: #AD009E;">•</a> Firmar ficheros por clave privada:</strong> Verifica si el fichero pertenece a quien debería.</span>
+									</div>
+								</section>
+
+								<section style="margin-top: 160px;" id="passphrase">
+								<div class="centext">
+									<a style="font-size: 19px; color: rgb(194, 0, 194);">☰ </a><span class="purple-bg" style="font-size: 19px;">CIFRADO SIMÉTRICO {PASSPHRASE}</span><p></p>
+								</div><br>
+								
+								<div class="centext">
+									<span>Crear un archivo <strong>.txt</strong>, editarlo para escribir algún texto en él y cifrarlo simétricamente con <strong>gpg</strong></span>
+								</div><p></p>
+
+								<div id="terminal">   
+									  <!-- Terminal Bar -->       
+									  <section id="terminal__bar">          
+										<div id="bar__buttons">            
+										  <button style="background: #FF5FFA;" class="bar__button" id="bar__button--exit">&#10005;</button>            
+										  <button class="bar__button">&#9472;</button>                
+										  <button class="bar__button">&#9723;</button>          
+										</div>
+									  </section>        
+									  <!-- Terminal Body -->
+									  <section style="background-color: #22363f;" id="hdterminal__body">
+										<div id="terminal__prompt">
+											<span id="terminal__prompt--user"><b><a style="color: #FF5FFA;">☰</a>&nbsp;</b></span>
+											<span id="terminal__prompt--bling"><b>touch<a style="color: #FF8EF6;"> cifrado-simetrico.txt</a></b></span>
+										  </div><p></p>
+										  
+										  <div id="terminal__prompt">
+											<span id="terminal__prompt--user"><b><a style="color: #FF5FFA;">☰</a>&nbsp;</b></span>
+											<span id="terminal__prompt--bling"><b>echo<a style="color: #FF8EF6;"> "Mensaje Cifrado"</a> &gt; cifrado-simetrico.txt</b>&nbsp;</span>
+										  </div><p></p>
+										  
+										  <div id="terminal__prompt">
+											<span id="terminal__prompt--user"><b><a style="color: #FF5FFA;">☰</a>&nbsp;</b></span>
+											<span id="terminal__prompt--bling"><b>sudo<a style="color: #FF8EF6;"> gpg --symmetric</a> cifrado-simetrico.txt</b></span>
+										</div>
+									  </section>
+								</div><br><p></p>
+								
+								<div class="centext">
+									<img src="/blog/hardening/img/gpg1-1.jpg" width="70%"><p></p>
+									<img src="/blog/hardening/img/gpg2.jpg" width="70%"><br><br>
+									
+									<span><strong>gpg</strong> ha generado un fichero de extensión <strong>.gpg</strong> con el mismo nombre que el archivo en texto plano:</span><br>
+								</div><p></p>
+
+								<div id="terminal">   
+									  <!-- Terminal Bar -->       
+									  <section id="terminal__bar">          
+										<div id="bar__buttons">            
+										  <button style="background: #FF5FFA;" class="bar__button" id="bar__button--exit">&#10005;</button>            
+										  <button class="bar__button">&#9472;</button>                
+										  <button class="bar__button">&#9723;</button>          
+										</div>
+									  </section>        
+									  <!-- Terminal Body -->
+									  <section style="background-color: #22363f;" id="hdterminal__body">
+										<div id="terminal__prompt">
+											<span id="terminal__prompt--user"><b><a style="color: #FF5FFA;">☰</a>&nbsp;</b></span>
+											<span id="terminal__prompt--bling"><b>ls<a style="color: #FF8EF6;"> -l</a></b></span>
+										  </div>
+										  
+										  <div id="terminal__prompt">
+											<span id="terminal__prompt--bling"><b>total 2</b></span>
+										  </div>
+										  
+										  <div id="terminal__prompt">
+											<span id="terminal__prompt--bling"><b>-rw-r--r-- 1 root root 16 Apr cifrado-simetrico.txt</b></span>
+										</div>
+										  
+										  <div id="terminal__prompt">
+											<span id="terminal__prompt--bling"><b>-rw-r--r-- 1 root root 103 Apr <a style="color: #FF8EF6;">cifrado-simetrico.txt.gpg</a></b>&nbsp;</span>
+										</div>
+									  </section>
+								</div><br><br>
+								
+								<div class="centext">
+									<span>Al volcar el contenido del fichero <strong>cifrado-simetrico.txt.gpg</strong> con el comando <strong>cat</strong>, el contenido se muestra cifrado.</span>
+								</div><p></p>
+								
+								<div id="long-terminal">   
+									  <!-- Terminal Bar -->       
+									  <section id="terminal__bar">          
+										<div id="bar__buttons">            
+										  <button style="background: #FF5FFA;" class="bar__button" id="bar__button--exit">&#10005;</button>            
+										  <button class="bar__button">&#9472;</button>                
+										  <button class="bar__button">&#9723;</button>          
+										</div>
+									  </section>        
+									  <!-- Terminal Body -->
+									  <section style="background-color: #22363f;" id="hdterminal__body">
+										<div id="terminal__prompt">
+											<span id="terminal__prompt--user"><b><a style="color: #FF5FFA;">☰</a>&nbsp;</b></span>
+											<span id="terminal__prompt--bling"><b>cat<a style="color: #FF8EF6;"> cifrado-simetrico.txt.gpg</a></b></span>
+										  </div>
+										  
+										  <div id="terminal__prompt">
+											<span id="terminal__prompt--bling"><b>aYyW_Ʋ��V)K�p��]�=E(JMM)7y��m$��Z"��-�NaYyW_Ʋ��V)K�p��]�=E(JMM)7y��m$��Z"��-�N</b>&nbsp;</span>
+										  </div>
+									  </section>
+								</div><br><br><br>
+								
+								<div class="leftl">
+									<span><strong><a style="color: #FF00FF;">•</a> DESENCRIPTAR EL FICHERO</strong></span>
+								</div><p></p>
+								
+								<div class="centext">
+									<span><strong>gpg --decrypt</strong> solicitará la passphrase previamente configurada y el comando <strong>cat</strong> podrá leer el fichero desencriptado.</span>
+								</div>
+								
+								<div id="terminal">   
+									  <!-- Terminal Bar -->       
+									  <section id="terminal__bar">          
+										<div id="bar__buttons">            
+										  <button style="background: #FF5FFA;" class="bar__button" id="bar__button--exit">&#10005;</button>            
+										  <button class="bar__button">&#9472;</button>                
+										  <button class="bar__button">&#9723;</button>          
+										</div>
+									  </section>        
+									  <!-- Terminal Body -->
+									  <section style="background-color: #22363f;" id="hdterminal__body">
+										<div id="terminal__prompt">
+											<span id="terminal__prompt--user"><b><a style="color: #FF5FFA;">☰</a>&nbsp;</b></span>
+											<span id="terminal__prompt--bling"><b>gpg<a style="color: #FF8EF6;"> --decrypt -o</a> mensaje-desencriptado.txt cifrado-simetrico.txt.gpg</b>&nbsp;</span>
+										  </div>
+										  
+										  <div id="terminal__prompt">
+											<span id="terminal__prompt--bling"><b>gpg: AES256 encrypted data</b></span>
+										  </div>
+										  
+										  <div id="terminal__prompt">
+											<span id="terminal__prompt--bling"><b>gpg: encrypted with 1 passphrase</b></span>
+										  </div><br>
+										  
+										  <div id="terminal__prompt">
+											<span id="terminal__prompt--user"><b><a style="color: #FF5FFA;">☰</a>&nbsp;</b></span>
+											<span id="terminal__prompt--bling"><b>cat<a style="color: #FF8EF6;"> mensaje-desencriptado.txt</a></b></span>
+										  </div>
+										  
+										  <div id="terminal__prompt">
+											<span id="terminal__prompt--bling"><b>Mensaje Cifrado</b></span>
+										  </div>
+									  </section>
+								</div>
+								</section>
+								
+								<section style="margin-top: 160px;" id="asimetrico">
+								<div class="centext">
+									<a style="font-size: 19px; color: rgb(194, 0, 194);">☰ </a><span class="purple-bg" style="font-size: 19px;">CIFRADO ASIMÉTRICO [CLAVE PÚBLICA + FIRMA]</span>
+								</div><p></p>
+								
+								<div class="centext">
+									<span>En este caso creo un archivo de texto plano llamado <strong>cifrado-asimetrico.txt</strong> con el texto "<strong>Mensaje Cifrado</strong>" en su interior.</span>
+								</div><p></p>
+								
+								<div id="terminal">   
+									  <!-- Terminal Bar -->       
+									  <section id="terminal__bar">          
+										<div id="bar__buttons">            
+										  <button style="background: #FF5FFA;" class="bar__button" id="bar__button--exit">&#10005;</button>            
+										  <button class="bar__button">&#9472;</button>                
+										  <button class="bar__button">&#9723;</button>          
+										</div>
+									  </section>        
+									  <!-- Terminal Body -->
+									  <section style="background-color: #22363f;" id="hdterminal__body">
+										<div id="terminal__prompt">
+											<span id="terminal__prompt--user"><b><a style="color: #FF5FFA;">☰</a>&nbsp;</b></span>
+											<span id="terminal__prompt--bling"><b>touch<a style="color: #FF8EF6;"> cifrado-asimetrico.txt</a></b></span>
+										  </div><p></p>
+										  
+										  <div id="terminal__prompt">
+											<span id="terminal__prompt--user"><b><a style="color: #FF5FFA;">☰</a>&nbsp;</b></span>
+											<span id="terminal__prompt--bling"><b>echo<a style="color: #FF8EF6;"> "Mensaje Cifrado"</a> &gt; cifrado-asimetrico.txt</b>&nbsp;</span>
+										  </div>
+									  </section>
+								</div><br><br><br>
+								
+								<div class="left">
+									<span><strong><a style="color: #FF00FF;">•</a> GENERAR EL PAR DE CLAVES</strong></span>
+								</div><p></p>
+								
+								<div class="centext">
+									<span>La opción <strong>--full-generate-key</strong> se encarga de la generación completa de pares de claves.</span><p></p>
+									<span>Esta opción necesita generar muchos bytes aleatorios. Es recomendable realizar
+acciones como escribir en el teclado, mover el ratón o utilizar los discos durante la generación de primos. Esto da al generador de números aleatorios mayor aleatoriedad para generar suficiente entropía.</span>
+								</div><p></p>
+								
+								<!----- full-generate-key ----->
+								<div id="long-terminal">   
+									  <!-- Terminal Bar -->       
+									  <section id="terminal__bar">          
+										<div id="bar__buttons">            
+										  <button style="background: #FF5FFA;" class="bar__button" id="bar__button--exit">&#10005;</button>            
+										  <button class="bar__button">&#9472;</button>                
+										  <button class="bar__button">&#9723;</button>          
+										</div>
+									  </section>        
+									  <!-- Terminal Body -->
+									  <section style="background-color: #22363f;" id="hdterminal__body">
+										<div id="terminal__prompt">
+											<span id="terminal__prompt--user"><b><a style="color: #FF5FFA;">☰</a>&nbsp;</b></span>
+											<span id="terminal__prompt--bling"><b>gpg<a style="color: #FF8EF6;"> --full-gen-key</a></b></span>
+										  </div><p></p>
+										  
+										  <div id="terminal__prompt">
+											<span id="terminal__prompt--bling"><b>gpg (GnuPG) 2.2.41; Copyright (C) 2022 g10 Code GmbH</b></span>
+										  </div>
+										  
+										  <div id="terminal__prompt">
+											<span id="terminal__prompt--bling"><b>This is free software: you are free to change and redistribute it.</b>&nbsp;</span>
+										  </div>
+										  
+										  <div id="terminal__prompt">
+											<span id="terminal__prompt--bling"><b>There is NO WARRANTY, to the extent permitted by law.</b></span>
+										  </div><br>
+										  
+										  <div id="terminal__prompt">
+											<span id="terminal__prompt--bling"><b>Please select what kind of key you want:</b></span>
+										  </div>
+										  
+										  <div id="terminal__prompt">
+											<span style="margin-left: 40px;" id="terminal__prompt--bling"><b>(1) RSA and RSA (default)</b></span>
+										  </div>
+										  
+										  <div id="terminal__prompt">
+											<span style="margin-left: 40px;" id="terminal__prompt--bling"><b>(2) DSA and Elgamal</b></span>
+										  </div>
+										  
+										  <div id="terminal__prompt">
+											<span style="margin-left: 40px;" id="terminal__prompt--bling"><b>(3) DSA (sign only)</b></span>
+										  </div>
+										  
+										  <div id="terminal__prompt">
+											<span style="margin-left: 40px;" id="terminal__prompt--bling"><b>(4) RSA (sign only)</b></span>
+										  </div>
+										  
+										  <div id="terminal__prompt">
+											<span style="margin-left: 40px;" id="terminal__prompt--bling"><b>(14) Existing key from card</b></span>
+										  </div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--bling"><b>Your selection? <a style="color: #FF8EF6;">1</a></b></span>
+										  </div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--bling"><b>RSA keys may be between 1024 and 4096 bits long.</b></span>
+										  </div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--bling"><b>What keysize do you want? (3072) <a style="color: #FF8EF6;">4096</a></b></span>
+										  </div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--bling"><b>Requested keysize is 4096 bits</b></span>
+										  </div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--bling"><b>Please specify how long the key should be valid.</b></span>
+										  </div>
+										  
+										  <div id="terminal__prompt">
+											  <span style="margin-left: 80px;" id="terminal__prompt--bling"><b>0 = key does not expire</b></span>
+										  </div>
+										  
+										  <div id="terminal__prompt">
+											  <span style="margin-left: 67px;" id="terminal__prompt--bling"><b>&lt;n&gt;  = key expires in n days</b></span>
+										  </div>
+										  
+										  <div id="terminal__prompt">
+											  <span style="margin-left: 67px;" id="terminal__prompt--bling"><b>&lt;n&gt;w = key expires in n weeks</b></span>
+										  </div>
+										  
+										  <div id="terminal__prompt">
+											  <span style="margin-left: 67px;" id="terminal__prompt--bling"><b>&lt;n&gt;m = key expires in n months</b></span>
+										  </div>
+										  
+										  <div id="terminal__prompt">
+											  <span style="margin-left: 67px;" id="terminal__prompt--bling"><b>&lt;n&gt;y = key expires in n years</b></span>
+										  </div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--bling"><b>Key is valid for? (0)</b><a style="color: #FF8EF6;"> 1y</a></span>
+										  </div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--bling"><b>Key expires at Sat 06 Apr 2024 04:52:29 AM CEST</b></span>
+										  </div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--bling"><b>Is this correct? (y/N)<a style="color: #FF8EF6;"> y</a></b></span>
+										  </div><br>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--bling"><b>GnuPG needs to construct a user ID to identify your key.</b></span>
+										  </div><br>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--bling"><b>Real name: <a style="color: #FF8EF6;">Bogart</a></b></span>
+										  </div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--bling"><b>Email address: <a style="color: #FF8EF6;">Bogart@protonmail.com</a></b></span>
+										  </div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--bling"><b>Comment: <a style="color: #FF8EF6;">Cifrando ficheros con par de claves</a></b></span>
+										  </div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--bling"><b>You selected this USER-ID:</b></span>
+										  </div>
+										  
+										  <div id="terminal__prompt">
+											  <span style="margin-left: 40px;" id="terminal__prompt--bling"><b>"Bogart (Cifrando ficheros con par de claves) &lt;Bogart@protonmail.com&gt;"</b>&nbsp;</span>
+										  </div><p></p>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--bling"><b>Change (N)ame, (C)omment, (E)mail or (O)kay/(Q)uit? <a style="color: #FF8EF6;">O</a></b></span>
+										  </div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--bling"><b>We need to generate a lot of random bytes. It is a good idea to perform</b></span>
+										  </div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--bling"><b>some other action (type on the keyboard, move the mouse, utilize the</b></span>
+										  </div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--bling"><b>disks) during the prime generation; this gives the random number</b></span>
+										  </div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--bling"><b>generator a better chance to gain enough entropy</b></span>
+										  </div><p></p>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--bling"><b>gpg: directory '/home/Bogart/.gnupg/openpgp-revocs.d' created</b></span>
+										  </div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--bling"><b>gpg: revocation certificate stored as '/home/Bogart/.gnupg/openpgp-revocs.d/E6A5759973DDAE37BEB6D8B2A9B12CFFF586A5F9.rev'd</b></span>
+										  </div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--bling"><b>public and secret key created and signed.</b></span>
+										  </div><p></p>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--bling"><b>pub rsa4096 2023-04-07 [SC] [expires: 2024-04-06]</b></span>
+										  </div>
+										  
+										  <div id="terminal__prompt">
+											  <span style="margin-left: 35px;" id="terminal__prompt--bling"><b>E6A5759973DDAE37BEB6D8B2A9B12CFFF586A5F9</b></span>
+										  </div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--bling"><b>uid Bogart (Cifrando ficheros con par de claves) &lt;Bogart@protonmail.com&gt;</b></span>
+										  </div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--bling"><b>sub rsa4096 2023-04-07 [E] [expires: 2024-04-06]</b></span>
+										  </div>
+									  </section>
+								</div><br><br> <!--- full-generate-key --->
+								
+								<div class="centext">
+									<span><strong>gpg</strong> ha generado el certificado <strong>E6A5759973DDAE37BEB6D8B2A9B12CFFF586A5F9.rev</strong> en <strong>$HOME/.gnupg/openpgp-revocs.d/</strong> que contiene el <strong>tipo de encriptación</strong>, <strong>fecha</strong> de <strong>creación</strong> y <strong>expiración</strong>, el <strong>UID</strong> y la <strong>clave pública</strong></span>
+								</div><p></p>
+								
+								<div id="long-terminal">   
+									  <!-- Terminal Bar -->       
+									  <section id="terminal__bar">          
+										<div id="bar__buttons">            
+										  <button style="background: #FF5FFA;" class="bar__button" id="bar__button--exit">&#10005;</button>            
+										  <button class="bar__button">&#9472;</button>                
+										  <button class="bar__button">&#9723;</button>          
+										</div>
+									  </section>        
+									  <!-- Terminal Body -->
+									  <section style="background-color: #22363f;" id="hdterminal__body">
+										<div id="terminal__prompt">
+											<span id="terminal__prompt--user"><b><a style="color: #FF5FFA;">☰</a>&nbsp;</b></span>
+											<span id="terminal__prompt--bling"><b>cat<a style="color: #FF8EF6;"> /home/bogart/.gnupg/openpgp-revocs.d/E6A5759973DDAE37BEB6D8B2A9B12CFFF586A5F9.rev</a></b></span>
+										  </div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--bling"><b>This is a revocation certificate for the OpenPGP key:</b></span>
+										  </div><p></p>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--bling"><b>pub <a style="color: #FF8EF6;">rsa4096</a> 2023-04-07 [S] [<a style="color: #FF8EF6;">expires</a>: 2024-04-06]</b></span>
+										  </div>
+										  
+										  <div id="terminal__prompt">
+											  <span style="margin-left: 40px;" id="terminal__prompt--bling"><b>E6A5759973DDAE37BEB6D8B2A9B12CFFF586A5F9</b></span>
+										  </div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--bling"><b>uid <a style="color: #FF8EF6;">Bogart (Cifrando ficheros con par de claves) &lt;bogart@protonmail.com&gt;</a></b></span>
+										  </div><br>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--bling"><b>:-----BEGIN PGP PUBLIC KEY BLOCK-----</b></span>
+										  </div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--bling"><b>Comment: This is a revocation certificate</b></span>
+										  </div><p></p>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--bling"><b>iQI2BCABCAAgFiEE5qV1mXPdrje+ttiyqbEs//WGpfkFAmQvh58CHQAACgkQqbEs</b></span>
+										  </div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--bling"><b>//WGpfmE2hAAocacwQ5PjQUEbrPP8KRc7WIXMIJLCK14xmcj0XzPMXZR2tw8luT9</b></span>
+										  </div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--bling"><b>KIJXNPNf/fXvttJG1IYkutCasJiX870/rsjALGgddJU0nGf+BIwg1Egw0sQwL47s</b></span>
+										  </div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--bling"><b>w+tVkQPpuoCfhVZGFz+o6SxzIOEs6DZRF3zisqc2Btj5s/TyyxeAwOhsmYIz6BaV</b></span>
+										  </div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--bling"><b>BrdL0A+DG/2y+9GIAk+MRsd7+tAjoi7J45kxTNHQlJyKSKwRJsgAnmAnutbKqyoq</b></span>
+										  </div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--bling"><b>V3Av9e0uPW1q6x0S1sDsklFAqJtCElEzw4CxUFuXO2AkZTdZ214yLRJH7gvcIFAb</b></span>
+										  </div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--bling"><b>0LudrOMFz3t7xePHJBU8pdd6k/4NENE0o6K9vgzsLBHS2HUEMmcOIFqtjzLE14e6</b></span>
+										  </div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--bling"><b>Op6SCt9WDmh8BwpHfGqLSAz+RVZ5JcKvPcjJkAq5GOs/vCD5RHITkaaAZasdiOtj</b></span>
+										  </div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--bling"><b>3DlQIfKVO7VmM/rC/Pk87pq8dfLrZ6SzNpMXM0iFq/1EoP2u6y9VSKh+FBIEw2eX</b></span>
+										  </div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--bling"><b>/JhOSP9zcUSSX72LHQ+nx7H3sJsA02m0nPjP66YFxaJ9U39q4ivbLMXBeICC5OCU</b></span>
+										  </div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--bling"><b>vaunCnenn/MF8nGT9cHw0yszGcOn5O+2pVyBENY2q23m09+QoCFBl3uq01GTKV9r</b></span>
+										  </div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--bling"><b>zxO/Uwjqv29Q4xuey7ufJsCZzFbvO6z41ifFluU7xASRe3zj4lVAFyE=</b></span>
+										  </div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--bling"><b>=MlPU</b></span>
+										  </div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--bling"><b>-----END PGP PUBLIC KEY BLOCK-----</b></span>
+										  </div>
+									  </section>
+								</div><br><br>
+								
+								<div class="left">
+									<span><strong><a style="color: #AD009E;">•</a> CIFRAR EL FICHERO POR USER-ID</strong></span>
+								</div><p></p>
+								
+								<div class="centext">
+									<span>Cifrar el fichero por <strong>USER-ID</strong> es un modo de corroborar su autenticidad, siempre que el <strong>USER-ID</strong> del fichero coincida con el del <strong>certificado</strong> generado previamente.</span>
+								</div><p></p>
+								
+								<div id="terminal">   
+									  <!-- Terminal Bar -->       
+									  <section id="terminal__bar">          
+										<div id="bar__buttons">            
+										  <button style="background: #FF5FFA;" class="bar__button" id="bar__button--exit">&#10005;</button>            
+										  <button class="bar__button">&#9472;</button>                
+										  <button class="bar__button">&#9723;</button>          
+										</div>
+									  </section>        
+									  <!-- Terminal Body -->
+									  <section style="background-color: #22363f;" id="hdterminal__body">
+										<div id="terminal__prompt">
+											<span id="terminal__prompt--user"><b><a style="color: #FF5FFA;">☰</a>&nbsp;</b></span>
+											<span id="terminal__prompt--bling"><b>gpg <a style="color: #FF8EF6;">--encrypt -r</a> bogart@protonmail.com cifrado-asimetrico.txt</b>&nbsp;</span>
+										  </div>
+									  </section>
+								</div><br><br>
+								
+								<div class="left">
+									<span><strong><a style="color: #AD009E;">•</a> DESENCRIPTAR EL FICHERO</strong></span>
+								</div><p></p>
+								
+								<div class="centext">
+									<span>Al desencriptar el fichero, <strong>gpg</strong> devolverá el tipo de encriptación, la fecha de creación y el <strong>UID</strong> adherido al fichero, para corroborar su autenticidad.</span>
+								</div><p></p>
+								
+								<div id="long-terminal">   
+									  <!-- Terminal Bar -->       
+									  <section id="terminal__bar">          
+										  <div id="bar__buttons">            
+											  <button style="background: #FF5FFA;" class="bar__button" id="bar__button--exit">&#10005;</button>            
+											  <button class="bar__button">&#9472;</button>                
+											  <button class="bar__button">&#9723;</button>          
+										  </div>
+									</section>        
+									  <!-- Terminal Body -->
+									  <section style="background-color: #22363f;" id="hdterminal__body">
+										  <div id="terminal__prompt">
+											<span id="terminal__prompt--user"><b><a style="color: #FF5FFA;">☰</a>&nbsp;</b></span>
+											<span id="terminal__prompt--bling"><b>gpg <a style="color: #FF8EF6;">--decrypt -o</a> fichero-desencriptado.txt cifrado-asimetrico.txt.gpg</b></span>
+										  </div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--bling"><b>gpg: encrypted with <a style="color: #FF8EF6;">4096-bit RSA key</a>, ID D9F8C7D379697A32, <a style="color: #FF8EF6;">created</a> 2023-04-07</b>&nbsp;</span>
+										  </div>
+										  
+										  <div id="terminal__prompt">
+											  <span style="margin-left: 40px;" id="terminal__prompt--bling"><b>"<a style="color: #FF8EF6;">Bogart (Cifrando ficheros con par de claves) &lt;Bogart@protonmail.com&gt;</a>"</b>&nbsp;</span>
+										  </div>
+									</section>
+									</div>
+								</section>
+
+								<section style="margin-top: 160px;" id="conclusion">
+									<div class="centext">
+										<a style="font-size: 19px; color: rgb(194, 0, 194);">☰ </a><span class="purple-bg" style="font-size: 19px;">CONCLUSIÓN</span>
+									</div><p></p>
+								
+									<div class="centext">
+										<span><strong>GPG</strong>, al contrario que <strong>PKI</strong> {<strong>P</strong>rivate <strong>K</strong>ey <strong>I</strong>nfraestructure}, no posee una autoridad certificadora {<strong>CA</strong>}. La única forma de verificar lo que denominamos relaciones de confianza, se basa en que el usuario verifica mediante passphrase, calves pública, fecha de creación\expiración y la firma del fichero, que este proviene de quien dice.</span>
+									</div>
+								</section>
+							</div>
+						</article>
+					</main>
+					
+					<!--- aside --->
+					<aside class="col-md-4 stk-post-hd">
+						<div class="widget widget-recent-posts">
+							<h3 class="widget-title"><a style="color: rgb(195, 0, 189);">↳</a> Tabla de Contenido:</h3>		
+							<ul>
+								<li>
+									<a class="nodeco" href="#intro">INTRO</a>
+								</li>
+								<li>
+									<a class="nodeco" href="#gpg">¿QUÉ PERMITE HACER GPG?</a>
+								</li>
+								<li>
+									<a class="nodeco" href="#passphrase">CIFRADO SIMÉTRICO {PASSPHRASE}</a>
+								</li>
+								<li>
+									<a class="nodeco" href="#asimetrico">CIFRADO ASIMÉTRICO {CLAVE PÚBLICA + FIRMA}</a>
+								</li>
+								<li>
+									<a class="nodeco" href="#conclusion">CONCLUSIÓN</a>
+								</li>
+							</ul>
+						</div><!--- ./aside --->
+						
+						<div class="widget widget-category">
+							<h3 class="widget-title"><a style="color: rgb(195, 0, 189);">✎</a> Notas:</h3>		
+							<ul>
+								<li>
+									<a><strong>gpg</strong>: Herramienta de cifrado y firma OpenPGP</a>
+								</li>
+								<li>
+									<a><strong>--symmetric</strong>: Encriptación sólo con cifrado simétrico</a>
+								</li>
+								<li>
+									<a><strong>-r</strong>: Encriptación para USER-ID</a>
+								</li>
+								<li>
+									<a><strong>--decrypt</strong>: Desencriptar datos</a>
+								</li>
+								<li>
+									<a><strong>-o</strong>: Escribir la salida en un Archivo</a>
+								</li>
+								<li>
+									<a><strong>--full-generate-key</strong>: Generación completa de pares de claves</a>
+								</li>
+							</ul>
+						</div>
+					</aside>
+				</div>
+			</div>
+		</div>
+
+		<footer id="site-footer">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<p class="copyright"><a href="/index"><img style="margin-top: -5px;" src="/blog/img/skull.png" weight="19px" height="19px" /> 0xbogart.github.io</a></p>
+					</div>
+				</div>
+			</div>
+		</footer>
+		<a href="#" id="scrollToTopButtonPurple"><i class="fas fa-arrow-up"></i></a>
+	</body>
+</html>

@@ -1214,7 +1214,7 @@ figure {
 }
 
 .widget-category ul li::before {
-	content: '\f3fe';
+	content: '&#x2705;';
     font-family: "Ionicons";
     position: absolute;
     left: -25px;

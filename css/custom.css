@@ -1,3 +1,26 @@
+.left {
+  text-align: left;
+  margin-right: 8%;
+  margin-left: 4%;
+  overflow: hidden;
+  font-size: 16px;
+}
+
+.leftl {
+  text-align: left;
+  margin-right: 5%;
+  margin-left: 4%;
+  overflow: hidden;
+  font-size: 16px;
+}
+	
+.centext {
+	text-align: center;
+	font-size: 15px;
+	margin-left: 0;
+	letter-spacing: 1px;
+}
+
 /* Eliminar el subrayado de los links */
 .nodeco {
 	text-decoration: none;

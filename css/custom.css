@@ -1165,7 +1165,7 @@ figure {
 }
 
 .widget-archives ul li::before {
-    content: '\f3f3';
+    content: '&#x2705;';
     font-family: "Ionicons";
     position: absolute;
     left: -25px;

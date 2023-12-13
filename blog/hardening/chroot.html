@@ -1,25 +1,28 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 	<head>
-
 		<title>Jaula CHROOT [SFTP-SSH] | 0xBogart</title>
 
 		<!-- meta -->
-		<meta charset="UTF-8">
-	    <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0,user-scalable=no,viewport-fit=cover">
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0,user-scalable=no,viewport-fit=cover">
 		<link rel="icon" type="/image/png" href="/blog/img/skull.png">
+		<link rel="canonical" href="https://0xbogarft.github.io/blog/hardening/chroot">
+		<meta name="author" content="Bogart">
+		<meta name="description" content="Jaula chroot [SFTP-SSH]">
+		<meta name="keywords" content="Jaula chroot [SFTP-SSH]">
+
+		<!-- Twitter Tags -->
+		<meta property="og:title" content="Jaula chroot [SFTP-SSH]">
+		<meta property="og:description" content="Jaula chroot [SFTP-SSH]">
+		<meta property="og:url" content="https://0xbogart.github.io/blog/hardening/chroot">
+		<meta property="og:image" content="https://0xbogart.github.io/blog/img/chroot.avif">
 		<meta name="twitter:card" content="summary_large_image">
 		<meta name="twitter:site" content="@jfb0gart">
 		<meta name="twitter:creator" content="@jfb0gart">
-		<meta property="og:url" content="https://0xbogart.github.io/blog/hardening/chroot">
-		<meta property="og:title" content="chroot" />
-		<meta property="og:description" content="chroot" />
-		<meta content="https://0xbogart.github.io/blog/img/chroot.avif" property="og:image" />
-		<meta name="twitter:image" content="https://0xbogart.github.io/blog/img/chroot.avif" />
-		<meta content="https://0xbogart.github.io/blog/img/chroot.avif" name="twitter:image:src" />
-		<meta name="description" content="chroot">
-		<meta name="keywords" content="chroot">
-		<link rel="canonical" href="https://0xbogart.github.io/blog/hardening/chroot">
+		<meta name="twitter:title" content="Jaula chroot [SFTP-SSH] | 0xBogart">
+		<meta name="twitter:description" content="Jaula chroot [SFTP-SSH] | 0xBogart">
+		<meta property="twitter:image" content="https://0xbogart.github.io/blog/img/chroot.avif">
 
 	    <!-- css -->
 		<link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -37,32 +40,6 @@
 	    <script src="/js/pace.min.js"></script>
 	    <script src="/js/modernizr.custom.js"></script>
 		<script src="/js/aspurplelight.js"></script>
-
-<style>
-
-/* texto izquiera máx */
-.left {
-  text-align: left;
-  margin-right: 8%;
-  margin-left: -5%;
-  overflow: hidden;
-  font-size: 16px;
-}
-	
-/* texto izquiera */
-.leftl {
-  text-align: left;
-  margin-right: 8%;
-  overflow: hidden;
-  font-size: 16px;
-}
-	
-.centext {
-	text-align: center;
-	font-size: 16px;
-	letter-spacing: 1px;
-	}
-</style>
 	</head>
 
 	<body>
@@ -117,7 +94,7 @@
 								
 								
 									<div class="left">
-										<strong><a style="color: #C400B4;">•</a> CREAR EL USUARIO A ENJAULAR</strong>
+										<strong><a style="color: #C400B4;">⦿</a> CREAR EL USUARIO A ENJAULAR</strong>
 									</div>
 
 									<div id="terminal">   
@@ -156,7 +133,7 @@
 									</div><br><br>
 
 									<div class="left">
-										<strong><a style="color: #C400B4;">•</a> CREAR Y MONTAR LA JAULA CHROOT</strong>
+										<strong><a style="color: #C400B4;">⦿</a> CREAR Y MONTAR LA JAULA CHROOT</strong>
 									</div>
 
 									<div id="terminal">   
@@ -187,7 +164,7 @@
 									</div><br><br>
 								
 									<div class="left">
-										<strong><a style="color: #C400B4;">•</a> CONFIGURAR sshd_config</strong>
+										<strong><a style="color: #C400B4;">⦿</a> CONFIGURAR sshd_config</strong>
 									</div><p></p>
 								
 									<div class="centext">
@@ -269,9 +246,9 @@
 										</div><p></p>
 										  
 										  <!--- Subsystem internal-sftp --->
-									<div id="terminal__prompt">
-										<span id="terminal__prompt--bling"># override default of no subsystems&nbsp;</span>				
-										</div>
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--bling"># override default of no subsystems&nbsp;</span>				
+										  </div>
 										  
 										  <div id="terminal__prompt">
 											  <span id="terminal__prompt--bling"><b>Subsystem <a style="color: #FF5FFA;">internal-sftp</a></b></span>				
@@ -320,7 +297,7 @@
 								
 								
 								<div class="left">
-									<strong><span><a style="font-size: 19px; color: rgb(194, 0, 194);">•</a> CONEXIÓN SFTP</span></strong>
+									<strong><span><a style="font-size: 19px; color: rgb(194, 0, 194);">⦿</a> CONEXIÓN SFTP</span></strong>
 								</div><p></p>
 								
 								<div class="centext">

@@ -1,0 +1,181 @@
+@import url('https://fonts.googleapis.com/css?family=Ubuntu');
+@import url('https://fonts.googleapis.com/css?family=Ubuntu+Mono'); 
+
+#container {
+  display: block;
+  justify-content: center;  
+  align-items: center;  
+  height: 50px;
+} 
+#terminal {
+  display: inline-block;
+  white-space: nowrap;
+  margin: 0 auto;
+  width: auto;
+  height: auto;
+  box-shadow: 2px 4px 10px rgba(0,0,0,0.5);
+}
+#long-terminal {
+  display: inline-block;
+  white-space: nowrap;
+  margin: 0 auto;
+  width: 100%;
+  height: auto;
+  box-shadow: 2px 4px 10px rgba(0,0,0,0.5);
+} 
+#terminal__bar {  
+  display: flex;  
+  width: 100%;  
+  height: 30px;  
+  align-items: center;  
+  padding: 0 8px;  
+  box-sizing: border-box;  
+  border-top-left-radius: 5px;  
+  border-top-right-radius: 5px;  
+  background: linear-gradient(#504b45 0%,#3c3b37 100%);
+} 
+#bar__buttons {  
+  display: flex;  
+  align-items: center;
+} 
+.bar__button {  
+  display: flex;  
+  justify-content: center;  
+  align-items: center;  
+  padding: 0;  
+  margin-right: 5px;  
+  font-size: 16px;  
+  height: 12px;  
+  width: 12px;  
+  box-sizing: border-box;  
+  border: none;  
+  border-radius: 10%;  
+  background: linear-gradient(#7d7871 0%, #595953 100%);  
+  text-shadow: 0px 1px 0px rgba(255,255,255,0.2);  
+  box-shadow: 0px 0px 1px 0px #41403A, 0px 1px 1px 0px #474642;
+}
+.bar__button:hover {  
+  cursor: pointer;
+}
+.bar__button:focus {  
+  outline: none;
+}
+#bar__button--exit {  
+  background: linear-gradient(#f37458 0%, #de4c12 100%);    
+  background-clip: padding-box;
+}
+
+#bar__psbutton--exit {  /* Exit button PowerShell */
+  background: linear-gradient(#12bcde 0%, #0fa2bf 100%);    
+  background-clip: padding-box;
+} 
+
+#bar__user {
+  color: #d5d0ce;
+  margin-top: 9px;
+  margin-left: 30%;
+  margin-right: 10%;
+  font-size: 14px;  
+  line-height: 15px;
+} 
+#terminal__body {
+  width: auto;
+  white-space: nowrap;
+  overflow: auto;
+  background: rgba(17, 57, 56, 0.8);
+  font-family: 'Ubuntu Mono';
+  height: calc(100% - 30px);
+  padding-top: 2px;
+  margin-top: -1px;
+}
+
+/** Cool Scroll LX**/
+#terminal__body::-webkit-scrollbar {
+            width: 1px;
+}
+        
+#terminal__body::-webkit-scrollbar-track {
+            border-radius: 1px;
+            background-color: #404040;
+            border: 1px solid #ffffff;
+}
+        
+#terminal__body::-webkit-scrollbar-thumb {
+            border-radius: 1px;
+            background-color: #D5FFB3;
+}
+/** END Cool Scroll **/
+
+#hdterminal__body {
+  width: auto;
+  white-space: nowrap;
+  overflow: auto;
+  background: rgba(17, 57, 56, 0.8);
+  font-family: 'Ubuntu Mono';
+  height: calc(100% - 30px);
+  padding-top: 2px;
+  margin-top: -1px;
+}
+
+/** Cool Scroll HD**/
+#hdterminal__body::-webkit-scrollbar {
+            width: 1px;
+}
+        
+#hdterminal__body::-webkit-scrollbar-track {
+            border-radius: 1px;
+            background-color: #404040;
+            border: 1px solid #ffffff;
+}
+        
+#hdterminal__body::-webkit-scrollbar-thumb {
+            border-radius: 1px;
+            background-color: #ffb3f6;
+}
+/** END Cool Scroll HD **/
+
+#terminal__prompt {
+  display: flex;
+}
+#terminal__prompt--user {
+  color: #fff;
+}
+#terminal__prompt--location { 
+  color: #4878c0;
+}
+#terminal__prompt--location-orange { 
+  color: #ff9554;
+}
+#terminal__prompt--bling {
+  color: #d1d1d1;
+}
+#terminal__prompt--cursor {  
+  display: flex;  
+  height: 17px;  
+  width: 8px;  
+  margin-top: 9px;
+  margin-left: 9px;  
+  animation: blink 1200ms linear infinite;
+}
+@keyframes blink {
+  0% {
+    background: #FF9E00;
+  }
+  49% {
+    background: #FF9E00;
+  }
+  60% {
+    background: transparent;
+  }  
+  99% {    
+    background: transparent;
+  }  100% {    
+    background: #FF9E00;  
+  }
+}
+@media (max-width: 600px) {
+  #terminal {
+    max-height: 90%;
+    width: 90%;
+  }
+}

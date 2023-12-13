@@ -1146,8 +1146,8 @@ figure {
     font-family: "Ionicons";
     position: absolute;
     left: -17px;
-    top: 3px;
-    font-size: 16px;
+    top: 0px;
+    font-size: 13px;
     color: #000;
 }
 

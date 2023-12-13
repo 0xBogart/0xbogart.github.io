@@ -1,0 +1,359 @@
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+
+		<title>Protección de Sesión: TMOUT - vLock - i3lock</title>
+
+		<!-- meta -->
+		<meta charset="utf-8">
+	    <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0,user-scalable=no,viewport-fit=cover">
+		<link rel="icon" type="/image/png" href="/blog/img/skull.png">
+		<meta name="twitter:card" content="summary_large_image">
+		<meta name="twitter:site" content="@jfb0gart">
+		<meta name="twitter:creator" content="@jfb0gart">
+		<meta property="og:url" content="https://0xbogart.github.io/blog/hardening/lock-session">
+		<meta property="og:title" content="TMOUT, vLock, i3lock">
+		<meta property="og:description" content="Lock Linux Session">
+		<meta content="https://0xbogart.github.io/blog/img/session-locked.avif" property="og:image">
+		<meta name="twitter:image" content="https://0xbogart.github.io/blog/img/session-locked.avif">
+		<meta content="https://0xbogart.github.io/blog/img/session-locked.avif" name="twitter:image:src">
+
+
+	    <!-- css -->
+		<link rel="canonical" href="https://0xbogart.github.io/blog/hardening/lock-session">
+		<meta name="description" content="Lock Linux session">
+		<meta name="keywords" content="TMOUT vLock i3lock">
+
+	    <!-- css -->
+		<link rel="stylesheet" href="/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/css/ionicons.min.css">
+		<link rel="stylesheet" href="/css/pace.css">
+	    <link rel="stylesheet" href="/css/custom.css">
+		<link rel="stylesheet" href="/css/rhterm.css">
+		<link rel="stylesheet" href="/css/rhvoid.css">
+		<link rel="stylesheet" href="/css/z.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+	    <!-- js -->
+	    <script src="/js/jquery-2.1.3.min.js"></script>
+	    <script src="/js/bootstrap.min.js"></script>
+	    <script src="/js/pace.min.js"></script>
+	    <script src="/js/modernizr.custom.js"></script>
+		<script src="/js/aspurplelight.js"></script>
+
+<style>
+
+/* texto izquiera máx */
+.left {
+  text-align: left;
+  margin-right: 8%;
+  margin-left: -5%;
+  overflow: hidden;
+  font-size: 16px;
+}
+	
+/* texto izquiera */
+.leftl {
+  text-align: left;
+  margin-right: 8%;
+  overflow: hidden;
+  font-size: 16px;
+}
+	
+.centext {
+	text-align: center;
+	font-size: 16px;
+	letter-spacing: 1px;
+	}
+</style>
+	</head>
+
+	<body class="bg">
+		<div class="container">	
+			<header id="site-header">
+				<div class="row">
+					<div style="margin-top: -2%; margin-bottom: -3%;">
+						<h1><a class="nodeco" href="/blog/hardening" style="color: rgb(194, 0, 194);">☰</a>Hardening</h1>
+					</div><!-- col-4 -->
+				</div>
+				
+				<div class="row justify-content-end">
+					<div style="margin-top: -3%; margin-bottom: -3%;" class="col-3">
+						<nav class="navbar navbar-expand-lg navbar-light">
+							<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#bs-example-navbar-collapse-1" aria-controls="bs-example-navbar-collapse-1" aria-expanded="false" aria-label="Toggle navigation">
+								<span class="navbar-toggler-icon"></span>
+							</button>
+							
+							<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+								<ul class="navbar-nav">
+									<li class="nav-item">
+										<a style="font-size: 25px;" class="nav-link" href="/index" data-hover="Home">Home</a>
+									</li>
+								</ul>
+							</div><!--- .navbar-collapse --->
+						</nav>
+					</div><!-- col-md-8 -->
+				</div>
+			</header>
+		</div>
+
+		<div class="content-body">
+			<div class="container">
+				<div class="row">
+					<main class="col-md-8">
+						<article class="post post-1">
+							<header  class="entry-header">
+								<h1 class="blh1">BLØQUEØ DE SESIØN</h1>
+								<h2 class="blh2">TMOUT | vLock | i3lock</h2>
+							</header>
+							<div class="entry-content clearfix">
+								
+								<section id="intro">
+									<div class="centext">
+										<!--- INTRO --->
+										<span>Por más medidas de seguridad que se tomen, si dejas una sesión abierta en el trabajo o en un lugar público y abandonas tu puesto, te expones a que cualquier persona en cuestión de segundos se haga con información sensible de tu sistema.</span>
+									</div>
+								</section>
+								<!--- ./INTRO --->
+
+								<section style="margin-top: 150px;" id="TMOUT">
+									<div>
+										<a style="font-size: 19px; color: rgb(194, 0, 194);">☰ </a><span class="purple-bg" style="font-size: 19px;">TMOUT</span><p></p>
+									</div>
+								
+								
+								<div class="centext">
+									<span><strong>TMOUT</strong> es una variable de entorno en Linux que permite definir el tiempo de inactividad en una sesión para cerrarla.</span><p></p>
+									
+									<span>Si esta variable se configura a <strong>10</strong>, la sesión se cerrará automáticamente a los 10 segundos de inactividad: <strong>TMOUT=10</strong></span>
+								</div><p></p>
+
+								<div id="terminal">   
+									  <!-- Terminal Bar -->       
+									  <section id="terminal__bar">          
+										<div id="bar__buttons">            
+										  <button class="bar__button" id="bar__button--exit">&#10005;</button>            
+										  <button class="bar__button">&#9472;</button>                
+										  <button class="bar__button">&#9723;</button>          
+										</div>
+									  </section>        
+									  <!-- Terminal Body -->
+									  <section id="terminal__body">
+										<div id="terminal__prompt">
+											<span id="terminal__prompt--user"><b><a style="color: #FF5FFA;">☰</a>&nbsp;</b></span>
+											<span id="terminal__prompt--bling"><b>TMOUT<a style="color: #FF5FFA;">=</a>10</b>&nbsp;</span>
+										  </div>
+									  </section>
+									</div><br><br>
+
+								<div class="centext">
+									<span>Transcurridos 10 segundos:</span>
+								</div><p></p>
+
+								<div id="terminal">   
+									  <!-- Terminal Bar -->       
+									  <section id="terminal__bar">          
+										<div id="bar__buttons">            
+										  <button class="bar__button" id="bar__button--exit">&#10005;</button>            
+										  <button class="bar__button">&#9472;</button>                
+										  <button class="bar__button">&#9723;</button>          
+										</div>
+									  </section>        
+									  <!-- Terminal Body -->
+									  <section id="terminal__body">
+										<div id="terminal__prompt">
+											<span id="terminal__prompt--bling"><b>CentOS Stream 8</b></span>
+										  </div>
+										  
+										  <div id="terminal__prompt">
+											<span id="terminal__prompt--bling"><b>Kernel 4.18.0-481.el8.x86_64 on an x86_64</b>&nbsp;</span>
+										  </div><br>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--bling"><b>CentOS8 login: </b></span>
+											  <span id="terminal__prompt--hdcursor"></span>
+										  </div>
+									</section>
+									</div>
+								</section>
+								
+								<section style="margin-top: 160px;" id="vLock">
+									<div class="centext">
+										<a style="font-size: 19px; color: rgb(194, 0, 194);">☰ </a><span class="purple-bg" style="font-size: 19px;">VLOCK</span><p></p>
+									
+										<span>Es un programa para bloquear una o más sesiones en la consola de Linux. Esto es especialmente útil para máquinas Linux que tienen múltiples usuarios con acceso a la consola</span>
+									</div><p></p>
+								
+									<div id="terminal">
+										<!-- Terminal Bar -->       
+										<section id="terminal__bar">          
+											<div id="bar__buttons">            
+												<button class="bar__button" id="bar__button--exit">&#10005;</button>            
+												<button class="bar__button">&#9472;</button>                
+												<button class="bar__button">&#9723;</button>          
+											</div>
+										</section>        
+										<!-- Terminal Body -->
+										<section id="terminal__body">
+											<div id="terminal__prompt">
+												<span id="terminal__prompt--user"><a style="color: #FF5FFA;">☰</a>&nbsp;</span>
+												<span id="terminal__prompt--bling"><b>vlock<a style="color: #FF5FFA;"> --help</a></b></span>
+											</div><p></p>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--bling"><b>vlock: locks virtual consoles, saving your current session.</b></span>
+										  </div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--bling"><b>Usage: vlock [options]</b></span>
+										  </div>
+										  
+										  <div id="terminal__prompt">
+											  <span style="margin-left: 66px;" id="terminal__prompt--bling"><b>Where [options] are any of:</b></span>
+										  </div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--bling"><b>Where [options] are any of:</b></span>
+										  </div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--bling"><b>-c or --current: lock only this virtual console, allowing user to</b>&nbsp;</span>
+										  </div>
+										  
+										  <div id="terminal__prompt">
+												  <span style="margin-left: 65px;" id="terminal__prompt--bling"><b>switch to other virtual consoles.</b></span>
+										  </div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--bling"><b>-a or --all: lock all virtual consoles by preventing other users</b></span>
+										  </div>
+										  
+										  <div id="terminal__prompt">
+												  <span style="margin-left: 65px;" id="terminal__prompt--bling"><b>from switching virtual consoles.</b></span>
+										  </div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--bling"><b>-v or --version: Print the version number of vlock and exit.</b></span>
+										  </div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--bling"><b>-h or --help: Print this help message and exit.</b></span>
+										  </div>
+									</section>
+									</div><br><br>
+								
+								<div class="centext">
+									<span>La opción <strong>-c</strong> bloquea la sesión actual instantáneamente:</span>
+								</div><p></p>
+								
+								<div id="terminal">
+									  <!-- Terminal Bar -->       
+									  <section id="terminal__bar">          
+										<div id="bar__buttons">            
+										  <button class="bar__button" id="bar__button--exit">&#10005;</button>            
+										  <button class="bar__button">&#9472;</button>                
+										  <button class="bar__button">&#9723;</button>          
+										</div>
+									  </section>        
+									  <!-- Terminal Body -->
+									  <section id="terminal__body">
+										<div id="terminal__prompt">
+											<span id="terminal__prompt--user"><b><a style="color: #FF5FFA;">☰</a>&nbsp;</b></span>
+							<span id="terminal__prompt--bling"><b>vlock <a style="color: #FF5FFA;">-c</a></b></span>
+										</div>
+										  
+										  <div id="terminal__prompt">
+											  <span style="margin-bottom: 40px;" id="terminal__prompt--bling"><b>This tty (pts/0) is not a virtual console.</b></span>				
+										  </div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--bling"><b>The pts/0 is now locked by user.</b></span>				
+										  </div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--bling"><b>Password:</b></span>
+											  <span id="terminal__prompt--hdcursor"></span>
+										  </div>
+									</section>
+									</div>
+								</section>
+								
+								<section style="margin-top: 160px;" id="i3lock">
+									<div class="centext">
+										<a style="font-size: 19px; color: rgb(194, 0, 194);">☰ </a><span class="purple-bg" style="font-size: 19px;">I3LOCK</span><p></p>
+									
+										<span><strong>i3lock</strong> es un screen locker en modo gráfico. Cuando se ejecuta el comando i3lock, aparece un salvapantallas blanco totalmente maximizado y sin bordes.</span><br><br>
+									
+										<span>Sin embargo, permite configurar el color de la pantalla de bloqueo e incluso elegir qué imagen quieres que se muestre durante el bloqueo.</span><br><br>
+									
+										<span>Una vez activado <strong>i3locker</strong>, es necesario introducir la password del usuario para desbloquearlo. Al teclear la password verás una circunferencia verde iluminándose con cada tecla pulsada, algo parecido a esto:</span><p></p>
+									
+									<img src="img/i3lock.webp" width="90%">
+								</div><p></p><br>
+								
+								<div class="left">
+									<span><strong><a style="color: #AD009E;">•</a> Bloquear con un fondo de color: </strong>i3lock <a style="color: #AD009E;"><strong>-c</strong></a> 000000</span><p></p>
+									
+									<span><strong><a style="color: #AD009E;">•</a> Bloquear seleccionando una imagen: </strong>i3lock <a style="color: #AD009E;"><strong>-i</strong></a> /ruta/de/la/imagen.png</span><p></p>
+								
+								<span><strong><a style="color: #AD009E;">•</a> No mostrar la confirmación verde al teclear la password: </strong>i3lock <a style="color: #AD009E;"><strong>-u</strong></a></span><p></p>
+									
+									<span><strong><a style="color: #AD009E;">•</a> Mostrar el número de intentos fallidos: </strong>i3lock <a style="color: #AD009E;"><strong>-f</strong></a></span>
+									</div>
+								</section>
+							</div>
+						</article>
+					</main>
+					
+					<!--- aside --->
+					<aside class="col-md-4 stk-post-hd">
+						<div class="widget widget-recent-posts">
+							<h3 class="widget-title"><a style="color: rgb(195, 0, 189);">↳</a> Tabla de Contenido:</h3>		
+							<ul>
+								<li>
+									<a class="nodeco" href="#intro">INTRO</a>
+								</li>
+								<li>
+									<a class="nodeco" href="#TMOUT">TMOUT</a>
+								</li>
+								<li>
+									<a class="nodeco" href="#vLock">VLOCK</a>
+								</li>
+								<li>
+									<a class="nodeco" href="#i3lock">I3LOCK</a>
+								</li>
+							</ul>
+						</div><!--- ./aside --->
+						
+						<div class="widget widget-category">
+							<h3 class="widget-title"><a style="color: rgb(195, 0, 189);">✎</a> Notas:</h3>		
+							<ul>
+								<li>
+									<a><strong>TMOUT</strong>: En un shell interactivo, el valor de esta variable se interpreta como el número de segundos que hay que esperar para recibir un bloqueo de sesión después de emitir el prompt primario</a>
+								</li>
+								<li>
+									<a><strong>vLock</strong>: Es un programa para bloquear una o más sesiones en la consola de Linux.  Esto es especialmente útil para máquinas Linux que tienen múltiples usuarios con acceso a la consola</a>
+								</li>
+								<li>
+									<a><strong>i3lock</strong>: Es un simple bloqueador de pantalla como slock. Tras iniciarlo, verás una pantalla blanca (puedes configurar el color\imagen). Puedes volver a tu pantalla introduciendo tu contraseña</a>
+								</li>
+							</ul>
+						</div>
+					</aside>
+				</div>
+			</div>
+		</div>
+
+		<footer id="site-footer">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<p class="copyright nodeco"><a href="/index"><img style="margin-top: -5px;" src="/blog/img/skull.png" weight="19px" height="19px" /> 0xbogart</a></p>
+					</div>
+				</div>
+			</div>
+		</footer>
+		<a href="#" id="scrollToTopButtonPurple"><i class="fas fa-arrow-up"></i></a>
+	</body>
+</html>

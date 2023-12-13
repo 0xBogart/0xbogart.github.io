@@ -1214,12 +1214,12 @@ figure {
 }
 
 .widget-category ul li::before {
-	content: '🗹';
+    content: '🗹';
     font-family: "Ionicons";
     position: absolute;
     left: -25px;
     top: 1px;
-    font-size: 18px;
+    font-size: 16px;
     color: #000;
 }
 

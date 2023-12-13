@@ -67,7 +67,7 @@
   .nxt a:before,
   .nxt a:after{
     position: absolute;
-    content: ">>";
+    content: "&gt;";
     height: 52px;
     width: 80px;
     display: flex;

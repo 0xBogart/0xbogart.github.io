@@ -1,149 +1,123 @@
-
 <!DOCTYPE html>
 <html lang="es">
-	<head>
+<head>
+	<title>GPG | 0xBogart</title>
+	
+	<!-- meta -->
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0,user-scalable=no,viewport-fit=cover">
+	<link rel="icon" type="/image/png" href="/blog/img/skull.png">
+	<link rel="canonical" href="https://0xbogart.github.io/blog/hardening/gpg">
+	<meta name="author" content="Bogart">
+	<meta name="keywords" content="GPG: Cifrado y Firma de ficheros">
+	<meta name="description" content="GPG: Cifrado y Firma de ficheros">
 
-		<title>GPG | 0xBogart</title>
-
-		<!-- meta -->
-		<meta charset="UTF-8">
-	    <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0,user-scalable=no,viewport-fit=cover">
-		<link rel="icon" type="/image/png" href="/blog/img/skull.png">
-		<meta name="twitter:card" content="summary_large_image">
-		<meta name="twitter:site" content="@jfb0gart">
-		<meta name="twitter:creator" content="@jfb0gart">
-		<meta property="og:url" content="https://0xbogart.github.io/blog/hardening/gpg">
-		<meta property="og:title" content="gpg" />
-		<meta property="og:description" content="gpg" />
-		<meta content="https://0xbogart.github.io/blog/img/gpg.webp" property="og:image">
-		<meta name="twitter:image" content="https://0xbogart.github.io/blog/img/gpg.webp">
-		<meta content="https://0xbogart.github.io/blog/img/gpg.webp" name="twitter:image:src">
-		<meta name="description" content="gpg">
-		<meta name="keywords" content="gpg">
-		<link rel="canonical" href="https://0xbogart.github.io/blog/hardening/gpg">
+	<!-- Twitter Tags -->
+	<meta property="og:title" content="GPG: Cifrado y Firma de ficheros">
+	<meta property="og:description" content="GPG: Cifrado y Firma de ficheros">
+	<meta property="og:url" content="https://0xbogart.github.io/blog/hardening/gpg">
+	<meta property="og:image" content="https://0xbogart.github.io/blog/img/gpg.webp">
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:site" content="@jfb0gart">
+	<meta name="twitter:creator" content="@jfb0gart">
+	<meta name="twitter:title" content="GPG: Cifrado y Firma de ficheros | 0xBogart">
+	<meta name="twitter:description" content="GPG: Cifrado y Firma de ficheros | 0xBogart">
+	<meta name="twitter:image" content="https://0xbogart.github.io/blog/img/gpg.webp">
 		
+	<!-- css -->
+	<link rel="stylesheet" href="/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/css/ionicons.min.css">
+	<link rel="stylesheet" href="/css/pace.css">
+	<link rel="stylesheet" href="/css/custom.css">
+	<link rel="stylesheet" href="/css/lithiumterm.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
-	    <!-- css -->
-		<link rel="stylesheet" href="/css/bootstrap.min.css">
-		<link rel="stylesheet" href="/css/ionicons.min.css">
-		<link rel="stylesheet" href="/css/pace.css">
-	    <link rel="stylesheet" href="/css/custom.css">
-		<link rel="stylesheet" href="/css/lithiumterm.css">
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+	<!-- js -->
+	<script src="/js/jquery-2.1.3.min.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
+	<script src="/js/pace.min.js"></script>
+	<script src="/js/modernizr.custom.js"></script>
+	<script src="/js/aspurplelight.js"></script>
+</head>
 
-	    <!-- js -->
-	    <script src="/js/jquery-2.1.3.min.js"></script>
-	    <script src="/js/bootstrap.min.js"></script>
-	    <script src="/js/pace.min.js"></script>
-	    <script src="/js/modernizr.custom.js"></script>
-		<script src="/js/aspurplelight.js"></script>
+<body>
+	<div class="container">	
+		<header id="site-header">
+			<div class="row">
+				<div style="margin-top: -2%; margin-bottom: -3%;">
+					<h1><a class="nodeco" href="/blog/hardening" style="color: rgb(194, 0, 194);">☰</a>Hardening</h1>
+				</div><!-- col-4 -->
+			</div>
+			<div class="row justify-content-end">
+				<div style="margin-top: -3%; margin-bottom: -3%;" class="col-3">
+					<nav class="navbar navbar-expand-lg navbar-light">
+						<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#bs-example-navbar-collapse-1" aria-controls="bs-example-navbar-collapse-1" aria-expanded="false" aria-label="Toggle navigation">
+							<span class="navbar-toggler-icon"></span>
+						</button>
+						<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+							<ul class="navbar-nav">
+								<li class="nav-item">
+									<a style="font-size: 25px;" class="nav-link" href="/index" data-hover="Home">Home</a>
+								</li>
+							</ul>
+						</div><!--- .navbar-collapse --->
+					</nav>
+				</div><!-- col-md-8 -->
+			</div>
+		</header>
+	</div>
 
-<style>
-/* texto izquiera máx */
-.left {
-  text-align: left;
-  margin-right: 8%;
-  margin-left: -5%;
-  overflow: hidden;
-  font-size: 16px;
-}
-	
-/* texto izquiera */
-.leftl {
-  text-align: left;
-  margin-right: 8%;
-  overflow: hidden;
-  font-size: 16px;
-}
-	
-.centext {
-	text-align: center;
-	font-size: 16px;
-	letter-spacing: 1px;
-	}
-</style>
-	</head>
-
-	<body>
-		<div class="container">	
-			<header id="site-header">
-				<div class="row">
-					<div style="margin-top: -2%; margin-bottom: -3%;">
-						<h1><a class="nodeco" href="/blog/hardening" style="color: rgb(194, 0, 194);">☰</a>Hardening</h1>
-					</div><!-- col-4 -->
-				</div>
-				<div class="row justify-content-end">
-					<div style="margin-top: -3%; margin-bottom: -3%;" class="col-3">
-						<nav class="navbar navbar-expand-lg navbar-light">
-							<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#bs-example-navbar-collapse-1" aria-controls="bs-example-navbar-collapse-1" aria-expanded="false" aria-label="Toggle navigation">
-								<span class="navbar-toggler-icon"></span>
-							</button>
-							<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-								<ul class="navbar-nav">
-									<li class="nav-item">
-										<a style="font-size: 25px;" class="nav-link" href="/index" data-hover="Home">Home</a>
-									</li>
-								</ul>
-							</div><!--- .navbar-collapse --->
-						</nav>
-					</div><!-- col-md-8 -->
-				</div>
-			</header>
-		</div>
-
-		<div class="content-body">
-			<div class="container">
-				<div class="row">
-					<main class="col-md-8">
-						<article class="post post-1">
-							<header  class="entry-header">
-								<h1 class="blh1">GPG [GNU Privacy Guard]</h1>
-								<h2 class="blh2">CIFRADO Y FIRMA DE FICHEROS</h2>
-							</header>
+	<div class="content-body">
+		<div class="container">
+			<div class="row">
+				<main class="col-md-8">
+					<article class="post post-1">
+						<header  class="entry-header">
+							<h1 class="blh1">GPG [GNU Privacy Guard]</h1>
+							<h2 class="blh2">CIFRADO Y FIRMA DE FICHEROS</h2>
+						</header>
 							
-							<div class="entry-content clearfix">
-								<section style="margin-top: 50px;" id="intro">
-									<div class="centext">
-										<!--- INTRO --->
-										<span>Se trata de una herramienta de cifrado y firmado de ficheros, sucesor de <strong>PGP</strong> {<strong>P</strong>retty <strong>G</strong>ood <strong>P</strong>rivacy}</span>
-									</div>
-								</section>
-								<!--- ./INTRO --->
+						<div class="entry-content clearfix">
+							<!--- INTRO --->
+							<section style="margin-top: 50px;" id="intro">
+								<div class="centext">
+									<span>Se trata de una herramienta de cifrado y firmado de ficheros, sucesor de <strong>PGP</strong> {<strong>P</strong>retty <strong>G</strong>ood <strong>P</strong>rivacy}</span>
+								</div>
+							</section>
+							<!--- ./INTRO --->
 								
-								<section style="margin-top: 150px;" id="gpg">
-									<div class="centext">
-										<a style="font-size: 19px; color: rgb(194, 0, 194);">☰ </a><span class="purple-bg" style="font-size: 19px;">¿QUÉ PERMITE HACER GPG?</span>
-									</div><p></p>
+							<section style="margin-top: 150px;" id="gpg">
+								<div class="centext">
+									<a style="font-size: 19px; color: rgb(194, 0, 194);">☰ </a><span class="purple-bg" style="font-size: 19px;">¿QUÉ PERMITE HACER GPG?</span>
+								</div><p></p>
 								
-									<div class="left">
-										<span><strong><a style="color: #AD009E;">•</a> Cifrar ficheros por passphrase:</strong> Utiliza una misma clave para cifrar y descifrar <strong>{</strong>CIFRADO SIMÉTRICO<strong>}</strong></span><p></p>
-									
-										<span><strong><a style="color: #AD009E;">•</a> Cifrar ficheros por clave pública:</strong> El fichero se cifra completamente con una clave pública <strong>{</strong>CIFRADO ASIMÉTRICO<strong>}</strong></span><p></p>
-									
-										<span><strong><a style="color: #AD009E;">•</a> Firmar ficheros por clave privada:</strong> Verifica si el fichero pertenece a quien debería.</span>
-									</div>
-								</section>
+								<div class="left">
+									<span><strong><a style="color: #AD009E;">•</a> Cifrar ficheros por passphrase:</strong> Utiliza una misma clave para cifrar y descifrar <strong>{</strong>CIFRADO SIMÉTRICO<strong>}</strong></span><p></p>
+									<span><strong><a style="color: #AD009E;">•</a> Cifrar ficheros por clave pública:</strong> El fichero se cifra completamente con una clave pública <strong>{</strong>CIFRADO ASIMÉTRICO<strong>}</strong></span><p></p>
+									<span><strong><a style="color: #AD009E;">•</a> Firmar ficheros por clave privada:</strong> Verifica si el fichero pertenece a quien debería.</span>
+								</div>
+							</section>
 
-								<section style="margin-top: 160px;" id="passphrase">
+							<section style="margin-top: 160px;" id="passphrase">
 								<div class="centext">
 									<a style="font-size: 19px; color: rgb(194, 0, 194);">☰ </a><span class="purple-bg" style="font-size: 19px;">CIFRADO SIMÉTRICO {PASSPHRASE}</span><p></p>
 								</div><br>
-								
+
 								<div class="centext">
 									<span>Crear un archivo <strong>.txt</strong>, editarlo para escribir algún texto en él y cifrarlo simétricamente con <strong>gpg</strong></span>
 								</div><p></p>
 
 								<div id="terminal">   
-									  <!-- Terminal Bar -->       
-									  <section id="terminal__bar">          
+									<!-- Terminal Bar -->       
+									<section id="terminal__bar">          
 										<div id="bar__buttons">            
-										  <button style="background: #FF5FFA;" class="bar__button" id="bar__button--exit">&#10005;</button>            
-										  <button class="bar__button">&#9472;</button>                
-										  <button class="bar__button">&#9723;</button>          
+											<button style="background: #FF5FFA;" class="bar__button" id="bar__button--exit">&#10005;</button>            
+											<button class="bar__button">&#9472;</button>                
+											<button class="bar__button">&#9723;</button>          
 										</div>
-									  </section>        
-									  <!-- Terminal Body -->
-									  <section style="background-color: #22363f;" id="hdterminal__body">
+									</section>        
+									<!-- Terminal Body -->
+									<section style="background-color: #22363f;" id="hdterminal__body">
 										<div id="terminal__prompt">
 											<span id="terminal__prompt--user"><b><a style="color: #FF5FFA;">☰</a>&nbsp;</b></span>
 											<span id="terminal__prompt--bling"><b>touch<a style="color: #FF8EF6;"> cifrado-simetrico.txt</a></b></span>
@@ -663,68 +637,68 @@ acciones como escribir en el teclado, mover el ratón o utilizar los discos dura
 								</section>
 							</div>
 						</article>
-					</main>
+				</main>
 					
-					<!--- aside --->
-					<aside class="col-md-4 stk-post-hd">
-						<div class="widget widget-recent-posts">
-							<h3 class="widget-title"><a style="color: rgb(195, 0, 189);">↳</a> Tabla de Contenido:</h3>		
-							<ul>
-								<li>
-									<a class="nodeco" href="#intro">INTRO</a>
-								</li>
-								<li>
-									<a class="nodeco" href="#gpg">¿QUÉ PERMITE HACER GPG?</a>
-								</li>
-								<li>
-									<a class="nodeco" href="#passphrase">CIFRADO SIMÉTRICO {PASSPHRASE}</a>
-								</li>
-								<li>
-									<a class="nodeco" href="#asimetrico">CIFRADO ASIMÉTRICO {CLAVE PÚBLICA + FIRMA}</a>
-								</li>
-								<li>
-									<a class="nodeco" href="#conclusion">CONCLUSIÓN</a>
-								</li>
-							</ul>
-						</div><!--- ./aside --->
+<!--- aside --->
+<aside class="col-md-4 stk-post-hd">
+	<div class="widget widget-recent-posts">
+		<h3 class="widget-title"><a style="color: rgb(195, 0, 189);">↳</a> Tabla de Contenido:</h3>		
+		<ul>
+			<li>
+				<a class="nodeco" href="#intro">INTRO</a>
+			</li>
+			<li>
+				<a class="nodeco" href="#gpg">¿QUÉ PERMITE HACER GPG?</a>
+			</li>
+			<li>
+				<a class="nodeco" href="#passphrase">CIFRADO SIMÉTRICO {PASSPHRASE}</a>
+			</li>
+			<li>
+				<a class="nodeco" href="#asimetrico">CIFRADO ASIMÉTRICO {CLAVE PÚBLICA + FIRMA}</a>
+			</li>
+			<li>
+				<a class="nodeco" href="#conclusion">CONCLUSIÓN</a>
+			</li>
+		</ul>
+	</div><!--- ./aside --->
 						
-						<div class="widget widget-category">
-							<h3 class="widget-title"><a style="color: rgb(195, 0, 189);">✎</a> Notas:</h3>		
-							<ul>
-								<li>
-									<a><strong>gpg</strong>: Herramienta de cifrado y firma OpenPGP</a>
-								</li>
-								<li>
-									<a><strong>--symmetric</strong>: Encriptación sólo con cifrado simétrico</a>
-								</li>
-								<li>
-									<a><strong>-r</strong>: Encriptación para USER-ID</a>
-								</li>
-								<li>
-									<a><strong>--decrypt</strong>: Desencriptar datos</a>
-								</li>
-								<li>
-									<a><strong>-o</strong>: Escribir la salida en un Archivo</a>
-								</li>
-								<li>
-									<a><strong>--full-generate-key</strong>: Generación completa de pares de claves</a>
-								</li>
-							</ul>
-						</div>
-					</aside>
-				</div>
+	<div class="widget widget-category">
+		<h3 class="widget-title"><a style="color: rgb(195, 0, 189);">✎</a> Notas:</h3>		
+		<ul>
+			<li>
+				<a><strong>gpg</strong>: Herramienta de cifrado y firma OpenPGP</a>
+			</li>
+			<li>
+				<a><strong>--symmetric</strong>: Encriptación sólo con cifrado simétrico</a>
+			</li>
+			<li>
+				<a><strong>-r</strong>: Encriptación para USER-ID</a>
+			</li>
+			<li>
+				<a><strong>--decrypt</strong>: Desencriptar datos</a>
+			</li>
+			<li>
+				<a><strong>-o</strong>: Escribir la salida en un Archivo</a>
+			</li>
+			<li>
+				<a><strong>--full-generate-key</strong>: Generación completa de pares de claves</a>
+			</li>
+		</ul>
+	</div>
+</aside>
+</div>
+</div>
+</div>
+
+<footer id="site-footer">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<p class="copyright"><a href="/index"><img style="margin-top: -5px;" src="/blog/img/skull.png" weight="19px" height="19px" /> 0xbogart.github.io</a></p>
 			</div>
 		</div>
-
-		<footer id="site-footer">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-12">
-						<p class="copyright"><a href="/index"><img style="margin-top: -5px;" src="/blog/img/skull.png" weight="19px" height="19px" /> 0xbogart.github.io</a></p>
-					</div>
-				</div>
-			</div>
-		</footer>
-		<a href="#" id="scrollToTopButtonPurple"><i class="fas fa-arrow-up"></i></a>
-	</body>
+	</div>
+</footer>
+	<a href="#" id="scrollToTopButtonPurple"><i class="fas fa-arrow-up"></i></a>
+</body>
 </html>

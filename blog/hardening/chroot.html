@@ -1,140 +1,139 @@
 <!DOCTYPE html>
 <html lang="es">
-	<head>
-		<title>Jaula CHROOT [SFTP-SSH] | 0xBogart</title>
+<head>
+	<title>Jaula CHROOT [SFTP-SSH] | 0xBogart</title>
+	
+	<!-- meta -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0,user-scalable=no,viewport-fit=cover">
+	<link rel="icon" type="/image/png" href="/blog/img/skull.png">
+	<link rel="canonical" href="https://0xbogarft.github.io/blog/hardening/chroot">
+	<meta name="author" content="Bogart">
+	<meta name="description" content="Jaula chroot [SFTP-SSH]">
+	<meta name="keywords" content="Jaula chroot [SFTP-SSH]">
 
-		<!-- meta -->
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0,user-scalable=no,viewport-fit=cover">
-		<link rel="icon" type="/image/png" href="/blog/img/skull.png">
-		<link rel="canonical" href="https://0xbogarft.github.io/blog/hardening/chroot">
-		<meta name="author" content="Bogart">
-		<meta name="description" content="Jaula chroot [SFTP-SSH]">
-		<meta name="keywords" content="Jaula chroot [SFTP-SSH]">
+	<!-- Twitter Tags -->
+	<meta property="og:title" content="Jaula chroot [SFTP-SSH]">
+	<meta property="og:description" content="Jaula chroot [SFTP-SSH]">
+	<meta property="og:url" content="https://0xbogart.github.io/blog/hardening/chroot">
+	<meta property="og:image" content="https://0xbogart.github.io/blog/img/chroot.avif">
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:site" content="@jfb0gart">
+	<meta name="twitter:creator" content="@jfb0gart">
+	<meta name="twitter:title" content="Jaula chroot [SFTP-SSH] | 0xBogart">
+	<meta name="twitter:description" content="Jaula chroot [SFTP-SSH] | 0xBogart">
+	<meta property="twitter:image" content="https://0xbogart.github.io/blog/img/chroot.avif">
 
-		<!-- Twitter Tags -->
-		<meta property="og:title" content="Jaula chroot [SFTP-SSH]">
-		<meta property="og:description" content="Jaula chroot [SFTP-SSH]">
-		<meta property="og:url" content="https://0xbogart.github.io/blog/hardening/chroot">
-		<meta property="og:image" content="https://0xbogart.github.io/blog/img/chroot.avif">
-		<meta name="twitter:card" content="summary_large_image">
-		<meta name="twitter:site" content="@jfb0gart">
-		<meta name="twitter:creator" content="@jfb0gart">
-		<meta name="twitter:title" content="Jaula chroot [SFTP-SSH] | 0xBogart">
-		<meta name="twitter:description" content="Jaula chroot [SFTP-SSH] | 0xBogart">
-		<meta property="twitter:image" content="https://0xbogart.github.io/blog/img/chroot.avif">
+	<!-- css -->
+	<link rel="stylesheet" href="/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/css/ionicons.min.css">
+	<link rel="stylesheet" href="/css/pace.css">
+	<link rel="stylesheet" href="/css/custom.css">
+	<link rel="stylesheet" href="/css/rhterm.css">
+	<link rel="stylesheet" href="/css/rhvoid.css">
+	<link rel="stylesheet" href="/css/lithiumterm2.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
-	    <!-- css -->
-		<link rel="stylesheet" href="/css/bootstrap.min.css">
-		<link rel="stylesheet" href="/css/ionicons.min.css">
-		<link rel="stylesheet" href="/css/pace.css">
-	    <link rel="stylesheet" href="/css/custom.css">
-		<link rel="stylesheet" href="/css/rhterm.css">
-		<link rel="stylesheet" href="/css/rhvoid.css">
-		<link rel="stylesheet" href="/css/lithiumterm2.css">
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+	<!-- js -->
+	<script src="/js/jquery-2.1.3.min.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
+	<script src="/js/pace.min.js"></script>
+	<script src="/js/modernizr.custom.js"></script>
+	<script src="/js/aspurplelight.js"></script>
+</head>
 
-	    <!-- js -->
-	    <script src="/js/jquery-2.1.3.min.js"></script>
-	    <script src="/js/bootstrap.min.js"></script>
-	    <script src="/js/pace.min.js"></script>
-	    <script src="/js/modernizr.custom.js"></script>
-		<script src="/js/aspurplelight.js"></script>
-	</head>
+<body>
+	<div class="container">	
+		<header id="site-header">
+			<div class="row">
+				<div style="margin-top: -2%; margin-bottom: -3%;">
+					<h1><a class="nodeco" href="/blog/hardening" style="color: rgb(194, 0, 194);">☰</a>Hardening</h1>
+				</div><!-- col-4 -->
+			</div>
+			<div class="row justify-content-end">
+				<div style="margin-top: -3%; margin-bottom: -3%;" class="col-3">
+					<nav class="navbar navbar-expand-lg navbar-light">
+						<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#bs-example-navbar-collapse-1" aria-controls="bs-example-navbar-collapse-1" aria-expanded="false" aria-label="Toggle navigation">
+							<span class="navbar-toggler-icon"></span>
+						</button>
+						<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+							<ul class="navbar-nav">
+								<li class="nav-item">
+									<a style="font-size: 25px;" class="nav-link" href="/index" data-hover="Home">Home</a>
+								</li>
+							</ul>
+						</div><!--- .navbar-collapse --->
+					</nav>
+				</div><!-- col-md-8 -->
+			</div>
+		</header>
+	</div>
 
-	<body>
-		<div class="container">	
-			<header id="site-header">
-				<div class="row">
-					<div style="margin-top: -2%; margin-bottom: -3%;">
-						<h1><a class="nodeco" href="/blog/hardening" style="color: rgb(194, 0, 194);">☰</a>Hardening</h1>
-					</div><!-- col-4 -->
-				</div>
-				<div class="row justify-content-end">
-					<div style="margin-top: -3%; margin-bottom: -3%;" class="col-3">
-						<nav class="navbar navbar-expand-lg navbar-light">
-							<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#bs-example-navbar-collapse-1" aria-controls="bs-example-navbar-collapse-1" aria-expanded="false" aria-label="Toggle navigation">
-								<span class="navbar-toggler-icon"></span>
-							</button>
-							<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-								<ul class="navbar-nav">
-									<li class="nav-item">
-										<a style="font-size: 25px;" class="nav-link" href="/index" data-hover="Home">Home</a>
-									</li>
-								</ul>
-							</div><!--- .navbar-collapse --->
-						</nav>
-					</div><!-- col-md-8 -->
-				</div>
-			</header>
-		</div>
+	<div class="content-body">
+		<div class="container">
+			<div class="row">
+				<main class="col-md-8">
+					<article class="post post-1">
+						<header  class="entry-header">
+							<h1 class="blh1">Jaula CHROOT</h1>
+							<h2 class="blh2">[SFTP-SSH]</h2>
+						</header>
+						<div class="entry-content clearfix">
+							<section style="margin-top: 50px;" id="intro">
+								<div class="centext">
+									<!--- INTRO --->
+									<span>Una jaula <strong>chroot</strong> es un mecanismo de seguridad que consiste en crear un <strong>entorno aislado</strong> para un usuario, a fin de que este, al iniciar sesión en el sistema, se encuentre literalmente enjaulado en un directorio donde dispondrá de <strong>permisos limitados</strong> para realizar <strong>acciones concretas</strong>.</span>
+								</div>
+							</section>
+							<!--- ./INTRO --->
 
-		<div class="content-body">
-			<div class="container">
-				<div class="row">
-					<main class="col-md-8">
-						<article class="post post-1">
-							<header  class="entry-header">
-								<h1 class="blh1">Jaula CHROOT</h1>
-								<h2 class="blh2">[SFTP-SSH]</h2>
-							</header>
-							<div class="entry-content clearfix">
-								<section style="margin-top: 50px;" id="intro">
-									<div class="centext">
-										<!--- INTRO --->
-										<span>Una jaula <strong>chroot</strong> es un mecanismo de seguridad que consiste en crear un <strong>entorno aislado</strong> para un usuario, a fin de que este, al iniciar sesión en el sistema, se encuentre literalmente enjaulado en un directorio donde dispondrá de <strong>permisos limitados</strong> para realizar <strong>acciones concretas</strong>.</span>
-									</div>
-								</section>
-								<!--- ./INTRO --->
-
-								<section style="margin-top: 150px;" id="subsystem">
-									<div>
-										<a style="font-size: 19px; color: rgb(194, 0, 194);">☰ </a><span class="purple-bg" style="font-size: 19px;">CONFIGURAR EL SERVIDOR SFTP</span><p></p>
-									</div><br>
+							<section style="margin-top: 150px;" id="subsystem">
+								<div>
+									<a style="font-size: 19px; color: rgb(194, 0, 194);">☰ </a><span class="purple-bg" style="font-size: 19px;">CONFIGURAR EL SERVIDOR SFTP</span><p></p>
+								</div><br>
 								
-								
-									<div class="left">
-										<strong><a style="color: #C400B4;">⦿</a> CREAR EL USUARIO A ENJAULAR</strong>
-									</div>
+								<div class="left">
+									<strong><a style="color: #C400B4;">⦿</a> CREAR EL USUARIO A ENJAULAR</strong>
+								</div>
 
-									<div id="terminal">   
-										<!-- Terminal Bar -->       
-										<section id="terminal__bar">          
-											<div id="bar__buttons">            
-												<button class="bar__button" id="bar__button--exit">&#10005;</button>            
-												<button class="bar__button">&#9472;</button>                
-												<button class="bar__button">&#9723;</button>          
-											</div>
-										</section>        
-										<!-- Terminal Body -->
-										<section id="terminal__body">
-											<div id="terminal__prompt">
-												<span id="terminal__prompt--user"><b><a style="color: #FF5FFA;">☰</a>&nbsp;</b></span>
-												<span id="terminal__prompt--bling"><b>sudo<a style="color: #FF5FFA;"> useradd</a> jailuser</b></span>
-											</div><p></p>
+								<div id="terminal">   
+									<!-- Terminal Bar -->       
+									<section id="terminal__bar">          
+										<div id="bar__buttons">            
+											<button class="bar__button" id="bar__button--exit">&#10005;</button>            
+											<button class="bar__button">&#9472;</button>                
+											<button class="bar__button">&#9723;</button>          
+										</div>
+									</section>        
+									<!-- Terminal Body -->
+									<section id="terminal__body">
+										<div id="terminal__prompt">
+											<span id="terminal__prompt--user"><b><a style="color: #FF5FFA;">☰</a>&nbsp;</b></span>
+											<span id="terminal__prompt--bling"><b>sudo<a style="color: #FF5FFA;"> useradd</a> jailuser</b></span>
+										</div><p></p>
 										  
-											<div id="terminal__prompt">
-												<span id="terminal__prompt--user"><b><a style="color: #FF5FFA;">☰</a>&nbsp;</b></span>
-												<span id="terminal__prompt--bling"><b>sudo<a style="color: #FF5FFA;"> passwd</a> jailuser</b></span>
-											</div>
+										<div id="terminal__prompt">
+											<span id="terminal__prompt--user"><b><a style="color: #FF5FFA;">☰</a>&nbsp;</b></span>
+											<span id="terminal__prompt--bling"><b>sudo<a style="color: #FF5FFA;"> passwd</a> jailuser</b></span>
+										</div>
 										  
-											<div id="terminal__prompt">
-												<span id="terminal__prompt--bling"><b>New password:</b></span>
-											</div>
+										<div id="terminal__prompt">
+											<span id="terminal__prompt--bling"><b>New password:</b></span>
+										</div>
 										  
-											<div id="terminal__prompt">
-												<span id="terminal__prompt--bling"><b>Retype new password:</b></span>
-											</div>
+										<div id="terminal__prompt">
+											<span id="terminal__prompt--bling"><b>Retype new password:</b></span>
+										</div>
 										  
-											<div id="terminal__prompt">
-												<span id="terminal__prompt--bling"><b>passwd: password updated successfully</b>&nbsp;</span>
-											</div>
-										</section>
-									</div><br><br>
+										<div id="terminal__prompt">
+											<span id="terminal__prompt--bling"><b>passwd: password updated successfully</b>&nbsp;</span>
+										</div>
+									</section>
+								</div><br><br>
 
-									<div class="left">
-										<strong><a style="color: #C400B4;">⦿</a> CREAR Y MONTAR LA JAULA CHROOT</strong>
-									</div>
+								<div class="left">
+									<strong><a style="color: #C400B4;">⦿</a> CREAR Y MONTAR LA JAULA CHROOT</strong>
+								</div>
 
 									<div id="terminal">   
 										<!-- Terminal Bar -->       
@@ -185,7 +184,7 @@
 										<section id="terminal__body">
 										<div id="terminal__prompt">
 											<span id="terminal__prompt--user"><b><a style="color: #FF5FFA;">☰</a>&nbsp;</b></span>
-							<span id="terminal__prompt--bling"><b>sudo <a style="color: #FF5FFA;">vi</a> /etc/ssh/sshd_config</b></span>
+											<span id="terminal__prompt--bling"><b>sudo <a style="color: #FF5FFA;">vi</a> /etc/ssh/sshd_config</b></span>
 										</div><p></p>
 									<div id="terminal__prompt">
 										<span id="terminal__prompt--bling"># override default of no subsystems</span>				
@@ -242,7 +241,7 @@
 									  <section id="terminal__body">
 										<div id="terminal__prompt">
 											<span id="terminal__prompt--user"><b><a style="color: #FF5FFA;">☰</a>&nbsp;</b></span>
-							<span id="terminal__prompt--bling"><b>sudo <a style="color: #FF5FFA;">vi</a> /etc/ssh/sshd_config</b></span>
+											<span id="terminal__prompt--bling"><b>sudo <a style="color: #FF5FFA;">vi</a> /etc/ssh/sshd_config</b></span>
 										</div><p></p>
 										  
 										  <!--- Subsystem internal-sftp --->
@@ -279,26 +278,20 @@
 								<!--- Resumen de directivas --->
 								<div style="margin-bottom: 180px;" class="leftl">
 									<span><strong><a style="color: #FF00FF;">⦿</a> Match user</strong>: Aplica una directiva de usuarios al usuario jauiluser</span><p></p>
-									
 									<span><strong><a style="color: #FF00FF;">⦿</a> ChrootDirectory</strong>: Especifica la ruta de un directorio al que hacer <strong>chroot</strong> tras la autenticación. Al iniciar la sesión, comprueba que todos los componentes de la ruta son directorios propiedad de root que no pueden ser escritos por ningún otro usuario o grupo.</span><p></p>
-									
 									<span><strong><a style="color: #FF00FF;">⦿</a> ForceCommand</strong>: Fuerza la ejecución del comando especificado por ForceCommand, ignorando cualquier comando suministrado por el cliente y ~/.ssh/rc si está presente</span><p></p>
-									
 									<span><strong><a style="color: #FF00FF;">⦿</a> PasswordAuthentication</strong>: Especifica si se permite la autenticación mediante contraseña. El valor por defecto es <strong>yes</strong>.</span><p></p>
-									
 									<span><strong><a style="color: #FF00FF;">⦿</a> AllowTcpForwarding</strong>: El reenvío de puertos ofrece la posibilidad de tunelizar conexiones TCP/IP hacia otros enlaces SSH seguros a fin de evitar ataques en la red</span><p></p>
-									
 									<span><strong><a style="color: #FF00FF;">⦿</a> X11Forwarding</strong>: Permite ejecutar aplicaciones gráficas en el servidor remoto {Por ejemplo, un WebBrowser}</span><p></p>
 								</div><!--- ./Resumen de directivas --->
-								</section>
+							</section>
+							<hr>
 								
-								<section id="sftp">
-									<a style="font-size: 19px; color: rgb(194, 0, 194);">☰ </a><span class="purple-bg" style="font-size: 19px;">CONEXIÓN SFTP Y PRIVILEGIOS</span><br><br>
-								
-								
-								<div class="left">
+							<section id="sftp">
+								<a style="font-size: 19px; color: rgb(194, 0, 194);">☰ </a><span class="purple-bg" style="font-size: 19px;">CONEXIÓN SFTP Y PRIVILEGIOS</span>
+								<div class="left" style="margin-top: 20px;">
 									<strong><span><a style="font-size: 19px; color: rgb(194, 0, 194);">⦿</a> CONEXIÓN SFTP</span></strong>
-								</div><p></p>
+								</div><br>
 								
 								<div class="centext">
 									<span>Al conectar por sftp desde una máquina remota al servidor que tiene configurada la jaula chroot, el usuario jailuser interpreta que el directorio /mnt/jailuser es en realidad el directorio raíz <strong>/</strong></span>
@@ -316,7 +309,7 @@
 									  </section>
 									  <section id="ltterminal__body">
 										<div id="ltterminal__prompt">
-		<span id="ltterminal__prompt--user"><b><a style="color: #98008C;">☰</a>&nbsp;</b></span>
+											<span id="ltterminal__prompt--user"><b><a style="color: #98008C;">☰</a>&nbsp;</b></span>
 											<span id="ltterminal__prompt--bling"><b>sftp <a style="color: #98008C;">jailuser</a>@192.168.1.47</b></span>
 										  </div><p></p>
 
@@ -367,6 +360,7 @@
 									</section>
 									</div>
 								</section>
+									<hr>
 								
 								<section id="ssh">
 									<div style="margin-top: 160px;" class="centext">
@@ -422,13 +416,13 @@
 									  <section id="terminal__body">
 										<div id="terminal__prompt">
 											<span id="terminal__prompt--user"><b><a style="color: #FF5FFA;">☰</a>&nbsp;</b></span>
-							<span id="terminal__prompt--bling"><b>sudo <a style="color: #FF5FFA;">vi</a> /etc/ssh/sshd_config</b></span>
+											<span id="terminal__prompt--bling"><b>sudo <a style="color: #FF5FFA;">vi</a> /etc/ssh/sshd_config</b></span>
 										</div><p></p>
 										  
 										  <!--- Subsystem internal-sftp --->
-									<div id="terminal__prompt">
-										<span id="terminal__prompt--bling"># override default of no subsystems&nbsp;</span>				
-										</div>
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--bling"># override default of no subsystems&nbsp;</span>				
+										  </div>
 										  
 										  <div id="terminal__prompt">
 											  <span id="terminal__prompt--bling">Subsystem <a style="color: #FF5FFA;">internal-sftp</a></span>				
@@ -456,9 +450,9 @@
 									  </section>
 									</div><br><br>
 								
-								<div class="centext">
-									<span>Ahora es posible realizar una conexión SSH, pero esta es rechazada porque no es capaz de encontrar una shell de <strong>bash</strong> en la jaula:</span>
-								</div><p></p>
+									<div class="centext">
+										<span>Ahora es posible realizar una conexión SSH, pero esta es rechazada porque no es capaz de encontrar una shell de <strong>bash</strong> en la jaula:</span>
+									</div><p></p>
 								
 								<div id="ltterminal">
 									  <!-- Terminal Bar -->       
@@ -498,6 +492,7 @@
 									</section>
 									</div>
 								</section>
+									<hr>
 
 								<section id="bash">
 									<div class="centext" style="margin-top: 160px;">
@@ -661,66 +656,68 @@
 						</article>
 					</main>
 					
-					<!--- aside --->
-					<aside class="col-md-4 stk-post-hd">
-						<div class="widget widget-recent-posts">
-							<h3 class="widget-title"><a style="color: rgb(195, 0, 189);">↳</a> Tabla de Contenido:</h3>		
-							<ul>
-								<li>
-									<a class="nodeco" href="#intro">INTRO</a>
-								</li>
-								<li>
-									<a class="nodeco" href="#subsystem">CONFIGURAR EL SERVIDOR SFTP</a>
-								</li>
-								<li>
-									<a class="nodeco" href="#sftp">CONEXIÓN SFTP</a>
-								</li>
-								<li>
-									<a class="nodeco" href="#ssh">HABILITAR CONEXIONES SSH</a>
-								</li>
-								<li>
-									<a class="nodeco" href="#bash">HABILITAR BASH EN LA JAULA CHROOT</a>
-								</li>
-							</ul>
-						</div><!--- ./aside --->
+				<!--- aside --->
+				<aside class="col-md-4 stk-post-hd">
+					<div class="widget widget-recent-posts">
+						<h3 class="widget-title"><a style="color: rgb(195, 0, 189);">↳</a> Tabla de Contenido:</h3>		
+						<ul>
+							<li>
+								<a class="nodeco" href="#intro">INTRO</a>
+							</li>
+							<li>
+								<a class="nodeco" href="#subsystem">CONFIGURAR EL SERVIDOR SFTP</a>
+							</li>
+							<li>
+								<a class="nodeco" href="#sftp">CONEXIÓN SFTP</a>
+							</li>
+							<li>
+								<a class="nodeco" href="#ssh">HABILITAR CONEXIONES SSH</a>
+							</li>
+							<li>
+								<a class="nodeco" href="#bash">HABILITAR BASH EN LA JAULA CHROOT</a>
+							</li>
+						</ul>
+					</div><!--- ./aside --->
 						
-						<div class="widget widget-category">
-							<h3 class="widget-title"><a style="color: rgb(195, 0, 189);">✎</a> Notas:</h3>		
-							<ul>
-								<li>
-									<a><strong>chroot</strong>: Ejecuta un comando o shell interactivo en directorio raíz especial</a>
-								</li>
-								<li>
-									<a><strong>ChrootDirectory</strong>: Especifica la ruta de un directorio al que hacer chroot tras la autenticación</a>
-								</li>
-								<li>
-									<a><strong>Subsystem</strong>: Configura un subsistema externo</a>
-								</li>
-								<li>
-									<a><strong>sftp-server</strong>: implementa el subsistema de transferencia de archivos SFTP</a>
-								</li>
-								<li>
-									<a><strong>internal-sftp</strong>: Implementa un servidor SFTP</a>
-								</li>
-								<li>
-									<a><strong>ldd</strong>: Herramienta que imprime dependencias de objetos y librerías invocadas por un programa al ejecutarse</a>
-								</li>
-							</ul>
-						</div>
-					</aside>
-				</div>
+					<div class="widget widget-category">
+						<h3 class="widget-title"><a style="color: rgb(195, 0, 189);">✎</a> Notas:</h3>		
+						<ul>
+							<li>
+								<a><strong>chroot</strong>: Ejecuta un comando o shell interactivo en directorio raíz especial</a>
+							</li>
+							<li>
+								<a><strong>ChrootDirectory</strong>: Especifica la ruta de un directorio al que hacer chroot tras la autenticación</a>
+							</li>
+							<li>
+								<a><strong>Subsystem</strong>: Configura un subsistema externo</a>
+							</li>
+							<li>
+								<a><strong>sftp-server</strong>: implementa el subsistema de transferencia de archivos SFTP</a>
+							</li>
+							<li>
+								<a><strong>internal-sftp</strong>: Implementa un servidor SFTP</a>
+							</li>
+							<li>
+								<a><strong>ldd</strong>: Herramienta que imprime dependencias de objetos y librerías invocadas por un programa al ejecutarse</a>
+							</li>
+						</ul>
+					</div>
+				</aside>
 			</div>
 		</div>
+	</div>
 
-		<footer id="site-footer">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-12">
-						<p class="copyright"><a href="/index"><img style="margin-top: -5px;" src="/blog/img/skull.png" weight="19px" height="19px" />&nbsp;0xbogart</a></p>
+	<footer id="site-footer">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8">
+					<div class="copyright">
+						<a class="nodeco" href="/index"><img style="margin-top: -5px;" src="/blog/img/skull.png" weight="19px" height="19px"> 0xbogart</a>
 					</div>
 				</div>
 			</div>
-		</footer>
-		<a href="#" id="scrollToTopButtonPurple"><i class="fas fa-arrow-up"></i></a>
-	</body>
+		</div>
+	</footer>
+	<a href="#" id="scrollToTopButtonPurple"><i class="fas fa-arrow-up"></i></a>
+</body>
 </html>

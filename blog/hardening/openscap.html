@@ -406,14 +406,14 @@
 									  </section>
 								</div><br><br>
 
-								<div class="left">
+								<div class="leftl">
 									<span><b><a style="color: #FF00FF;">⦾</a> eval</b>: Realizar la evaluación del archivo de documento <b>XCCDF</b> dado como <b>INPUT_FILE</b>. Imprimir el resultado de cada regla en la salida estándar.</span><p></p>
 									<span><b><a style="color: #FF00FF;">⦾</a> profile</b>: Selecciona un perfil particular del documento <b>XCCDF</b>. Si se da {‘<b>all</b>‘} se utilizará un perfil virtual que selecciona todos los grupos y reglas.</span><p></p>
 									<span><b><a style="color: #FF00FF;">⦾</a> results-arf</b>: Exporta los resultados en un archivo determinado en Formato de Informe de Activos {Asset Reporting Format}, en este caso <b>XML</b>. Se recomienda utilizar esta opción en lugar de –results cuando se trate de flujos de datos {Data Streams}.</span><p></p>
 									<span><b><a style="color: #FF00FF;">⦾</a> report</b>: Exporta los resultados en formato HTML.</span>
 								</div><br>
 								
-								<div style="margin-bottom: 140px;" class="centext">
+								<div class="centext">
 									<span>El escaneo evalúa qué controles son exitosos {<a style="color: #1CAA00;"><b>pass</b></a>} porque su configuración está alineada con la guía de seguridad y cuales son fallidos {<a style="color: #D30000;"><b>fail</b></a>}</span>
 									<a href="/blog/hardening/img/oscap-pass-fail.png" target="_blank"><img src="/blog/hardening/img/oscap-pass-fail.png" width="100%" height="auto"></a><br><br>
 									<span>Y ha generado los archivos <b>results.xml</b> y <b>results.html</b> en <b>/tmp/</b></span><br>
@@ -426,7 +426,7 @@
 							</section>
 							
 								
-							<section style="margin-top: 150px;" id="remediate">
+							<section style="margin-top: 140px;" id="remediate">
 								<div class="centext">
 									<a style="font-size: 19px; color: rgb(194, 0, 194);">☰ </a><span class="purple-bg" style="font-size: 19px;">BASTIONAR EL SISTEMA [<a style="font-size: 19px; color: rgb(194, 0, 194);">REMEDIATE</a>]</span><p></p>
 									<span>Esta opción ejecuta automáticamente los elementos de <b>corrección</b> de <b>XCCDF</b> para las reglas fallidas en el escaneo anterior.</span>

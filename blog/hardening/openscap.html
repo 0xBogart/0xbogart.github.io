@@ -1,174 +1,135 @@
-
 <!DOCTYPE html>
 <html lang="es">
-	<head>
-		<title>OpenSCAP: Auditorías de cumplimiento de configuración y vulnerabilidades | 0xBogart</title>
-
-		<!-- meta -->
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0,user-scalable=no,viewport-fit=cover">
-		<link rel="icon" type="/image/png" href="/blog/img/skull.png">
-		<meta name="twitter:card" content="summary_large_image">
-		<meta name="twitter:site" content="@jfb0gart">
-		<meta name="twitter:creator" content="@jfb0gart">
-		<meta property="og:url" content="https://0xbogart.github.io/blog/hardening/openscap">
-		<meta property="og:title" content="OpenSCAP">
-		<meta property="og:description" content="OpenSCAP">
-		<meta content="https://0xbogart.github.io/blog/img/openscap.avif" property="og:image">
-		<meta name="twitter:image" content="https://0xbogart.github.io/blog/img/openscap.avif">
-		<meta content="https://0xbogart.github.io/blog/img/openscap.avif" name="twitter:image:src">
-
-
-		<!-- css -->
-		<link rel="canonical" href="https://0xbogart.github.io/blog/hardening/openscap">
-		<meta name="description" content="OpenSCAP">
-		<meta name="keywords" content="OpenSCAP">
-
-		<!-- css -->
-		<link rel="stylesheet" href="/css/bootstrap.min.css">
-		<link rel="stylesheet" href="/css/ionicons.min.css">
-		<link rel="stylesheet" href="/css/pace.css">
-		<link rel="stylesheet" href="/css/custom.css">
-		<link rel="stylesheet" href="/css/rhterm.css">
-		<link rel="stylesheet" href="/css/rhvoid.css">
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-
-		<!-- js -->
-		<script src="/js/jquery-2.1.3.min.js"></script>
-		<script src="/js/bootstrap.min.js"></script>
-		<script src="/js/pace.min.js"></script>
-		<script src="/js/modernizr.custom.js"></script>
-		<script src="/js/aspurplelight.js"></script>
-<style>
-
-/* texto izquiera máx */
-.left {
-  text-align: left;
-  margin-right: 8%;
-  margin-left: -5%;
-  overflow: hidden;
-  font-size: 16px;
-}
+<head>
+	<title>OpenSCAP: Auditorías de cumplimiento de configuración y vulnerabilidades | 0xBogart</title>
 	
-/* texto izquiera */
-.leftl {
-  text-align: left;
-  margin-right: 8%;
-  overflow: hidden;
-  font-size: 16px;
-}
-	
-.centext {
-	text-align: center;
-	font-size: 16px;
-	letter-spacing: 1px;
-	}
-</style>
-	</head>
+	<!-- meta -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0,user-scalable=no,viewport-fit=cover">
+	<link rel="icon" type="/image/png" href="/blog/img/skull.png">
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:site" content="@jfb0gart">
+	<meta name="twitter:creator" content="@jfb0gart">
+	<meta property="og:url" content="https://0xbogart.github.io/blog/hardening/openscap">
+	<meta property="og:title" content="OpenSCAP">
+	<meta property="og:description" content="OpenSCAP">
+	<meta content="https://0xbogart.github.io/blog/img/openscap.avif" property="og:image">
+	<meta name="twitter:image" content="https://0xbogart.github.io/blog/img/openscap.avif">
+	<meta content="https://0xbogart.github.io/blog/img/openscap.avif" name="twitter:image:src">
 
-	<body>
-		<div class="container">	
-			<header id="site-header">
-				<div class="row">
-					<div style="margin-top: -2%; margin-bottom: -3%;">
-						<h1><a class="nodeco" href="/blog/hardening" style="color: rgb(194, 0, 194);">☰</a>Hardening</h1>
-					</div><!-- col-4 -->
-				</div>
-				<div class="row justify-content-end">
-					<div style="margin-top: -3%; margin-bottom: -3%;" class="col-3">
-						<nav class="navbar navbar-expand-lg navbar-light">
-							<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#bs-example-navbar-collapse-1" aria-controls="bs-example-navbar-collapse-1" aria-expanded="false" aria-label="Toggle navigation">
-								<span class="navbar-toggler-icon"></span>
-							</button>
-							<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-								<ul class="navbar-nav">
-									<li class="nav-item">
-										<a style="font-size: 25px;" class="nav-link" href="/index" data-hover="Home">Home</a>
-									</li>
-								</ul>
-							</div><!--- .navbar-collapse --->
-						</nav>
-					</div><!-- col-md-8 -->
-				</div>
-			</header>
-		</div>
+	<!-- css -->
+	<link rel="stylesheet" href="/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/css/ionicons.min.css">
+	<link rel="stylesheet" href="/css/pace.css">
+	<link rel="stylesheet" href="/css/custom.css">
+	<link rel="stylesheet" href="/css/rhterm.css">
+	<link rel="stylesheet" href="/css/rhvoid.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
-		<div class="content-body">
-			<div class="container">
-				<div class="row">
-					<main class="col-md-8">
-						<article class="post post-1">
-							<header  class="entry-header">
-								<h1 class="blh1">OpenSCAP</h1>
-								<h2 class="blh2">Auditorías de cumplimiento de Configuración y Vulnerabilidades</h2>
-							</header>
-							<div class="entry-content clearfix">
-								<section style="margin-top: 50px;" id="intro">
+	<!-- js -->
+	<script src="/js/jquery-2.1.3.min.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
+	<script src="/js/pace.min.js"></script>
+	<script src="/js/modernizr.custom.js"></script>
+	<script src="/js/aspurplelight.js"></script>
+</head>
+
+<body>
+	<div class="container">	
+		<header id="site-header">
+			<div class="row">
+				<div style="margin-top: -2%; margin-bottom: -3%;">
+					<h1><a class="nodeco" href="/blog/hardening" style="color: rgb(194, 0, 194);">☰</a>Hardening</h1>
+				</div><!-- col-4 -->
+			</div>
+			<div class="row justify-content-end">
+				<div style="margin-top: -3%; margin-bottom: -3%;" class="col-3">
+					<nav class="navbar navbar-expand-lg navbar-light">
+						<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#bs-example-navbar-collapse-1" aria-controls="bs-example-navbar-collapse-1" aria-expanded="false" aria-label="Toggle navigation">
+							<span class="navbar-toggler-icon"></span>
+						</button>
+						<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+							<ul class="navbar-nav">
+								<li class="nav-item">
+									<a style="font-size: 25px;" class="nav-link" href="/index" data-hover="Home">Home</a>
+								</li>
+							</ul>
+						</div><!--- .navbar-collapse --->
+					</nav>
+				</div><!-- col-md-8 -->
+			</div>
+		</header>
+	</div>
+
+	<div class="content-body">
+		<div class="container">
+			<div class="row">
+				<main class="col-md-8">
+					<article class="post post-1">
+						<header  class="entry-header">
+							<h1 class="blh1">OpenSCAP</h1>
+							<h2 class="blh2">Auditorías de cumplimiento de Configuración y Vulnerabilidades</h2>
+						</header>
+						<div class="entry-content clearfix">
+							<section style="margin-top: 50px;" id="intro">
 								<div class="centext">
 									<!--- INTRO --->
-									<span>Una <strong>auditoría de cumplimiento</strong> es un proceso para determinar si un sistema o infraestructura sigue todas las reglas especificadas en una <strong>política de cumplimiento</strong>.</span><br><br>
-									
-									<span>La política de cumplimiento la definen los <strong>profesionales de la seguridad</strong> que especifican las configuraciones o parches necesarios, que debe utilizar un entorno informático.</span><br><br>
-									
-									<span>Existen herramientas basadas en el estándar <strong>S</strong>ecurity <strong>C</strong>ontent <strong>A</strong>utomation <strong>P</strong>rotocol {<strong>SCAP</strong>} que permiten realizar auditorías de cumplimiento, de forma automatizada:</span><p></p>
+									<span>Una <b>auditoría de cumplimiento</b> es un proceso para determinar si un sistema o infraestructura sigue todas las reglas especificadas en una <b>política de cumplimiento</b>.</span><br><br>
+									<span>La política de cumplimiento la definen los <b>profesionales de la seguridad</b> que especifican las configuraciones o parches necesarios, que debe utilizar un entorno informático.</span><br><br>
+									<span>Existen herramientas basadas en el estándar <b>S</b>ecurity <b>C</b>ontent <b>A</b>utomation <b>P</b>rotocol {<b>SCAP</b>} que permiten realizar auditorías de cumplimiento, de forma automatizada:</span><p></p>
 									<a href="/blog/hardening/img/openscap.png" target="_blank"><img src="/blog/hardening/img/openscap.png" width="100%" height="auto"></a><p></p>
-									
-									<span>La <strong>biblioteca OpenSCAP</strong> representa una biblioteca a la vez que una herramienta en línea de comandos.</span><br><p></p>
-									<span>Como biblioteca permite la creación rápida de nuevas <strong>herramientas SCAP</strong></span><br><p></p>
-									<span>Como herramienta en línea de comandos {<strong>oscap</strong>}, está diseñada para realizar escaneos de configuración y vulnerabilidades en un sistema local, para validar el contenido de cumplimiento de la configuración y para generar informes y guías basados en estos escaneos y evaluaciones.</span>
+									<span>La <b>biblioteca OpenSCAP</b> representa una biblioteca a la vez que una herramienta en línea de comandos.</span><br><p></p>
+									<span>Como biblioteca permite la creación rápida de nuevas <b>herramientas SCAP</b></span><br><p></p>
+									<span>Como herramienta en línea de comandos {<b>oscap</b>}, está diseñada para realizar escaneos de configuración y vulnerabilidades en un sistema local, para validar el contenido de cumplimiento de la configuración y para generar informes y guías basados en estos escaneos y evaluaciones.</span>
 									<!--- ./INTRO --->
-									</div>
-								</section>
+								</div>
+							</section>
 
-								<section style="margin-top: 150px;" id="openscap">
-									<div class="centext">
+							<section style="margin-top: 150px;" id="openscap">
+								<div class="centext">
 									<a style="font-size: 19px; color: rgb(194, 0, 194);">☰ </a><span class="purple-bg" style="font-size: 19px;">INSTALACIÓN DE OPENSCAP Y GUÍAS DE SEGURIDAD</span><p></p>
-									
 									<a href="/blog/hardening/img/oscap-sec-guide.png" target="_blank"><img src="/blog/hardening/img/oscap-sec-guide.png" width="40%" height="auto"></a><p></p><br>
-									
-									<span><strong>Scap Security Guide</strong> es un proyecto dinámico <strong>Open Source</strong> en el que están involucradas múltiples organizaciones especializadas en seguridad informática, con el fin de definir políticas de seguridad y aunarlas en un conjunto de guías.</span><br><br>
+									<span><b>Scap Security Guide</b> es un proyecto dinámico <b>Open Source</b> en el que están involucradas múltiples organizaciones especializadas en seguridad informática, con el fin de definir políticas de seguridad y aunarlas en un conjunto de guías.</span><br><br>
 									<span>Estos estándares de seguridad se usan a día de hoy en el ámbito militar, inteligencia, telecomunicaciones, aviación o atención médica.</span><br><br>
-									
-									<span><strong>OpenSCAP</strong> se basa en estas guías durante un escaneo automatizado para determinar si un sistema tiene o no aplicadas las configuraciones definidas en ellas.</span>
+									<span><b>OpenSCAP</b> se basa en estas guías durante un escaneo automatizado para determinar si un sistema tiene o no aplicadas las configuraciones definidas en ellas.</span>
 								</div><br><br>
 								
 								<div class="left">
-									<strong>• INSTALACIÓN DE OpenSCAP</strong>
+									<span style="color: #A400A2">⦾</span><span><b> INSTALACIÓN DE OpenSCAP</b></span>
 								</div>
 
 								<div id="terminal">   
-									  <!-- Terminal Body -->
-									  <section id="terminal_body">
+									<!-- Terminal Body -->
+									<section id="terminal_body">
 										<div id="terminal__prompt">
-		<span id="terminal__prompt--bling"><b style="color: #FF5FFA;">·&nbsp;</b></span>
+											<span id="terminal__prompt--bling"><b style="color: #FF5FFA;">·&nbsp;</b></span>
 											<span id="terminal__prompt--user-white"><b>Debian\Ubuntu: <a style="color: #FF5FFA;">apt-get install libopenscap8</a>&nbsp;</b></span>
 										</div>
 										  
 										  <div id="terminal__prompt">
-		<span id="terminal__prompt--bling"><b style="color: #FF5FFA;">·&nbsp;</b></span>
+											  <span id="terminal__prompt--bling"><b style="color: #FF5FFA;">·&nbsp;</b></span>
 											<span id="terminal__prompt--user-white"><b>RedHat\CentOS: <a style="color: #FF5FFA;">yum install openscap-scanner</a>&nbsp;</b></span>
 										</div>
 										  
-						<div id="terminal__prompt">
-							<span id="terminal__prompt--bling"><b style="color: #FF5FFA;">·&nbsp;</b></span>
-							<span id="terminal__prompt--user-white"><b>Fedora: <a style="color: #FF5FFA;">dnf install openscap-scanner</a>&nbsp;</b></span>
+										<div id="terminal__prompt">
+											<span id="terminal__prompt--bling"><b style="color: #FF5FFA;">·&nbsp;</b></span>
+											<span id="terminal__prompt--user-white"><b>Fedora: <a style="color: #FF5FFA;">dnf install openscap-scanner</a>&nbsp;</b></span>
+										</div>
+										  
+										<div id="terminal__prompt">
+											<span id="terminal__prompt--bling"><b style="color: #FF5FFA;">·&nbsp;</b></span>
+											<span id="terminal__prompt--user-white"><b>Arch Linux: <a style="color: #FF5FFA;">pacman -Sy openscap</a>&nbsp;</b></span>
 										</div>
 										  
 										  <div id="terminal__prompt">
-							<span id="terminal__prompt--bling"><b style="color: #FF5FFA;">·&nbsp;</b></span>
-							<span id="terminal__prompt--user-white"><b>Arch Linux: <a style="color: #FF5FFA;">pacman -Sy openscap</a>&nbsp;</b></span>
-										</div>
-										  
-										  <div id="terminal__prompt">
-							<span id="terminal__prompt--bling"><b style="color: #FF5FFA;">·&nbsp;</b></span>
-							<span id="terminal__prompt--user-white"><b>openSUSE: <a style="color: #5FFFF5;" href="https://software.opensuse.org/download.html?project=security&package=openscap" target="_blank">Según Sistema Operativo</a>&nbsp;</b></span>
+											  <span id="terminal__prompt--bling"><b style="color: #FF5FFA;">·&nbsp;</b></span>
+											  <span id="terminal__prompt--user-white"><b>openSUSE: <a style="color: #5FFFF5;" href="https://software.opensuse.org/download.html?project=security&package=openscap" target="_blank">Según Sistema Operativo</a>&nbsp;</b></span>
 										</div>
 									  </section>
-									</div>
-								<br><br>
+									</div><br><br>
 
 								<div class="left">
-									<strong>• DESCARGAR GUÍAS DE SEGURIDAD SCAP</strong>
+									<span style="color: #A400A2">⦾</span><span><b> DESCARGAR GUÍAS DE SEGURIDAD SCAP</b></span>
 								</div>
 
 								<div id="long-terminal">   
@@ -180,19 +141,19 @@
 										</div>
 										  
 										  <div id="terminal__prompt">
-											<span id="terminal__prompt--bling"><b style="color: #FF5FFA;">·&nbsp;</b></span>
-											<span id="terminal__prompt--user-white"><b>RedHat\CentOS: <a style="color: #FF5FFA;">yum install scap-security-guide</a>&nbsp;</b></span>
-										</div>
+											  <span id="terminal__prompt--bling"><b style="color: #FF5FFA;">·&nbsp;</b></span>
+											  <span id="terminal__prompt--user-white"><b>RedHat\CentOS: <a style="color: #FF5FFA;">yum install scap-security-guide</a>&nbsp;</b></span>
+										  </div>
 										  
-										<div id="terminal__prompt">
-											<span id="terminal__prompt--bling"><b style="color: #FF5FFA;">·&nbsp;</b></span>
-											<span id="terminal__prompt--user-white"><b>Fedora: <a style="color: #FF5FFA;">dnf install scap-security-guide</a>&nbsp;</b></span>
-										</div>
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--bling"><b style="color: #FF5FFA;">·&nbsp;</b></span>
+											  <span id="terminal__prompt--user-white"><b>Fedora: <a style="color: #FF5FFA;">dnf install scap-security-guide</a>&nbsp;</b></span>
+										  </div>
 										  
-										<div id="terminal__prompt">
-											<span id="terminal__prompt--bling"><b style="color: #FF5FFA;">·&nbsp;</b></span>
-											<span id="terminal__prompt--user-white"><b>Arch Linux: <a style="color: #FF5FFA;">pacman -Sy scap-security-guide</a>&nbsp;</b></span>
-										</div>
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--bling"><b style="color: #FF5FFA;">·&nbsp;</b></span>
+											  <span id="terminal__prompt--user-white"><b>Arch Linux: <a style="color: #FF5FFA;">pacman -Sy scap-security-guide</a>&nbsp;</b></span>
+										  </div>
 										  
 										  <div id="terminal__prompt">
 											<span id="terminal__prompt--bling"><b style="color: #FF5FFA;">·&nbsp;</b></span>
@@ -264,7 +225,7 @@
 								<br><br>
 								
 								<div class="centext">
-									<span>Por defecto las guías se ubican en: <strong>/usr/share/xml/scap/ssg/content</strong></span>
+									<span>Por defecto las guías se ubican en: <b>/usr/share/xml/scap/ssg/content</b></span>
 									<a href="/blog/hardening/img/scap-ssg-content.png" target="_blank"><img src="/blog/hardening/img/scap-ssg-content.png" width="100%" height="auto"></a>
 							</div>
 							</section>
@@ -274,13 +235,12 @@
 									<a style="font-size: 19px; color: rgb(194, 0, 194);">☰ </a><span class="purple-bg" style="font-size: 19px;">MÓDULOS DE OPENSCAP</span>
 								</div><br>
 								
-								<div class="left">
-								•<span style="font-size: 19px; color: rgb(194, 0, 194);"> INFO</span>
+								<div class="leftl">
+									<span style="color: #A400A2">⦾</span><span> <b>INFO</b></span>
 								</div>
 								
 								<div class="centext">
-									<span>Este <strong>módulo</strong> imprime <strong>información</strong> sobre el contenido <strong>SCAP</strong> en un archivo especificado en una línea de comandos y determina el tipo de <strong>contenido SCAP</strong>, la versión de la especificación, la fecha de creación, la fecha de importación, etc.</span><br><br>
-
+									<span>Este <b>módulo</b> imprime <b>información</b> sobre el contenido <b>SCAP</b> en un archivo especificado en una línea de comandos y determina el tipo de <b>contenido SCAP</b>, la versión de la especificación, la fecha de creación, la fecha de importación, etc.</span><br><br>
 									<span>Este módulo no requiere ningún interruptor adicional:</span>
 								</div><p></p>
 
@@ -415,17 +375,16 @@
 									</div><br><br>
 								
 								<div class="centext">
-									<span>Cada uno de los <strong>perfiles</strong> devueltos por el <strong>módulo <a style="color: #CF00CF;">info</a></strong> muestra el <strong>título</strong> y un <strong>ID</strong> que hace referencia a la <strong>regla</strong> asociada al <strong>perfil</strong>.</span>
+									<span>Cada uno de los <b>perfiles</b> devueltos por el <b>módulo <a style="color: #CF00CF;">info</a></b> muestra el <b>título</b> y un <b>ID</b> que hace referencia a la <b>regla</b> asociada al <b>perfil</b>.</span>
 								</div><br><br><br>
 								
-								<div class="left">
-								•<span style="font-size: 19px; color: rgb(194, 0, 194);"> XCCDF</span>
+								<div class="leftl">
+									<span style="color: #A400A2">⦾</span><span> <b>XCCDF</b></span>
 								</div>
 								
 								<div class="centext">
-									<span><strong>XCCDF</strong> es un lenguaje de especificación para escribir listas de verificación de seguridad, puntos de referencia y tipos de documentos relacionados.</span><br><br>
-									
-									<span>Un documento <strong>XCCDF</strong> se expresa en <strong>XML</strong> y representa una colección estructurada de reglas de configuración de seguridad.</span>
+									<span><b>XCCDF</b> es un lenguaje de especificación para escribir listas de verificación de seguridad, puntos de referencia y tipos de documentos relacionados.</span><br><br>
+									<span>Un documento <b>XCCDF</b> se expresa en <b>XML</b> y representa una colección estructurada de reglas de configuración de seguridad.</span>
 								</div>
 
 								<div id="long-terminal">   
@@ -440,138 +399,127 @@
 									  </section>
 									  <section id="terminal_body">
 										<div id="terminal__prompt">
-		<span id="terminal__prompt--user"><b><a style="color: #FF00FF;">☰</a>&nbsp;</b></span>
+											<span id="terminal__prompt--user"><b><a style="color: #FF00FF;">☰</a>&nbsp;</b></span>
 											<span id="terminal__prompt--bling"><b>oscap <a style="color: #FF00FF;">xccdf eval --profile</a> xccdf_org.ssgproject.content_profile_stig <a style="color: #FF00FF;">--results-arf</a> /tmp/results.xml <a style="color: #FF00FF;">--report</a> /tmp/results.html /usr/share/xml/scap/ssg/content/ssg-centos8-ds-1.2.xml</b></span>
 										</div>
 									  </section>
 								</div><br><br>
 
-								<div class="leftl">
-									<span><strong><a style="color: #FF00FF;">•</a> eval</strong>: Realizar la evaluación del archivo de documento <strong>XCCDF</strong> dado como <strong>INPUT_FILE</strong>. Imprimir el resultado de cada regla en la salida estándar.</span><p></p>
-									
-									<span><strong><a style="color: #FF00FF;">•</a> profile</strong>: Selecciona un perfil particular del documento <strong>XCCDF</strong>. Si se da {‘<strong>all</strong>‘} se utilizará un perfil virtual que selecciona todos los grupos y reglas.</span><p></p>
-									
-									<span><strong><a style="color: #FF00FF;">•</a> results-arf</strong>: Exporta los resultados en un archivo determinado en Formato de Informe de Activos {Asset Reporting Format}, en este caso <strong>XML</strong>. Se recomienda utilizar esta opción en lugar de –results cuando se trate de flujos de datos {Data Streams}.</span><p></p>
-									
-									<span><strong><a style="color: #FF00FF;">•</a> report</strong>: Exporta los resultados en formato HTML.</span>
+								<div class="left">
+									<span><b><a style="color: #FF00FF;">⦾</a> eval</b>: Realizar la evaluación del archivo de documento <b>XCCDF</b> dado como <b>INPUT_FILE</b>. Imprimir el resultado de cada regla en la salida estándar.</span><p></p>
+									<span><b><a style="color: #FF00FF;">⦾</a> profile</b>: Selecciona un perfil particular del documento <b>XCCDF</b>. Si se da {‘<b>all</b>‘} se utilizará un perfil virtual que selecciona todos los grupos y reglas.</span><p></p>
+									<span><b><a style="color: #FF00FF;">⦾</a> results-arf</b>: Exporta los resultados en un archivo determinado en Formato de Informe de Activos {Asset Reporting Format}, en este caso <b>XML</b>. Se recomienda utilizar esta opción en lugar de –results cuando se trate de flujos de datos {Data Streams}.</span><p></p>
+									<span><b><a style="color: #FF00FF;">⦾</a> report</b>: Exporta los resultados en formato HTML.</span>
 								</div><br>
 								
 								<div style="margin-bottom: 140px;" class="centext">
-									<span>El escaneo evalúa qué controles son exitosos {<a style="color: #1CAA00;"><strong>pass</strong></a>} porque su configuración está alineada con la guía de seguridad y cuales son fallidos {<a style="color: #D30000;"><strong>fail</strong></a>}</span>
-									
+									<span>El escaneo evalúa qué controles son exitosos {<a style="color: #1CAA00;"><b>pass</b></a>} porque su configuración está alineada con la guía de seguridad y cuales son fallidos {<a style="color: #D30000;"><b>fail</b></a>}</span>
 									<a href="/blog/hardening/img/oscap-pass-fail.png" target="_blank"><img src="/blog/hardening/img/oscap-pass-fail.png" width="100%" height="auto"></a><br><br>
-									
-									<span>Y ha generado los archivos <strong>results.xml</strong> y <strong>results.html</strong> en <strong>/tmp/</strong></span><br>
-									
+									<span>Y ha generado los archivos <b>results.xml</b> y <b>results.html</b> en <b>/tmp/</b></span><br>
 									<a href="/blog/hardening/img/oscap-results.png" target="_blank"><img src="/blog/hardening/img/oscap-results.png" width="80%" height="auto"></a><br><br><p></p>
-									
-									<span>Si visualizamos el archivo <strong>results.html</strong> en un navegador, se muestra gráficamente el resultado detallado del escaneo:</span><br>
-									
+									<span>Si visualizamos el archivo <b>results.html</b> en un navegador, se muestra gráficamente el resultado detallado del escaneo:</span><br>
 									<a href="/blog/hardening/img/oscap-web1.png" target="_blank"><img src="/blog/hardening/img/oscap-web1.png" width="100%" height="auto"></a><p></p>
-									
 									<a href="/blog/hardening/img/oscap-web2.png" target="_blank"><img src="/blog/hardening/img/oscap-web2.png" width="100%" height="auto"></a>
 								</div>
 							</section>
 								
 							<section style="margin-top: 150px;" id="remediate">
 								<div class="centext">
-								<a style="font-size: 19px; color: rgb(194, 0, 194);">☰ </a><span class="purple-bg" style="font-size: 19px;">BASTIONAR EL SISTEMA [<a style="font-size: 19px; color: rgb(194, 0, 194);">REMEDIATE</a>]</span><p></p>
-									
-									<span>Esta opción ejecuta automáticamente los elementos de <strong>corrección</strong> de <strong>XCCDF</strong> para las reglas fallidas en el escaneo anterior.</span>
+									<a style="font-size: 19px; color: rgb(194, 0, 194);">☰ </a><span class="purple-bg" style="font-size: 19px;">BASTIONAR EL SISTEMA [<a style="font-size: 19px; color: rgb(194, 0, 194);">REMEDIATE</a>]</span><p></p>
+									<span>Esta opción ejecuta automáticamente los elementos de <b>corrección</b> de <b>XCCDF</b> para las reglas fallidas en el escaneo anterior.</span>
 								</div>
 								
 								<div id="long-terminal">
-									  <!-- Terminal Bar -->       
-									  <section id="terminal__bar">          
+									<!-- Terminal Bar -->       
+									<section id="terminal__bar">          
 										<div id="bar__buttons">            
-										  <button class="bar__button" id="bar__button--exit">&#10005;</button>            
-										  <button class="bar__button">&#9472;</button>                
-										  <button class="bar__button">&#9723;</button>          
+											<button class="bar__button" id="bar__button--exit">&#10005;</button>            
+											<button class="bar__button">&#9472;</button>                
+											<button class="bar__button">&#9723;</button>          
 										</div>
-									  </section>        
-									  <!-- Terminal Body -->
-									  <section id="terminal__body">
+									</section>        
+									<!-- Terminal Body -->
+									<section id="terminal__body">
 										<div id="terminal__prompt">
 											<span id="terminal__prompt--user"><a style="color: #FF00FF;">☰</a>&nbsp;</span>
-										  <span id="terminal__prompt--bling"><b>oscap xccdf eval <a style="color: #FF00FF;">--remediate</a> --profile xccdf_org.ssgproject.content_profile_stig --results-arf /tmp/fixed.xml --report /tmp/fixed.html /usr/share/xml/scap/ssg/content/ssg-centos8-ds-1.2.xml</b></span>
+											<span id="terminal__prompt--bling"><b>oscap xccdf eval <a style="color: #FF00FF;">--remediate</a> --profile xccdf_org.ssgproject.content_profile_stig --results-arf /tmp/fixed.xml --report /tmp/fixed.html /usr/share/xml/scap/ssg/content/ssg-centos8-ds-1.2.xml</b></span>
 										</div>
 									</section>
-									</div><br><br>
+								</div><br><br>
 								
 								<div>
-								<a href="/blog/hardening/img/oscap-remediate.png" target="_blank"><img src="/blog/hardening/img/oscap-remediate.png" width="80%" height="auto"></a>
-									
+									<a href="/blog/hardening/img/oscap-remediate.png" target="_blank"><img src="/blog/hardening/img/oscap-remediate.png" width="80%" height="auto"></a>
 								</div>
-								</section>
-							</div>
-							
-						</article>
-								
-					</main>
-							
-					<!--- aside --->
-					<aside class="col-md-4 stk-post-hd">
-						<div class="widget widget-recent-posts">
-							<h3 class="widget-title"><a style="color: rgb(195, 0, 189);">↳</a> Tabla de Contenido:</h3>		
-							<ul>
-								<li>
-									<a class="nodeco" href="#intro">INTRO</a>
-								</li>
-								<li>
-									<a class="nodeco" href="#openscap">INSTALACIÓN Y GUÍAS DE SEGURIDAD</a>
-								</li>
-								<li>
-									<a class="nodeco" href="#modulos">MÓDULOS OPENSCAP</a>
-								</li>
-								<li>
-									<a class="nodeco" href="#remediate">BASTIONAR EL SISTEMA [REMEDIATE]</a>
-								</li>
-							</ul>
-						</div><!--- ./aside --->
-						
-						<div class="widget widget-category">
-							<h3 class="widget-title"><a style="color: rgb(195, 0, 189);">✎</a> Notas:</h3>		
-							<ul>
-								<li>
-									<a><strong>INFO</strong>: Determinar el tipo e imprimir información sobre un archivo</a>
-								</li>
-								<li>
-									<a><strong>XCCDF</strong>: Formato de descripción de la lista de comprobación de la configuración eXtensible</a>
-								</li>
-								<li>
-									<a><strong>OVAL</strong>: Lenguaje abierto de evaluación y vulnerabilidad</a>
-								</li>
-								<li>
-									<a><strong>DS</strong>: Flujo de datos SCAP</a>
-								</li>
-								<li>
-									<a><strong>CPE</strong>: Enumeración de plataformas comunes</a>
-								</li>
-								<li>
-									<a><strong>CVSS</strong>: Sistema común de puntuación de vulnerabilidades</a>
-								</li>
-								<li>
-									<a><strong>CVE</strong>: Vulnerabilidades y exposiciones comunes</a>
-								</li>
-								<li>
-									<a><strong>CVRF</strong>: Marco común de notificación de vulnerabilidades</a>
-								</li>
-							</ul>
+							</section>
 						</div>
-					</aside>
-				</div>
+					</article>
+				</main>
+							
+				<!--- aside --->
+				<aside class="col-md-4 stk-post-hd">
+					<div class="widget widget-recent-posts">
+						<h3 class="widget-title"><a style="color: rgb(195, 0, 189);">↳</a> Tabla de Contenido:</h3>		
+						<ul>
+							<li>
+								<a class="nodeco" href="#intro">INTRO</a>
+							</li>
+							<li>
+								<a class="nodeco" href="#openscap">INSTALACIÓN Y GUÍAS DE SEGURIDAD</a>
+							</li>
+							<li>
+								<a class="nodeco" href="#modulos">MÓDULOS OPENSCAP</a>
+							</li>
+							<li>
+								<a class="nodeco" href="#remediate">BASTIONAR EL SISTEMA [REMEDIATE]</a>
+							</li>
+						</ul>
+					</div><!--- ./aside --->
+						
+					<div class="widget widget-category">
+						<h3 class="widget-title"><a style="color: rgb(195, 0, 189);">✎</a> Notas:</h3>		
+						<ul>
+							<li>
+								<a><b>INFO</b>: Determinar el tipo e imprimir información sobre un archivo</a>
+							</li>
+							<li>
+								<a><b>XCCDF</b>: Formato de descripción de la lista de comprobación de la configuración eXtensible</a>
+							</li>
+							<li>
+								<a><b>OVAL</b>: Lenguaje abierto de evaluación y vulnerabilidad</a>
+							</li>
+							<li>
+								<a><b>DS</b>: Flujo de datos SCAP</a>
+							</li>
+							<li>
+								<a><b>CPE</b>: Enumeración de plataformas comunes</a>
+							</li>
+							<li>
+								<a><b>CVSS</b>: Sistema común de puntuación de vulnerabilidades</a>
+							</li>
+							<li>
+								<a><b>CVE</b>: Vulnerabilidades y exposiciones comunes</a>
+							</li>
+							<li>
+								<a><b>CVRF</b>: Marco común de notificación de vulnerabilidades</a>
+							</li>
+						</ul>
+					</div>
+				</aside>
 			</div>
 		</div>
+	</div>
 
-		<footer id="site-footer">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-12">
-						<p class="copyright"><a href="/index"><img style="margin-top: -5px;" src="/blog/img/skull.png" weight="19px" height="19px">&nbsp;0xbogart</a></p>
+	<footer id="site-footer">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8">
+					<div class="copyright">
+						<a class="nodeco" href="/index"><img style="margin-top: -5px;" src="/blog/img/skull.png" weight="19px" height="19px"> 0xbogart</a>
 					</div>
 				</div>
 			</div>
-		</footer>
-		<a href="#" id="scrollToTopButtonPurple"><i class="fas fa-arrow-up"></i></a>
-	</body>
+		</div>
+	</footer>
+	<a href="#" id="scrollToTopButtonPurple"><i class="fas fa-arrow-up"></i></a>
+</body>
 </html>

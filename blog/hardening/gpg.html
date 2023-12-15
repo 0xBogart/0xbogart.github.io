@@ -81,7 +81,7 @@
 							<!--- INTRO --->
 							<section style="margin-top: 50px;" id="intro">
 								<div class="centext">
-									<span>Se trata de una herramienta de cifrado y firmado de ficheros, sucesor de <strong>PGP</strong> {<strong>P</strong>retty <strong>G</strong>ood <strong>P</strong>rivacy}</span>
+									<span>Se trata de una herramienta de cifrado y firmado de ficheros, sucesor de <b>PGP</b> {<b>P</b>retty <b>G</b>ood <b>P</b>rivacy}</span>
 								</div>
 							</section>
 							<!--- ./INTRO --->
@@ -92,11 +92,12 @@
 								</div><p></p>
 								
 								<div class="left">
-									<span><strong><a style="color: #AD009E;">•</a> Cifrar ficheros por passphrase:</strong> Utiliza una misma clave para cifrar y descifrar <strong>{</strong>CIFRADO SIMÉTRICO<strong>}</strong></span><p></p>
-									<span><strong><a style="color: #AD009E;">•</a> Cifrar ficheros por clave pública:</strong> El fichero se cifra completamente con una clave pública <strong>{</strong>CIFRADO ASIMÉTRICO<strong>}</strong></span><p></p>
-									<span><strong><a style="color: #AD009E;">•</a> Firmar ficheros por clave privada:</strong> Verifica si el fichero pertenece a quien debería.</span>
+									<span><b><a style="color: #AD009E;">⦾</a> Cifrar ficheros por passphrase:</b> Utiliza una misma clave para cifrar y descifrar <b>{</b>CIFRADO SIMÉTRICO<b>}</b></span><p></p>
+									<span><b><a style="color: #AD009E;">⦾</a> Cifrar ficheros por clave pública:</b> El fichero se cifra completamente con una clave pública <b>{</b>CIFRADO ASIMÉTRICO<b>}</b></span><p></p>
+									<span><b><a style="color: #AD009E;">⦾</a> Firmar ficheros por clave privada:</b> Verifica si el fichero pertenece a quien debería.</span>
 								</div>
 							</section>
+							<hr>
 
 							<section style="margin-top: 160px;" id="passphrase">
 								<div class="centext">
@@ -104,7 +105,7 @@
 								</div><br>
 
 								<div class="centext">
-									<span>Crear un archivo <strong>.txt</strong>, editarlo para escribir algún texto en él y cifrarlo simétricamente con <strong>gpg</strong></span>
+									<span>Crear un archivo <b>.txt</b>, editarlo para escribir algún texto en él y cifrarlo simétricamente con <b>gpg</b></span>
 								</div><p></p>
 
 								<div id="terminal">   
@@ -139,7 +140,7 @@
 									<img src="/blog/hardening/img/gpg1-1.jpg" width="70%"><p></p>
 									<img src="/blog/hardening/img/gpg2.jpg" width="70%"><br><br>
 									
-									<span><strong>gpg</strong> ha generado un fichero de extensión <strong>.gpg</strong> con el mismo nombre que el archivo en texto plano:</span><br>
+									<span><b>gpg</b> ha generado un fichero de extensión <b>.gpg</b> con el mismo nombre que el archivo en texto plano:</span><br>
 								</div><p></p>
 
 								<div id="terminal">   
@@ -173,7 +174,7 @@
 								</div><br><br>
 								
 								<div class="centext">
-									<span>Al volcar el contenido del fichero <strong>cifrado-simetrico.txt.gpg</strong> con el comando <strong>cat</strong>, el contenido se muestra cifrado.</span>
+									<span>Al volcar el contenido del fichero <b>cifrado-simetrico.txt.gpg</b> con el comando <b>cat</b>, el contenido se muestra cifrado.</span>
 								</div><p></p>
 								
 								<div id="long-terminal">   
@@ -199,11 +200,11 @@
 								</div><br><br><br>
 								
 								<div class="leftl">
-									<span><strong><a style="color: #FF00FF;">•</a> DESENCRIPTAR EL FICHERO</strong></span>
+									<span><b><a style="color: #FF00FF;">⦾</a> DESENCRIPTAR EL FICHERO</b></span>
 								</div><p></p>
 								
 								<div class="centext">
-									<span><strong>gpg --decrypt</strong> solicitará la passphrase previamente configurada y el comando <strong>cat</strong> podrá leer el fichero desencriptado.</span>
+									<span><b>gpg --decrypt</b> solicitará la passphrase previamente configurada y el comando <b>cat</b> podrá leer el fichero desencriptado.</span>
 								</div>
 								
 								<div id="terminal">   
@@ -248,7 +249,7 @@
 								</div><p></p>
 								
 								<div class="centext">
-									<span>En este caso creo un archivo de texto plano llamado <strong>cifrado-asimetrico.txt</strong> con el texto "<strong>Mensaje Cifrado</strong>" en su interior.</span>
+									<span>En este caso creo un archivo de texto plano llamado <b>cifrado-asimetrico.txt</b> con el texto "<b>Mensaje Cifrado</b>" en su interior.</span>
 								</div><p></p>
 								
 								<div id="terminal">   
@@ -275,11 +276,11 @@
 								</div><br><br><br>
 								
 								<div class="left">
-									<span><strong><a style="color: #FF00FF;">•</a> GENERAR EL PAR DE CLAVES</strong></span>
+									<span><b><a style="color: #FF00FF;">⦾</a> GENERAR EL PAR DE CLAVES</b></span>
 								</div><p></p>
 								
 								<div class="centext">
-									<span>La opción <strong>--full-generate-key</strong> se encarga de la generación completa de pares de claves.</span><p></p>
+									<span>La opción <b>--full-generate-key</b> se encarga de la generación completa de pares de claves.</span><p></p>
 									<span>Esta opción necesita generar muchos bytes aleatorios. Es recomendable realizar
 acciones como escribir en el teclado, mover el ratón o utilizar los discos durante la generación de primos. Esto da al generador de números aleatorios mayor aleatoriedad para generar suficiente entropía.</span>
 								</div><p></p>
@@ -464,7 +465,7 @@ acciones como escribir en el teclado, mover el ratón o utilizar los discos dura
 								</div><br><br> <!--- full-generate-key --->
 								
 								<div class="centext">
-									<span><strong>gpg</strong> ha generado el certificado <strong>E6A5759973DDAE37BEB6D8B2A9B12CFFF586A5F9.rev</strong> en <strong>$HOME/.gnupg/openpgp-revocs.d/</strong> que contiene el <strong>tipo de encriptación</strong>, <strong>fecha</strong> de <strong>creación</strong> y <strong>expiración</strong>, el <strong>UID</strong> y la <strong>clave pública</strong></span>
+									<span><b>gpg</b> ha generado el certificado <b>E6A5759973DDAE37BEB6D8B2A9B12CFFF586A5F9.rev</b> en <b>$HOME/.gnupg/openpgp-revocs.d/</b> que contiene el <b>tipo de encriptación</b>, <b>fecha</b> de <b>creación</b> y <b>expiración</b>, el <b>UID</b> y la <b>clave pública</b></span>
 								</div><p></p>
 								
 								<div id="long-terminal">   
@@ -566,11 +567,11 @@ acciones como escribir en el teclado, mover el ratón o utilizar los discos dura
 								</div><br><br>
 								
 								<div class="left">
-									<span><strong><a style="color: #AD009E;">•</a> CIFRAR EL FICHERO POR USER-ID</strong></span>
+									<span><b><a style="color: #AD009E;">⦾</a> CIFRAR EL FICHERO POR USER-ID</b></span>
 								</div><p></p>
 								
 								<div class="centext">
-									<span>Cifrar el fichero por <strong>USER-ID</strong> es un modo de corroborar su autenticidad, siempre que el <strong>USER-ID</strong> del fichero coincida con el del <strong>certificado</strong> generado previamente.</span>
+									<span>Cifrar el fichero por <b>USER-ID</b> es un modo de corroborar su autenticidad, siempre que el <b>USER-ID</b> del fichero coincida con el del <b>certificado</b> generado previamente.</span>
 								</div><p></p>
 								
 								<div id="terminal">   
@@ -592,11 +593,11 @@ acciones como escribir en el teclado, mover el ratón o utilizar los discos dura
 								</div><br><br>
 								
 								<div class="left">
-									<span><strong><a style="color: #AD009E;">•</a> DESENCRIPTAR EL FICHERO</strong></span>
+									<span><b><a style="color: #AD009E;">⦾</a> DESENCRIPTAR EL FICHERO</b></span>
 								</div><p></p>
 								
 								<div class="centext">
-									<span>Al desencriptar el fichero, <strong>gpg</strong> devolverá el tipo de encriptación, la fecha de creación y el <strong>UID</strong> adherido al fichero, para corroborar su autenticidad.</span>
+									<span>Al desencriptar el fichero, <b>gpg</b> devolverá el tipo de encriptación, la fecha de creación y el <b>UID</b> adherido al fichero, para corroborar su autenticidad.</span>
 								</div><p></p>
 								
 								<div id="long-terminal">   
@@ -632,7 +633,7 @@ acciones como escribir en el teclado, mover el ratón o utilizar los discos dura
 									</div><p></p>
 								
 									<div class="centext">
-										<span><strong>GPG</strong>, al contrario que <strong>PKI</strong> {<strong>P</strong>rivate <strong>K</strong>ey <strong>I</strong>nfraestructure}, no posee una autoridad certificadora {<strong>CA</strong>}. La única forma de verificar lo que denominamos relaciones de confianza, se basa en que el usuario verifica mediante passphrase, calves pública, fecha de creación\expiración y la firma del fichero, que este proviene de quien dice.</span>
+										<span><b>GPG</b>, al contrario que <b>PKI</b> {<b>P</b>rivate <b>K</b>ey <b>I</b>nfraestructure}, no posee una autoridad certificadora {<b>CA</b>}. La única forma de verificar lo que denominamos relaciones de confianza, se basa en que el usuario verifica mediante passphrase, calves pública, fecha de creación\expiración y la firma del fichero, que este proviene de quien dice.</span>
 									</div>
 								</section>
 							</div>
@@ -666,22 +667,22 @@ acciones como escribir en el teclado, mover el ratón o utilizar los discos dura
 		<h3 class="widget-title"><a style="color: rgb(195, 0, 189);">✎</a> Notas:</h3>		
 		<ul>
 			<li>
-				<a><strong>gpg</strong>: Herramienta de cifrado y firma OpenPGP</a>
+				<a><b>gpg</b>: Herramienta de cifrado y firma OpenPGP</a>
 			</li>
 			<li>
-				<a><strong>--symmetric</strong>: Encriptación sólo con cifrado simétrico</a>
+				<a><b>--symmetric</b>: Encriptación sólo con cifrado simétrico</a>
 			</li>
 			<li>
-				<a><strong>-r</strong>: Encriptación para USER-ID</a>
+				<a><b>-r</b>: Encriptación para USER-ID</a>
 			</li>
 			<li>
-				<a><strong>--decrypt</strong>: Desencriptar datos</a>
+				<a><b>--decrypt</b>: Desencriptar datos</a>
 			</li>
 			<li>
-				<a><strong>-o</strong>: Escribir la salida en un Archivo</a>
+				<a><b>-o</b>: Escribir la salida en un Archivo</a>
 			</li>
 			<li>
-				<a><strong>--full-generate-key</strong>: Generación completa de pares de claves</a>
+				<a><b>--full-generate-key</b>: Generación completa de pares de claves</a>
 			</li>
 		</ul>
 	</div>
@@ -693,8 +694,10 @@ acciones como escribir en el teclado, mover el ratón o utilizar los discos dura
 <footer id="site-footer">
 	<div class="container">
 		<div class="row">
-			<div class="copyright">
-				<a class="nodeco" href="/index"><img style="margin-top: -5px;" src="/blog/img/skull.png" weight="19px" height="19px"> 0xbogart</a>
+			<div class="col-md-8">
+				<div class="copyright">
+					<a class="nodeco" href="/index"><img style="margin-top: -5px;" src="/blog/img/skull.png" weight="19px" height="19px"> 0xbogart</a>
+				</div>
 			</div>
 		</div>
 	</div>

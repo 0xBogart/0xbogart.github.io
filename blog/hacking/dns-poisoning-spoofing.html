@@ -1,44 +1,44 @@
 <!DOCTYPE html>
 <html lang="es">
-	<head>
-		<title>DNS Poisoning &amp; Spoofing | 0xBogart</title>
+<head>
+	<title>DNS Poisoning &amp; Spoofing | 0xBogart</title>
 
-		<!-- meta -->
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0,user-scalable=no,viewport-fit=cover">
-		<link rel="icon" type="/image/png" href="/blog/img/skull.png">
-		<link rel="canonical" href="https://0xbogart.github.io/blog/hacking/dns-poisoning-spoofing">
-		<meta name="author" content="Bogart">
-		<meta name="description" content="DNS Poisoning &amp; Spoofing | 0xBogart">
-		<meta name="keywords" content="DNS Poisoning &amp; Spoofing | 0xBogart">
+	<!-- meta -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0,user-scalable=no,viewport-fit=cover">
+	<link rel="icon" type="/image/png" href="/blog/img/skull.png">
+	<link rel="canonical" href="https://0xbogart.github.io/blog/hacking/dns-poisoning-spoofing">
+	<meta name="author" content="Bogart">
+	<meta name="description" content="DNS Poisoning &amp; Spoofing | 0xBogart">
+	<meta name="keywords" content="DNS Poisoning &amp; Spoofing | 0xBogart">
 
-		<!-- Twitter Tags -->
-		<meta property="og:title" content="DNS Poisoning &amp; Spoofing | 0xBogart">
-		<meta property="og:description" content="DNS Poisoning &amp; Spoofing | 0xBogart">
-		<meta property="og:image" content="https://0xbogart.github.io/blog/img/dns-poisoning.jpg">
-		<meta property="og:url" content="https://0xbogart.github.io/blog/hacking/dns-poisoning-spoofing">
-		<meta name="twitter:card" content="summary_large_image">
-		<meta name="twitter:site" content="@jfb0gart">
-		<meta name="twitter:creator" content="@jfb0gart">
-		<meta name="twitter:title" content="DNS Poisoning &amp; Spoofing | 0xBogart">
-		<meta name="twitter:description" content="DNS Poisoning &amp; Spoofing | 0xBogart">
-		<meta name="twitter:image" content="https://0xbogart.github.io/blog/img/dns-poisoning.jpg">		
+	<!-- Twitter Tags -->
+	<meta property="og:title" content="DNS Poisoning &amp; Spoofing | 0xBogart">
+	<meta property="og:description" content="DNS Poisoning &amp; Spoofing | 0xBogart">
+	<meta property="og:image" content="https://0xbogart.github.io/blog/img/dns-poisoning.jpg">
+	<meta property="og:url" content="https://0xbogart.github.io/blog/hacking/dns-poisoning-spoofing">
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:site" content="@jfb0gart">
+	<meta name="twitter:creator" content="@jfb0gart">
+	<meta name="twitter:title" content="DNS Poisoning &amp; Spoofing | 0xBogart">
+	<meta name="twitter:description" content="DNS Poisoning &amp; Spoofing | 0xBogart">
+	<meta name="twitter:image" content="https://0xbogart.github.io/blog/img/dns-poisoning.jpg">		
 
-		<!-- css -->
-		<link rel="stylesheet" href="/css/bootstrap.min.css">
-		<link rel="stylesheet" href="/css/ionicons.min.css">
-		<link rel="stylesheet" href="/css/pace.css">
-		<link rel="stylesheet" href="/css/custom.css">
-		<link rel="stylesheet" href="/css/blackarchterm.css">
-		<link rel="stylesheet" href="/css/blackarchvoid.css">
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+	<!-- css -->
+	<link rel="stylesheet" href="/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/css/ionicons.min.css">
+	<link rel="stylesheet" href="/css/pace.css">
+	<link rel="stylesheet" href="/css/custom.css">
+	<link rel="stylesheet" href="/css/blackarchterm.css">
+	<link rel="stylesheet" href="/css/blackarchvoid.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
-		<!-- js -->
-		<script src="/js/jquery-2.1.3.min.js"></script>
-		<script src="/js/bootstrap.min.js"></script>
-		<script src="/js/pace.min.js"></script>
-		<script src="/js/modernizr.custom.js"></script>
-		<script src="/js/asredlight.js"></script>
+	<!-- js -->
+	<script src="/js/jquery-2.1.3.min.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
+	<script src="/js/pace.min.js"></script>
+	<script src="/js/modernizr.custom.js"></script>
+	<script src="/js/asredlight.js"></script>
 </head>
 
 <body>
@@ -84,7 +84,7 @@
 								<div class="centext">
 									<a style="font-size: 19px; color: rgb(189, 0, 38);">☠ </a><span class="red-bg" style="font-size: 19px;">INTRO</span>
 									<br><br>
-									<span><strong>DNS Pøisøning</strong> y <strong>DNS Spøøfing</strong> son sinónimos pero para entenderlos se debe pensar en ellos como acción y reacción o el <strong>cómo</strong> y el <strong>por qué</strong>.</span><br><br>
+									<span><b>DNS Pøisøning</b> y <b>DNS Spøøfing</b> son sinónimos pero para entenderlos se debe pensar en ellos como acción y reacción o el <b>cómo</b> y el <b>por qué</b>.</span><br><br>
 
 									<span>Cuando esta técnica se lleva a cabo, lo que ocurre es que los datos del DNS de un sitio web son falsificados\reemplazados, por lo que la petición de un usuario a esa web se redirecciona hacia el servidor del atacante en lugar de al servidor web legítimo.</span><br><br>
 									
@@ -95,34 +95,36 @@
 								
 								<a href="/blog/img/dns_poison_spoofing.jpg" target="_blank"><img src="/blog/hacking/img/dns_poison_spoofing.jpg" width="80%"></a>
 							</section>
+							<hr>
 								
 							<section id="ettercap">
 								<div style="margin-top: 160px;" class="centext">
 									<a style="font-size: 19px; color: rgb(189, 0, 38);">☠ </a><span class="red-bg" style="font-size: 19px;">ETTERCAP</span><br><br>
 									
-									<span><strong>Ettercap</strong> nació como un sniffer para redes LAN conmutadas pero durante el proceso de desarrollo ha ido incorporando nuevas características que lo han convertido en una potente y flexible herramienta para ataques <strong>M</strong>an-<strong>I</strong>n-<strong>T</strong>he-<strong>M</strong>iddle</span><br><br>
+									<span><b>Ettercap</b> nació como un sniffer para redes LAN conmutadas pero durante el proceso de desarrollo ha ido incorporando nuevas características que lo han convertido en una potente y flexible herramienta para ataques <b>M</b>an-<b>I</b>n-<b>T</b>he-<b>M</b>iddle</span><br><br>
 									
-									<span>Soporta la disección activa y pasiva de diferentes protocolos <strong>{</strong>incluso los cifrados<strong>}</strong> e incluye características para el análisis de la red y del host <strong>{</strong>como la huella digital del sistema operativo<strong>}</strong></span>
+									<span>Soporta la disección activa y pasiva de diferentes protocolos <b>{</b>incluso los cifrados<b>}</b> e incluye características para el análisis de la red y del host <b>{</b>como la huella digital del sistema operativo<b>}</b></span>
 								</div>
 							</section>
+								<hr>
 								
 							<section id="etterconf">
 								<div class="centext">
 									<div style="margin-top: 160px;" class="centext">
 										<a style="font-size: 19px; color: rgb(189, 0, 38);">☠ </a><span class="red-bg" style="font-size: 19px;">ETTER.CONF</span><p></p>
-										<span><strong>etter.conf</strong> es el archivo de configuración que determina el comportamiento de <strong>Ettercap</strong>. Se carga siempre al inicio y configura algunos atributos utilizados en tiempo de ejecución y es el único archivo que se lee con permisos de <strong><a style="color: #C80000;">root</a></strong>.</span>
+										<span><b>etter.conf</b> es el archivo de configuración que determina el comportamiento de <b>Ettercap</b>. Se carga siempre al inicio y configura algunos atributos utilizados en tiempo de ejecución y es el único archivo que se lee con permisos de <b><a style="color: #C80000;">root</a></b>.</span>
 										<br><br>
-										<span>Hay que asegurarse de que el <strong>UID</strong> especificado tiene suficientes privilegios para leer otros archivos {<strong>etter.*</strong>}</span><p></p>
-										<span>Aunque esto se puede omitir estableciendo la variable de entorno <strong>EC_UID=0</strong></span>
+										<span>Hay que asegurarse de que el <b>UID</b> especificado tiene suficientes privilegios para leer otros archivos {<b>etter.*</b>}</span><p></p>
+										<span>Aunque esto se puede omitir estableciendo la variable de entorno <b>EC_UID=0</b></span>
 										<br><br>
-										<span><strong>Ettercap</strong> necesita privilegios de <strong><a style="color: #C80000;">root</a></strong> para iniciar los sockets de la capa de enlace y tras esta inicialización, los privilegios de root ya no son necesarios</span>
+										<span><b>Ettercap</b> necesita privilegios de <b><a style="color: #C80000;">root</a></b> para iniciar los sockets de la capa de enlace y tras esta inicialización, los privilegios de root ya no son necesarios</span>
 										<br><br>
-										<span>Es cuando <strong>Ettercap</strong> vuelve a reducir los privilegios a <strong>UID=65534</strong> {<strong>nobody</strong>}</span>
+										<span>Es cuando <b>Ettercap</b> vuelve a reducir los privilegios a <b>UID=65534</b> {<b>nobody</b>}</span>
 									</div>
 								</div><br><br>
 								
-								<div class="left">
-									<span><strong><a style="color: #DB0000;">•</a> CONFIGURAR etter.conf</strong></span>
+								<div class="leftl">
+									<span><b><a style="color: #DB0000;">⦾</a> CONFIGURAR etter.conf</b></span>
 								</div><p></p>
 									
 								<a href="/blog/hacking/img/etterconf.png" target="_blank"><img src="/blog/hacking/img/etterconf.png" width="50%"></a><p></p>
@@ -132,54 +134,54 @@
 								<a href="/blog/hacking/img/redir2.png" target="_blank"><img src="/blog/hacking/img/redir2.png" width="67%"></a><p></p>
 								
 								<div class="centext">
-									<span>Como <strong>Ettercap</strong> necesita crear archivos de registro, debe ejecutarse en un directorio con permisos suficientes como <strong>/tmp</strong></span>
+									<span>Como <b>Ettercap</b> necesita crear archivos de registro, debe ejecutarse en un directorio con permisos suficientes como <b>/tmp</b></span>
 								</div>
 							</section>
+								<hr>
 								
 							<section id="etterdns">
 								<div class="centext">
 									<div style="margin-top: 160px;" class="centext">
 										<a style="font-size: 19px; color: rgb(189, 0, 38);">☠ </a><span class="red-bg" style="font-size: 19px;">ETTER.DNS</span><p></p>
-										<span><strong>etter.dns</strong> es el archivo de configuración para la <strong>suplantación DNS</strong> {<strong>Spøøfing</strong>} de Ettercap y actúa como <strong>DNS caché</strong> para redirigir las solicitud del usuario al servidor local malicioso <strong>{</strong>atacante<strong>}</strong></span><br><br>
+										<span><b>etter.dns</b> es el archivo de configuración para la <b>suplantación DNS</b> {<b>Spøøfing</b>} de Ettercap y actúa como <b>DNS caché</b> para redirigir las solicitud del usuario al servidor local malicioso <b>{</b>atacante<b>}</b></span><br><br>
 									</div>
 								</div>
 										
-								<div class="left">
-									<span><strong><a style="color: #DB0000;">•</a> CONFIGURAR etter.dns</strong></span>
+								<div class="leftl">
+									<span><b><a style="color: #DB0000;">⦾</a> CONFIGURAR etter.dns</b></span>
 								</div><p></p>
 									
 								<div>
 									<a href="/blog/hacking/img/etterdns.png" target="_blank"><img src="/blog/hacking/img/etterdns.png" width="46%"></a><p></p>
 									<a href="/blog/hacking/img/etterdns2.png" target="_blank"><img src="/blog/hacking/img/etterdns2.png" width="100%"></a>
 									<br><br>
-									<span>Cuando la <strong>caché DNS</strong> sea <strong>falsicifada</strong>, la petición del usuario a <strong>instagram.com</strong> será <strong>redireccionada</strong> a mi IP local</span><p></p>
+									<span>Cuando la <b>caché DNS</b> sea <b>falsicifada</b>, la petición del usuario a <b>instagram.com</b> será <b>redireccionada</b> a mi IP local</span><p></p>
 									<a href="/blog/hacking/img/dnscache.png" target="_blank"><img src="/blog/hacking/img/dnscache.png" width="55%"></a>
 								</div>
 							</section>
+								<hr>
 								
 							<section id="poisoning">
 								<div style="margin-top: 160px;" class="centext">
 									<a style="font-size: 19px; color: rgb(189, 0, 38);">☠ </a><span class="red-bg" style="font-size: 19px;">FASE DE ENVENENAMIENTO\SUPLANTACIÓN DNS</span><p></p>
-									<span>Antes del <strong>DNS Pøisøning</strong>, este es el estado de la <strong>tabla ARP</strong> del usuario y la respuesta de ping a <strong>instagram.com</strong></span><p></p>
+									<span>Antes del <b>DNS Pøisøning</b>, este es el estado de la <b>tabla ARP</b> del usuario y la respuesta de ping a <b>instagram.com</b></span><p></p>
 									<a href="/blog/hacking/img/arp1.png" target="_blank"><img src="/blog/hacking/img/arp1.png" width="80%"></a><p></p>
 									<a href="/blog/hacking/img/arp2.png" target="_blank"><img src="/blog/hacking/img/arp2.png" width="80%"></a><p></p>
 									<a href="/blog/hacking/img/instagram.png" target="_blank"><img src="/blog/hacking/img/instagram.png" width="100%"></a><p></p>
 									<a href="/blog/hacking/img/arp3.png" target="_blank"><img src="/blog/hacking/img/arp3.png" width="100%"></a>
 								</div><p></p>
 								
-								<div class="left">
-									<span><strong> -T</strong>: Visualización de paquetes en modo texto</span><p></p>
-									<span><strong> -i</strong>: Interfaz de red para el sniffing de paquetes</span><p></p>
-									<span><strong> -M</strong>: Lleva a cabo el ataque MiTM <strong>{</strong>arp:remote envenena la tabla ARP y rastrea el tráfico remoto<strong>}</strong></span><p></p>
-									<span><strong> -P</strong>:  Activa el plugin especificado</span><p></p>
-									<span><strong> Formato</strong>:  MAC/IP/PORTS/</span>
+								<div class="leftl">
+									<span style="color: #DB0000;">⦾</span><span><b> -T</b>: Visualización de paquetes en modo texto</span><p></p>
+									<span style="color: #DB0000;">⦾</span><span><b> -i</b>: Interfaz de red para el sniffing de paquetes</span><p></p>
+									<span style="color: #DB0000;">⦾</span><span><b> -M</b>: Lleva a cabo el ataque MiTM <b>{</b>arp:remote envenena la tabla ARP y rastrea el tráfico remoto<b>}</b></span><p></p>
+									<span style="color: #DB0000;">⦾</span><span><b> -P</b>:  Activa el plugin especificado</span><p></p>
+									<span style="color: #DB0000;">⦾</span><span><b> Formato</b>:  MAC/IP/PORTS/</span>
 								</div><br>
 								
 								<div class="centext">
 									<a href="/blog/hacking/img/arp5.png" target="_blank"><img src="/blog/hacking/img/arp5.png" width="90%"></a><br><br>
-									
-									<span>En este momento la <strong>caché DNS</strong> del usuario ha sido <strong>falsificada</strong>. En su <strong>tabla ARP</strong> se refleja la IP de mi servidor local y cree que <strong>instagram.com</strong> es mi servidor local, donde he montado un <strong>servidor NGINX</strong></span><p></p>
-									
+									<span>En este momento la <b>caché DNS</b> del usuario ha sido <b>falsificada</b>. En su <b>tabla ARP</b> se refleja la IP de mi servidor local y cree que <b>instagram.com</b> es mi servidor local, donde he montado un <b>servidor NGINX</b></span><p></p>
 									<a href="/blog/hacking/img/arp6.png" target="_blank"><img src="/blog/hacking/img/arp6.png" width="80%"></a><p></p>
 									<a href="/blog/hacking/img/arp7.png" target="_blank"><img src="/blog/hacking/img/arp7.png" width="80%"></a><br><br>
 									<a href="/blog/hacking/img/fakeinstagram.png" target="_blank"><img src="/blog/hacking/img/fakeinstagram.png" width="100%"></a>
@@ -216,19 +218,19 @@
 						<h3 class="widget-title"><a style="color: rgb(189, 0, 38);">✎ </a>Notas:</h3>		
 						<ul>
 							<li>
-								<a><strong>etter.conf</strong>: Archivo de configuración que determina el comportamiento de Ettercap.</a>
+								<a><b>etter.conf</b>: Archivo de configuración que determina el comportamiento de Ettercap.</a>
 							</li>
 							<li>
-								<a><strong>etter.dns</strong>: Archivo de configuración para la suplantación DNS {Spøøfing} de Ettercap</a>
+								<a><b>etter.dns</b>: Archivo de configuración para la suplantación DNS {Spøøfing} de Ettercap</a>
 							</li>
 							<li>
-								<a><strong>ARP</strong>: Protocolo de Resolución de Direcciones. Permite manipular la caché de vecinos o la tabla ARP</a>
+								<a><b>ARP</b>: Protocolo de Resolución de Direcciones. Permite manipular la caché de vecinos o la tabla ARP</a>
 							</li>
 							<li>
-								<a><strong>192.168.1.37</strong>: IP máquina Víctima</a>
+								<a><b>192.168.1.37</b>: IP máquina Víctima</a>
 							</li>
 							<li>
-								<a><strong>192.168.1.38</strong>: IP máquina Atacante</a>
+								<a><b>192.168.1.38</b>: IP máquina Atacante</a>
 							</li>
 						</ul>
 					</div>
@@ -241,21 +243,13 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12">
-					<p class="copyright"><a href="/index"><img style="margin-top: -5px;" src="/blog/img/skull.png" width="17px" height="20px"></a>0xBogart</p>
+					<div class="copyright">
+						<a class="nodeco" href="/index"><img style="margin-top: -5px;" src="/blog/img/skull.png" weight="19px" height="19px"> 0xbogart</a>
+					</div>
 				</div>
 			</div>
 		</div>
 	</footer>
-
-	<!-- Mobile Menu -->
-	<div class="overlay overlay-hugeinc">
-		<button type="button" class="overlay-close"><span class="ion-ios-close-empty"></span></button>
-		<nav>
-			<ul>
-				<li><a href="/index">Home</a></li>
-			</ul>
-		</nav>
-	</div>
 	<a href="#" id="scrollToTopButtonRed"><i class="fas fa-arrow-up"></i></a>
 </body>
 </html>

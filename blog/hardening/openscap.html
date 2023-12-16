@@ -82,13 +82,13 @@
 							<section style="margin-top: 50px;" id="intro">
 								<div class="centext">
 									<!--- INTRO --->
-									<span>Una <b>auditoría de cumplimiento</b> es un proceso para determinar si un sistema o infraestructura sigue todas las reglas especificadas en una <b>política de cumplimiento</b>.</span><br><br>
-									<span>La política de cumplimiento la definen los <b>profesionales de la seguridad</b> que especifican las configuraciones o parches necesarios, que debe utilizar un entorno informático.</span><br><br>
-									<span>Existen herramientas basadas en el estándar <b>S</b>ecurity <b>C</b>ontent <b>A</b>utomation <b>P</b>rotocol {<b>SCAP</b>} que permiten realizar auditorías de cumplimiento, de forma automatizada:</span><p></p>
+									<span>Una <b>auditoría de cumplimiento</b> es un proceso para determinar si un sistema o infraestructura cumple con las reglas especificadas en una <b>política de cumplimiento</b>.</span><br><br>
+									<span>Las políticas de cumplimiento las definen los <b>profesionales de la seguridad</b> que especifican las configuraciones o parches necesarios, que debe utilizar un entorno informático.</span><br><br>
+									<span>Existen herramientas basadas en el estándar <b>S</b>ecurity <b>C</b>ontent <b>A</b>utomation <b>P</b>rotocol [<b>SCAP</b>] que permiten realizar auditorías de cumplimiento, de forma automatizada:</span><p></p>
 									<a href="/blog/hardening/img/openscap.png" target="_blank"><img src="/blog/hardening/img/openscap.png" width="100%" height="auto"></a><p></p>
 									<span>La <b>biblioteca OpenSCAP</b> representa una biblioteca a la vez que una herramienta en línea de comandos.</span><br><p></p>
-									<span>Como biblioteca permite la creación rápida de nuevas <b>herramientas SCAP</b></span><br><p></p>
-									<span>Como herramienta en línea de comandos {<b>oscap</b>}, está diseñada para realizar escaneos de configuración y vulnerabilidades en un sistema local, para validar el contenido de cumplimiento de la configuración y para generar informes y guías basados en estos escaneos y evaluaciones.</span>
+									<span>Como biblioteca permite la creación rápida de nuevas <b>herramientas SCAP</b>.</span><br><p></p>
+									<span>Como herramienta en línea de comandos [<b>oscap</b>], está diseñada para realizar escaneos de configuración y vulnerabilidades en un sistema local, para validar el contenido de cumplimiento de la configuración y para generar informes y guías basados en estos escaneos y evaluaciones.</span>
 									<!--- ./INTRO --->
 								</div>
 							</section>
@@ -416,13 +416,13 @@
 
 								<div class="leftl">
 									<span><b><a style="color: #FF00FF;">⦾</a> eval</b>: Realizar la evaluación del archivo de documento <b>XCCDF</b> dado como <b>INPUT_FILE</b>. Imprimir el resultado de cada regla en la salida estándar.</span><p></p>
-									<span><b><a style="color: #FF00FF;">⦾</a> profile</b>: Selecciona un perfil particular del documento <b>XCCDF</b>. Si se da {‘<b>all</b>‘} se utilizará un perfil virtual que selecciona todos los grupos y reglas.</span><p></p>
+									<span><b><a style="color: #FF00FF;">⦾</a> profile</b>: Selecciona un perfil particular del documento <b>XCCDF</b>. Si se da ['<b>all</b>'] se utilizará un perfil virtual que selecciona todos los grupos y reglas.</span><p></p>
 									<span><b><a style="color: #FF00FF;">⦾</a> results-arf</b>: Exporta los resultados en un archivo determinado en Formato de Informe de Activos {Asset Reporting Format}, en este caso <b>XML</b>. Se recomienda utilizar esta opción en lugar de –results cuando se trate de flujos de datos {Data Streams}.</span><p></p>
 									<span><b><a style="color: #FF00FF;">⦾</a> report</b>: Exporta los resultados en formato HTML.</span>
 								</div><br>
 								
 								<div class="centext">
-									<span>El escaneo evalúa qué controles son exitosos {<a style="color: #1CAA00;"><b>pass</b></a>} porque su configuración está alineada con la guía de seguridad y cuales son fallidos {<a style="color: #D30000;"><b>fail</b></a>}</span>
+									<span>El escaneo evalúa qué controles son exitosos [<a style="color: #1CAA00;"><b>pass</b></a>] porque su configuración está alineada con la guía de seguridad y cuales no [<a style="color: #D30000;"><b>fail</b></a>]</span>
 									<a href="/blog/hardening/img/oscap-pass-fail.png" target="_blank"><img src="/blog/hardening/img/oscap-pass-fail.png" width="100%" height="auto"></a><br><br>
 									<span>Y ha generado los archivos <b>results.xml</b> y <b>results.html</b> en <b>/tmp/</b></span><br>
 									<a href="/blog/hardening/img/oscap-results.png" target="_blank"><img src="/blog/hardening/img/oscap-results.png" width="80%" height="auto"></a><br><br><p></p>

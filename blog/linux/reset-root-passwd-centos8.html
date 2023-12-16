@@ -54,8 +54,9 @@
 					<div style="margin-top: -2%; margin-bottom: -3%;">
 						<h1><a class="nodeco" href="/linux" style="color: rgb(88, 177, 0);">☣</a>LINUX</h1>
 					</div><!-- col-4 -->
-        </div>
-        <div class="row justify-content-end">
+				</div>
+				
+				<div class="row justify-content-end">
 					<div style="margin-top: -3%; margin-bottom: -3%;" class="col-3">
 						<nav class="navbar navbar-expand-lg navbar-light">
 							<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#bs-example-navbar-collapse-1" aria-controls="bs-example-navbar-collapse-1" aria-expanded="false" aria-label="Toggle navigation">
@@ -77,15 +78,19 @@
 		<div class="content-body">
 			<div class="container">
 				<div class="row">
-					<main class="col-md-12">
+					<main class="col-md-8">
 						<article class="post post-1">
 							<header  class="entry-header">
 								<h1 class="blh1">Reset Root Password</h1>
 								<h2 class="blh2">CentOS 8 &amp; RHEL 8</h2>
 							</header>
 							<div class="entry-content clearfix">
-								<br><br>
-								<!--<img class="zoom" src="https://0xbogart.github.io/img/nmcli.jpg" alt="WP Debian">-->
+								<section id="grubedit" style="margin-top: 140px;">
+								<div class="centext">
+									<a style="font-size: 19px; color: rgb(88, 177, 0);">☣ </a><span class="green-bg" style="font-size: 19px;">EDITAR GRUB</span>
+								</div>
+								</section>
+									<!--<img class="zoom" src="https://0xbogart.github.io/img/nmcli.jpg" alt="WP Debian">-->
 								<span>Presiona la tecla '<a style="color: #30A900;"><b>e</b></a>' para editar <b>GRUB</b></span>
 								<br>
 								
@@ -109,8 +114,12 @@
 										</div>
 									  </section>
 									</div>
-								<br><br><br>
-								<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Localiza la línea que empieza por '<a style="color: #30A900;"><b>linux</b></a>'</span>
+								
+								<section id="rdbreak" style="margin-top: 140px;">
+								<div class="centext">
+									<a style="font-size: 19px; color: rgb(88, 177, 0);">☣ </a><span class="green-bg" style="font-size: 19px;">INSTALACIÓN DE PAQUETES Y DEPENDENCIAS</span>
+								</div>
+									<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Localiza la línea que empieza por '<a style="color: #30A900;"><b>linux</b></a>'</span>
 								<br>
 								<span>Añade <a style="color: #30A900;"><b>rd.break</b></a> al final de la línea para interrumpir el proceso de arranque antes de que el control pase al Kernel y presiona <a style="color: #30A900;"><b>Ctrl+X</b></a></span>
 								<!-- END TERMINAL GRUB 1 -->
@@ -140,12 +149,17 @@
 										</div>
 									  </section>
 									</div>
+								</section>
 								<!-- END EDIT GRUB -->
 
 								<br>
 								<br>
 								<br>
 
+								<section id="autorelabel">
+								<div class="centext">
+									<a style="font-size: 19px; color: rgb(88, 177, 0);">☣ </a><span class="green-bg" style="font-size: 19px;">/SYSROOT Y AUTORELABEL</span>
+								</div>
 								<!-- CHROOT /SYSROOT -->
 								<span>Montar jaula <a style="color: #30A900;"><b>chroot</b></a> en <a style="color: #30A900;"><b>/sysroot</b></a> con permisos <b>rw</b> y cambiar password de <b>root</b>.<br>
 								Después crea el fichero <a style="color: #30A900;"><b>/.autorelabel</b></a> para que en el próximo arranque, el subsistema <b>SELinux</b> reetiquete todos los archivos con los contextos correctos:</span>
@@ -205,6 +219,9 @@
 										</div>
 									  </section>
 									</div>
+									</section>
+								<hr>
+								
 								<!-- END CHROOT /SYSROOT -->
 								<br><br>
 
@@ -248,13 +265,13 @@
 						<h3 class="widget-title"><a style="color: rgb(82, 163, 0);">↳ </a>Tabla de Contenido:</h3>		
 						<ul>
 							<li>
-								<a class="nodeco" href="#INSTALL">INSTALACIÓN DE PAQUETES Y DEPENDENCIAS</a>
+								<a class="nodeco" href="#grubedit">Editar GRUB</a>
 							</li>
 							<li>
-								<a class="nodeco" href="#BBDD">CONFIGURAR LA BBDD</a>
+								<a class="nodeco" href="#rdbreak">rd.break</a>
 							</li>
 							<li>
-								<a class="nodeco" href="#INSTALLWP">INSTALACIÓN WORDPRESS</a>
+								<a class="nodeco" href="#INSTALLWP">/sysroot &amp; /.autorelabel</a>
 							</li>
 						</ul>
 					</div>
@@ -263,10 +280,13 @@
 						<h3 class="widget-title"><a style="color: rgb(82, 163, 0);">✎ </a>Notas:</h3>		
 						<ul>
 							<li>
-								<a><b>mysql_secure_installation</b>: Instalación y configuración guiada para la securización de MySQL</a>
+								<a><b>rd.break</b>: El parámetro rd.break hace que se "rompa" el disco RAM inicial que contiene las partes del kernel de Linux necesarias para el arranque del Sistema.</a>
 							</li>
 							<li>
-								<a><b>wp-config.php</b>: Si no existe el fichero de configuración, deberá crearse manualmente y pegar el contenido que devuelve WordPress durante su instalación <b>[</b>Screenshot nº 3<b>]</b></a>
+								<a><b>/sysroot</b>: Es un directorio utilizado en entornos Linux que actúa como la raíz del sistema de archivos cuando se monta durante operaciones como rd.break</a>
+							</li>
+							<li>
+								<a><b>/.autorelabel</b>: Si no existe el fichero de configuración, deberá crearse manualmente y pegar el contenido que devuelve WordPress durante su instalación <b>[</b>Screenshot nº 3<b>]</b></a>
 							</li>
 						</ul>
 					</div>
@@ -274,9 +294,6 @@
 			</div>
 		</div>
 	</div>
-				</div>
-			</div>
-		</div>
 
 	<footer id="site-footer">
 		<div class="container">

@@ -144,9 +144,9 @@
 									<div><a style="font-size: 19px; color: rgb(88, 177, 0);">☣ </a><span  class="green-bg" style="font-size: 19px;">CONVERSIÓN DE SLAPD.CONF A SLAPD.D</span></div>
 								
 									<div class="centext">
-										<span>Desde la versión 2.3 <strong>OpenLDAP</strong> ha pasado a utilizar un motor de configuración de tiempo de ejecución dinámico y ya no lee la configuración desde <strong>/etc/openldap/slapd.conf</strong></span>
+										<span>Desde la versión 2.3 <b>OpenLDAP</b> ha pasado a utilizar un motor de configuración de tiempo de ejecución dinámico y ya no lee la configuración desde <b>/etc/openldap/slapd.conf</b></span>
 										<br>
-										<span>En su lugar, utiliza una base de datos de configuración estructurada y ubicada en <strong>/etc/openldap/slapd.d/</strong></span>
+										<span>En su lugar, utiliza una base de datos de configuración estructurada y ubicada en <b>/etc/openldap/slapd.d/</b></span>
 									</div><br>
 								
 									<div id="terminal">
@@ -219,7 +219,7 @@
 									</div><br><br><br>
 								
 									<div class="centext">
-										<span><strong>CONVERSIÓN</strong>: Si tienes un archivo <strong>slapd.conf</strong> existente de una instalación anterior, puedes convertirlo al nuevo formato usando <strong>slaptest</strong>:</span>
+										<span><b>CONVERSIÓN</b>: Si tienes un archivo <b>slapd.conf</b> existente de una instalación anterior, puedes convertirlo al nuevo formato usando <b>slaptest</b>:</span>
 									</div>
 								
 									<div id="terminal">
@@ -241,7 +241,7 @@
 									</div><br><br>
 								
 									<div class="centext">
-										<span>Prueba el acceso a las entradas en <strong>cn=config</strong> utilizando el <strong>RootDN</strong> predeterminado y el <strong>RootPW</strong> configurado anteriormente:</span>
+										<span>Prueba el acceso a las entradas en <b>cn=config</b> utilizando el <b>RootDN</b> predeterminado y el <b>RootPW</b> configurado anteriormente:</span>
 									</div>
 
 									<div id="terminal">
@@ -263,7 +263,7 @@
 									</div><br>
 								
 									<div class="centext">
-										<span><strong>NOTA</strong>: A continuación, puedes descartar el antiguo archivo <strong>slapd.conf</strong>. Asegurate de iniciar slapd con la opción <a style="color: #1AAB00;"><strong>-F</strong></a> para especificar el directorio de configuración si no estás utilizando la ruta del directorio predeterminado.</span>
+										<span><b>NOTA</b>: A continuación, puedes descartar el antiguo archivo <b>slapd.conf</b>. Asegurate de iniciar slapd con la opción <a style="color: #1AAB00;"><b>-F</b></a> para especificar el directorio de configuración si no estás utilizando la ruta del directorio predeterminado.</span>
 									</div>
 								</section>
 									<hr>
@@ -271,9 +271,9 @@
 								<section style="margin-top: 160px;" id="HDB" class="centext">
 									<div><a style="font-size: 19px; color: rgb(88, 177, 0);">☣ </a><span class="green-bg" style="font-size: 19px;">HDB [DIRECTIVAS DEL BACK-END]</span>
 									<br>
-										<span>De forma predeterminada, el servidor OpenLDAP utiliza el <strong>hdb</strong> como <strong>back-end</strong> de la base de datos.</span>
+										<span>De forma predeterminada, el servidor OpenLDAP utiliza el <b>hdb</b> como <b>back-end</b> de la base de datos.</span>
 									<br>
-										<span>Las <strong>directivas</strong> necesarias para su configuración se encuentran en <strong>/etc/openldap/slapd.d/cn=config/olcDatabase={2}hdb.ldif</strong></span>
+										<span>Las <b>directivas</b> necesarias para su configuración se encuentran en <b>/etc/openldap/slapd.d/cn=config/olcDatabase={2}hdb.ldif</b></span>
 									</div><br>
 									<div id="terminal">
 										<!-- Terminal Bar -->       
@@ -432,7 +432,7 @@
 									</div>
 								<br><br>
 								<div class="centext">
-									<p>Si en lugar de usar una contraseña en texto plano, prefieres generar un <strong style="font-size: 15.2px;">hash</strong> {Recomendable}, se puede hacer con <strong style="font-size: 15.2px;">slappasswd</strong>.</p>
+									<p>Si en lugar de usar una contraseña en texto plano, prefieres generar un <b style="font-size: 15.2px;">hash</b> {Recomendable}, se puede hacer con <b style="font-size: 15.2px;">slappasswd</b>.</p>
 									</div>
 								
 								<div id="terminal">
@@ -485,8 +485,8 @@
 								<section style="margin-top: 160px;" id="SLAPTEST" class="centext">
 								<div>
 								<a style="font-size: 19px; color: rgb(88, 177, 0);">☣ </a><span class="green-bg" style="font-size: 19px;">SLAPTEST: VERIFICAR LA CONFIGURACIÓN</span><br>
-									<p><strong>slaptest</strong> verifica el archivo de configuración. Si la configuración es correcta devolerá el mensaje: <strong>config file testing succeeded</strong></p>
-									<p>Ahora se puede iniciar el servidor <strong>OpenLDAP</strong></p>
+									<p><b>slaptest</b> verifica el archivo de configuración. Si la configuración es correcta devolerá el mensaje: <b>config file testing succeeded</b></p>
+									<p>Ahora se puede iniciar el servidor <b>OpenLDAP</b></p>
 									</div>
 
 								<div id="terminal">
@@ -520,7 +520,7 @@
 								<section style="margin-top: 160px;" id="BASELDIF" >
 								<div class="centext">
 								<a style="font-size: 19px; color: rgb(88, 177, 0);">☣ </a><span class="green-bg" style="font-size: 19px;">ESTRUCTURAR LA BASE DE DATOS</span>
-									<p>Crear un fichero <strong>base.ldif</strong> en <strong>/var/tmp/</strong> que contrendrá la estructura de la base de datos</p>
+									<p>Crear un fichero <b>base.ldif</b> en <b>/var/tmp/</b> que contrendrá la estructura de la base de datos</p>
 									</div>
 
 								<div id="terminal">
@@ -595,7 +595,7 @@
 								<br><br>
 
 								<div class="centext">
-				<span>Importar la estructura base en el <strong>directorio LDAP</strong> con <strong>ldapadd</strong></span>
+				<span>Importar la estructura base en el <b>directorio LDAP</b> con <b>ldapadd</b></span>
 									</div>
 								<div id="terminal">
 									  <!-- Terminal Bar -->
@@ -626,7 +626,7 @@
 								<br><br>
 								
 								<div class="centext">
-									<span>Verificar la estructura base con <strong>ldapsearch</strong> para confirmar que las <strong>OU</strong> <strong>{</strong>Organizational unit<strong>}</strong> han sido creadas con éxito</span>
+									<span>Verificar la estructura base con <b>ldapsearch</b> para confirmar que las <b>OU</b> <b>[</b>Organizational unit<b>]</b> han sido creadas con éxito</span>
 									</div>
 
 								<div id="terminal">
@@ -649,7 +649,7 @@
 								<br><br>
 								
 								<div class="centext">
-									<span>Importar los siguientes esquemas al servidor de directorios para evitar errores de «<strong>object class not defined</strong>» al importar los usuarios.</span>
+									<span>Importar los siguientes esquemas al servidor de directorios para evitar errores de «<b>object class not defined</b>» al importar los usuarios.</span>
 								</div>
 
 								<!--- ldapadd ldapi:/// --->
@@ -952,22 +952,22 @@
 							<h3 class="widget-title"><a style="color: rgb(82, 163, 0);">✎ </a>Notas:</h3>		
 							<ul>
 								<li>
-									<a><strong>slapd.conf</strong>: Archivo de configuración anterior a versiones 2.3 de OpenLDAP</a>
+									<a><b>slapd.conf</b>: Archivo de configuración anterior a versiones 2.3 de OpenLDAP</a>
 								</li>
 								<li>
-									<a><strong>slapd.d</strong>: Nuevo formato de configuración en versiones 2.3 y posteriores de OpenLDAP</a>
+									<a><b>slapd.d</b>: Nuevo formato de configuración en versiones 2.3 y posteriores de OpenLDAP</a>
 								</li>
 								<li>
-									<a><strong>hdb</strong>: Back-End de OpenLDAP</a>
+									<a><b>hdb</b>: Back-End de OpenLDAP</a>
 								</li>
 								<li>
-									<a><strong>base.ldif</strong>: Fichero que estructura la BBDD</a>
+									<a><b>base.ldif</b>: Fichero que estructura la BBDD</a>
 								</li>
 								<li>
-									<a><strong>users.ldif</strong>: Fichero de configuración de usuarios</a>
+									<a><b>users.ldif</b>: Fichero de configuración de usuarios</a>
 								</li>
 								<li>
-									<a><strong>groups.ldif</strong>: Fichero de configuración de grupos</a>
+									<a><b>groups.ldif</b>: Fichero de configuración de grupos</a>
 								</li>
 							</ul>
 						</div>

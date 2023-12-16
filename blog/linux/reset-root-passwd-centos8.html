@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <title>Reset root Password CentOS 8 | ØxBogart</title>
+
+  <!-- meta -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0,user-scalable=no,viewport-fit=cover">
+  <link rel="icon" type="/image/png" href="/blog/img/skull.png">
+  <link rel="canonical" href="https://skxll.net/blog/linux/reset-root-passwd-centos8">
+  <meta name="description" content="Resetear password de root en CentOS8 | ØxBogart">
+  <meta name="keywords" content="passwd root CentOS RHEL 8">
+ 
+  <!-- Twitter Tags -->
+  <meta property="og:title" content="Resetear root password en CentOS8">
+  <meta property="og:description" content="Resetear root password en CentOS8">
+  <meta property="og:url" content="https://0xbogart.github.io/blog/linux/reset-root-passwd-centos8">
+  <meta property="og:image" content="https://0xbogart.github.io/blog/img/root8.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@jfb0gart">
+  <meta name="twitter:creator" content="@jfb0gart">
+  <meta name="twitter:title" content="Reset root Password CentOS8 | ØxBogart">
+  <meta name="twitter:description" content="Reset root Password CentOS8 | ØxBogart">
+  <meta name="twitter:image" content="https://0xbogart.github.io/blog/img/root8.jpg">		
+
+  <!-- css -->
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/ionicons.min.css">
+  <link rel="stylesheet" href="/css/pace.css">
+  <link rel="stylesheet" href="/css/custom.css">
+  <link rel="stylesheet" href="/css/rhterm.css">
+  <link rel="stylesheet" href="/css/rhvoid.css">
+
+  <!-- js -->
+  <script src="/js/jquery-2.1.3.min.js"></script>
+  <script src="/js/bootstrap.min.js"></script>
+  <script src="/js/pace.min.js"></script>
+  <script src="/js/modernizr.custom.js"></script>
+<style>
+	/* gris resaltar linea en terminal */
+.grey-bg {
+	background-color: #E1E1E1;
+	width: 100%;
+	text-align: left;
+}
+</style>
+</head>
+
+<body class="bg">
+  <div class="container">	
+			<header id="site-header">
+				<div class="row">
+					<div style="margin-top: -2%; margin-bottom: -3%;">
+						<h1><a class="nodeco" href="https://skxll.net/linux" style="color: rgb(88, 177, 0);">☣</a>LINUX</h1>
+					</div><!-- col-4 -->
+        </div>
+        <div class="row justify-content-end">
+					<div style="margin-top: -3%; margin-bottom: -3%;" class="col-3">
+						<nav class="navbar navbar-expand-lg navbar-light">
+							<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#bs-example-navbar-collapse-1" aria-controls="bs-example-navbar-collapse-1" aria-expanded="false" aria-label="Toggle navigation">
+								<span class="navbar-toggler-icon"></span>
+							</button>
+							<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+								<ul class="navbar-nav">
+									<li class="nav-item">
+										<a style="font-size: 25px;" class="nav-link" href="https://skxll.net" data-hover="Home">Home</a>
+									</li>
+								</ul>
+							</div><!--- .navbar-collapse --->
+						</nav>
+					</div><!-- col-md-8 -->
+				</div>
+			</header>
+		</div>
+
+		<div class="content-body">
+			<div class="container">
+				<div class="row">
+					<main class="col-md-12">
+						<article class="post post-1">
+							<header  class="entry-header">
+								<h1 class="blh1">Reset Root Password</h1>
+								<h2 class="blh2">CentOS 8</h2>
+							</header>
+							<div class="entry-content clearfix">
+								<br><br>
+								<!--<img class="zoom" src="https://skxll.net/img/nmcli.jpg" alt="WP Debian">-->
+								<span>Presiona la tecla '<a style="color: #30A900;"><b>e</b></a>' para editar <b>GRUB</b></span>
+								<br>
+								
+								<!-- TERMINAL GRUB 1 -->
+								<div id="terminal">   
+									  <!-- Terminal Body -->
+									  <section id="terminal_body">
+										  <br><br>
+										<div id="terminal__prompt">
+                      <span id="terminal__prompt--bling" class="grey-bg" style="color: #000000;">&nbsp;&nbsp;&nbsp;&nbsp;<b>CentOS Stream (4.18.0-448.el8.x86_64) 8</b></span>
+										</div>
+										  <div id="terminal__prompt">
+                        <span id="terminal__prompt--bling"><b>&nbsp;&nbsp;&nbsp;&nbsp;CentOS Stream (0-rescue-9a197dc2caf4482ab91563721fd301fd) 8</b></span>
+										</div>
+										  <br><br><br><br><br>
+										  <div id="terminal__prompt">
+                        <span id="terminal__prompt--bling"><b>&nbsp;&nbsp;&nbsp;&nbsp;Use the ↑ and ↓ keys to change the selection.&nbsp;&nbsp;&nbsp;</b></span>
+										</div>
+										  <div id="terminal__prompt">
+                        <span id="terminal__prompt--bling"><b>&nbsp;&nbsp;&nbsp;&nbsp;Press 'e' to edit the selected item, or 'c' for a command prompt.&nbsp;&nbsp;&nbsp;</b></span>
+										</div>
+									  </section>
+									</div>
+								<br><br><br>
+                <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Localiza la línea que empieza por '<a style="color: #30A900;"><b>linux</b></a>'</span>
+								<br>
+                <span>Añade <a style="color: #30A900;"><b>rd.break</b></a> al final de la línea para interrumpir el proceso de arranque antes de que el control pase al Kernel y presiona <a style="color: #30A900;"><b>Ctrl+X</b></a></span>
+								<!-- END TERMINAL GRUB 1 -->
+
+								<!-- EDIT GRUB -->
+								<div id="long-terminal">   
+									  <!-- Terminal Body -->
+									  <section id="terminal_body">
+										<div id="terminal__prompt">
+                      <span id="terminal__prompt--bling">load video</span>
+										</div>
+										  <div id="terminal__prompt">
+                        <span id="terminal__prompt--bling">set gfx_payload=keep</span>
+										</div>
+										  <div id="terminal__prompt">
+                        <span id="terminal__prompt--bling">insmod gzio</span>
+										</div>
+										  <div id="terminal__prompt">
+                        <span id="terminal__prompt--bling" style="color: #fff";><b>linux ($root)/vmlinuz-4-18.0-448.el8.x86_64 root=/dev/mapper/cs-root ro crashkernel=auto resume=/dev/mapper/cs-swap rd.lvm.lv=cs/root rd.lvm.lv=cs/swap rhgb quiet <a style="color: #6DFF34">rd.break</a></b>&nbsp;</span>
+										</div>
+										  <div id="terminal__prompt">
+                        <span id="terminal__prompt--bling">initrd ($root)/initramfs-4.18.0-448.el8.x86_64.img $tuned_initrd</span>
+										</div>
+										  <br><br><br><br><br>
+										  <div id="terminal__prompt">
+                        <span id="terminal__prompt--bling" class="centext">Press Ctrl-X to start</span>
+										</div>
+									  </section>
+									</div>
+								<!-- END EDIT GRUB -->
+
+								<br>
+								<br>
+								<br>
+
+								<!-- CHROOT /SYSROOT -->
+								<span>Montar jaula <a style="color: #30A900;"><b>chroot</b></a> en <a style="color: #30A900;"><b>/sysroot</b></a> con permisos <b>rw</b> y cambiar password de <b>root</b>.</span>
+								<br>
+								<span>Crear archivo <a style="color: #30A900;"><b>/.autorelabel</b></a> para que en el próximo arranque, el subsistema <b>SELinux</b> reetiquete todos los archivos con los contextos correctos:</span>
+
+								<br>
+
+								<div id="terminal">   
+									  <!-- Terminal Body -->
+									  <section id="terminal_body">
+										<div id="terminal__prompt">
+                      <span id="terminal__prompt--bling">Generating "/run/initramfs/rdsosreport.txt"</span>
+										</div>
+										  <br>
+										  <div id="terminal__prompt">
+                        <span id="terminal__prompt--bling">Entering emergency mode. Exit the shell to continue.</span>
+										</div>
+										  <div id="terminal__prompt">
+                        <span id="terminal__prompt--bling">Type "journalctl" to view system logs.</span>
+										</div>
+										  <div id="terminal__prompt">
+                        <span id="terminal__prompt--bling">You might want to save "/run/initramfs/rdsosreport.txt" to a USB or /boot</span>
+										</div>
+										  <div id="terminal__prompt">
+                        <span id="terminal__prompt--bling">after mounting them and attach it to a bug report.</span>
+										</div>
+<br><br>
+
+										  <div id="terminal__prompt">
+                        <span id="terminal__prompt--bling">switch_root:/# <b>mount -o remount,rw /sysroot</b></span>
+										</div>
+										  <div id="terminal__prompt">
+                        <span id="terminal__prompt--bling">switch_root:/# <b>chroot /sysroot</b></span>
+										</div>
+										  <br>
+										  <div id="terminal__prompt">
+                        <span id="terminal__prompt--bling">sh-4.4# <b>passwd</b></span>
+										</div>
+										  <div id="terminal__prompt">
+                        <span id="terminal__prompt--bling"><b>Changing password for user root.</b></span>
+										</div>
+										  <div id="terminal__prompt">
+                        <span id="terminal__prompt--bling"><b>New password:</b></span>
+										</div>
+										  <div id="terminal__prompt">
+                        <span id="terminal__prompt--bling"><b>Retype new password:</b></span>
+										</div>
+										  <div id="terminal__prompt">
+                        <span id="terminal__prompt--bling"><b>passwd: all authentication tokens updated succesfully.</b></span>
+										</div>
+										  <br>
+
+										  <div id="terminal__prompt">
+                        <span id="terminal__prompt--bling">sh-4.4# <b>touch /.autorelabel</b></span>
+										</div>
+										  <div id="terminal__prompt">
+                        <span id="terminal__prompt--bling">sh-4.4# <b>reboot -f</b></span>
+										</div>
+									  </section>
+									</div>
+								<!-- END CHROOT /SYSROOT -->
+								<br><br>
+
+								<!-- NEW LOGIN -->
+								<span>Tras reiniciar, loguear con la nueva password de <b>root</b>:</span>
+								<br>
+								<div id="terminal">   
+									<!-- Terminal Bar -->
+									<section id="terminal__bar">
+										<div id="bar__buttons">
+										  <button class="bar__button" id="bar__button--exit">&#10005;</button>
+										  <button class="bar__button">&#9472;</button>
+										  <button class="bar__button">&#9723;</button>
+										</div>
+									  </section>
+									  <!-- Terminal Body -->
+									  <section id="terminal__body">
+										<div id="terminal__prompt">
+                      <span id="terminal__prompt--bling">CentOS8 login: <b>root</b></span>
+										</div>
+										  <div id="terminal__prompt">
+                        <span id="terminal__prompt--bling">Password:</span>
+										</div>
+										  <div id="terminal__prompt">
+                        <span id="terminal__prompt--bling" style="color: #fff;">Last login: Tue May 18 23:59:00 on tty1&nbsp;</span>
+										</div>
+										  <br>
+										  <div id="terminal__prompt">
+                        <span id="terminal__prompt--bling" style="color: #fff;"><b>[root@CentOS8 ~]#</b></span>
+                        <span id="terminal__prompt--cursor"></span>
+										</div>
+									  </section>
+									</div>
+								<!-- END NEW LOGIN -->
+							</div>
+						</article>
+					</main>
+				</div>
+			</div>
+		</div>
+
+		<footer id="site-footer">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+            <div class="copyright">
+              <a class="nodeco" href="/index"><img style="margin-top: -5px;" src="/blog/img/skull.png" weight="19px" height="19px"> ØxBogart</a>
+            </div>
+          </div>
+				</div>
+			</div>
+		</footer>
+</body>
+</html>

@@ -1166,7 +1166,7 @@ figure {
 }
 
 .widget-recent-posts ul li::before {
-    content: '>';
+    content: '\f3d3';
     font-family: "Ionicons";
     position: absolute;
     left: -17px;
@@ -1189,7 +1189,7 @@ figure {
 }
 
 .widget-archives ul li::before {
-    content: '&#x2705;';
+    content: '\f3f3';
     font-family: "Ionicons";
     position: absolute;
     left: -25px;
@@ -1238,7 +1238,7 @@ figure {
 }
 
 .widget-category ul li::before {
-    content: '🗹';
+    content: '\f3fe';
     font-family: "Ionicons";
     position: absolute;
     left: -25px;

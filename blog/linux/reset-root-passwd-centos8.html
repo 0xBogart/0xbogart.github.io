@@ -52,7 +52,7 @@
 			<header id="site-header">
 				<div class="row">
 					<div style="margin-top: -2%; margin-bottom: -3%;">
-						<h1><a class="nodeco" href="/linux" style="color: rgb(88, 177, 0);">☣</a>LINUX</h1>
+						<h1><a class="nodeco" href="/blog/linux" style="color: rgb(88, 177, 0);">☣</a>LINUX</h1>
 					</div><!-- col-4 -->
 				</div>
 				
@@ -91,7 +91,8 @@
 								</div>
 								</section>
 									<!--<img class="zoom" src="https://0xbogart.github.io/img/nmcli.jpg" alt="WP Debian">-->
-								<span>Presiona la tecla '<a style="color: #30A900;"><b>e</b></a>' para editar <b>GRUB</b></span>
+								<span>Inicia o reinicia el sistema. En cuanto el gestor de arranque aparezca con la pantalla de selección, toca rápidamente las flechas arriba o abajo para pausar la cuenta atrás.<br>
+									Presiona la tecla '<a style="color: #3E9E00;"><b>e</b></a>' para editar <b>GRUB</b>.</span>
 								<br>
 								
 								<!-- TERMINAL GRUB 1 -->
@@ -117,11 +118,9 @@
 								
 								<section id="rdbreak" style="margin-top: 140px;">
 								<div class="centext">
-									<a style="font-size: 19px; color: rgb(88, 177, 0);">☣ </a><span class="green-bg" style="font-size: 19px;">INSTALACIÓN DE PAQUETES Y DEPENDENCIAS</span>
+									<a style="font-size: 19px; color: rgb(88, 177, 0);">☣ </a><span class="green-bg" style="font-size: 19px;">RD.BREAK</span>
+									<span>Localiza la línea que empieza por '<a style="color: #3E9E00;"><b>linux</b></a>' y añade <a style="color: #3E9E00;"><b>rd.break</b></a> al final de la línea para interrumpir el proceso de arranque antes de que el control pase al Kernel y presiona <a style="color: #30A900;"><b>Ctrl+X</b></a> para salir del editor de parámetros y continuar.</span>
 								</div>
-									<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Localiza la línea que empieza por '<a style="color: #30A900;"><b>linux</b></a>'</span>
-								<br>
-								<span>Añade <a style="color: #30A900;"><b>rd.break</b></a> al final de la línea para interrumpir el proceso de arranque antes de que el control pase al Kernel y presiona <a style="color: #30A900;"><b>Ctrl+X</b></a></span>
 								<!-- END TERMINAL GRUB 1 -->
 
 								<!-- EDIT GRUB -->
@@ -155,12 +154,11 @@
 
 								<section id="autorelabel" style="margin-top: 140px;">
 								<div class="centext">
-									<a style="font-size: 19px; color: rgb(88, 177, 0);">☣ </a><span class="green-bg" style="font-size: 19px;">/SYSROOT Y AUTORELABEL</span>
+									<a style="font-size: 19px; color: rgb(88, 177, 0);">☣ </a><span class="green-bg" style="font-size: 19px;">/SYSROOT Y /.AUTORELABEL</span><br>
+									<span>Ahora estás en un prompt de 'rescate' parecido a este: switch_root:/#.<br>Vuelve a montar el entorno <a style="color: #3E9E00;"><b>chroot</b></a> en la partición raíz <a style="color: #30A900;"><b>/sysroot</b></a> con permisos de lectura y escritura<b>rw</b> y cambia password de <b>root</b> con <b>passwd.</b><br>
+								Después crea el fichero <a style="color: #30A900;"><b>/.autorelabel</b></a> para que en el próximo arranque, el subsistema <b>SELinux</b> reetiquete todos los archivos con los contextos correctos:</span>
 								</div>
 								<!-- CHROOT /SYSROOT -->
-								<span>Montar jaula <a style="color: #30A900;"><b>chroot</b></a> en <a style="color: #30A900;"><b>/sysroot</b></a> con permisos <b>rw</b> y cambiar password de <b>root</b>.<br>
-								Después crea el fichero <a style="color: #30A900;"><b>/.autorelabel</b></a> para que en el próximo arranque, el subsistema <b>SELinux</b> reetiquete todos los archivos con los contextos correctos:</span>
-
 								<br>
 
 								<div id="terminal">   

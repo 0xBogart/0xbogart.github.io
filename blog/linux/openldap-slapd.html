@@ -172,7 +172,7 @@
 								<section style="margin-top: 160px;" id="SLAPD">
 									<div><a style="font-size: 19px; color: rgb(88, 177, 0);">☣ </a><span  class="green-bg" style="font-size: 19px;">CONVERSIÓN DE SLAPD.CONF A SLAPD.D</span></div>
 								
-									<div class="centext">
+									<div class="left">
 										<span>Desde la versión 2.3 <b>OpenLDAP</b> ha pasado a utilizar un motor de configuración de tiempo de ejecución dinámico y ya no lee la configuración desde <b>/etc/openldap/slapd.conf</b></span>
 										<br>
 										<span>En su lugar, utiliza una base de datos de configuración estructurada y ubicada en <b>/etc/openldap/slapd.d/</b></span>
@@ -299,11 +299,14 @@
 								
 								<section style="margin-top: 160px;" id="HDB" class="centext">
 									<div><a style="font-size: 19px; color: rgb(88, 177, 0);">☣ </a><span class="green-bg" style="font-size: 19px;">HDB [DIRECTIVAS DEL BACK-END]</span>
-									<br>
+									</div><br>
+
+									<div class="left">
 										<span>De forma predeterminada, el servidor OpenLDAP utiliza el <b>hdb</b> como <b>back-end</b> de la base de datos.</span>
 									<br>
 										<span>Las <b>directivas</b> necesarias para su configuración se encuentran en <b>/etc/openldap/slapd.d/cn=config/olcDatabase={2}hdb.ldif</b></span>
-									</div><br>
+									</div>
+									
 									<div id="terminal">
 										<!-- Terminal Bar -->       
 										<section id="terminal__bar">          
@@ -512,10 +515,13 @@
 									<hr>
 
 								<section style="margin-top: 160px;" id="SLAPTEST" class="centext">
-								<div>
-								<a style="font-size: 19px; color: rgb(88, 177, 0);">☣ </a><span class="green-bg" style="font-size: 19px;">SLAPTEST: VERIFICAR LA CONFIGURACIÓN</span><br>
-									<p><b>slaptest</b> verifica el archivo de configuración. Si la configuración es correcta devolerá el mensaje: <b>config file testing succeeded</b></p>
-									<p>Ahora se puede iniciar el servidor <b>OpenLDAP</b></p>
+									<div>
+										<a style="font-size: 19px; color: rgb(88, 177, 0);">☣ </a><span class="green-bg" style="font-size: 19px;">SLAPTEST: VERIFICAR LA CONFIGURACIÓN</span><br><p></p>
+								</div>
+
+									<div class="left">
+										<span><b>slaptest</b> verifica el archivo de configuración. Si la configuración es correcta devolerá el mensaje: <b>config file testing succeeded</b></span>
+										<span>Ahora se puede iniciar el servidor <b>OpenLDAP</b></span>
 									</div>
 
 								<div id="terminal">

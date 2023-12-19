@@ -113,7 +113,7 @@
 										<a style="font-size: 19px; color: rgb(88, 177, 0);">☣ </a><span class="green-bg" style="font-size: 19px;">INSTALACIÓN DE OPENLDAP</span>
 									</div>
 								
-									<div style="margin-top: 10px;" id="terminal">
+									<div style="margin-top: 10px;" id="long-terminal">
 										<!-- Terminal Bar -->
 										<section id="terminal__bar">
 											<div id="bar__buttons">
@@ -140,7 +140,7 @@
 										</section>
 									</div>
 							
-									<div style="margin-top: 10px;" id="terminal">
+									<div style="margin-top: 10px;" id="long-terminal">
 										<!-- Terminal Bar -->       
 										<section id="terminal__bar">          
 											<div id="bar__buttons">            
@@ -178,7 +178,7 @@
 										<span>En su lugar, utiliza una base de datos de configuración estructurada y ubicada en <b>/etc/openldap/slapd.d/</b></span>
 									</div><br>
 								
-									<div id="terminal">
+									<div id="long-terminal">
 										<!-- Terminal Bar -->       
 										<section id="terminal__bar">          
 											<div id="bar__buttons">            
@@ -204,7 +204,7 @@
 											</div>
 										</section>
 									</div><br><br>
-									<div id="terminal">
+									<div id="long-terminal">
 										<!-- Terminal Bar -->       
 										<section id="terminal__bar">          
 											<div id="bar__buttons">            
@@ -251,7 +251,7 @@
 										<span><b>CONVERSIÓN</b>: Si tienes un archivo <b>slapd.conf</b> existente de una instalación anterior, puedes convertirlo al nuevo formato usando <b>slaptest</b>:</span>
 									</div>
 								
-									<div id="terminal">
+									<div id="long-terminal">
 										<!-- Terminal Bar -->       
 										<section id="terminal__bar">          
 											<div id="bar__buttons">            
@@ -273,7 +273,7 @@
 										<span>Prueba el acceso a las entradas en <b>cn=config</b> utilizando el <b>RootDN</b> predeterminado y el <b>RootPW</b> configurado anteriormente:</span>
 									</div>
 
-									<div id="terminal">
+									<div id="long-terminal">
 										<!-- Terminal Bar -->       
 										<section id="terminal__bar">          
 											<div id="bar__buttons">            
@@ -307,7 +307,7 @@
 										<span>Las <b>directivas</b> necesarias para su configuración se encuentran en <b>/etc/openldap/slapd.d/cn=config/olcDatabase={2}hdb.ldif</b></span>
 									</div>
 									
-									<div id="terminal">
+									<div id="long-terminal">
 										<!-- Terminal Bar -->       
 										<section id="terminal__bar">          
 											<div id="bar__buttons">            
@@ -397,7 +397,7 @@
 <span style="color: #118E00 ;">⦾</span><span> <b><u>Directiva olcSuffix</u>:</b> Permite especificar el dominio para el que se debe proporcionar información:</span>
 								</div>
 								
-								<div id="terminal">
+								<div id="long-terminal">
 									  <!-- Terminal Bar -->       
 									  <section id="terminal__bar">          
 										<div id="bar__buttons">            
@@ -420,7 +420,7 @@
 <span style="color: #118E00 ;">⦾</span><span> <b><u>Directiva olcRootDN</u>:</b> Permite especificar la cuenta de usuario dedicada con todos los permisos para las operaciones en la base de datos y el directorio LDAP:</span>
 								</div>
 								
-								<div id="terminal">
+								<div id="long-terminal">
 									  <!-- Terminal Bar -->       
 									  <section id="terminal__bar">          
 										<div id="bar__buttons">            
@@ -444,7 +444,7 @@
 <span style="color: #118E00 ;">⦾</span><span> <b><u>Directiva olcRootPW</u>:</b> Permite establecer una contraseña para el usuario especificado en la directiva anterior:</span>
 								</div>
 
-								<div id="terminal">
+								<div id="long-terminal">
 									  <!-- Terminal Bar -->       
 									  <section id="terminal__bar">          
 										<div id="bar__buttons">            
@@ -467,7 +467,7 @@
 										<p>Si en lugar de usar una contraseña en texto plano, prefieres generar un <b style="font-size: 15.2px;">hash</b> {Recomendable}, se puede hacer con <b style="font-size: 15.2px;">slappasswd</b>.</p>
 									</div>
 								
-									<div id="terminal">
+									<div id="long-terminal">
 										<!-- Terminal Bar -->       
 										<section id="terminal__bar">          
 											<div id="bar__buttons">            
@@ -494,7 +494,7 @@
 									  </section>
 									</div>
 								<br><br>
-								<div id="terminal">
+								<div id="long-terminal">
 									  <!-- Terminal Bar -->       
 									  <section id="terminal__bar">          
 										<div id="bar__buttons">            
@@ -523,7 +523,7 @@
 										<span><b>slaptest</b> verifica el archivo de configuración. Si la configuración es correcta devolerá el mensaje: <b>config file testing succeeded</b> y ahora se puede iniciar el servidor <b>OpenLDAP</b></span>
 									</div>
 
-								<div id="terminal">
+								<div id="long-terminal">
 									  <!-- Terminal Bar -->
 									  <section id="terminal__bar">
 										<div id="bar__buttons">
@@ -557,7 +557,7 @@
 									<p>Crear un fichero <b>base.ldif</b> en <b>/var/tmp/</b> que contrendrá la estructura de la base de datos</p>
 									</div>
 
-								<div id="terminal">
+								<div id="long-terminal">
 									  <!-- Terminal Bar -->
 									  <section id="terminal__bar">
 										<div id="bar__buttons">
@@ -631,7 +631,7 @@
 								<div class="centext">
 				<span>Importar la estructura base en el <b>directorio LDAP</b> con <b>ldapadd</b></span>
 									</div>
-								<div id="terminal">
+								<div id="long-terminal">
 									  <!-- Terminal Bar -->
 									  <section id="terminal__bar">
 										<div id="bar__buttons">
@@ -663,7 +663,7 @@
 									<span>Verificar la estructura base con <b>ldapsearch</b> para confirmar que las <b>OU</b> <b>[</b>Organizational unit<b>]</b> han sido creadas con éxito</span>
 									</div>
 
-								<div id="terminal">
+								<div id="long-terminal">
 									  <!-- Terminal Bar -->
 									  <section id="terminal__bar">
 										<div id="bar__buttons">
@@ -687,7 +687,7 @@
 								</div>
 
 								<!--- ldapadd ldapi:/// --->
-								<div id="terminal">
+								<div id="long-terminal">
 									  <!-- Terminal Bar -->
 									  <section id="terminal__bar">
 										<div id="bar__buttons">
@@ -727,7 +727,7 @@
 									<span style="color: #118E00 ;">⦾</span><span> <b><u>Generar Password para el usuario</u>:</b></span>
 								</div>
 								
-								<div id="terminal">
+								<div id="long-terminal">
 									  <!-- Terminal Bar -->       
 									  <section id="terminal__bar">          
 										<div id="bar__buttons">            
@@ -753,7 +753,7 @@
 								</div>
 								
 								<!--- cat users.ldif --->
-								<div style="margin-top: 10px;" id="terminal">
+								<div style="margin-top: 10px;" id="long-terminal">
 									  <!-- Terminal Bar -->       
 									  <section id="terminal__bar">          
 										<div id="bar__buttons">            
@@ -859,7 +859,7 @@
 								</div>
 
 								<!--- cat groups.ldif --->
-								<div id="terminal">
+								<div id="long-terminal">
 									  <!-- Terminal Bar -->       
 									  <section id="terminal__bar">          
 										<div id="bar__buttons">            
@@ -908,7 +908,7 @@
 									<span style="color: #118E00 ;">⦾</span><span> <b><u>Añadir usuario y grupo al directorio LDAP</u>:</b></span>
 								</div>
 
-								<div id="terminal">
+								<div id="long-terminal">
 									  <!-- Terminal Bar -->       
 									  <section id="terminal__bar">          
 										<div id="bar__buttons">            
@@ -935,7 +935,7 @@
 									<span style="color: #118E00 ;">⦾</span><span> <b><u>Verificación de usuario y grupo</u>:</b></span>
 								</div>
 
-								<div id="terminal">
+								<div id="long-terminal">
 									  <!-- Terminal Bar -->       
 									  <section id="terminal__bar">          
 										<div id="bar__buttons">            

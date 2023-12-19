@@ -47,7 +47,7 @@
   position: fixed;
   z-index: 1;
   top: 0;
-  left: 0;
+  right: 0;
   background-color: #111;
   overflow-x: hidden;
   transition: 0.5s;
@@ -123,10 +123,8 @@
 							</ul>
 						</div><!--- .navbar-collapse --->
 					</nav>
-				</div><!-- col-md-8 -->
-			</div>
 
-<div id="mySidebar" class="sidebar" style="position: -webkit-sticky; position: sticky; top: 0;">
+					<div id="mySidebar" class="sidebar" style="position: -webkit-sticky; position: sticky; top: 0;">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
   <a href="#">About</a>
   <a href="#">Services</a>
@@ -151,9 +149,11 @@ function closeNav() {
   document.getElementById("main").style.marginLeft= "0";
 }
 </script>
-			
+					
+				</div><!-- col-md-8 -->
+			</div>
 		</header>
-
+	
 		<div class="content-body">
 			<div class="container">
 				<div class="row">

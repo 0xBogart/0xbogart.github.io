@@ -42,6 +42,7 @@
 
 	<style>
 	.sidebar {
+  float: right;
   height: 100%;
   width: 0;
   position: fixed;
@@ -51,7 +52,7 @@
   background-color: #111;
   overflow-x: hidden;
   transition: 0.5s;
-  padding-top: 60px;
+  padding-top: 5px;
 }
 
 .sidebar a {
@@ -137,10 +138,8 @@
   <a href="#">Contact</a>
 </div>
 
-<div id="main">
+<div id="main" style="position: -webkit-sticky; position: sticky; top: 0;">
   <button class="openbtn" onclick="openNav()">☰ Open Sidebar</button>  
-  <h2>Collapsed Sidebar</h2>
-  <p>Click on the hamburger menu/bar icon to open the sidebar, and push this content to the right.</p>
 </div>
 
 <script>

@@ -39,6 +39,20 @@
 	<script src="/js/pace.min.js"></script>
 	<script src="/js/modernizr.custom.js"></script>
 	<script src="/js/asgreenlight.js"></script>
+
+	<style>
+		/* Oculta el aside por defecto */
+.stk-post-lx {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease; /* Efecto de transición */
+}
+
+/* Muestra el aside cuando tiene la clase 'active' */
+.stk-post-lx.active {
+    max-height: 500px; /* Altura máxima que quieres mostrar */
+}
+	</style>
 </head>
 
 <body class="bg">
@@ -1084,5 +1098,16 @@
 			</div>
 		</footer>
 	<a href="#" id="scrollToTopButtonGreen"><i class="fas fa-arrow-up"></i></a>
+	<script>
+		// Obtén el aside y el botón
+const aside = document.querySelector('.stk-post-lx');
+const toggleButton = document.getElementById('toggleAside');
+
+// Agrega un evento de clic al botón
+toggleButton.addEventListener('click', function() {
+    // Alterna la clase 'active' para mostrar u ocultar el aside
+    aside.classList.toggle('active');
+});
+	</script>
 </body>
 </html>

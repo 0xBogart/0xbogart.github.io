@@ -84,11 +84,12 @@
   padding: 10px 15px;
   border: none;
   float: right;
-  margin-top: -10px;
+  margin-top: -15px;
 }
 
 .openbtn:hover {
   background-color: #444;
+  color: #33F000;
 }
 
 #main {
@@ -137,10 +138,12 @@
 			</div><br>
 			<div id="mySidebar" class="sidebar" style="position: -webkit-sticky; position: sticky; top: 0;">
 				<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
-				<a href="#">About</a>
-				<a href="#">Services</a>
-				<a href="#">Clients</a>
-				<a href="#"><span style="color: #33F000;"><b>slapd.conf</b></span>: Archivo de configuración anterior a versiones 2.3 de OpenLDAP</a>
+				<span style="color: #2CCD00;"><b>slapd.conf:</b></span><a href="#"> Archivo de configuración anterior a versiones 2.3 de OpenLDAP</a>
+				<span style="color: #2CCD00;"><b>slapd.d</b></span><a href="#"> Nuevo formato de configuración en versiones 2.3 y posteriores de OpenLDAP</a>
+				<span style="color: #2CCD00;"><b>hdb:</b></span><a href="#"> Back-End de OpenLDAP</a>
+				<span style="color: #2CCD00;"><b>base.ldif:</b></span><a href="#"> Fichero que estructura la BBDD</a>
+				<span style="color: #2CCD00;"><b>users.ldif:</b></span><a href="#"> Fichero de configuración de Usuarios</a>
+				<span style="color: #2CCD00;"><b>groups.ldif:</b></span><a href="#"> Fichero que estructura la Grupos</a>
 			</div>
 <script>
 function openNav() {

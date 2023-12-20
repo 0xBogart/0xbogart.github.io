@@ -69,7 +69,7 @@
 #contenido {
     display: none;
     padding: 16px;
-    position: absolute;
+    #position: absolute; /* activado la caja es mas pequeña. Desactivado coge un width del 100% */
     overflow-wrap: break-word;
     top: auto; /* Altura de la barra de navegación */
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);

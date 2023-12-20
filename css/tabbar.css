@@ -3,6 +3,7 @@
     overflow: hidden;
     cursor: pointer;
     color: white;
+    text-align: center;
     background-color: hsl(0, 0%, 12%);
     margin-top: -35px;
     width: 20%;

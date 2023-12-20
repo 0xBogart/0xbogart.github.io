@@ -68,7 +68,7 @@
 
 #contenido {
     display: none;
-    padding: 16px;
+    padding: 3px;
     border: 1px solid green;
     #position: absolute; /* activado la caja es mas pequeña. Desactivado coge un width del 100% */
     overflow-wrap: break-word;

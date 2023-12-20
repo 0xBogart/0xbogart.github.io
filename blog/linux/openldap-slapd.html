@@ -163,17 +163,17 @@
 					</div>
 				</a>
 			
-				<div id="contenido" class="nodeco">
+				<div id="contenido">
 					<h3>Conversión de slapd.conf a slapd.d</h3>
 					<hr>
-					<a href="#intro"><p>Intro</p></a>
-					<a href="#ventajas"><p>Ventajas de la migración</p></a>
-					<a href="#INSTALLDAP"><p>Instalación de OpenLDAP</p></a>
-					<a href="#SLAPD"><p>Conversión de slapd.conf a slapd.d</p></a>
-					<a href="#HDB"><p>hdb: [Directivas del Back-End]</p></a>
-					<a href="#SLAPTEST"><p>slaptest [Verificar la Configuración]</p></a>
-					<a href="#BASELDIF"><p>Estructurar la BBDD</p></a>
-					<a href="#USERGROUP"><p>Crear Usuario y Grupo</p></a>
+					<a href="#intro" style="text-decoration: none;"><p>Intro</p></a>
+					<a href="#ventajas" style="text-decoration: none;"><p>Ventajas de la migración</p></a>
+					<a href="#INSTALLDAP" style="text-decoration: none;"><p>Instalación de OpenLDAP</p></a>
+					<a href="#SLAPD" style="text-decoration: none;"><p>Conversión de slapd.conf a slapd.d</p></a>
+					<a href="#HDB" style="text-decoration: none;"><p>hdb: [Directivas del Back-End]</p></a>
+					<a href="#SLAPTEST style="text-decoration: none;""><p>slaptest [Verificar la Configuración]</p></a>
+					<a href="#BASELDIF" style="text-decoration: none;"><p>Estructurar la BBDD</p></a>
+					<a href="#USERGROUP" style="text-decoration: none;"><p>Crear Usuario y Grupo</p></a>
 				</div>
 			</div><!-- END TABBAR -->		
 
@@ -223,8 +223,9 @@ function closeNav() {
 										<span style="color: #118E00;">⦾</span> <span><b>Modo Legacy [slapd.conf]</b>: En versiones anteriores de OpenLDAP, la configuración se realizaba principalmente a través de un archivo de texto plano llamado slapd.conf.<br><br>Este archivo centralizaba todos los ajustes de configuración del servidor LDAP en un formato específico y requería la edición manual del archivo para realizar cambios.</span><br><br>
 										<span style="color: #118E00;">⦾</span> <span> <b>Configuración Dinámica [slapd.d]</b>: A partir de versiones más recientes, OpenLDAP adoptó la configuración dinámica, denominada slapd.d. En este enfoque, la configuración se representa como una estructura de directorios y archivos en el sistema de archivos, en lugar de depender de un único archivo de configuración.<br><br>Cada aspecto de la configuración se refleja como una entrada en el árbol de directorios slapd.d, lo que permite una gestión más granular y modular de la configuración.</span>
 									</div>
+									<hr>
 								</section>
-								<hr>
+								
 
 								<section class="centext" style="margin-top: 130px;" id="ventajas">
 									<div>

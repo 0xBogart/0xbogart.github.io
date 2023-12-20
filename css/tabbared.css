@@ -1,0 +1,83 @@
+/* Estilos generales */
+.tabbar {
+    overflow: hidden;
+    cursor: pointer;
+    color: white;
+    text-align: center;
+    word-wrap: break-word;
+    background-color: #111;
+    margin-top: -35px;
+    width: 100%;
+    padding: 13.7px;
+    top: 0;
+    z-index: 1000;
+    }
+
+.tabbar:hover {
+    background-color: #444;
+    color: #33F000;
+}
+
+.tabbar a {
+    float: left;
+    font-size: 10px;
+    display: block;
+    color: #E5D400;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    width: 100%;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    top: 50px; /* Altura de la barra de navegación */
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.cerrar-btn {
+    display: none;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    position: absolute;
+    bottom: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.cerrar-btn.show {
+    display: block;
+}
+
+#contenido {
+    display: none;
+    padding: 3px;
+    border: 1px solid green;
+    #position: absolute; /* activado la caja es mas pequeña. Desactivado coge un width del 100% */
+    overflow-wrap: break-word;
+    top: auto; /* Altura de la barra de navegación */
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    background-color: #f9f9f9;
+    z-index: 1;
+    }
+
+    #contenido.show {
+      display: block;
+    }

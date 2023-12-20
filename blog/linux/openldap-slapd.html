@@ -58,13 +58,21 @@
 
 .sidebar a {
   padding: 1px 1px 1px 10px;
-  #text-decoration: none;
+  text-decoration: none;
   font-size: 15px;
   font-family: "Lucida Console", "Courier New", monospace;
   color: #fff;
   display: block;
   transition: 0.3s;
   margin-bottom: 10px;
+}
+
+span:hover {
+	color: #ff0000;
+}
+
+.slidebar a:hover {
+	color: #E5D400;
 }
 
 .sidebar .closebtn {
@@ -146,7 +154,7 @@
 				<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
 				<span style="font-size: 25px; color: #27B700;"><b>✎</b></span><span style="font-size: 25px; color: white;"> <b>Notas</b></span>
 				<hr style="color: #DECD00;"><br>
-				<a><span style="color: #E5D400;">slapd.conf</span>: Archivo de configuración anterior a versiones 2.3 de OpenLDAP</a>
+				<span style="color: #E5D400;">slapd.conf</span><span>: Archivo de configuración anterior a versiones 2.3 de OpenLDAP</span>
 				<a><span style="color: #E5D400;">slapd.d</span>: Nuevo formato de configuración en versiones 2.3 y posteriores de OpenLDAP</a>
 				<a><span style="color: #E5D400;">hdb</span>: Back-End de OpenLDAP</a>
 				<a><span style="color: #E5D400;">base.ldif</span>: Fichero que estructura la BBDD</a>

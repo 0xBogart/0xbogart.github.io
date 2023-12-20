@@ -4,6 +4,7 @@
     cursor: pointer;
     color: white;
     text-align: center;
+    word-wrap: break-word;
     background-color: hsl(0, 0%, 12%);
     margin-top: -35px;
     width: 20%;

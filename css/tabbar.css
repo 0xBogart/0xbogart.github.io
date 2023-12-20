@@ -4,7 +4,6 @@
       background-color: hsl(0, 0%, 12%);
       margin-top: -35px;
       width: 20%;
-      position: sticky;
       top: 0;
       z-index: 1000;
     }

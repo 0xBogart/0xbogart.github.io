@@ -28,6 +28,7 @@
 	<link rel="stylesheet" href="/css/bootstrap.min.css">
 	<link rel="stylesheet" href="/css/ionicons.min.css">
 	<link rel="stylesheet" href="/css/tabbar.css">
+	<link rel="stylesheet" href="/css/slidebar.css">
 	<link rel="stylesheet" href="/css/pace.css">
 	<link rel="stylesheet" href="/css/custom.css">
 	<link rel="stylesheet" href="/css/rhterm.css">
@@ -38,85 +39,10 @@
 	<script src="/js/jquery-2.1.3.min.js"></script>
 	<script src="/js/bootstrap.min.js"></script>
 	<script src="/js/tabbar.js"></script>
+	<script src="/js/slidebar.js"></script>
 	<script src="/js/pace.min.js"></script>
 	<script src="/js/modernizr.custom.js"></script>
-	<script src="/js/asgreenlight.js"></script>
-
 <style>
-.sidebar {
-  float: right;
-  height: 100%;
-  width: 0;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  left: 100%;
-  background-color: #111;
-  overflow-x: hidden;
-  transition: 0.5s;
-  padding-top: 5px;
-  margin-top: -25px;
-}
-
-.sidebar a {
-  padding: 1px 1px 1px 10px;
-  text-decoration: none;
-  font-size: 15px;
-  font-family: "Lucida Console", "Courier New", monospace;
-  color: #fff;
-  display: block;
-  transition: 0.3s;
-  margin-bottom: 10px;
-}
-
-.spanx {
-	font-family: "Lucida Console", "Courier New", monospace;
-	color: #C1C1C1;
-}
-
-.spanx:hover {
-	color: white;
-	margin-bottom: 10px;
-}
-
-.slidebar a:hover {
-	color: #E5D400;
-}
-
-.sidebar .closebtn {
-  position: relative;
-  top: -10px;
-  right: 20px;
-  font-size: 30px;
-  margin-left: 90%;
-  margin-bottom: -10px;
-}
-
-.openbtn {
-  font-size: 20px;
-  cursor: pointer;
-  background-color: #111;
-  color: white;
-  padding: 10px 15px;
-  border: none;
-  float: right;
-}
-
-.openbtn:hover {
-  background-color: #444;
-  color: #33F000;
-}
-
-#main {
-  transition: margin-left .5s;
-}
-
-/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
-@media screen and (max-height: 450px) {
-  .sidebar {padding-top: 5px;}
-  .sidebar a {font-size: 18px;}
-}
-
 .bg {
 	border: 10px solid black;
 	width: 100%;
@@ -189,17 +115,6 @@
 				<a><span style="color: #E5D400;">users.ldif</span><span class="spanx">: Fichero de configuración de Usuarios</span></a>
 				<a><span style="color: #E5D400;">groups.ldif</span><span class="spanx">: Fichero que estructura los Grupos</span></a>
 			</div>
-<script>
-function openNav() {
-  document.getElementById("mySidebar").style.width = "200px";
-  document.getElementById("main").style.marginLeft = "10px";
-}
-
-function closeNav() {
-  document.getElementById("mySidebar").style.width = "0";
-  document.getElementById("main").style.marginLeft= "0";
-}
-</script>
 			
 			<div class="container">
 				<div class="row">

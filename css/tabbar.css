@@ -2,14 +2,18 @@
     .tabbar {
       overflow: hidden;
       background-color: hsl(0, 0%, 12%);
-      width: 100%;
+      margin-top: -35px;
+      width: 20%;
       position: sticky;
+      top: 0;
+      z-index: 1000;
     }
 
     .tabbar a {
       float: left;
+      font-size: 10px;
       display: block;
-      color: #f2f2f2;
+      color: #E5D400;
       text-align: center;
       padding: 14px 16px;
       text-decoration: none;

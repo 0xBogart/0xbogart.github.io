@@ -52,7 +52,7 @@
 </style>
 </head>
 
-<body>
+<body class="bg">
 	<div class="container">	
 		<header id="site-header">
 			<div class="row">
@@ -100,6 +100,23 @@
 					<a href="#poisoning" style="text-decoration: none;"><p style="margin-bottom: 6px; font-size: larger">☠ ENVENENAMIENTO DNS</p></a>
 				</div>
 			</div><!-- END TABBAR -->
+		
+		<div id="main" style="position: sticky; top: 0;">
+			<button class="openbtn" onclick="openNav()">☣</button>  
+		</div><br>
+		<div id="mySidebar" class="sidebar" style="position: sticky; top: 0;">
+			<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+			<span style="font-size: 25px; color: #27B700;"><b>&nbsp;✎</b></span><span style="font-size: 25px; color: white;"> <b>Notas</b></span>
+			<hr style="color: #DECD00;"><br>
+			<a><span style="color: #E5D400;">slapd.conf</span><span class="spanx">: Archivo de configuración anterior a versiones 2.3 de OpenLDAP</span></a>
+			<a><span style="color: #E5D400;">slapd.d</span><span class="spanx">: Nuevo formato de configuración en versiones 2.3 y posteriores de OpenLDAP</span></a>
+			<a><span style="color: #E5D400;">hdb</span><span class="spanx">: Variante jerárquica del Backend de bdb</span></a>
+			<a><span style="color: #E5D400;">LDIF</span><span class="spanx">: Es el formato de intercambio de datos LDAP</span></a>
+			<a><span style="color: #E5D400;">base.ldif</span><span class="spanx">: Fichero estructural de la BBDD LDAP. Contiene registros que representan información organizada jerárquicamente para la BBDD</span></a>
+			<a><span style="color: #E5D400;">users.ldif</span><span class="spanx">: Fichero que almacena información específica de Usuarios en un directorio LDAP</span></a>
+			<a><span style="color: #E5D400;">groups.ldif</span><span class="spanx">: Fichero que almacena información específica de Grupos en un directorio LDAP</span></a>
+		</div>
+		
 		<div class="container">
 			<div class="row">
 				<main class="col-md-8" style="margin-left: auto; margin-right: auto;">
@@ -125,7 +142,7 @@
 								
 								<a href="/blog/img/dns_poison_spoofing.jpg" target="_blank"><img src="/blog/hacking/img/dns_poison_spoofing.jpg" width="80%"></a>
 							</section>
-							<hr>
+							<div style="border-top: 1px solid #000; width: 100%; margin: 10px 0;"></div>
 								
 							<section id="ettercap">
 								<div style="margin-top: 160px;" class="centext">
@@ -136,7 +153,7 @@
 									<span>Soporta la disección activa y pasiva de diferentes protocolos <b>{</b>incluso los cifrados<b>}</b> e incluye características para el análisis de la red y del host <b>{</b>como la huella digital del sistema operativo<b>}</b></span>
 								</div>
 							</section>
-								<hr>
+								<div style="border-top: 1px solid #000; width: 100%; margin: 10px 0;"></div>
 								
 							<section id="etterconf">
 								<div class="centext">
@@ -166,7 +183,7 @@
 									<span>Como <b>Ettercap</b> necesita crear archivos de registro, debe ejecutarse en un directorio con permisos suficientes como <b>/tmp</b></span>
 								</div>
 							</section>
-								<hr>
+								<div style="border-top: 1px solid #000; width: 100%; margin: 10px 0;"></div>
 								
 							<section id="etterdns">
 								<div class="centext">
@@ -188,7 +205,7 @@
 									<a href="/blog/hacking/img/dnscache.png" target="_blank"><img src="/blog/hacking/img/dnscache.png" width="55%"></a>
 								</div>
 							</section>
-								<hr>
+								<div style="border-top: 1px solid #000; width: 100%; margin: 10px 0;"></div>
 								
 							<section id="poisoning">
 								<div style="margin-top: 160px;" class="centext">
@@ -280,5 +297,16 @@
 		</div>
 	</footer>
 	<a href="#" id="scrollToTopButtonRed"><i class="fas fa-arrow-up"></i></a>
+<script>
+	function openTab() {
+		document.getElementById("mySidebar").style.width = "250px";
+		document.getElementById("main").style.marginLeft = "10px";
+	}
+
+	function closeTab() {
+		document.getElementById("mySidebar").style.width = "0";
+		document.getElementById("main").style.marginLeft= "0";
+	}
+</script>
 </body>
 </html>

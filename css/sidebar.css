@@ -13,6 +13,8 @@
   margin-top: -25px;
 }
 
+/*** SIDEBARS ***/
+/* Green */
 .sidebar a {
   padding: 1px 1px 1px 10px;
   text-decoration: none;
@@ -24,6 +26,28 @@
   margin-bottom: 10px;
 }
 
+.sidebar a:hover {
+	color: #E5D400;
+}
+
+/* Red */
+.sidebared a {
+  padding: 1px 1px 1px 10px;
+  text-decoration: none;
+  font-size: 15px;
+  font-family: "Lucida Console", "Courier New", monospace;
+  color: #fff;
+  display: block;
+  transition: 0.3s;
+  margin-bottom: 10px;
+}
+
+.sidebared a:hover {
+	color: #CA0000;
+}
+/*** END SIDEBARS ***/
+
+
 .spanx {
 	font-family: "Lucida Console", "Courier New", monospace;
 	color: #C1C1C1;
@@ -32,10 +56,6 @@
 .spanx:hover {
 	color: white;
 	margin-bottom: 10px;
-}
-
-.sidebar a:hover {
-	color: #E5D400;
 }
 
 .sidebar .closebtn {

@@ -8,14 +8,14 @@
     background-color: #111;
     margin-top: -35px;
     width: 100%;
-    padding: 13.7px;
+    #padding: 13.7px;
     top: 0;
     z-index: 1000;
     }
 
 .tabbar:hover {
     background-color: #444;
-    color: #33F000;
+    color: #D80000;
 }
 
 .tabbar a {
@@ -47,6 +47,7 @@
     text-align: left;
 }
 
+/*
 .cerrar-btn {
     display: none;
     background-color: #333;
@@ -65,6 +66,7 @@
 .cerrar-btn.show {
     display: block;
 }
+*/
 
 #contenido {
     display: none;

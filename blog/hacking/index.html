@@ -1,74 +1,100 @@
 <!DOCTYPE html>
 <html lang="es_ES">
-	<head>
-		<title>ØxBogart | Hacking</title>
+<head>
+	<title>ØxBogart | Hacking</title>
 
-		<!-- meta -->
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0,user-scalable=no,viewport-fit=cover">
-		<meta name="description" content="Hacking">
-		<meta name="keywords" content="Hacking">
+	<!-- meta -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0,user-scalable=no,viewport-fit=cover">
+	<link rel="canonical" href="https://0xbogarft.github.io/blog/hacking">
+	<link rel="icon" type="/image/png" href="/blog/img/skull.png">
+	<meta name="description" content="ØxBogart | Hacking">
+	<meta name="keywords" content="ØxBogart | Hacking">
+	<meta property="og:title" content="ØxBogart | Hacking">
+	<meta property="og:description" content="ØxBogart | Hacking">
+	<meta property="og:url" content="https://0xbogart.github.io/blog/hacking">
 
-		<!-- css -->
-		<link rel="icon" type="/image/png" href="/blog/img/skull.png">
-		<link rel="stylesheet" href="/css/bootstrap.min.css">
-		<link rel="stylesheet" href="/css/ionicons.min.css">
-		<link rel="stylesheet" href="/css/pace.css">
-		<link rel="stylesheet" href="/css/custom.css">
-		<link rel="stylesheet" href="/css/prev.css">
-		<link rel="stylesheet" href="/css/zwrapper.css">
+	<!-- css -->
+	<link rel="stylesheet" href="/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/css/ionicons.min.css">
+	<link rel="stylesheet" href="/css/sidebar.css">
+	<link rel="stylesheet" href="/css/pace.css">
+	<link rel="stylesheet" href="/css/custom.css">
+	<link rel="stylesheet" href="/css/prev.css">
+	<link rel="stylesheet" href="/css/zwrapper.css">
 
-		<!-- js -->
-		<script src="/js/jquery-2.1.3.min.js"></script>
-		<script src="/js/bootstrap.min.js"></script>
-		<script src="/js/pace.min.js"></script>
-		<script src="/js/modernizr.custom.js"></script>
-	</head>
+	<!-- js -->
+	<script src="/js/jquery-2.1.3.min.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
+	<script src="/js/pace.min.js"></script>
+	<script src="/js/modernizr.custom.js"></script>
+	<script src="/js/sidebar.js"></script>
+<style>
+.bg {
+	border: 10px solid black;
+	width: 100%;
+	height: 100%;
+}
+</style>
+</head>
 
-	<body>
-		<div class="container">	
-			<header id="site-header">
-				<div class="row">
-					<div class="col-md-4 col-sm-5 col-8">
-						<div class="logo">
-							<a href="/index" style="margin-left: 25px; margin-bottom: 3px;"><img src="/blog/img/skull.png" width="55px"height="70px"></a><br>
-							<h5><b>Hacking Blog<br><span style="color: #D80000; font-size: 16px; margin-left: 15px; margin-bottom: -10px;">Øx</span>Bogart</b></h5>						</div>
-					</div><!-- col-md-4 -->
+<body class="bg">
+	<div class="container">	
+		<header id="site-header">
+			<div class="row">
+				<div class="col-md-4 col-sm-5 col-8">
+					<div class="logo">
+						<a href="/index" style="margin-left: 25px; margin-bottom: 3px;"><img src="/blog/img/skull.png" width="55px"height="70px"></a><br>
+						<h5><b>Hacking Blog<br><span style="color: #D80000; font-size: 16px; margin-left: 15px; margin-bottom: -10px;">Øx</span>Bogart</b></h5>						</div>
+				</div><!-- col-md-4 -->
 					
-					<div class="col-md-8 col-sm-7 col-4" style="margin-top: 20px;">
-						<nav class="navbar navbar-expand-lg navbar-light">
-							<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#bs-example-navbar-collapse-1" aria-controls="bs-example-navbar-collapse-1" aria-expanded="false" aria-label="Toggle navigation">
-								<span class="navbar-toggler-icon"></span>
-							</button>
-							<div class="collapse navbar-collapse justify-content-end" id="bs-example-navbar-collapse-1">
-								<ul class="navbar-nav">
-									<li class="nav-item">
-										<a style="font-size: 25px;" class="nav-link" href="/index" data-hover="Home">Home</a>
-									</li>
-									<li class="nav-item">
-										<a style="font-size: 25px;" class="nav-link" href="/blog/linux" data-hover="☣Linux"><span style="color: rgb(82, 163, 0); font-size: 25px;">☣</span>Linux</a>
-									</li>
-									<li class="nav-item">
-										<a style="font-size: 25px;" class="nav-link" href="/blog/devops" data-hover="Dev∅ps">Dev<span style="color: #b57c02; font-size: 25px;">∅</span>ps</a>
-									</li>
-									<li class="nav-item">
-										<a style="font-size: 25px;" class="nav-link" href="/blog/hardening" data-hover="☰Hardening"><span style="color: rgb(194, 0, 194); font-size: 25px;">☰</span>Hardening</a>
-									</li>
+				<div class="col-md-8 col-sm-7 col-4" style="margin-top: 20px;">
+					<nav class="navbar navbar-expand-lg navbar-light">
+						<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#bs-example-navbar-collapse-1" aria-controls="bs-example-navbar-collapse-1" aria-expanded="false" aria-label="Toggle navigation">
+							<span class="navbar-toggler-icon"></span>
+						</button>
+						<div class="collapse navbar-collapse justify-content-end" id="bs-example-navbar-collapse-1">
+							<ul class="navbar-nav">
+								<li class="nav-item">
+									<a style="font-size: 25px;" class="nav-link" href="/index" data-hover="Home">Home</a>
+								</li>
+								<li class="nav-item">
+									<a style="font-size: 25px;" class="nav-link" href="/blog/linux" data-hover="☣Linux"><span style="color: rgb(82, 163, 0); font-size: 25px;">☣</span>Linux</a>
+								</li>
+								<li class="nav-item">
+									<a style="font-size: 25px;" class="nav-link" href="/blog/devops" data-hover="Dev∅ps">Dev<span style="color: #b57c02; font-size: 25px;">∅</span>ps</a>
+								</li>
+								<li class="nav-item">
+									<a style="font-size: 25px;" class="nav-link" href="/blog/hardening" data-hover="☰Hardening"><span style="color: rgb(194, 0, 194); font-size: 25px;">☰</span>Hardening</a>
+								</li>
 						<!--	<li class="nav-item">
 								<a style="font-size: 25px;" class="nav-link" href="ctf" data-hover="☢CTF"><span style="color: rgba(255,191,0,1);; font-size: 25px;">☢</span>CTF</a>
 							</li> -->
-								</ul>
-							</div><!--- .navbar-collapse --->
-						</nav>
-					</div><!-- .col-md-8 -->
-				</div>
-			</header>
-		</div>
+							</ul>
+						</div><!--- .navbar-collapse --->
+					</nav>
+				</div><!-- .col-md-8 -->
+			</div>
+		</header>
+	</div>
 
-		<div class="content-body">
-			<div class="container">
-				<div class="row">
-					<main class="col-md-8">
+	<div class="content-body">
+
+		<div id="main" style="position: sticky; top: 0;">
+				<button class="openbtnred" onclick="openNav()">☠</button>  
+			</div><br>
+			<div id="mySidebar" class="sidebar" style="position: sticky; top: 0;">
+				<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+				<span style="font-size: 25px; color: #ff0000;"><b>&nbsp;✎</b></span><span style="font-size: 25px; color: white;"> <b>Notas</b></span>
+				<hr style="color: #DECD00;"><br>
+				<a><span style="color: #E5D400;">Path Traversal</span><span class="spanx">: El recorrido de ruta o recorrido de directorio es una vulnerabilidad que permite a un atacante leer archivos arbitrarios en el servidor que ejecuta una aplicación.</span></a>
+				<a><span style="color: #E5D400;">--path-as-is</span><span class="spanx">: Indica a cURL que no maneje secuencias de <b>/../</b> o <b>/./</b> en la  URL dada.<br>Normalmente curl los aplastará o fusionará según los estándares, pero con esta opción le dices que no lo haga.</span></a>
+				<a><span style="color: #E5D400;">grafana.log</span><span class="spanx">: Archivo log que registra eventos relacionados con Grafana, ubicado en <b>/var/log/grafana/grafana.log</b> en Sistemas Linux\Unix</span></a>
+			</div>
+		
+		<div class="container">
+			<div class="row">
+				<main class="col-md-8">
 					<!--	<article>
 							<header class="entry-header">
 								<h1 class="entry-red">
@@ -121,28 +147,28 @@
 						</article><br> -->
 						
 						
-						<article>
-							<header class="entry-header">
-								<h1 class="entry-red">
-									<a class="nodeco" href="/blog/hacking/CVE-2021-43798">Grafana 8.X [CVE-2021-43798] Path Traversal</a>
-								</h1>
-								<div class="entry-meta">
+					<article>
+						<header class="entry-header">
+							<h1 class="entry-red">
+								<a class="nodeco" href="/blog/hacking/CVE-2021-43798">Grafana 8.X [CVE-2021-43798] Path Traversal</a>
+							</h1>
+							<div class="entry-meta">
 								<!--<span class="post-category"><a href="#">Web Design</a></span>
 								<span class="post-date"><a href="#"><time class="entry-date" datetime="2012-11-09T23:15:57+00:00">February 2, 2013</time></a></span>
 								<span class="post-author"><a href="#">Albert Einstein</a></span>
 								<span class="comments-link"><a href="">4 Comments</a></span>-->
-								</div>
-							</header>
-							<div class="entry-content clearfix">
-								<div class="wrapperhck">
-								<img class="zoom" src="/blog/img/cve-2021-43798.jpg" alt="CVE-2021-43798">
-								</div>
-								<p>El 2 de Diciembre de 2021 el Ingeniero de Software e Investigador de Seguridad Jordy Versmissen ‘J0VSEC‘ reportó al equipo de Grafana, una vulnerabilidad de recorrido de ruta ‘Path Traversal‘ en la que un usuario no autenticado puede leer archivos en el host remoto.</p>
-								<div class="read-more cl-effect-100">
-									<a class="nodeco" href="/blog/hacking/CVE-2021-43798" class="more-link">Continue reading <span class="meta-nav">☠</span></a>
-								</div>
 							</div>
-						</article><br>
+						</header>
+						<div class="entry-content clearfix">
+							<div class="wrapperhck">
+								<img class="zoom" src="/blog/img/cve-2021-43798.jpg" alt="CVE-2021-43798">
+							</div>
+							<p>El 2 de Diciembre de 2021 el Ingeniero de Software e Investigador de Seguridad Jordy Versmissen ‘J0VSEC‘ reportó al equipo de Grafana, una vulnerabilidad de recorrido de ruta ‘Path Traversal‘ en la que un usuario no autenticado puede leer archivos en el host remoto.</p>
+							<div class="read-more cl-effect-100">
+								<a class="nodeco" href="/blog/hacking/CVE-2021-43798" class="more-link">Continue reading <span class="meta-nav">☠</span></a>
+							</div>
+						</div>
+					</article><br>
 						
 					<!--	<article class="post post-1">
 							<header class="entry-header">
@@ -167,33 +193,33 @@
 							</div>
 						</article> -->
 
-						<br>
-						<article class="post post-1">
-							<header class="entry-header">
-								<h1 class="entry-red">
-									<a class="nodeco" href="/blog/hacking/dns-poisoning-spoofing">ÐNS : Pøisoning ⥐ Spøøfing</a>
-								</h1>
+					<br>
+					<article class="post post-1">
+						<header class="entry-header">
+							<h1 class="entry-red">
+								<a class="nodeco" href="/blog/hacking/dns-poisoning-spoofing">ÐNS : Pøisoning ⥐ Spøøfing</a>
+							</h1>
 								<!--<div class="entry-meta">
 								<span class="post-category"><a href="#">Web Design</a></span>
 								<span class="post-date"><a href="#"><time class="entry-date" datetime="2012-11-09T23:15:57+00:00">February 2, 2013</time></a></span>
 								<span class="post-author"><a href="#">Albert Einstein</a></span>
 								<span class="comments-link"><a href="">4 Comments</a></span>
-								</div>-->
-							</header>
-							<div class="entry-content clearfix">
-								<div class="wrapperhck">
+						</div>-->
+						</header>
+						<div class="entry-content clearfix">
+							<div class="wrapperhck">
 								<img class="zoom" src="/blog/img/dns-poisoning.jpg">
-								</div>
-								<p>DNS Pøisøning y DNS Spøøfing son sinónimos pero para entenderlos se debe pensar en ellos como acción y reacción o el cómo y el por qué.<br>Cuando esta técnica se lleva a cabo, lo que ocurre es que los datos del DNS de un sitio web son falsificados/reemplazados, por lo que la petición de un usuario a esa web se redirecciona hacia el servidor del atacante en lugar de al servidor web legítimo</p>
-								<div class="read-more cl-effect-100">
-									<a class="nodeco" href="/blog/hacking/dns-poisoning-spoofing" class="more-link">Continue reading <span class="meta-nav">☠</span></a>
-								</div>
 							</div>
-						</article>
-					</main>
+							<p>DNS Pøisøning y DNS Spøøfing son sinónimos pero para entenderlos se debe pensar en ellos como acción y reacción o el cómo y el por qué.<br>Cuando esta técnica se lleva a cabo, lo que ocurre es que los datos del DNS de un sitio web son falsificados/reemplazados, por lo que la petición de un usuario a esa web se redirecciona hacia el servidor del atacante en lugar de al servidor web legítimo</p>
+							<div class="read-more cl-effect-100">
+								<a class="nodeco" href="/blog/hacking/dns-poisoning-spoofing" class="more-link">Continue reading <span class="meta-nav">☠</span></a>
+							</div>
+						</div>
+					</article>
+				</main>
 
-					<aside class="col-md-4 stk-idx-hck">
-						<div class="widget widget-recent-posts">		
+			<!--	<aside class="col-md-4 stk-idx-hck">
+					<div class="widget widget-recent-posts">		
 							<h3 class="widget-title">H<a style="color: rgb(189, 0, 38);">☠</a>CKING POSTS</h3>		
 							<ul>
 							<!--	<li>
@@ -213,7 +239,7 @@
 								</li>
 							</ul>
 						</div>
-					</aside>
+					</aside> -->
 				</div>
 				<div class="prv"><a href="page/6/index"></a></div>
 			</div>

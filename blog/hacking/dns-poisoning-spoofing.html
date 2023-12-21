@@ -44,6 +44,13 @@
 	<script src="/js/sidebar.js"></script>
 	<script src="/js/asredlight.js"></script>
 <style>
+@media (max-width: 600px) {
+  img {
+    max-height: 100%;
+    width: 100%;
+  }
+}
+
 .bg {
 	border: 10px solid black;
 	width: 100%;
@@ -132,9 +139,9 @@
 								
 								<div class="leftl">
 									<span><b>DNS Pøisøning</b> y <b>DNS Spøøfing</b> son sinónimos pero para entenderlos se debe pensar en ellos como acción y reacción o el <b>cómo</b> y el <b>por qué</b>.</span><br><br>
-									<span>Cuando esta técnica se lleva a cabo, lo que ocurre es que los datos del DNS de un sitio web son falsificados\reemplazados, por lo que la petición de un usuario a esa web se redirecciona hacia el servidor del atacante en lugar de al servidor web legítimo.</span><br><br>
-									<span>DNS es el catálogo mundial de direcciones IP y nombres de dominio. Como una guía telefónica en Internet. Traduce URL fáciles de usar para el usuario final. Cada servidor almacena una lista de registros DNS que conoce, esto se denomina caché.</span><br><br>
-									<span>Si el servidor DNS más cercano no conoce la dirección IP que necesita, pregunta a otros servidores DNS ascendentes hasta que encuentra la dirección IP del sitio web al que está intentando acceder. El servidor DNS guarda esta nueva entrada en su caché para tiempos de respuesta más rápidos</span>
+									<span>Cuando esta técnica se lleva a cabo, lo que ocurre es que los <b>datos</b> del <b>DNS</b> de un sitio web son <b>falsificados\reemplazados</b>, por lo que la petición de un usuario a esa web se redirecciona hacia el servidor del atacante en lugar de al servidor web legítimo.</span><br><br>
+									<span><b>DNS</b> es el <b>catálogo mundial de direcciones IP y nombres de dominio</b>. Como una guía telefónica en Internet. Traduce URL fáciles de usar para el usuario final. Cada servidor almacena una lista de registros DNS que conoce, esto se denomina caché.</span><br><br>
+									<span>Si el servidor <b>DNS</b> más cercano no conoce la dirección IP que necesita, pregunta a otros servidores DNS ascendentes hasta que encuentra la dirección IP del sitio web al que está intentando acceder. El servidor DNS guarda esta nueva entrada en su caché para tiempos de respuesta más rápidos</span>
 								</div><br>
 								
 								<a href="/blog/hacking/img/dns_poison_spoofing.jpg" target="_blank"><img src="/blog/hacking/img/dns_poison_spoofing.jpg" width="80%"></a>
@@ -149,7 +156,7 @@
 								
 								<div class="leftl">
 									<span><b>Ettercap</b> nació como un sniffer para redes LAN conmutadas pero durante el proceso de desarrollo ha ido incorporando nuevas características que lo han convertido en una potente y flexible herramienta para ataques <b>M</b>an-<b>I</b>n-<b>T</b>he-<b>M</b>iddle</span><br><br>
-									<span>Soporta la disección activa y pasiva de diferentes protocolos <b>{</b>incluso los cifrados<b>}</b> e incluye características para el análisis de la red y del host <b>{</b>como la huella digital del sistema operativo<b>}</b></span>
+									<span>Soporta la disección activa y pasiva de diferentes protocolos <b>[</b>incluso los cifrados<b>]</b> e incluye características para el análisis de la red y del host <b>[</b>como la huella digital del sistema operativo<b>]</b></span>
 								</div>
 							</section>
 							
@@ -163,11 +170,11 @@
 									<div class="leftl">
 										<span><b>etter.conf</b> es el archivo de configuración que determina el comportamiento de <b>Ettercap</b>. Se carga siempre al inicio y configura algunos atributos utilizados en tiempo de ejecución y es el único archivo que se lee con permisos de <b><a style="color: #C80000;">root</a></b>.</span>
 										<br><br>
-										<span>Hay que asegurarse de que el <b>UID</b> especificado tiene suficientes privilegios para leer otros archivos {<b>etter.*</b>}, aunque esto se puede omitir estableciendo la variable de entorno <b>EC_UID=0</b></span>
+										<span>Hay que asegurarse de que el <b>UID</b> especificado tiene suficientes privilegios para leer otros archivos [<b>etter.*</b>], aunque esto se puede omitir estableciendo la variable de entorno <b>EC_UID=0</b></span>
 										<br><br>
 										<span><b>Ettercap</b> necesita privilegios de <b><a style="color: #C80000;">root</a></b> para iniciar los sockets de la capa de enlace y tras esta inicialización, los privilegios de root ya no son necesarios</span>
 										<br><br>
-										<span>Es cuando <b>Ettercap</b> vuelve a reducir los privilegios a <b>UID=65534</b> {<b>nobody</b>}</span>
+										<span>Es cuando <b>Ettercap</b> vuelve a reducir los privilegios a <b>UID=65534</b> [<b>nobody</b>]</span>
 									</div><br><br>
 								
 								<div class="leftl">

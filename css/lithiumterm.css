@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Ubuntu');
+    @import url('https://fonts.googleapis.com/css?family=Ubuntu');
 @import url('https://fonts.googleapis.com/css?family=Ubuntu+Mono'); 
 
 #container {
@@ -19,7 +19,7 @@
   display: inline-block;
   white-space: nowrap;
   margin: 0 auto;
-  width: 100%;
+  width: 60%;
   height: auto;
   box-shadow: 2px 4px 10px rgba(0,0,0,0.5);
 } 
@@ -177,5 +177,10 @@
   #terminal {
     max-height: 90%;
     width: 90%;
+  }
+
+  #long-terminal {
+    max-height: 90%;
+    width: 100%;
   }
 }

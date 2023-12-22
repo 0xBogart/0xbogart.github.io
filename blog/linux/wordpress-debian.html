@@ -43,6 +43,19 @@
 	<script src="/js/pace.min.js"></script>
 	<script src="/js/modernizr.custom.js"></script>
 	<script src="/js/asgreenlight.js"></script>
+<style>
+@media (max-width: 600px) {
+  .imgmax {
+    width: 104%; /* Ancho al 100% para pantallas de 600px o menos */
+  }
+}
+
+.bg {
+	border: 10px solid black;
+	width: 100%;
+	height: 100%;
+}
+</style>
 </head>
 
 <body>
@@ -82,16 +95,11 @@
 			</a>
 			
 			<div id="contenido">
-				<h5>Conversión de slapd.conf a slapd.d</h5>
+				<h6>Instalar Wordpress en Debian 10 [Buster]</h6>
 				<div style="border-top: 1px solid #000; width: 100%; margin: 10px 0;"></div>
-				<a href="#intro" style="text-decoration: none;"><p style="margin-bottom: 6px; font-size: larger">☣ Intro</p></a>
-				<a href="#ventajas" style="text-decoration: none;"><p style="margin-bottom: 6px; font-size: larger">☣ Ventajas de la migración</p></a>
-				<a href="#INSTALLDAP" style="text-decoration: none;"><p style="margin-bottom: 6px; font-size: larger">☣ Instalación de OpenLDAP</p></a>
-				<a href="#SLAPD" style="text-decoration: none;"><p style="margin-bottom: 6px; font-size: larger">☣ Conversión de slapd.conf a slapd.d</p></a>
-				<a href="#HDB" style="text-decoration: none;"><p style="margin-bottom: 6px; font-size: larger">☣ hdb: [Directivas del Back-End]</p></a>
-				<a href="#SLAPTEST" style="text-decoration: none;"><p style="margin-bottom: 6px; font-size: larger">☣ slaptest [Verificar la Configuración]</p></a>
-				<a href="#BASELDIF" style="text-decoration: none;"><p style="margin-bottom: 6px; font-size: larger">☣ Estructurar la BBDD</p></a>
-				<a href="#USERGROUP" style="text-decoration: none;"><p style="margin-bottom: 6px; font-size: larger">☣ Crear Usuario y Grupo</p></a>
+				<a href="#INSTALL" style="text-decoration: none;"><p style="margin-bottom: 6px; font-size: larger">☣ Instalación de Paquetes y Dependencias</p></a>
+				<a href="#BBDD" style="text-decoration: none;"><p style="margin-bottom: 6px; font-size: larger">☣ Configurar la BBDD</p></a>
+				<a href="#INSTALLWP" style="text-decoration: none;"><p style="margin-bottom: 6px; font-size: larger">☣ Instalación de WordPress</p></a>
 			</div>
 		</div><!-- END TABBAR -->
 
@@ -113,7 +121,7 @@
 			</div>
 		<div class="container">
 			<div class="row">
-				<main class="col-md-8">
+				<main class="col-md-8" style="margin-left: auto; margin-right: auto;">
 					<article class="post post-1">
 						<header  class="entry-header">
 							<h1 class="blh1">Wordpress en Debian 10 [Buster]</h1>
@@ -288,7 +296,7 @@
 								</section>
 							</div>
 							</section>
-							<hr>
+							<div style="border-top: 1px solid #000; width: 100%; margin: 10px 0;"></div>
 
 							<section id="BBDD">
 							<div style="margin-top: 80px;" class="centext">
@@ -367,7 +375,7 @@
 								</section>
 							</div>
 							</section>
-							<hr>
+							<div style="border-top: 1px solid #000; width: 100%; margin: 10px 0;"></div>
 
 							<section id="INSTALLWP">
 							<div class="centext" style="margin-top:80px;">
@@ -402,30 +410,30 @@
 										<span id="terminal__prompt--bling"><b>sudo systemctl <a style="color: #71FF00;">restart </a>apache2&nbsp;</b></span>
 									</div>
 								</section>
-							</div>
+							</div><br><br>
 
 								<span style="margin-top: 30px;">Ahora inicia la instalación desde el navegador accediendo a <b>http://127.0.0.1/wordpress/install.php</b></span>
 							
-							<a href="img/wp-install1.png" target="_blank"><img src="img/wp-install1.png" width="100%"></a><br><br>
-							<a href="img/wp-install2.png" target="_blank"><img src="img/wp-install2.png" width="100%"></a>
+							<a href="img/wp-install1.png" target="_blank"><img src="img/wp-install1.png" class="imgmax" width="100%"></a><br><br>
+							<a href="img/wp-install2.png" target="_blank"><img src="img/wp-install2.png" class="imgmax" width="100%"></a>
 							
 							<div class="centext" style="margin-top: 50px;">
 								<span>Si llegado a este punto de la instalación, el servidor no es capaz de escribir en el archivo <b>wp-config.php</b> es porque este no existe.<br><br> Crealo en <b>/var/www/html/wordpress/wp-config.php</b>, copia y pega la configuración que te muestra y haz Click en <b>'Run the Installation'</b>:</span>
 							</div>
-							<a href="img/wp-install3.png" target="_blank"><img src="img/wp-install3.png" width="90%"></a>
+							<a href="img/wp-install3.png" target="_blank"><img src="img/wp-install3.png" class="imgmax" width="90%"></a>
 							<br><br>
-							<a href="img/wp-install4.png" target="_blank"><img src="img/wp-install4.png" width="70%"></a>
+							<a href="img/wp-install4.png" target="_blank"><img src="img/wp-install4.png" class="imgmax" width="70%"></a>
 							<br><br>
-							<a href="img/wp-install5.png" target="_blank"><img src="img/wp-install5.png" width="100%"></a>
+							<a href="img/wp-install5.png" target="_blank"><img src="img/wp-install5.png" class="imgmax" width="100%"></a>
 							
 							<div class="centext" style="margin-top: 50px;">
 								<span><b>Login</b> con las credenciales configuradas en el proceso de instalación y accederás al <b>Panel de Configuración</b> de <b>WordPress</b>:</span>
 							</div>
-							<a href="img/wp-install6.png" target="_blank"><img src="img/wp-install6.png"></a>
+							<a href="img/wp-install6.png" target="_blank"><img src="img/wp-install6.png" class="imgmax"></a>
 							<br><br>
-							<a href="img/wp-install7.png" target="_blank"><img src="img/wp-install7.png" width="100%"></a>
+							<a href="img/wp-install7.png" target="_blank"><img src="img/wp-install7.png" class="imgmax" width="100%"></a>
 							<br><br>
-							<a href="img/wp-install8.png" target="_blank"><img src="img/wp-install8.png" width="100%"></a>
+							<a href="img/wp-install8.png" target="_blank"><img src="img/wp-install8.png" class="imgmax" width="100%"></a>
 							<br><br>
 							</section>
 						</div>

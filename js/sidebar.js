@@ -1,32 +1,35 @@
 function openNav() {
+  // Red Side
   document.getElementById("mySidebar").style.width = "200px";
   document.getElementById("mySidebar").style.height = "550px";
   document.getElementById("mySidebar").style.border = "1px solid red";
+  // Green Side
+  document.getElementById("mySidebargreen").style.width = "200px";
+  document.getElementById("mySidebargreen").style.height = "550px";
   document.getElementById("mySidebargreen").style.border = "1px solid green";
-  document.getElementById("main").style.marginLeft = "10px";
+  // Purple Side
+  document.getElementById("mySidebarpurple").style.width = "200px";
+  document.getElementById("mySidebarpurple").style.height = "550px";
+  document.getElementById("mySidebarpurple").style.border = "1px solid purple";
+  // Gold Side
+  document.getElementById("mySidebargold").style.width = "200px";
+  document.getElementById("mySidebargold").style.height = "550px";
+  document.getElementById("mySidebargold").style.border = "1px solid gold";
+  document.getElementById("main").style.marginLeft = "10px";  // Main General
 }
 
 function closeNav() {
+  // Red Side
   document.getElementById("mySidebar").style.width = "0";
   document.getElementById("mySidebar").style.border = "none";
+  // Green Side
+  document.getElementById("mySidebargreen").style.width = "0";
   document.getElementById("mySidebargreen").style.border = "none";
-  document.getElementById("main").style.marginLeft= "0";
+  // Purple Side
+  document.getElementById("mySidebarpurple").style.width = "0";
+  document.getElementById("mySidebarpurple").style.border = "none";
+  // Gold Side
+  document.getElementById("mySidebargold").style.width = "0";
+  document.getElementById("mySidebargold").style.border = "none";
+  document.getElementById("main").style.marginLeft= "0";  // Main General
 }
-
-/*function toggleNav() {
-    var sidebar = document.getElementById("mySidebar");
-    var sidebarToggle = document.getElementById("sidebarToggle");
-
-    if (sidebar.style.width === "200px") {
-        sidebar.style.width = "0";
-        sidebar.style.border = "none"; // Eliminar el borde al cerrar
-        document.getElementById("main").style.marginLeft= "0";
-        sidebarToggle.innerHTML = "☠"; // Cambiar el ícono del botón al cerrar
-    } else {
-        sidebar.style.width = "200px";
-        sidebar.style.height = "550px";
-        sidebar.style.border = "3px solid red"; // Mantener el borde al abrir
-        document.getElementById("main").style.marginLeft = "10px";
-        sidebarToggle.innerHTML = "×"; // Cambiar el ícono del botón al abrir
-    }
-}*/

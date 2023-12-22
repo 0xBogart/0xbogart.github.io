@@ -6,11 +6,11 @@
 	<!-- meta -->
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0,user-scalable=no,viewport-fit=cover">
-	<meta name="description" content="Unix\Linux">
-	<meta name="keywords" content="Unix\Linux">
+	<link rel="icon" type="image/png" href="/blog/img/skull.png">
+	<meta name="description" content="Linux">
+	<meta name="keywords" content="Linux">
 
 	<!-- css -->
-	<link rel="icon" type="image/png" href="/blog/img/skull.png">
 	<link rel="stylesheet" href="/css/bootstrap.min.css">
 	<link rel="stylesheet" href="/css/ionicons.min.css">
 	<link rel="stylesheet" href="/css/pace.css">
@@ -22,21 +22,28 @@
 	<script src="/js/jquery-2.1.3.min.js"></script>
 	<script src="/js/bootstrap.min.js"></script>
 	<script src="/js/pace.min.js"></script>
-	<script src="/js/modernizr.custom.js"></script>		
+	<script src="/js/modernizr.custom.js"></script>
+<style>
+.bg {
+	border: 10px solid black;
+	width: 100%;
+	height: 100%;
+}
+</style>
 </head>
 
-<body>
+<body class="bg">
 	<div class="container">
 		<header id="site-header">
 			<div class="row">
-				<div class="col-md-4 col-sm-5 col-8">
+				<div class="col-md-5 col-sm-5 col-8">
 					<div class="logo">
 						<a href="/index" style="margin-left: 16px; margin-bottom: 3px;"><img src="/blog/img/skull.png" width="55px"height="70px"></a><br>
 						<h5><b>Linux Blog<br><span style="color: #318800; font-size: 16px; margin-left: 5px;">Øx</span>Bogart</b></h5>
 					</div>
 				</div><!-- col-md-4 -->
 					
-				<div class="col-md-8 col-sm-7 col-4" style="margin-top: 20px;">
+				<div class="col-md-7 col-sm-7 col-4" style="margin-top: 20px;">
 					<nav class="navbar navbar-expand-lg navbar-light">
 						<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#bs-example-navbar-collapse-1" aria-controls="bs-example-navbar-collapse-1" aria-expanded="false" aria-label="Toggle navigation">
 							<span class="navbar-toggler-icon"></span>
@@ -67,10 +74,22 @@
 		</header>
 	</div>
 
+	<div style="border-top: 10px solid #000; width: 100%; margin-bottom: 0px; margin-top: -50px; position: sticky; top: -1px;"></div>
+
 	<div class="content-body">
 		<div class="container">
+			<div id="main" style="position: sticky; top: 0;">
+				<button class="openbtnred" onclick="openGreenNav()">☣</button>  
+			</div><br>
+			<div id="mySidebar" class="sidebar" style="position: sticky; top: 0;">
+				<a href="javascript:void(0)" class="closebtn" onclick="closeGreenNav()">×</a>
+				<span style="font-size: 16px; color: white; margin-left: 30px;"><b> ☣ Linux Posts</b></span>
+				<hr style="color: #ff0000;"><br>
+				<a href="/blog/linux/openldap-slapd"><span style="color: rgb(88, 177, 0);">☣</span><span class="spanx"> OpenLDAP | Conversión slapd.conf a slapd.d [formato cn=config]</span></a>
+				<a href="/blog/hacking/instalar-wordpress-debian"><span style="color: rgb(88, 177, 0);">☣</span><span class="spanx"> WordPress | Instalación &amp; Configuración en Debian 10</span></a>
+			</div>
 			<div class="row">
-				<main class="col-md-8">
+				<main class="col-md-8" style="margin-left: auto; margin-right: auto;">
 					<article class="post post-1">
 						<header class="entry-header">
 							<h1 class="entry-green">
@@ -187,7 +206,7 @@
 					</article>
 				</main>					  
 
-				<aside class="col-md-4 stk-idx-lx">
+			<!--	<aside class="col-md-4 stk-idx-lx">
 					<div class="widget widget-recent-posts">		
 						<h3 class="widget-title"><a style="color: rgb(82, 163, 0);">☣</a>LINUX POSTS</h3>		
 						<ul>
@@ -214,7 +233,7 @@
 							</li>
 						</ul>
 					</div>
-				</aside>
+				</aside> -->
 			</div>
 			<div class="prv"><a href="/page/L/1"></a></div>
 		</div>

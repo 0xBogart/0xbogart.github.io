@@ -46,6 +46,15 @@
   overflow: hidden;
 }
 
+/* Media query para cambiar bottom por top en pantallas más pequeñas */
+@media screen and (max-width: 991px) {
+  .text-container {
+    position: absolute;
+    top: 0;
+    transition: top 0.5s ease;
+  }
+}
+
 .text {
   width: 100%;
   height: 100%;

@@ -30,24 +30,6 @@
 	<script src="/js/modernizr.custom.js"></script>
 	<script src="/js/sidebar.js"></script>
 <style>
-.imaginator {
-	width: auto;
-	height: 300px;
-	border-radius: 8px;
-	overflow: hidden;
-}
-
-.imaginator img {
-	width: 100%;
-	height: auto;
-	transition: transform 0.5s ease; /* Animación de zoom al pasar el ratón */
-}
-
-.imaginator:hover img {
-	transform: scale(2.1); /* Zoom al pasar el ratón */
-	transition: transform 5.0s ease; /* Animación de reducción al quitar el ratón */
-}
-
 .text {
   position: absolute;
   bottom: 0; /* Alinea .text en la parte inferior */
@@ -67,8 +49,27 @@
   z-index: 1; /* Asegura que .text esté por encima de la imagen */
 }
 
+.imaginator {
+  position: relative;
+  width: auto;
+  height: 300px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.imaginator img {
+  width: 100%;
+  height: auto;
+  transition: transform 0.5s ease;
+}
+
+.imaginator:hover img {
+  transform: scale(2.1);
+  transition: transform 5.0s ease;
+}
+
 .imaginator:hover .text {
-	background: linear-gradient(to top, rgba(255, 0, 0, 0) 0%, rgba(255, 0, 0, 1) 100%);
+  background: linear-gradient(to top, rgba(255, 0, 0, 0) 0%, rgba(255, 0, 0, 1) 100%);
 }
 
  /* Estilos para artículos en pantalla ancha */

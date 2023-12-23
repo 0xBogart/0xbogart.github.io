@@ -33,7 +33,7 @@
 .imaginator {
   position: relative;
   width: auto;
-  height: 300px;
+  height: auto;
   border-radius: 8px;
   overflow: hidden;
 }
@@ -43,7 +43,6 @@
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 100px; /* Altura fija para el texto */
   overflow: hidden;
 }
 
@@ -77,7 +76,7 @@
 }
 
  /* Estilos para artículos en pantalla ancha */
-    @media screen and (min-width: 600px) {
+    @media screen and (min-width: 767px) {
       .articles-container {
         display: flex;
         flex-wrap: wrap;
@@ -92,7 +91,7 @@
     }
 
     /* Estilos para artículos en pantalla estrecha (móvil) */
-    @media screen and (max-width: 600px) {
+    @media screen and (max-width: 767px) {
       .articles-container {
         display: block;
       }
@@ -172,7 +171,7 @@
 					<div class="articles-container">
 						<!-- Primer artículo -->
 						<article>
-  <div class="imaginator" style="border: 1px solid black; margin: auto; position: relative;">
+  <div class="imaginator" style="margin: auto; position: relative;">
     <div class="image-wrapper" style="position: relative; overflow: hidden; border-radius: 8px;">
       <img src="/blog/img/cve-2021-43798.jpg">
     </div>
@@ -186,7 +185,7 @@
 
 						<!-- Segundo artículo -->
 						<article>
-  <div class="imaginator" style="border: 1px solid black; margin: auto; position: relative;">
+  <div class="imaginator" style="margin: auto; position: relative;">
     <div class="image-wrapper" style="position: relative; overflow: hidden; border-radius: 8px;">
       <img src="/blog/img/cve-2021-43798.jpg">
     </div>
@@ -200,7 +199,7 @@
 
 						<!-- Tercer artículo -->
 						<article>
-  <div class="imaginator" style="border: 1px solid black; margin: auto; position: relative;">
+  <div class="imaginator" style="margin: auto; position: relative;">
     <div class="image-wrapper" style="position: relative; overflow: hidden; border-radius: 8px;">
       <img src="/blog/img/cve-2021-43798.jpg">
     </div>

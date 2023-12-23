@@ -31,18 +31,25 @@
 	<script src="/js/sidebar.js"></script>
 <style>
 .imaginator {
-  display: flex;
-  align-items: flex-end; /* Alinea el texto en la parte inferior */
+  position: relative;
   width: auto;
   height: 300px;
   border-radius: 8px;
   overflow: hidden;
-  position: relative;
+}
+
+.text-container {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100px; /* Altura fija para el texto */
+  overflow: hidden;
 }
 
 .text {
-  flex: 1; /* Permite que el texto expanda el espacio vertical */
   width: 100%;
+  height: 100%;
   font-size: 16px;
   color: white;
   text-align: left;
@@ -51,9 +58,7 @@
   border-radius: 0 0 8px 8px;
   font-family: 'Courier New', Courier, monospace;
   transition: background 0.5s ease;
-  max-height: 100%;
   overflow: auto;
-  z-index: 1;
 }
 
 .imaginator img {
@@ -167,39 +172,45 @@
 					<div class="articles-container">
 						<!-- Primer artículo -->
 						<article>
-							<div class="imaginator">
-								<div class="image-wrapper" style="position: relative; overflow: hidden; border-radius: 8px;">
-									<img src="/blog/img/cve-2021-43798.jpg">
-								</div>
-								<a href="https://0xbogart.github.io/blog/hacking">
-									<p class="text">Grafana 8.X [CVE-2021-43798] Path Traversal</p>
-								</a>
-							</div>
-						</article>
+  <div class="imaginator" style="border: 1px solid black; margin: auto; position: relative;">
+    <div class="image-wrapper" style="position: relative; overflow: hidden; border-radius: 8px;">
+      <img src="/blog/img/cve-2021-43798.jpg">
+    </div>
+    <div class="text-container">
+      <p class="text">Grafana 8.X [CVE-2021-43798] Path Traversal</p>
+    </div>
+    <a href="https://0xbogart.github.io/blog/hacking"></a>
+  </div>
+</article>
+
 
 						<!-- Segundo artículo -->
 						<article>
-							<div class="imaginator">
-								<div class="image-wrapper" style="position: relative; overflow: hidden; border-radius: 8px;">
-									<img src="/blog/img/dns-poisoning.jpg">
-								</div>
-								<a href="/blog/hacking/dns-poisoning-spoofing">
-									<p class="text">ÐNS [Pøisoning &amp; Spøøfing]</p>
-								</a>
-							</div>
-						</article>
+  <div class="imaginator" style="border: 1px solid black; margin: auto; position: relative;">
+    <div class="image-wrapper" style="position: relative; overflow: hidden; border-radius: 8px;">
+      <img src="/blog/img/cve-2021-43798.jpg">
+    </div>
+    <div class="text-container">
+      <p class="text">Grafana 8.X [CVE-2021-43798] Path Traversal</p>
+    </div>
+    <a href="https://0xbogart.github.io/blog/hacking"></a>
+  </div>
+</article>
+
 
 						<!-- Tercer artículo -->
 						<article>
-							<div class="imaginator">
-								<div class="image-wrapper" style="position: relative; overflow: hidden; border-radius: 8px;">
-									<img src="/blog/img/dns-poisoning.jpg">
-								</div>
-								<a href="/blog/hacking/dns-poisoning-spoofing">
-									<p class="text">ÐNS [Pøisoning &amp; Spøøfing]</p>
-								</a>
-							</div>
-						</article>
+  <div class="imaginator" style="border: 1px solid black; margin: auto; position: relative;">
+    <div class="image-wrapper" style="position: relative; overflow: hidden; border-radius: 8px;">
+      <img src="/blog/img/cve-2021-43798.jpg">
+    </div>
+    <div class="text-container">
+      <p class="text">Grafana 8.X [CVE-2021-43798] Path Traversal</p>
+    </div>
+    <a href="https://0xbogart.github.io/blog/hacking"></a>
+  </div>
+</article>
+
 						<!-- ... Más artículos según sea necesario -->
 					</div>
 				</main>

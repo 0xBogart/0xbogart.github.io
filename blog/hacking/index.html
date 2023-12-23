@@ -30,8 +30,45 @@
 	<script src="/js/modernizr.custom.js"></script>
 	<script src="/js/sidebar.js"></script>
 <style>
+.imaginator {
+      position: relative;
+      width: 500px;
+      height: 400px;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .imaginator img {
+      width: 100%;
+      height: auto;
+      transition: transform 0.5s ease; /* Animación de zoom al pasar el ratón */
+    }
+
+    .imaginator:hover img {
+      transform: scale(2.1); /* Zoom al pasar el ratón */
+      transition: transform 5.0s ease; /* Animación de reducción al quitar el ratón */
+    }
+
+    .text {
+      position: absolute;
+      bottom: 0;
+      width: 50%;
+      font-size: 16px;
+      color: white;
+      text-align: left; /* Ajuste para alinear el texto a la izquierda */
+      background: rgba(0, 0, 0, 0.5); /* Color del fondo con transparencia */
+      padding: 60px;
+      border-radius: 0 0 8px 8px;
+      font-family: 'Courier New', Courier, monospace;
+      transition: background 0.5s ease; /* Animación de degradado en hover */
+    }
+
+    .imaginator:hover .text {
+      background: linear-gradient(to top, rgba(255, 0, 0, 0) 0%, rgba(255, 0, 0, 1) 100%);
+    }
+
 .bg {
-	border: 10px solid black;
+	border: 2px solid black;
 	width: 100%;
 	height: 100%;
 }
@@ -163,6 +200,20 @@
 							<div class="wrapperhck">
 								<img class="zoom" src="/blog/img/cve-2021-43798.jpg" alt="CVE-2021-43798">
 							</div>
+							<p>El 2 de Diciembre de 2021 el Ingeniero de Software e Investigador de Seguridad Jordy Versmissen ‘J0VSEC‘ reportó al equipo de Grafana, una vulnerabilidad de recorrido de ruta ‘Path Traversal‘ en la que un usuario no autenticado puede leer archivos en el host remoto.</p>
+							<div class="read-more cl-effect-100">
+								<a class="nodeco" href="/blog/hacking/CVE-2021-43798" class="more-link">Continue reading <span class="meta-nav">☠</span></a>
+							</div>
+						</div>
+					</article><br>
+
+					<article>
+						<div class="imaginator" style="border: 1px solid black;">
+							<img src="https://0xbogart.github.io/blog/img/wordpress-debian.jpg"> <!-- Reemplaza 'ruta_de_tu_imagen.jpg' con la ruta de tu imagen -->
+							<a href="https://0xbogart.github.io/blog/hacking"><p class="text">Texto de ejemplo</p></a>
+						</div>
+
+						<div class="entry-content clearfix">
 							<p>El 2 de Diciembre de 2021 el Ingeniero de Software e Investigador de Seguridad Jordy Versmissen ‘J0VSEC‘ reportó al equipo de Grafana, una vulnerabilidad de recorrido de ruta ‘Path Traversal‘ en la que un usuario no autenticado puede leer archivos en el host remoto.</p>
 							<div class="read-more cl-effect-100">
 								<a class="nodeco" href="/blog/hacking/CVE-2021-43798" class="more-link">Continue reading <span class="meta-nav">☠</span></a>

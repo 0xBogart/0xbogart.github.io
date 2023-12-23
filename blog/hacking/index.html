@@ -31,7 +31,6 @@
 	<script src="/js/sidebar.js"></script>
 <style>
 .imaginator {
-      position: relative;
       width: 500px;
       height: 400px;
       border-radius: 8px;
@@ -208,10 +207,12 @@
 					</article><br>
 
 					<article>
-						<div class="imaginator" style="border: 1px solid black;">
+						<header class="entry-header">
+						<div class="imaginator" style="border: 1px solid black; margin: auto">
 							<img src="https://0xbogart.github.io/blog/img/wordpress-debian.jpg"> <!-- Reemplaza 'ruta_de_tu_imagen.jpg' con la ruta de tu imagen -->
 							<a href="https://0xbogart.github.io/blog/hacking"><p class="text">Texto de ejemplo</p></a>
 						</div>
+						</header>
 
 						<div class="entry-content clearfix">
 							<p>El 2 de Diciembre de 2021 el Ingeniero de Software e Investigador de Seguridad Jordy Versmissen ‘J0VSEC‘ reportó al equipo de Grafana, una vulnerabilidad de recorrido de ruta ‘Path Traversal‘ en la que un usuario no autenticado puede leer archivos en el host remoto.</p>

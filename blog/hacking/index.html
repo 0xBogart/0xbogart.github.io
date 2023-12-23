@@ -53,7 +53,7 @@
   bottom: 0; /* Alinea .text en la parte inferior */
   left: 0;
   right: 0;
-  width: auto;
+  width: 100%; /* O ajusta según tu diseño */
   font-size: 16px;
   color: white;
   text-align: left;
@@ -62,7 +62,7 @@
   border-radius: 0 0 8px 8px;
   font-family: 'Courier New', Courier, monospace;
   transition: background 0.5s ease;
-  max-height: calc(100% - 100px);
+  max-height: 100%; /* Evita que .text se salga del contenedor */
   overflow: auto;
   z-index: 1; /* Asegura que .text esté por encima de la imagen */
 }

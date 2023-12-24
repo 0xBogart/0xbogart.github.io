@@ -41,17 +41,17 @@
 .contenedor > div > img {
 	width: 100%; /* Ancho de la imágen dentro del contenedor */
 	height: 100%;
-	object-fit: fill;
+	object-fit: cover;
 	/*border: 1px solid black;*/ /* hace de doble borde, se puede jugar con combis de colores del .wr */
 }
 
 /* Grid */
 .contenedor {
-    display: grid;
-    grid-gap: 5px;
-    /*grid-template-columns: repeat(auto-fit, minmax(215px, 1fr));*/
-    grid-auto-rows: 125px;
-    grid-auto-flow: dense; /* Fill all spaces with fitted images */
+	display: grid;
+	grid-gap: 5px;
+	/*grid-template-columns: repeat(auto-fit, minmax(215px, 1fr));*/
+	grid-auto-rows: 125px;
+	grid-auto-flow: dense;
 }
 
 .horizontal {
@@ -71,7 +71,7 @@
 
 @media screen and (min-width: 1024px){
 	.wrappper{
-		width: 960px; /* Apila el Grid en conjunto y lo reorganiza según el ancho disponible */
+		width: 660px;
 		margin: 0 auto;
 	}
 }
@@ -176,7 +176,7 @@
 		</header>
 	</div>
 
-	<div style="border-top: 10px solid #000; width: 100%; margin-bottom: 0px; margin-top: -50px; position: sticky; top: -1px;"></div>
+	<div style="border-top: 10px solid #000; width: 100%; margin-bottom: 50px; margin-top: -50px; position: sticky; top: -1px; z-index: 1"></div>
 
 	<div class="content-body">
 		<div class="container">

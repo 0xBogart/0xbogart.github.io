@@ -11,9 +11,8 @@
   overflow-x: hidden;
   transition: 0.5s;
   padding-top: 5px;
-  margin-top: -18px;
+  margin-top: -25px;
 }
-
 
 .sidebar a {
   padding: 1px 1px 1px 10px;
@@ -29,7 +28,6 @@
 .sidebar a:hover {
 	color: #E5D400;
 }
-
 
 .spanx {
 	font-family: "Lucida Console", "Courier New", monospace;
@@ -50,8 +48,9 @@
   margin-bottom: -10px;
 }
 
+/*** OPENBTN ***/
 /* Red */
-.openbtnred {
+.openbtn {
   font-size: 20px;
   cursor: pointer;
   background-color: #111;
@@ -61,11 +60,12 @@
   float: right;
 }
 
-.openbtnred:hover {
+.openbtn:hover {
   background-color: #444;
   color: #CA0000;
 }
 
+/*** END OPENBTN ***/
 
 #main {
   transition: margin-left .5s;

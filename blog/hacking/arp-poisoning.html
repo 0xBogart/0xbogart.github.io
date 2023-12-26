@@ -1,27 +1,27 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-	<title>DNS Poisoning &amp; Spoofing | ØxBogart</title>
+	<title>ARP Poisoning | ØxBogart</title>
 
 	<!-- meta -->
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0,user-scalable=no,viewport-fit=cover">
 	<link rel="icon" type="/image/png" href="/blog/img/skull.png">
-	<link rel="canonical" href="https://0xbogart.github.io/blog/hacking/dns-poisoning-spoofing">
+	<link rel="canonical" href="https://0xbogart.github.io/blog/hacking/arp-poisoning-spoofing">
 	<meta name="author" content="Bogart">
-	<meta name="description" content="DNS Poisoning &amp; Spoofing | ØxBogart">
-	<meta name="keywords" content="DNS Poisoning &amp; Spoofing | ØxBogart">
+	<meta name="description" content="ARP Poisoning | ØxBogart">
+	<meta name="keywords" content="ARP Poisoning | ØxBogart">
 
 	<!-- Twitter Tags -->
-	<meta property="og:title" content="DNS Poisoning &amp; Spoofing | ØxBogart">
-	<meta property="og:description" content="DNS Poisoning &amp; Spoofing | ØxBogart">
+	<meta property="og:title" content="ARP Poisoning | ØxBogart">
+	<meta property="og:description" content="DNS Poisoning | ØxBogart">
 	<meta property="og:image" content="https://0xbogart.github.io/blog/img/dns-poisoning.jpg">
-	<meta property="og:url" content="https://0xbogart.github.io/blog/hacking/dns-poisoning-spoofing">
+	<meta property="og:url" content="https://0xbogart.github.io/blog/hacking/arp-poisoning-spoofing">
 	<meta name="twitter:card" content="summary_large_image">
 	<meta name="twitter:site" content="@jfb0gart">
 	<meta name="twitter:creator" content="@jfb0gart">
-	<meta name="twitter:title" content="DNS Poisoning &amp; Spoofing | ØxBogart">
-	<meta name="twitter:description" content="DNS Poisoning &amp; Spoofing | ØxBogart">
+	<meta name="twitter:title" content="ARP Poisoning | ØxBogart">
+	<meta name="twitter:description" content="ARP Poisoning | ØxBogart">
 	<meta name="twitter:image" content="https://0xbogart.github.io/blog/img/dns-poisoning.jpg">		
 
 	<!-- css -->
@@ -127,8 +127,8 @@
 				<main class="col-md-8" style="margin-left: auto; margin-right: auto;">
 					<article class="post post-1">
 						<header  class="entry-header">
-							<h1 class="blh1">DNS</h1>
-							<h2 class="blh2"><a style="color: #DB0000;">Poisoning </a>&amp;<a style="color: #DB0000;"> Spoofing</a></h2>
+							<h1 class="blh1">ARP</h1>
+							<h2 class="blh2"><a style="color: #DB0000;">Poisoning</a></h2>
 						</header>
 						<div class="entry-content clearfix"><br><br>
 
@@ -138,10 +138,7 @@
 								</div><br>
 								
 								<div class="leftl">
-									<span><b>DNS Pøisøning</b> y <b>DNS Spøøfing</b> son sinónimos pero para entenderlos se debe pensar en ellos como acción y reacción o el <b>cómo</b> y el <b>por qué</b>.</span><br><br>
-									<span>Cuando esta técnica se lleva a cabo, lo que ocurre es que los <b>datos</b> del <b>DNS</b> de un sitio web son <b>falsificados\reemplazados</b>, por lo que la petición de un usuario a esa web se redirecciona hacia el servidor del atacante en lugar de al servidor web legítimo.</span><br><br>
-									<span><b>DNS</b> es el <b>catálogo mundial de direcciones IP y nombres de dominio</b>. Como una guía telefónica en Internet. Traduce URL fáciles de usar para el usuario final. Cada servidor almacena una lista de registros DNS que conoce, esto se denomina caché.</span><br><br>
-									<span>Si el servidor <b>DNS</b> más cercano no conoce la dirección IP que necesita, pregunta a otros servidores DNS ascendentes hasta que encuentra la dirección IP del sitio web al que está intentando acceder. El servidor DNS guarda esta nueva entrada en su caché para tiempos de respuesta más rápidos</span>
+									<span><b>ARP Pøisøning</b> ARP poisoning (también conocido como envenenamiento ARP) apunta a la tabla de caché de resolución de direcciones [ARP] en una red local.<br><br>El ataque consiste en enviar mensajes ARP falsos a dispositivos de la red, asociando direcciones IP legítimas con direcciones MAC falsas. Esto puede hacer que el tráfico de red se dirija a un dispositivo malicioso, permitiendo la interceptación o manipulación de los datos.</span>
 								</div><br>
 								
 								<a href="/blog/hacking/img/dns_poison_spoofing.jpg" target="_blank"><img class="imgmax" src="/blog/hacking/img/dns_poison_spoofing.jpg" width="80%"></a>

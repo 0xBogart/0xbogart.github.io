@@ -818,7 +818,7 @@ figure {
 /* WHITE HEADER */
 #site-header {
 	background-color: #FFF;
-	padding: 25px 20px;
+	/*padding: 25px 20px;*/
 	margin-bottom: 40px;
 	/*border-bottom: 1px solid #e7e7e7;*/ /* es el hr fino debajo de las cabeceras y la navbar*/
 }

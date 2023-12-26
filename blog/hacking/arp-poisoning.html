@@ -98,7 +98,7 @@
 				</a>
 			
 				<div id="contenido">
-					<h5>DNS Poisoning &amp; Spoofing</h5>
+					<h5>ARP Poisoning</h5>
 					<div style="border-top: 1px solid #000; width: 100%; margin: 10px 0;"></div>
 					<a href="#INTRO" style="text-decoration: none;"><p style="margin-bottom: 6px; font-size: larger">☠ Intro</p></a>
 					<a href="#ettercap" style="text-decoration: none;"><p style="margin-bottom: 6px; font-size: larger">☠ Ettercap</p></a>
@@ -138,7 +138,7 @@
 								</div><br>
 								
 								<div class="leftl">
-									<span><b>ARP Pøisøning</b> ARP poisoning [también conocido como envenenamiento ARP] apunta a la tabla de caché de resolución de direcciones [ARP] en una red local.<br><br>El ataque consiste en enviar mensajes ARP falsos a dispositivos de la red, asociando direcciones IP legítimas con direcciones MAC falsas. Esto puede hacer que el tráfico de red se dirija a un dispositivo malicioso, permitiendo la interceptación o manipulación de los datos.</span>
+									<span><b>ARP Poisoning</b> <b>[</b>también conocido como envenenamiento ARP<b>]</b> apunta a la tabla de caché de resolución de direcciones [<b>ARP</b>] en una red local.<br><br>El ataque consiste en enviar <b>mensajes ARP falsos</b> a dispositivos de la red, asociando direcciones <b>IP legítimas</b> con direcciones <b>MAC falsas</b>. Esto puede hacer que el tráfico de red se dirija a un dispositivo malicioso, permitiendo la interceptación o manipulación de los datos.</span>
 								</div><br>
 								
 								<a href="/blog/hacking/img/dns_poison_spoofing.jpg" target="_blank"><img class="imgmax" src="/blog/hacking/img/dns_poison_spoofing.jpg" width="80%"></a>
@@ -213,7 +213,9 @@
 							<section id="poisoning">
 								<div style="margin-top: 130px;" class="centext">
 									<a style="font-size: 19px; color: rgb(189, 0, 38);">☠ </a><span class="red-bg" style="font-size: 19px;">FASE DE ENVENENAMIENTO\SUPLANTACIÓN DNS</span><p></p>
-									<span>Antes del <b>DNS Pøisøning</b>, este es el estado de la <b>tabla ARP</b> del usuario y la respuesta de ping a <b>instagram.com</b></span><p></p>
+									<div class="leftl">
+										<span>Antes del <b>DNS Pøisøning</b>, este es el estado de la <b>tabla ARP</b> del usuario y la respuesta de ping a <b>instagram.com</b></span><p></p>
+									</div>
 									<a href="/blog/hacking/img/arp1.png" target="_blank"><img class="imgmax" src="/blog/hacking/img/arp1.png" width="80%"></a><p></p>
 									<a href="/blog/hacking/img/arp2.png" target="_blank"><img class="imgmax" src="/blog/hacking/img/arp2.png" width="80%"></a><p></p>
 									<a href="/blog/hacking/img/instagram.png" target="_blank"><img class="imgmax" src="/blog/hacking/img/instagram.png" width="100%"></a><p></p>
@@ -233,7 +235,6 @@
 								<div class="leftl">
 									<span>En este momento la <b>caché DNS</b> del usuario ha sido <b>falsificada</b>. En su <b>tabla ARP</b> se refleja la IP de mi servidor local y cree que <b>instagram.com</b> es mi servidor local, donde he montado un <b>servidor NGINX</b></span><p></p>
 								</div>
-
 								<a href="/blog/hacking/img/arp6.png" target="_blank"><img class="imgmax" src="/blog/hacking/img/arp6.png" width="80%"></a><p></p>
 								<a href="/blog/hacking/img/arp7.png" target="_blank"><img class="imgmax" src="/blog/hacking/img/arp7.png" width="80%"></a><br><br>
 								<a href="/blog/hacking/img/fakeinstagram.png" target="_blank"><img class="imgmax" src="/blog/hacking/img/fakeinstagram.png" width="100%"></a>

@@ -10,7 +10,7 @@
   overflow-x: hidden;
   transition: 0.5s;
   padding-top: 5px;
-  margin-top: -25px;
+  margin-top: -18px;
 }
 
 
@@ -55,7 +55,7 @@
   cursor: pointer;
   background-color: #111;
   color: white;
-  padding: 10px 15px;
+  padding: 0px 15px;
   border: none;
   float: right;
 }

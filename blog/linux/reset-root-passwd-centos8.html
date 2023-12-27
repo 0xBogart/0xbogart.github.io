@@ -128,9 +128,10 @@
 								<a style="font-size: 19px; color: rgb(88, 177, 0);">☣ </a><span class="green-bg" style="font-size: 19px;">EDITAR GRUB</span>
 							</div>
 						</section>
-									<!--<img class="zoom" src="https://0xbogart.github.io/img/nmcli.jpg" alt="WP Debian">-->
-						<span>Inicia o reinicia el sistema. En cuanto el gestor de arranque aparezca con la pantalla de selección, toca rápidamente las flechas arriba o abajo para pausar la cuenta atrás.<br>
-							Presiona la tecla '<a style="color: #3E9E00;"><b>e</b></a>' para editar <b>GRUB</b>.</span>
+
+						<div class="leftl">
+							<span>Inicia o reinicia el sistema. En cuanto el gestor de arranque aparezca con la pantalla de selección, toca rápidamente las flechas arriba o abajo para pausar la cuenta atrás.<br>Presiona la tecla '<a style="color: #3E9E00;"><b>e</b></a>' para editar <b>GRUB</b>.</span>
+						</div>
 						<br>
 								
 						<!-- TERMINAL GRUB 1 -->
@@ -152,13 +153,17 @@
 								</div>
 							</section>
 						</div>
-						<hr>
+						<div style="border-top: 1px solid #000; width: 100%; margin: 10px 0;"></div>
 								
 						<section id="rdbreak" style="margin-top: 140px;">
 							<div class="centext">
 								<a style="font-size: 19px; color: rgb(88, 177, 0);">☣ </a><span class="green-bg" style="font-size: 19px;">RD.BREAK</span><br>
+							</div>
+
+							<div class="leftl">
 								<span>Localiza la línea que empieza por '<a style="color: #3E9E00;"><b>linux</b></a>' y añade <a style="color: #3E9E00;"><b>rd.break</b></a> al final de la línea para interrumpir el proceso de arranque antes de que el control pase al Kernel y presiona <a style="color: #30A900;"><b>Ctrl+X</b></a> para salir del editor de parámetros y continuar.</span>
 							</div>
+
 							<!-- END TERMINAL GRUB 1 -->
 
 							<!-- EDIT GRUB -->
@@ -187,13 +192,17 @@
 								</section>
 							</div>
 						</section>
-								<hr>
+						
+						<div style="border-top: 1px solid #000; width: 100%; margin: 10px 0;"></div>
+						
 						<!-- END EDIT GRUB -->
 						<section id="autorelabel" style="margin-top: 140px;">
 							<div class="centext">
 								<a style="font-size: 19px; color: rgb(88, 177, 0);">☣ </a><span class="green-bg" style="font-size: 19px;">/SYSROOT Y /.AUTORELABEL</span><br>
-								<span>Ahora estás en un prompt de 'rescate' parecido a este: switch_root:/#.<br><br>Vuelve a montar el entorno <a style="color: #3E9E00;"><b>chroot</b></a> en la partición raíz <a style="color: #30A900;"><b>/sysroot</b></a> con permisos de lectura y escritura <b>rw</b> y cambia el password de <b>root</b> con <b>passwd.</b><br><br>
-									Después crea el fichero <a style="color: #30A900;"><b>/.autorelabel</b></a> para que en el próximo arranque, el subsistema <b>SELinux</b> reetiquete todos los archivos con los contextos correctos:</span>
+							</div>
+
+							<div class="leftl">
+								<span>Ahora estás en un prompt de 'rescate' parecido a este: switch_root:/#.<br><br>Vuelve a montar el entorno <a style="color: #3E9E00;"><b>chroot</b></a> en la partición raíz <a style="color: #30A900;"><b>/sysroot</b></a> con permisos de lectura y escritura <b>rw</b> y cambia el password de <b>root</b> con <b>passwd.</b><br><br>Después crea el fichero <a style="color: #30A900;"><b>/.autorelabel</b></a> para que en el próximo arranque, el subsistema <b>SELinux</b> reetiquete todos los archivos con los contextos correctos:</span>
 							</div>
 							<!-- CHROOT /SYSROOT -->
 							<br>
@@ -251,13 +260,15 @@
 									  </section>
 									</div>
 									</section>
-								<hr>
+								<div style="border-top: 1px solid #000; width: 100%; margin: 10px 0;"></div>
 								
 								<!-- END CHROOT /SYSROOT -->
 								<br><br>
 
 								<!-- NEW LOGIN -->
+							<div class="leftl">
 								<span class="centext">Tras reiniciar, loguear con la nueva password de <b>root</b>:</span>
+							</div>
 								<br>
 								<div id="long-terminal">   
 									<!-- Terminal Bar -->

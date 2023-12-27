@@ -77,197 +77,198 @@
 		</header>
 	</div>
 
-		<!-- TABBAR -->
-		<div style="position: sticky; top: 0; width: auto;">
-			<a onclick="toggleDropdown()">
-				<div class="tabbar">
-					<span style="font-weight: bold; float: left; margin-left: 10px;">TABLA DE CONTENIDO</span>
-					<div class="dropdown-content" id="dropdownContent"></div>
-				</div>
-			</a>
-			
-			<div id="contenido">
-				<h5>Conversión de slapd.conf a slapd.d</h5>
-				<div style="border-top: 1px solid #000; width: 100%; margin: 10px 0;"></div>
-				<a href="#intro" style="text-decoration: none;"><p style="margin-bottom: 6px; font-size: larger">☣ Intro</p></a>
-				<a href="#ventajas" style="text-decoration: none;"><p style="margin-bottom: 6px; font-size: larger">☣ Ventajas de la migración</p></a>
-				<a href="#INSTALLDAP" style="text-decoration: none;"><p style="margin-bottom: 6px; font-size: larger">☣ Instalación de OpenLDAP</p></a>
-				<a href="#SLAPD" style="text-decoration: none;"><p style="margin-bottom: 6px; font-size: larger">☣ Conversión de slapd.conf a slapd.d</p></a>
-				<a href="#HDB" style="text-decoration: none;"><p style="margin-bottom: 6px; font-size: larger">☣ hdb: [Directivas del Back-End]</p></a>
-				<a href="#SLAPTEST" style="text-decoration: none;"><p style="margin-bottom: 6px; font-size: larger">☣ slaptest [Verificar la Configuración]</p></a>
-				<a href="#BASELDIF" style="text-decoration: none;"><p style="margin-bottom: 6px; font-size: larger">☣ Estructurar la BBDD</p></a>
-				<a href="#USERGROUP" style="text-decoration: none;"><p style="margin-bottom: 6px; font-size: larger">☣ Crear Usuario y Grupo</p></a>
+	<!-- TABBAR -->
+	<div style="position: sticky; top: 0; width: auto;">
+		<a onclick="toggleDropdown()">
+			<div class="tabbar">
+				<span style="font-weight: bold; float: left; margin-left: 10px;">TABLA DE CONTENIDO</span>
+				<div class="dropdown-content" id="dropdownContent"></div>
 			</div>
-		</div><!-- END TABBAR -->
+		</a>
+			
+		<div id="contenido">
+			<h5>Conversión de slapd.conf a slapd.d</h5>
+			<div style="border-top: 1px solid #000; width: 100%; margin: 10px 0;"></div>
+			<a href="#intro" style="text-decoration: none;"><p style="margin-bottom: 6px; font-size: larger">☣ Intro</p></a>
+			<a href="#ventajas" style="text-decoration: none;"><p style="margin-bottom: 6px; font-size: larger">☣ Ventajas de la migración</p></a>
+			<a href="#INSTALLDAP" style="text-decoration: none;"><p style="margin-bottom: 6px; font-size: larger">☣ Instalación de OpenLDAP</p></a>
+			<a href="#SLAPD" style="text-decoration: none;"><p style="margin-bottom: 6px; font-size: larger">☣ Conversión de slapd.conf a slapd.d</p></a>
+			<a href="#HDB" style="text-decoration: none;"><p style="margin-bottom: 6px; font-size: larger">☣ hdb: [Directivas del Back-End]</p></a>
+			<a href="#SLAPTEST" style="text-decoration: none;"><p style="margin-bottom: 6px; font-size: larger">☣ slaptest [Verificar la Configuración]</p></a>
+			<a href="#BASELDIF" style="text-decoration: none;"><p style="margin-bottom: 6px; font-size: larger">☣ Estructurar la BBDD</p></a>
+			<a href="#USERGROUP" style="text-decoration: none;"><p style="margin-bottom: 6px; font-size: larger">☣ Crear Usuario y Grupo</p></a>
+		</div>
+	</div><!-- END TABBAR -->
 	
-		<div class="content-body">
-			<div id="main" style="position: sticky; top: 0;">
-				<button class="openbtn" onclick="toggleNav()">☣</button>  
-			</div><br>
-			<div id="mySidebar" class="sidebar" style="position: sticky; top: 0; margin-top: -18px; display: none;">
-				<a href="javascript:void(0)" class="closebtn" onclick="toggleNav()">×</a>
-				<span style="font-size: 25px; color: #27B700;"><b>&nbsp;✎</b></span><span style="font-size: 25px; color: white;"> <b>Notas</b></span>
-				<hr style="color: #DECD00;"><br>
-				<a><span style="color: #E5D400;">slapd.conf</span><span class="spanx">: Archivo de configuración anterior a versiones 2.3 de OpenLDAP</span></a>
-				<a><span style="color: #E5D400;">slapd.d</span><span class="spanx">: Nuevo formato de configuración en versiones 2.3 y posteriores de OpenLDAP</span></a>
-				<a><span style="color: #E5D400;">hdb</span><span class="spanx">: Variante jerárquica del Backend de bdb</span></a>
-				<a><span style="color: #E5D400;">LDIF</span><span class="spanx">: Es el formato de intercambio de datos LDAP</span></a>
-				<a><span style="color: #E5D400;">base.ldif</span><span class="spanx">: Fichero estructural de la BBDD LDAP. Contiene registros que representan información organizada jerárquicamente para la BBDD</span></a>
-				<a><span style="color: #E5D400;">users.ldif</span><span class="spanx">: Fichero que almacena información específica de Usuarios en un directorio LDAP</span></a>
-				<a><span style="color: #E5D400;">groups.ldif</span><span class="spanx">: Fichero que almacena información específica de Grupos en un directorio LDAP</span></a>
-			</div>
+	<div class="content-body">
+		<div id="main" style="position: sticky; top: 0;">
+			<button class="openbtn" onclick="toggleNav()">☣</button>  
+		</div><br>
+		<div id="mySidebar" class="sidebar" style="position: sticky; top: 0; margin-top: -18px; display: none;">
+			<a href="javascript:void(0)" class="closebtn" onclick="toggleNav()">×</a>
+			<span style="font-size: 25px; color: #27B700;"><b>&nbsp;✎</b></span><span style="font-size: 25px; color: white;"> <b>Notas</b></span>
+			<hr style="color: #DECD00;"><br>
+			<a><span style="color: #E5D400;">slapd.conf</span><span class="spanx">: Archivo de configuración anterior a versiones 2.3 de OpenLDAP</span></a>
+			<a><span style="color: #E5D400;">slapd.d</span><span class="spanx">: Nuevo formato de configuración en versiones 2.3 y posteriores de OpenLDAP</span></a>
+			<a><span style="color: #E5D400;">hdb</span><span class="spanx">: Variante jerárquica del Backend de bdb</span></a>
+			<a><span style="color: #E5D400;">LDIF</span><span class="spanx">: Es el formato de intercambio de datos LDAP</span></a>
+			<a><span style="color: #E5D400;">base.ldif</span><span class="spanx">: Fichero estructural de la BBDD LDAP. Contiene registros que representan información organizada jerárquicamente para la BBDD</span></a>
+			<a><span style="color: #E5D400;">users.ldif</span><span class="spanx">: Fichero que almacena información específica de Usuarios en un directorio LDAP</span></a>
+			<a><span style="color: #E5D400;">groups.ldif</span><span class="spanx">: Fichero que almacena información específica de Grupos en un directorio LDAP</span></a>
+		</div>
 			
-			<div class="container">
-				<div class="row">
-					<main class="col-md-8" style="margin-left: auto; margin-right: auto;">
-						<article class="post post-1">
-							<header  class="entry-header">
-								<h1 class="blh1">OpenLDAP 2.4</h1>
-								<h2 class="blh2">Conversión de SLAPD.CONF a SLAPD.D mediante cn=config</h2>
-							</header>
+		<div class="container">
+			<div class="row">
+				<main class="col-md-8" style="margin-left: auto; margin-right: auto;">
+					<article class="post post-1">
+						<header  class="entry-header">
+							<h1 class="blh1">OpenLDAP 2.4</h1>
+							<h2 class="blh2">Conversión de SLAPD.CONF a SLAPD.D mediante cn=config</h2>
+						</header>
 							
-							<div class="entry-content clearfix">
-								<a href="/blog/linux/img/cnconfig.png" target="_blank"><img style="margin-top: 40px;" src="/blog/linux/img/cnconfig.png" alt="cn=config" width="100%"></a>
-								<section style="margin-top: 130px;" id="intro">
-									<div>
-										<a style="font-size: 19px; color: rgb(88, 177, 0);">☣ </a><span class="green-bg" style="font-size: 19px;">INTRO</span><br>
-									</div>
+						<div class="entry-content clearfix">
+							<a href="/blog/linux/img/cnconfig.png" target="_blank"><img style="margin-top: 40px;" src="/blog/linux/img/cnconfig.png" alt="cn=config" width="100%"></a>
+							<section style="margin-top: 130px;" id="intro">
+								<div>
+									<a style="font-size: 19px; color: rgb(88, 177, 0);">☣ </a><span class="green-bg" style="font-size: 19px;">INTRO</span><br>
+								</div>
 
-									<div class="leftl" style="margin-top: 10px;">
-										<span style="color: #118E00;">⦾</span> <span><b>Modo Legacy [slapd.conf]</b>: En versiones anteriores de OpenLDAP, la configuración se realizaba principalmente a través de un archivo de texto plano llamado slapd.conf.<br><br>Este archivo centralizaba todos los ajustes de configuración del servidor LDAP en un formato específico y requería la edición manual del archivo para realizar cambios.</span><br><br>
-										<span style="color: #118E00;">⦾</span> <span> <b>Configuración Dinámica [slapd.d]</b>: A partir de versiones más recientes, OpenLDAP adoptó la configuración dinámica, denominada slapd.d. En este enfoque, la configuración se representa como una estructura de directorios y archivos en el sistema de archivos, en lugar de depender de un único archivo de configuración.<br><br>Cada aspecto de la configuración se refleja como una entrada en el árbol de directorios slapd.d, lo que permite una gestión más granular y modular de la configuración.</span>
-										<div style="border-top: 1px solid #000; width: 100%; margin: 10px 0;"></div>
-									</div>
-								</section>
-
-								<section class="centext" style="margin-top: 130px;" id="ventajas">
-									<div>
-										<a style="font-size: 19px; color: rgb(88, 177, 0);">☣ </a><span class="green-bg" style="font-size: 19px;">VENTAJAS DE LA MIGRACIÓN</span><br>
-										<span>La migración de slapd en Modo Legacy [<b>slapd.conf</b>] a Configuración Dinámica [<b>slapd.d</b>] conlleva una serie de ventajas:</span>
-									</div><br>
-
-									<div class="leftl">
-										<span style="color: #118E00;">⦾</span> <span> <b>Estructura más modular y legible</b>: slapd.d organiza la configuración en directorios y archivos legibles, lo que facilita la comprensión y administración, especialmente en entornos con configuraciones complejas.</span><br><br>
-										<span style="color: #118E00;">⦾</span> <span> <b>Menos propenso a errores</b>: La estructura de slapd.d reduce la posibilidad de errores de sintaxis o configuración al separar los ajustes en archivos individuales con nombres significativos.</span><br><br>
-										<span style="color: #118E00;">⦾</span> <span> <b>Facilidad para realizar cambios</b>: Modificar la configuración en slapd.d puede ser más sencillo que editar directamente slapd.conf. Las herramientas de administración suelen ser más amigables y permiten realizar cambios de manera más intuitiva.</span><br><br>
-										<span style="color: #118E00;">⦾</span> <span> <b>Compatibilidad con herramientas de gestión</b>: Muchas herramientas de gestión y administración de LDAP están diseñadas para trabajar con slapd.d, lo que facilita la integración y la administración del servidor LDAP.</span><br><br>
-										<span style="color: #118E00;">⦾</span> <span> <b>Validación y verificación mejoradas</b>: La estructura de slapd.d permite una mejor validación y verificación de la configuración, ayudando a identificar posibles problemas antes de aplicar los cambios.</span><br><br>
-										<span style="color: #118E00;">⦾</span> <span> <b>Escalabilidad y mantenimiento</b>: Al manejar grandes cantidades de configuración, slapd.d ofrece una mejor escalabilidad y facilita el mantenimiento al distribuir la configuración en varios archivos.</span>
-									</div>
-								</section>
+								<div class="leftl" style="margin-top: 10px;">
+									<span style="color: #118E00;">⦾</span> <span><b>Modo Legacy [slapd.conf]</b>: En versiones anteriores de OpenLDAP, la configuración se realizaba principalmente a través de un archivo de texto plano llamado slapd.conf.<br><br>Este archivo centralizaba todos los ajustes de configuración del servidor LDAP en un formato específico y requería la edición manual del archivo para realizar cambios.</span><br><br>
+									<span style="color: #118E00;">⦾</span> <span> <b>Configuración Dinámica [slapd.d]</b>: A partir de versiones más recientes, OpenLDAP adoptó la configuración dinámica, denominada slapd.d. En este enfoque, la configuración se representa como una estructura de directorios y archivos en el sistema de archivos, en lugar de depender de un único archivo de configuración.<br><br>Cada aspecto de la configuración se refleja como una entrada en el árbol de directorios slapd.d, lo que permite una gestión más granular y modular de la configuración.</span>
 									<div style="border-top: 1px solid #000; width: 100%; margin: 10px 0;"></div>
+								</div>
+							</section>
+
+							<section class="centext" style="margin-top: 130px;" id="ventajas">
+								<div>
+									<a style="font-size: 19px; color: rgb(88, 177, 0);">☣ </a><span class="green-bg" style="font-size: 19px;">VENTAJAS DE LA MIGRACIÓN</span><br>
+									<span>La migración de slapd en Modo Legacy [<b>slapd.conf</b>] a Configuración Dinámica [<b>slapd.d</b>] conlleva una serie de ventajas:</span>
+								</div><br>
+
+								<div class="leftl">
+									<span style="color: #118E00;">⦾</span> <span> <b>Estructura más modular y legible</b>: slapd.d organiza la configuración en directorios y archivos legibles, lo que facilita la comprensión y administración, especialmente en entornos con configuraciones complejas.</span><br><br>
+									<span style="color: #118E00;">⦾</span> <span> <b>Menos propenso a errores</b>: La estructura de slapd.d reduce la posibilidad de errores de sintaxis o configuración al separar los ajustes en archivos individuales con nombres significativos.</span><br><br>
+									<span style="color: #118E00;">⦾</span> <span> <b>Facilidad para realizar cambios</b>: Modificar la configuración en slapd.d puede ser más sencillo que editar directamente slapd.conf. Las herramientas de administración suelen ser más amigables y permiten realizar cambios de manera más intuitiva.</span><br><br>
+									<span style="color: #118E00;">⦾</span> <span> <b>Compatibilidad con herramientas de gestión</b>: Muchas herramientas de gestión y administración de LDAP están diseñadas para trabajar con slapd.d, lo que facilita la integración y la administración del servidor LDAP.</span><br><br>
+									<span style="color: #118E00;">⦾</span> <span> <b>Validación y verificación mejoradas</b>: La estructura de slapd.d permite una mejor validación y verificación de la configuración, ayudando a identificar posibles problemas antes de aplicar los cambios.</span><br><br>
+									<span style="color: #118E00;">⦾</span> <span> <b>Escalabilidad y mantenimiento</b>: Al manejar grandes cantidades de configuración, slapd.d ofrece una mejor escalabilidad y facilita el mantenimiento al distribuir la configuración en varios archivos.</span>
+								</div>
+							</section>
+							<div style="border-top: 1px solid #000; width: 100%; margin: 10px 0;"></div>
 								
-								<section style="margin-top: 130px;" class="centext" id="INSTALLDAP">
-									<div>
-										<a style="font-size: 19px; color: rgb(88, 177, 0);">☣ </a><span class="green-bg" style="font-size: 19px;">INSTALACIÓN DE OPENLDAP</span>
-									</div>
+							<section style="margin-top: 130px;" class="centext" id="INSTALLDAP">
+								<div>
+									<a style="font-size: 19px; color: rgb(88, 177, 0);">☣ </a><span class="green-bg" style="font-size: 19px;">INSTALACIÓN DE OPENLDAP</span>
+								</div>
 								
-									<div style="margin-top: 10px;" id="long-terminal">
-										<!-- Terminal Bar -->
-										<section id="terminal__bar">
-											<div id="bar__buttons">
-												<button class="bar__button" id="bar__button--exit">&#10005;</button>
-												<button class="bar__button">&#9472;</button>
-												<button class="bar__button">&#9723;</button>
-											</div>
-										</section>        
-										<!-- Terminal Body -->
-										<section id="terminal__body">
-											<div id="terminal__prompt">
-												<span id="terminal__prompt--user"><a style="color: #1CE900 ;">☣</a>&nbsp;</span>
-												<span id="terminal__prompt--bling"><b>yum install <a style="color: #1CE900 ">-y</a> epel-release</b></span>
-											</div>
-											<div id="terminal__prompt">
-												<span id="terminal__prompt--user"><a style="color: #1CE900 ;">☣</a>&nbsp;</span>
-												<span id="terminal__prompt--bling"><b>yum update <a style="color: #1CE900 ;">-y</a></b></span>
-											</div>
-											<div id="terminal__prompt">
-												<span id="terminal__prompt--user"><a style="color: #1CE900 ;">☣</a>&nbsp;</span>
-												<span id="terminal__prompt--bling"><b>yum install <a style="color: #1CE900 ;">-y</a> openldap openldap-clients openldap-servers</b></span>
-												<span id="terminal__prompt--cursor"></span>
-											</div>
-										</section>
-									</div><br>
+								<div style="margin-top: 10px;" id="long-terminal">
+									<!-- Terminal Bar -->
+									<section id="terminal__bar">
+										<div id="bar__buttons">
+											<button class="bar__button" id="bar__button--exit">&#10005;</button>
+											<button class="bar__button">&#9472;</button>
+											<button class="bar__button">&#9723;</button>
+										</div>
+									</section>        
+									<!-- Terminal Body -->
+									<section id="terminal__body">
+										<div id="terminal__prompt">
+											<span id="terminal__prompt--user"><a style="color: #1CE900 ;">☣</a>&nbsp;</span>
+											<span id="terminal__prompt--bling"><b>yum install <a style="color: #1CE900 ">-y</a> epel-release</b></span>
+										</div>
+										<div id="terminal__prompt">
+											<span id="terminal__prompt--user"><a style="color: #1CE900 ;">☣</a>&nbsp;</span>
+											<span id="terminal__prompt--bling"><b>yum update <a style="color: #1CE900 ;">-y</a></b></span>
+										</div>
+										<div id="terminal__prompt">
+											<span id="terminal__prompt--user"><a style="color: #1CE900 ;">☣</a>&nbsp;</span>
+											<span id="terminal__prompt--bling"><b>yum install <a style="color: #1CE900 ;">-y</a> openldap openldap-clients openldap-servers</b></span>
+											<span id="terminal__prompt--cursor"></span>
+										</div>
+									</section>
+								</div><br>
 							
-									<div style="margin-top: 10px;" id="long-terminal">
-										<!-- Terminal Bar -->       
-										<section id="terminal__bar">          
-											<div id="bar__buttons">            
-												<button class="bar__button" id="bar__button--exit">&#10005;</button>            
-												<button class="bar__button">&#9472;</button>                
-												<button class="bar__button">&#9723;</button>          
-											</div>
-										</section>        
-										<!-- Terminal Body -->
-										<section id="terminal__body">
-											<div id="terminal__prompt">
-												<span id="terminal__prompt--user"><a style="color: #1CE900 ;">☣</a>&nbsp;</span>
-												<span id="terminal__prompt--bling"><b>slapd <a style="color: #1CE900 ;">-V</a></b></span>
-											</div>
+								<div style="margin-top: 10px;" id="long-terminal">
+									<!-- Terminal Bar -->       
+									<section id="terminal__bar">          
+										<div id="bar__buttons">            
+											<button class="bar__button" id="bar__button--exit">&#10005;</button>            
+											<button class="bar__button">&#9472;</button>                
+											<button class="bar__button">&#9723;</button>          
+										</div>
+									</section>        
+									<!-- Terminal Body -->
+									<section id="terminal__body">
+										<div id="terminal__prompt">
+											<span id="terminal__prompt--user"><a style="color: #1CE900 ;">☣</a>&nbsp;</span>
+											<span id="terminal__prompt--bling"><b>slapd <a style="color: #1CE900 ;">-V</a></b></span>
+										</div>
 										  
-											<div id="terminal__prompt">
-												<span id="terminal__prompt--bling">&nbsp;<b>@(#) $OpenLDAP: slapd 2.4.44</b></span>
-											</div>
+										<div id="terminal__prompt">
+											<span id="terminal__prompt--bling">&nbsp;<b>@(#) $OpenLDAP: slapd 2.4.44</b></span>
+										</div>
 										  
-											<div id="terminal__prompt">
-												<span id="terminal__prompt--user"><a style="color: #1CE900 ">☣</a>&nbsp;</span>
-												<span id="terminal__prompt--bling"><b>chown <a style="color: #1CE900 ">-R</a> ldap:ldap /var/lib/ldap/</b></span>
-											</div>
-										</section>
-									</div>
-								</section>
-								<div style="border-top: 1px solid #000; width: 100%; margin: 10px 0;"></div>
+										<div id="terminal__prompt">
+											<span id="terminal__prompt--user"><a style="color: #1CE900 ">☣</a>&nbsp;</span>
+											<span id="terminal__prompt--bling"><b>chown <a style="color: #1CE900 ">-R</a> ldap:ldap /var/lib/ldap/</b></span>
+										</div>
+									</section>
+								</div>
+							</section>
+							
+							<div style="border-top: 1px solid #000; width: 100%; margin: 10px 0;"></div>
 								
-								<section style="margin-top: 160px;" id="SLAPD">
-									<div><a style="font-size: 19px; color: rgb(88, 177, 0);">☣ </a><span  class="green-bg" style="font-size: 19px;">CONVERSIÓN DE SLAPD.CONF A SLAPD.D</span></div>
+							<section style="margin-top: 160px;" id="SLAPD">
+								<div><a style="font-size: 19px; color: rgb(88, 177, 0);">☣ </a><span  class="green-bg" style="font-size: 19px;">CONVERSIÓN DE SLAPD.CONF A SLAPD.D</span></div>
 								
-									<div class="left">
-										<span>Desde la versión 2.3 <b>OpenLDAP</b> ha pasado a utilizar un motor de configuración de tiempo de ejecución dinámico y ya no lee la configuración desde <b>/etc/openldap/slapd.conf</b></span>
-										<br><br>
-										<span>En su lugar, utiliza una base de datos de configuración estructurada y ubicada en <b>/etc/openldap/slapd.d/</b></span>
-									</div><br>
+								<div class="left">
+									<span>Desde la versión 2.3 <b>OpenLDAP</b> ha pasado a utilizar un motor de configuración de tiempo de ejecución dinámico y ya no lee la configuración desde <b>/etc/openldap/slapd.conf</b></span>
+									<br><br>
+									<span>En su lugar, utiliza una base de datos de configuración estructurada y ubicada en <b>/etc/openldap/slapd.d/</b></span>
+								</div><br>
 								
-									<div id="long-terminal">
-										<!-- Terminal Bar -->       
-										<section id="terminal__bar">          
-											<div id="bar__buttons">            
-												<button class="bar__button" id="bar__button--exit">&#10005;</button>            
-												<button class="bar__button">&#9472;</button>                
-												<button class="bar__button">&#9723;</button>          
-											</div>
-										</section>        
-										<!-- Terminal Body -->
-										<section id="terminal__body">
-											<div id="terminal__prompt">
-												<span id="terminal__prompt--user"><a style="color: #1CE900 ;">☣&nbsp;</a></span>
-												<span id="terminal__prompt--bling"><b>ls -l /etc/openldap/slap.d</b></span>
-											</div><br>
-											<div id="terminal__prompt">
-												<span id="terminal__prompt--bling"><b>drwx-x--. ldap ldap</b>&nbsp;</span>
-												<span id="terminal__prompt--location-cyan"><b>cn=config</b></span>
-											</div>
+								<div id="long-terminal">
+									<!-- Terminal Bar -->       
+									<section id="terminal__bar">          
+										<div id="bar__buttons">            
+											<button class="bar__button" id="bar__button--exit">&#10005;</button>            
+											<button class="bar__button">&#9472;</button>                
+											<button class="bar__button">&#9723;</button>          
+										</div>
+									</section>        
+									<!-- Terminal Body -->
+									<section id="terminal__body">
+										<div id="terminal__prompt">
+											<span id="terminal__prompt--user"><a style="color: #1CE900 ;">☣&nbsp;</a></span>
+											<span id="terminal__prompt--bling"><b>ls -l /etc/openldap/slap.d</b></span>
+										</div><br>
+										<div id="terminal__prompt">
+											<span id="terminal__prompt--bling"><b>drwx-x--. ldap ldap</b>&nbsp;</span>
+											<span id="terminal__prompt--location-cyan"><b>cn=config</b></span>
+										</div>
 										  
-											<div id="terminal__prompt">
-												<span id="terminal__prompt--bling"><b>-rw-----. ldap ldap&nbsp;</b></span>
-												<span id="terminal__prompt--location-cyan"><b>cn=config.ldif</b>&nbsp;</span>
-											</div>
-										</section>
-									</div><br><br>
-									<div id="long-terminal">
-										<!-- Terminal Bar -->       
-										<section id="terminal__bar">          
-											<div id="bar__buttons">            
-												<button class="bar__button" id="bar__button--exit">&#10005;</button>            
-												<button class="bar__button">&#9472;</button>                
-												<button class="bar__button">&#9723;</button>          
-											</div>
-										</section>        
-										<!-- Terminal Body -->
-										<section id="terminal__body">
-											<div id="terminal__prompt">
-												<span id="terminal__prompt--user"><a style="color: #1CE900 ;">☣</a>&nbsp;</span>
-												<span id="terminal__prompt--bling"><b>ls -l /etc/openldap/slap.d/cn=config/</b></span>
-											</div><br>
+										<div id="terminal__prompt">
+											<span id="terminal__prompt--bling"><b>-rw-----. ldap ldap&nbsp;</b></span>
+											<span id="terminal__prompt--location-cyan"><b>cn=config.ldif</b>&nbsp;</span>
+										</div>
+									</section>
+								</div><br><br>
+								<div id="long-terminal">
+									<!-- Terminal Bar -->       
+									<section id="terminal__bar">          
+										<div id="bar__buttons">            
+											<button class="bar__button" id="bar__button--exit">&#10005;</button>            
+											<button class="bar__button">&#9472;</button>                
+											<button class="bar__button">&#9723;</button>          
+										</div>
+									</section>        
+									<!-- Terminal Body -->
+									<section id="terminal__body">
+										<div id="terminal__prompt">
+											<span id="terminal__prompt--user"><a style="color: #1CE900 ;">☣</a>&nbsp;</span>
+											<span id="terminal__prompt--bling"><b>ls -l /etc/openldap/slap.d/cn=config/</b></span>
+										</div><br>
 											<div id="terminal__prompt">
 												<span id="terminal__prompt--bling"><b>drwx-x--. ldap ldap</b>&nbsp;</span>
 												<span id="terminal__prompt--location-cyan"><b>cn=schema</b></span>
@@ -443,7 +444,7 @@
 								<br>
 								
 								<div class="leftl">
-<span style="color: #118E00 ;">⦾</span><span> <b><u>Directiva olcSuffix</u>:</b> Permite especificar el dominio para el que se debe proporcionar información:</span>
+									<span style="color: #118E00 ;">⦾</span><span> <b><u>Directiva olcSuffix</u>:</b> Permite especificar el dominio para el que se debe proporcionar información:</span>
 								</div>
 								
 								<div id="long-terminal">
@@ -466,7 +467,7 @@
 									</div><br><br>
 								
 								<div class="leftl">
-<span style="color: #118E00 ;">⦾</span><span> <b><u>Directiva olcRootDN</u>:</b> Permite especificar la cuenta de usuario dedicada con todos los permisos para las operaciones en la base de datos y el directorio LDAP:</span>
+									<span style="color: #118E00 ;">⦾</span><span> <b><u>Directiva olcRootDN</u>:</b> Permite especificar la cuenta de usuario dedicada con todos los permisos para las operaciones en la base de datos y el directorio LDAP:</span>
 								</div>
 								
 								<div id="long-terminal">
@@ -490,7 +491,7 @@
 								<br><br>
 
 								<div class="leftl">
-<span style="color: #118E00 ;">⦾</span><span> <b><u>Directiva olcRootPW</u>:</b> Permite establecer una contraseña para el usuario especificado en la directiva anterior:</span>
+									<span style="color: #118E00 ;">⦾</span><span> <b><u>Directiva olcRootPW</u>:</b> Permite establecer una contraseña para el usuario especificado en la directiva anterior:</span>
 								</div>
 
 								<div id="long-terminal">
@@ -678,8 +679,8 @@
 								<br><br>
 
 								<div class="centext">
-				<span>Importar la estructura base en el <b>directorio LDAP</b> con <b>ldapadd</b></span>
-									</div>
+									<span>Importar la estructura base en el <b>directorio LDAP</b> con <b>ldapadd</b></span>
+								</div>
 								<div id="long-terminal">
 									  <!-- Terminal Bar -->
 									  <section id="terminal__bar">

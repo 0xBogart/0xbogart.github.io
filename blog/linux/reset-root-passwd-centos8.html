@@ -37,7 +37,6 @@
 	<script src="/js/jquery-2.1.3.min.js"></script>
 	<script src="/js/bootstrap.min.js"></script>
 	<script src="/js/tabbar.js"></script>
-	<script src="/js/sidebar.js"></script>
 	<script src="/js/pace.min.js"></script>
 	<script src="/js/modernizr.custom.js"></script>
 	<script src="/js/asgreenlight.js"></script>
@@ -98,10 +97,10 @@
 
 <div class="content-body">
 	<div id="main" style="position: sticky; top: 0;">
-				<button class="openbtn" onclick="openGreenNav()">☣</button>  
+				<button class="openbtn" onclick="toggleNav()">☣</button>  
 			</div><br>
-			<div id="mySidebargreen" class="sidebar" style="position: sticky; margin-top: -18px;">
-				<a href="javascript:void(0)" class="closebtn" onclick="closeGreenNav()">×</a>
+			<div id="mySidebar" class="sidebar" style="position: sticky; top: 0; margin-top: -18px; display: none;">
+				<a href="javascript:void(0)" class="closebtn" onclick="toggleNav()">×</a>
 				<span style="font-size: 25px; color: #27B700;"><b>&nbsp;✎</b></span><span style="font-size: 25px; color: white;"> <b>Notas</b></span>
 				<hr style="color: #DECD00;"><br>
 				<a><span style="color: #E5D400;">rd.break</span><span class="spanx">: El parámetro rd.break hace que se "rompa" el disco RAM inicial que contiene las partes del kernel de Linux necesarias para el arranque del Sistema</span></a>
@@ -299,5 +298,18 @@
 			</div>
 		</div>
 	</footer>
+<script>
+function toggleNav() {
+  var sidebar = document.getElementById("mySidebar");
+  var sidebarDisplay = window.getComputedStyle(sidebar).display;
+
+  if (sidebarDisplay === "none") {
+    sidebar.style.display = "block"; // Mostrar el sidebar
+    sidebar.style.width = "200px"; // Ancho deseado al mostrar el sidebar
+  } else {
+    sidebar.style.display = "none"; // Ocultar el sidebar al hacer clic nuevamente
+  }
+}
+</script>
 </body>
 </html>

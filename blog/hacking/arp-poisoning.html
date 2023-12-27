@@ -70,7 +70,7 @@
 			
 			<div class="row justify-content-end">
 				<div class="col-1">
-					<nav class="navbar navbar-expand-lg navbar-light" style="margin-top: 5px;">
+					<nav class="navbar navbar-expand-lg navbar-light">
 						<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#bs-example-navbar-collapse-1" aria-controls="bs-example-navbar-collapse-1" aria-expanded="false" aria-label="Toggle navigation">
 							<span class="navbar-toggler-icon"></span>
 						</button>
@@ -87,34 +87,34 @@
 		</header>
 	</div>
 
-	<div class="content-body">
-		<!-- TABBAR -->
-			<div style="position: sticky; top: -1px; width: auto;">
-				<a onclick="toggleDropdown()">
-					<div class="tabbar">
-						<span style="font-weight: bold; float: left; margin-left: 10px;">TABLA DE CONTENIDO</span>
-						<div class="dropdown-content" id="dropdownContent"></div>
-					</div>
-				</a>
-			
-				<div id="contenido">
-					<h5>ARP Poisoning</h5>
-					<div style="border-top: 1px solid #000; width: 100%; margin: 10px 0;"></div>
-					<a href="#INTRO" style="text-decoration: none;"><p style="margin-bottom: 6px; font-size: larger">☠ Intro</p></a>
-					<a href="#ettercap" style="text-decoration: none;"><p style="margin-bottom: 6px; font-size: larger">☠ Ettercap</p></a>
-					<a href="#etterconf" style="text-decoration: none;"><p style="margin-bottom: 6px; font-size: larger">☠ etter.conf</p></a>
-					<a href="#etterdns" style="text-decoration: none;"><p style="margin-bottom: 6px; font-size: larger">☠ etter.dns</p></a>
-					<a href="#poisoning" style="text-decoration: none;"><p style="margin-bottom: 6px; font-size: larger">☠ Envenenamiento ARP</p></a>
-				</div>
-			</div><!-- END TABBAR -->
+	<!-- TABBAR -->
+	<div style="position: sticky; top: -1px; width: auto;">
+		<a onclick="toggleDropdown()">
+			<div class="tabbar">
+				<span style="font-weight: bold; float: left; margin-left: 10px;">TABLA DE CONTENIDO</span>
+				<div class="dropdown-content" id="dropdownContent"></div>
+			</div>
+		</a>
 		
-		<div id="main" style="position: sticky; top: 1px;">
-			<button class="openbtnred" onclick="openNav()">☠</button>
+		<div id="contenido">
+			<h5>ARP Poisoning</h5>
+			<div style="border-top: 1px solid #000; width: 100%; margin: 10px 0;"></div>
+			<a href="#INTRO" style="text-decoration: none;"><p style="margin-bottom: 6px; font-size: larger">☠ Intro</p></a>
+			<a href="#ettercap" style="text-decoration: none;"><p style="margin-bottom: 6px; font-size: larger">☠ Ettercap</p></a>
+			<a href="#etterconf" style="text-decoration: none;"><p style="margin-bottom: 6px; font-size: larger">☠ etter.conf</p></a>
+			<a href="#etterdns" style="text-decoration: none;"><p style="margin-bottom: 6px; font-size: larger">☠ etter.dns</p></a>
+			<a href="#poisoning" style="text-decoration: none;"><p style="margin-bottom: 6px; font-size: larger">☠ Envenenamiento ARP</p></a>
+		</div>
+	</div><!-- END TABBAR -->
+	
+	<div class="content-body">
+		<div id="main" style="position: sticky; top: 0;">
+			<button class="openbtn" onclick="toggleNav()">☠</button>
 		</div><br>
-		<div id="mySidebar" class="sidebar" style="position: sticky; top: 1px; margin-top: -24px;">
-			<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+		<div id="mySidebar" class="sidebar" style="display: none; position: sticky; top: 0; margin-top: -24px; padding-right: 1px;">
+			<a href="javascript:void(0)" class="closebtn" onclick="toggleNav()">×</a>
 			<span style="font-size: 25px; color: #ff0000;"><b>&nbsp;✎</b></span><span style="font-size: 25px; color: white;"> <b>Notas</b></span>
-			<hr style="color: #DECD00;"><br>
+			<hr style="color: #ff0000;"><br>
 			<a><span style="color: #E5D400;">Ettercap</span><span class="spanx">: Sniffer polivalente/filtro de contenidos para ataques Man In The Middle [MITM]</span></a>
 			<a><span style="color: #E5D400;">etter.conf</span><span class="spanx">: Archivo de configuración que determina el comportamiento de Ettercap</span></a>
 			<a><span style="color: #E5D400;">etter.dns</span><span class="spanx">: Archivo de configuración para la suplantación DNS [Spøøfing] de Ettercap</span></a>
@@ -259,5 +259,18 @@
 		</div>
 	</footer>
 	<a href="#" id="scrollToTopButtonRed"><i class="fas fa-arrow-up"></i></a>
+<script>
+function toggleNav() {
+  var sidebar = document.getElementById("mySidebar");
+  var sidebarDisplay = window.getComputedStyle(sidebar).display;
+
+  if (sidebarDisplay === "none") {
+    sidebar.style.display = "block"; // Mostrar el sidebar
+    sidebar.style.width = "200px"; // Ancho deseado al mostrar el sidebar
+  } else {
+    sidebar.style.display = "none"; // Ocultar el sidebar al hacer clic nuevamente
+  }
+}
+</script>
 </body>
 </html>

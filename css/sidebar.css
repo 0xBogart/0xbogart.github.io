@@ -4,7 +4,7 @@ background-color: #000;
 word-break: break-word;
 margin-top: -50px;
 transition: 0.5s;
-border: 1px solid red;
+border: 1px solid green;
 z-index: 1;
 float: right;
 left: 100%;

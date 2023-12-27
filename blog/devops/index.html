@@ -23,174 +23,169 @@
 	<script src="/js/bootstrap.min.js"></script>
 	<script src="/js/pace.min.js"></script>
 	<script src="/js/modernizr.custom.js"></script>
+<style>
+.contenedor > div {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 2em;
+	color: #ffeead;
+}
+
+
+.contenedor > div > img {
+	width: 100%; /* Ancho de la imágen dentro del contenedor */
+	height: 100%;
+	object-fit: cover;
+	/*border: 1px solid black;*/ /* hace de doble borde, se puede jugar con combis de colores del .wr */
+}
+
+/* Grid */
+.contenedor {
+	display: grid;
+	grid-gap: 5px;
+	/*grid-template-columns: repeat(auto-fit, minmax(215px, 1fr));*/
+	/* grid-auto-rows: 125px; */  /* Dsbloquear cuando haya + cuadriculas de artículos !!*/
+	grid-auto-rows: 80px;
+	grid-auto-flow: dense;
+}
+
+.horizontal {
+	grid-column: span 2;
+}
+
+.vertical {
+	grid-row: span 2;
+}
+
+.big {
+	grid-column: span 2;
+	grid-row: span 2;
+}
+
+@media screen and (min-width: 1024px){
+	.wrappper{
+		width: 660px;
+		margin: 0 auto;
+	}
+}
+
+.wr {
+	margin-left: 0.5%;
+	position: relative;
+	display: inline-block;
+	overflow: hidden;
+	width: auto;
+	border: 1px solid black;
+}
+
+.zum:hover img {
+	transition: transform 5.9s;
+	-ms-transform: scale(2); /* IE 9 */
+	-webkit-transform: scale(2); /* Safari 3-8 & Chrome*/
+	-moz-transform:scale(2); /* Firefox */
+	-o-transform:scale(2); /* Opera */
+	transform: scale(2); 
+}
+
+.zum h3 {
+	text-align: left;
+	color: #fff;
+	font-size: 17px;
+	text-shadow: 2px 2px 4px #000;
+	left: 0;
+	bottom: 0;
+	position: absolute;
+	padding-top: 20px;
+	width: 100%;
+	background: rgba(0, 0, 0, 0.5);
+	font-family: 'Courier New', Courier, monospace;
+	transition: background 0.5s ease;
+}
+
+.zum:hover h3 {
+	text-align: left;
+	color: #fff;
+	text-shadow: 2px 2px 4px #000;
+	left: 0;
+	width: 100%;
+	padding-top: 20px;
+	position: absolute;
+	linear-gradient(to top, rgba(255, 0, 0, 0) 0%, rgb(255 232 196) 100%) transition: background 0.5s ease;
+	z-index: 1;
+}
+
+.wrp {
+	position: relative;
+	display: inline-flex;
+	overflow: hidden;
+	border: 1px solid black;
+}
+
+.bg {
+	border: 3px solid black;
+	width: 100%;
+	height: 100%;
+}
+</style>
 </head>
 
-<body>
+<body class="bg">
 	<div class="container">	
 		<header id="site-header">
 			<div class="row">
 				<div class="col-md-4 col-sm-5 col-8">
 					<div class="logo">
-						<a href="/index" style="margin-left: 25px; margin-bottom: 3px;"><img src="/blog/img/skull.png" width="55px"height="70px"></a><br>
-						<h5><b>Hacking Blog<br><span style="color: #b57c02; font-size: 16px; margin-left: 15px; margin-bottom: -10px;">Øx</span>Bogart</b></h5>
+						<a href="/index" style="margin-left: 50px; margin-bottom: 3px;"><img src="/blog/img/skull.png" style="width: 55%; margin-top: 16px;"></a>
 					</div>
 				</div><!-- col-md-4 -->
 					
-			<div class="col-md-8 col-sm-7 col-4" style="margin-top: 20px;">
-				<nav class="navbar navbar-expand-lg navbar-light">
-					<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#bs-example-navbar-collapse-1" aria-controls="bs-example-navbar-collapse-1" aria-expanded="false" aria-label="Toggle navigation">
-						<span class="navbar-toggler-icon"></span>
-					</button>
+				<div class="col-md-8 col-sm-7 col-4" style="margin-top: 20px;">
+					<nav class="navbar navbar-expand-lg navbar-light">
+						<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#bs-example-navbar-collapse-1" aria-controls="bs-example-navbar-collapse-1" aria-expanded="false" aria-label="Toggle navigation">
+							<span class="navbar-toggler-icon"></span>
+						</button>
 					
-					<div class="collapse navbar-collapse justify-content-end" id="bs-example-navbar-collapse-1">
-						<ul class="navbar-nav">
-							<li class="nav-item">
-								<a style="font-size: 25px;" class="nav-link" href="/index" data-hover="Home">Home</a>
-							</li>
-							<li class="nav-item">
-								<a style="font-size: 25px;" class="nav-link" href="/blog/linux" data-hover="☣Linux"><span style="color: rgb(82, 163, 0); font-size: 25px;">☣</span>Linux</a>
-							</li>
-							<li class="nav-item">
-								<a style="font-size: 25px;" class="nav-link" href="/blog/hardening" data-hover="☰Hardening"><span style="color: rgb(194, 0, 194); font-size: 25px;">☰</span>Hardening</a>
-							</li>
+						<div class="collapse navbar-collapse justify-content-end" id="bs-example-navbar-collapse-1">
+							<ul class="navbar-nav">
+								<li class="nav-item">
+									<a style="font-size: 25px;" class="nav-link" href="/index" data-hover="Home">Home</a>
+								</li>
+								<li class="nav-item">
+									<a style="font-size: 25px;" class="nav-link" href="/blog/linux" data-hover="☣Linux"><span style="color: rgb(82, 163, 0); font-size: 25px;">☣</span>Linux</a>
+								</li>
+								<li class="nav-item">
+									<a style="font-size: 25px;" class="nav-link" href="/blog/hardening" data-hover="☰Hardening"><span style="color: rgb(194, 0, 194); font-size: 25px;">☰</span>Hardening</a>
+								</li>
 						<!--	<li class="nav-item">
 								<a style="font-size: 25px;" class="nav-link" href="ctf" data-hover="☢CTF"><span style="color: rgba(255,191,0,1);; font-size: 25px;">☢</span>CTF</a>
 							</li> -->
-							<li class="nav-item">
-								<a style="font-size: 25px;" class="nav-link" href="/blog/hacking" data-hover="H☠cking">H<span style="color: #DB0000; font-size: 25px;">☠</span>cking</a>
-							</li>
+								<li class="nav-item">
+									<a style="font-size: 25px;" class="nav-link" href="/blog/hacking" data-hover="H☠cking">H<span style="color: #DB0000; font-size: 25px;">☠</span>cking</a>
+								</li>
 							</ul>
-					</div><!--- .navbar-collapse --->
-				</nav>
-			</div><!-- .col-md-8 -->
+						</div><!--- .navbar-collapse --->
+					</nav>
+				</div><!-- .col-md-8 -->
+			</div>
+		</header>
 	</div>
-</header>
-</div>
 
+	<div style="border-top: 2px solid #000; width: 100%; margin-bottom: 50px; margin-top: -29px; position: sticky; top: 0; z-index: 1"></div>
+	<h1 style="text-align: center; margin-bottom: 30px;">DEV<a style="color: #b57c02;">O</a>PS</h1>
+	
 	<div class="content-body">
 		<div class="container">
 			<div class="row">
-				<main class="col-md-8">
-					<article class="post post-1">
-						<header class="entry-header">
-							<h1 class="entry-gold">
-								<a class="nodeco" href="/blog/devops/ansible-ad-hoc">Ansible : Comandos AD-HOC</a>
-							</h1>
-								<!--<div class="entry-meta">
-									<span class="post-category"><a href="#">DevOps</a></span>
-									 <span class="post-date"><a href="#"><time class="entry-date" datetime="2012-11-09T23:15:57+00:00">February 2, 2013</time></a></span>
-									<span class="post-author"><a href="#">Albert Einstein</a></span>
-									<span class="comments-link"><a href="">4 Comments</a></span>
-								</div>  -->
-						</header>
-							
-						<div class="entry-content clearfix">
-							<div class="wrapperdev">
-								<img class="zoom" src="/blog/img/adhoc.jpg"><br><br>
-							</div>
-							<p>Un comando ad-hoc de Ansible utiliza la herramienta de línea de comandos /usr/bin/ansible para automatizar una única tarea en uno o más nodos gestionados. Los comandos ad hoc son rápidos y fáciles, pero no son reutilizables.</p>
-							<div class="read-more cl-effect-101">
-								<a class="nodeco" href="/blog/devops/ansible-ad-hoc" class="more-link">Continue reading <span class="meta-nav">∞</span></a>
-							</div>
+				<main class="col-md-12" style="margin-left: auto; margin-right: auto;">
+					<!--------- GRID --------->
+					<div class="wrappper">
+						<div class="contenedor">
+							<div class="big zum wr"><a href="/blog/devops/ansible-ad-hoc"><h3>Ansible [Comandos AD-HOC]</h3></a><img src="/blog/img/adhoc.jpg" alt="Ansible AD HOC"></div>
+							<div class="big zum wr"><a href="/blog/devops/ansible-basics"><h3>Ansible [Conceptos Básicos]</h3></a><img src="/blog/img/ansible.png" alt="Ansible basics"></div>
 						</div>
-					</article><br>
-					
-					<article class="post post-2">
-						<header class="entry-header">
-							<h1 class="entry-gold">
-								<a class="nodeco" href="/blog/devops/ansible-basics">Ansible : Conceptos Básicos</a>
-							</h1>
-								<!--<div class="entry-meta">
-									<span class="post-category"><a href="#">DevOps</a></span>
-									 <span class="post-date"><a href="#"><time class="entry-date" datetime="2012-11-09T23:15:57+00:00">February 2, 2013</time></a></span>
-									<span class="post-author"><a href="#">Albert Einstein</a></span>
-									<span class="comments-link"><a href="">4 Comments</a></span>
-								</div>  -->
-						</header>
-						
-						<div class="entry-content clearfix">
-							<div class="wrapperdev">
-								<img class="zoom" src="/blog/img/ansible.png">
-							</div>
-							<p>Ansible es un motor Open Source que automatiza los procesos de gestión de la configuración e implementa aplicaciones y sistemas para una infraestructura.
-									Su automatización permite instalar sistemas de software, automatizar tareas diarias, mejorar la seguridad y el cumplimiento, ejecutar parches en los sistemas y compartir la automatización en toda la empresa.
-									Ansible se conecta a los nodos y les inserta pequeños programas denominados módulos, que permiten llevar a cabo tareas de automatización en la plataforma.</p>
-							
-							<div class="read-more cl-effect-101">
-								<a class="nodeco" href="/blog/devops/ansible-basics" class="more-link">Continue reading <span class="meta-nav">∞</span></a>
-							</div>
-						</div>
-					</article><br>
-					
-					<!--	<article class="post post-2">
-							<header class="entry-header">
-								<h1 class="entry-gold">
-									<a class="nodeco" href="/blog/devops/docker-basics">Docker : Primeros Pasos</a>
-								</h1>
-								<div class="entry-meta">
-									<span class="post-category"><a href="#">DevOps</a></span>
-									 <span class="post-date"><a href="#"><time class="entry-date" datetime="2012-11-09T23:15:57+00:00">February 2, 2013</time></a></span>
-									<span class="post-author"><a href="#">Albert Einstein</a></span>
-									<span class="comments-link"><a href="">4 Comments</a></span>
-								</div> 
-							</header>
-							
-							<div class="entry-content clearfix">
-								<div class="wrapperdev">
-									<img class="zoom" src="/blog/img/docker.jpg" alt="docker">
-								</div>
-								<p><b>DOCKER BASICS</b></p>
-								
-								<div class="read-more cl-effect-101">
-									<a class="nodeco" href="/blog/devops/dockerbasics" class="more-link">Continue reading <span class="meta-nav">∞</span></a>
-								</div>
-							</div>
-						</article> -->
-
-						<br>
-					<!--	<article class="post post-2">
-							<header class="entry-header">
-								<h1 class="entry-gold">
-									<a class="nodeco" href="single.html">Docker : Instalación en Debian 10 {BUSTER}</a>
-								</h1>
-								<div class="entry-meta">
-									<span class="post-category"><a href="#">DevOps</a></span>
-									 <span class="post-date"><a href="#"><time class="entry-date" datetime="2012-11-09T23:15:57+00:00">February 2, 2013</time></a></span>
-									<span class="post-author"><a href="#">Albert Einstein</a></span>
-									<span class="comments-link"><a href="">4 Comments</a></span>
-								</div> 
-							</header>
-							<div class="entry-content clearfix">
-								<div class="wrapperdev">
-								<img class="zoom" src="/blog/img/docker-debian.png" alt="docker debian">
-								</div>
-								<p>Docker es un motor OpenSource útil para la creación y administración de contenedores. Aunque está basado en LinuX Containers {LXC: Tecnología de virtualización}, no son lo mismo. Docker se desarrolló como solución a la implementación de sistemas distribuidos enfocados a Cloud y dispone de herramientas que permiten dividir los servicios en procesos separados, lo que otorga mayor control sobre la aplicación y además modificar, actualizar o solucionar problemas en tiempo de ejecución sin detener el servicio por completo.</p>
-								<div class="read-more cl-effect-101">
-									<a class="nodeco" href="#" class="more-link">Continue reading <span class="meta-nav">∞</span></a>
-								</div>
-							</div>
-						</article> -->
+					</div> <!--------- END GRID --------->
 				</main>					  
-
-				<aside class="col-md-4 stk-idx-dv">
-					<div class="widget widget-recent-posts">		
-						<h3 class="widget-title">DEV<a style="color: #b57c02;">∅</a>PS POSTS</h3>
-						<ul>
-							<li>
-								<a class="nodeco" class="nodeco" class="nodeco" class="nodeco" class="nodeco" href="/blog/devops/ansible-ad-hoc">Ansible | Comandos AD-HOC</a>
-							</li>
-							<li>
-								<a class="nodeco" class="nodeco" class="nodeco" class="nodeco" href="/blog/devops/ansible-basics">Ansible | Conceptos Básicos</a>
-							</li>
-							<!--	<li>
-									<a class="nodeco" class="nodeco" href="#">Docker : Primeros Pasos</a>
-								</li>
-								<li>
-									<a class="nodeco" href="#">Docker : Instalación en Debian 10 {BUSTER}</a>
-								</li> -->
-						</ul>
-					</div>
-				</aside>
 			</div>
 			<div class="prv"><a href="/page/CTF/1/index"></a></div>
 		</div>
@@ -201,7 +196,7 @@
 			<div class="row">
 				<div class="col-md-12">
 					<div class="copyright">
-						<a class="nodeco" href="/index"><img style="margin-top: -5px;" src="/blog/img/skull.png" weight="19px" height="19px"> ØxBogart</a>
+						<a class="nodeco" href="/index"><img src="/blog/img/skull.png" style="width: 15%"></a>
 					</div>
 				</div>
 			</div>

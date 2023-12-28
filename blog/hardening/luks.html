@@ -141,7 +141,7 @@
 								<!--- INTRO --->
 								<div class="centext">
 									<span>Se trata de una <b>especificación</b> de <b>cifrado</b> de discos totalmente <b>independiente</b> de la plataforma sobre la que trabaja.</span><br><br>
-									<span>Este artilugio se utiliza para <b>cifrar dispositivos</b> de bloque y permite la especificación de <b>algoritmos</b> de <b>cifrado</b>, <b>modos</b> de <b>cifrado</b>, <b>passphrases</b>, <b>vectores</b> de <b>inicialización</b> {<b>IV´s</b>}</span>
+									<span>Este artilugio se utiliza para <b>cifrar dispositivos</b> de bloque y permite la especificación de <b>algoritmos</b> de <b>cifrado</b>, <b>modos</b> de <b>cifrado</b>, <b>passphrases</b>, <b>vectores</b> de <b>inicialización</b> [<b>IV´s</b>]</span>
 								</div><!--- ./INTRO --->
 							</section>
 
@@ -301,7 +301,7 @@
 									<a href="/blog/hardening/img/luksDump2.png" target="_blank"><img src="/blog/hardening/img/luksDump2.png" width="80%"></a><br><br>
 								
 									<div style="margin-top: 30px;" class="leftl">
-										<span>Un <b>Keyslot</b> almacena el <b>hash</b> de la <b>passphrase</b> configurada y LUKS admite hasta <b>8</b> Keyslots {<b>0-7</b>}</span><p></p>
+										<span>Un <b>Keyslot</b> almacena el <b>hash</b> de la <b>passphrase</b> configurada y LUKS admite hasta <b>8</b> Keyslots [<b>0-7</b>]</span><p></p>
 										<span>Esto significa que diferentes personas podrían desbloquear el disco para acceder a él, con <b>passphrases</b> distintas e <b>independientes</b>.</span>
 									</div>
 								</section>
@@ -415,7 +415,7 @@
 											  <span style="margin-left: 1px;" id="terminal__prompt--bling"><b>lrwxrwxrwx 1 root root 7 Apr 11 23:24 <a style="color: #FF5FFA;">lvcrypt</a> -> ../dm-5</b>&nbsp;</span>
 										  </div>
 									  </section>
-								</div>
+								</div><br>
 								
 									<div style="margin-top: 10px;" class="leftl">
 										<span><b><a style="color: #B100A6;">⦾</a> shred</b> Sobrescribe un archivo o dispositivo con datos aleatorios para ocultar su contenido y hacerlo más ilegible, lo que dificultaría la labor de desencriptación o lectura por parte de personas ajenas.</span>

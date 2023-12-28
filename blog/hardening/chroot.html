@@ -129,20 +129,20 @@
 						</header>
 						<div class="entry-content clearfix">
 							<section style="margin-top: 50px;" id="intro">
-								<div class="centext">
+								<div class="leftl">
 									<!--- INTRO --->
 									<span>Una jaula <b>chroot</b> es un mecanismo de seguridad que consiste en crear un <b>entorno aislado</b> para un usuario, a fin de que este, al iniciar sesión en el sistema, se encuentre literalmente enjaulado en un directorio donde dispondrá de <b>permisos limitados</b> para realizar <b>acciones concretas</b>.</span>
 								</div>
 							</section>
 							<!--- ./INTRO --->
 
-							<section style="margin-top: 150px;" id="subsystem">
+							<section style="margin-top: 130px;" id="subsystem">
 								<div>
 									<a style="font-size: 19px; color: rgb(194, 0, 194);">☰ </a><span class="purple-bg" style="font-size: 19px;">CONFIGURAR EL SERVIDOR SFTP</span><p></p>
 								</div><br>
 								
 								<div class="leftl">
-									<b><a style="color: #C400B4;">⦿</a> CREAR EL USUARIO A ENJAULAR</b>
+									<b><a style="color: #FF00FF;">⦿</a> CREAR EL USUARIO A ENJAULAR</b>
 								</div>
 
 								<div id="terminal">   
@@ -181,7 +181,7 @@
 								</div><br><br>
 
 								<div class="leftl">
-									<b><a style="color: #C400B4;">⦿</a> CREAR Y MONTAR LA JAULA CHROOT</b>
+									<b><a style="color: #FF00FF;">⦿</a> CREAR Y MONTAR LA JAULA CHROOT</b>
 								</div>
 
 									<div id="terminal">   
@@ -212,10 +212,10 @@
 									</div><br><br>
 								
 									<div class="leftl">
-										<b><a style="color: #C400B4;">⦿</a> CONFIGURAR sshd_config</b>
+										<b><a style="color: #FF00FF;">⦿</a> CONFIGURAR sshd_config</b>
 									</div><p></p>
 								
-									<div class="centext">
+									<div class="leftl">
 										<span>Editar el fichero <b>/etc/ssh/sshd-config</b> y localizar la línea <b>Subsystem sftp /usr/lib/ssh/sftp-server</b></span>
 									</div><p></p>
 								
@@ -382,10 +382,10 @@
 								</div><br><br>
 
 								<div class="leftl">
-									<b><span><a style="font-size: 19px; color: rgb(194, 0, 194);">⦿</a> PRIVILEGIOS</span></b>
+									<b><span><a style="font-size: 19px; color: #FF00FF;">⦿</a> PRIVILEGIOS</span></b>
 								</div><p></p>
 								
-								<div class="centext">
+								<div class="leftl">
 									<span>Como el <b>directorio chroot</b> es propiedad de <b>root</b>, el usuario jailuser no tiene permisos para crear nuevos ficheros en él. Simplemente podría <b>listar</b> ficheros\directorios existentes o ejecutar\leer\escribir en archivos <b>propiedad</b> del usuario <b>jailuser</b>.</span>
 								</div><p></p>
 								
@@ -410,12 +410,15 @@
 									</section>
 									</div>
 								</section>
-																<div style="border-top: 1px solid #000; width: 100%; margin: 10px 0;"></div>
+							
+							<div style="border-top: 1px solid #000; width: 100%; margin: 10px 0;"></div>
 								
 								<section id="ssh">
-									<div style="margin-top: 160px;" class="centext">
-										<a style="font-size: 19px; color: rgb(194, 0, 194);">☰ </a><span class="purple-bg" style="font-size: 19px;">HABILITAR CONEXIONES SSH</span><br><br>
-									
+									<div style="margin-top: 130px;" class="centext">
+										<a style="font-size: 19px; color: rgb(194, 0, 194);">☰ </a><span class="purple-bg" style="font-size: 19px;">HABILITAR CONEXIONES SSH</span><br>
+									</div><br>
+
+									<div class="leftl">
 										<span>La directiva <b>internal-sftp</b> fuerza el uso de un servidor SFTP y únicamente admite conexiones SFTP. Las conexiones <b>SSH</b> son <b>rechazadas</b>:</span>
 									</div><p></p>
 								
@@ -449,7 +452,7 @@
 									</section>
 									</div><br><br><br>
 								
-								<div class="centext">
+								<div class="leftl">
 									<span>Para <b>habilitar</b> las conexiones <b>SSH</b> es necesario deshabilitar la directiva ForceCommand del fichero de configuración <b>/etc/ssh/sshd_config</b></span>
 								</div><p></p>
 								
@@ -500,7 +503,7 @@
 									  </section>
 									</div><br><br>
 								
-									<div class="centext">
+									<div class="leftl">
 										<span>Ahora es posible realizar una conexión SSH, pero esta es rechazada porque no es capaz de encontrar una shell de <b>bash</b> en la jaula:</span>
 									</div><p></p>
 								
@@ -546,13 +549,14 @@
 							<div style="border-top: 1px solid #000; width: 100%; margin: 10px 0;"></div>
 
 								<section id="bash">
-									<div class="centext" style="margin-top: 160px;">
-										<a style="font-size: 19px; color: rgb(194, 0, 194);">☰ </a><span class="purple-bg" style="font-size: 19px;">HABILITAR BASH EN LA JAULA CHROOT</span><p></p>
-									
+									<div class="centext" style="margin-top: 130px;">
+										<a style="font-size: 19px; color: rgb(194, 0, 194);">☰ </a><span class="purple-bg" style="font-size: 19px;">HABILITAR BASH EN LA JAULA CHROOT</span>
+									</div><br>
+
+									<div class="leftl">
 										<span>En los sistemas operativos <b>Linux\UNIX</b>, al ejecutar el comando bash {o cualquier otro comando}, el sistema realiza llamadas al sistema y a las librerias necesarias para que finalmente el binario <b>/bin/bash</b> se ejecute.</span><br><br>
-									
 										<span><b><a style="color: #98008C;">ldd</a></b> es una herramienta que imprime en pantalla qué dependencias de objetos y librerías son invocadas cuando un programa se ejecuta.</span>
-									</div><p></p>
+									</div>
 								
 									<div id="long-terminal">
 										<!-- Terminal Bar -->       
@@ -593,7 +597,7 @@
 										</section>
 									</div><br><br>
 								
-								<div class="centext">
+								<div class="leftl">
 									<span>Es necesario crear el arbol de directorios y copiar librerías necesarias en la jaula, como si se trarase de un S.O. autónomo.</span>
 								</div><p></p>
 								
@@ -656,7 +660,7 @@
 									</section>
 									</div><br><br>
 								
-									<div class="centext">
+									<div class="leftl">
 										<span>Ahora la conexión SSH tiene éxito.</span><p></p>
 										<span><b>Nota</b>: Al ejecutar cualquier comando del sistema, como <b>ls</b> por ejemplo, la jaula chroot no encontrará el comando o binario. Se deberá recrear el arbol de directorios y librerías necesarias al igual que con <b>bash</b></span>
 									</div><p></p>

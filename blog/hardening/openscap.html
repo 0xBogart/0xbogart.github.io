@@ -44,9 +44,16 @@
 	<script src="/js/modernizr.custom.js"></script>
 <style>
 @media (max-width: 600px) {
-  .imgmax {
-    min-width: 25%;
+  .icomax {
+    max-height: 100%;
+    width: 25%;
   }
+}
+
+@media (max-width: 600px)
+.imgmax {
+    max-height: 100%;
+    width: 100%;
 }
 
 .bg {
@@ -484,7 +491,7 @@
 									<span>El escaneo evalúa qué controles son exitosos [<a style="color: #1CAA00;"><b>pass</b></a>] porque su configuración está alineada con la guía de seguridad y cuales no [<a style="color: #D30000;"><b>fail</b></a>]</span>
 									<a href="/blog/hardening/img/oscap-pass-fail.png" target="_blank"><img src="/blog/hardening/img/oscap-pass-fail.png" width="100%" height="auto"></a><br><br>
 									<span>Y ha generado los archivos <b>results.xml</b> y <b>results.html</b> en <b>/tmp/</b></span><br>
-									<a href="/blog/hardening/img/oscap-results.png" target="_blank"><img src="/blog/hardening/img/oscap-results.png" width="80%" height="auto"></a><br><br><p></p>
+									<a href="/blog/hardening/img/oscap-results.png" target="_blank"><img src="/blog/hardening/img/oscap-results.png" class="imgmax" width="80%" height="auto"></a><br><br><p></p>
 									<span>Si visualizamos el archivo <b>results.html</b> en un navegador, se muestra gráficamente el resultado detallado del escaneo:</span><br>
 									<a href="/blog/hardening/img/oscap-web1.png" target="_blank"><img src="/blog/hardening/img/oscap-web1.png" width="100%" height="auto"></a><p></p>
 									<a href="/blog/hardening/img/oscap-web2.png" target="_blank"><img src="/blog/hardening/img/oscap-web2.png" width="100%" height="auto"></a>
@@ -518,7 +525,7 @@
 								</div><br><br>
 								
 								<div>
-									<a href="/blog/hardening/img/oscap-remediate.png" target="_blank"><img src="/blog/hardening/img/oscap-remediate.png" width="80%" height="auto"></a>
+									<a href="/blog/hardening/img/oscap-remediate.png" target="_blank"><img src="/blog/hardening/img/oscap-remediate.png" class="imgmax" width="80%" height="auto"></a>
 								</div>
 							</section>
 						</div>
@@ -533,7 +540,7 @@
 			<div class="row">
 				<div class="col-md-12">
 					<div class="copyright">
-						<a class="nodeco" href="#"><img src="/blog/img/skull.png" class="imgmax" style="width: 10%"></a>
+						<a class="nodeco" href="#"><img src="/blog/img/skull.png" class="icomax" style="width: 10%"></a>
 					</div>
 				</div>
 			</div>

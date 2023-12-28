@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-	<title>Jaula CHROOT [SFTP-SSH] | ØxBogart</title>
-	
-	<!-- meta -->
 	<meta charset="utf-8">
+	<title>Jaula chroot [SFTP-SSH] | ØxBogart</title>
+
+	<!-- meta -->
 	<meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0,user-scalable=no,viewport-fit=cover">
 	<link rel="icon" type="/image/png" href="/blog/img/skull.png">
 	<link rel="canonical" href="https://0xbogart.github.io/blog/hardening/chroot">
@@ -16,45 +16,59 @@
 	<meta property="og:title" content="Jaula chroot [SFTP-SSH]">
 	<meta property="og:description" content="Jaula chroot [SFTP-SSH]">
 	<meta property="og:url" content="https://0xbogart.github.io/blog/hardening/chroot">
-	<meta property="og:image" content="https://0xbogart.github.io/blog/img/chroot.png">
-	<meta property="og:type" content="website">
+	<meta property="og:image" content="https://0xbogart.github.io/blog/img/chroot.avif">
 	<meta name="twitter:card" content="summary_large_image">
 	<meta name="twitter:site" content="@jfb0gart">
 	<meta name="twitter:creator" content="@jfb0gart">
 	<meta name="twitter:title" content="Jaula chroot [SFTP-SSH] | ØxBogart">
 	<meta name="twitter:description" content="Jaula chroot [SFTP-SSH] | ØxBogart">
-	<meta name="twitter:image" content="https://0xbogart.github.io/blog/img/chroot.png">
+	<meta name="twitter:image" content="https://0xbogart.github.io/blog/img/chroot.avif">
 
 	<!-- css -->
 	<link rel="stylesheet" href="/css/bootstrap.min.css">
 	<link rel="stylesheet" href="/css/ionicons.min.css">
+	<link rel="stylesheet" href="/css/tabbarpurple.css">
+	<link rel="stylesheet" href="/css/sidebarpurple.css">
 	<link rel="stylesheet" href="/css/pace.css">
 	<link rel="stylesheet" href="/css/custom.css">
 	<link rel="stylesheet" href="/css/rhterm.css">
 	<link rel="stylesheet" href="/css/rhvoid.css">
-	<link rel="stylesheet" href="/css/lithiumterm2.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
 	<!-- js -->
 	<script src="/js/jquery-2.1.3.min.js"></script>
 	<script src="/js/bootstrap.min.js"></script>
+	<script src="/js/tabbar.js"></script>
+	<script src="/js/aspurplelight.js"></script>
 	<script src="/js/pace.min.js"></script>
 	<script src="/js/modernizr.custom.js"></script>
-	<script src="/js/aspurplelight.js"></script>
+<style>
+@media (max-width: 600px) {
+  .imgmax {
+    min-width: 25%;
+  }
+}
+
+.bg {
+	border: 5px solid black;
+	width: 100%;
+	height: 100%;
+}
+</style>
 </head>
 
-<body>
+<body class="bg">
 	<div class="container">	
 		<header id="site-header">
 			<div class="row">
-				<div style="margin-top: -2%; margin-bottom: -3%;">
+				<div style="margin-bottom: -10%;">
 					<h1><a class="nodeco" href="/blog/hardening" style="color: rgb(194, 0, 194);">☰</a>Hardening</h1>
 				</div><!-- col-4 -->
 			</div>
 			<div class="row justify-content-end">
-				<div style="margin-top: -3%; margin-bottom: -3%;" class="col-3">
+				<div class="col-1">
 					<nav class="navbar navbar-expand-lg navbar-light">
-						<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#bs-example-navbar-collapse-1" aria-controls="bs-example-navbar-collapse-1" aria-expanded="false" aria-label="Toggle navigation">
+						<button style="color: rgb(194, 0, 194);" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#bs-example-navbar-collapse-1" aria-controls="bs-example-navbar-collapse-1" aria-expanded="false" aria-label="Toggle navigation">
 							<span class="navbar-toggler-icon"></span>
 						</button>
 						<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -70,10 +84,43 @@
 		</header>
 	</div>
 
+	<!-- TABBAR -->
+	<div style="position: sticky; top: -1px; width: auto;">
+		<a onclick="toggleDropdown()">
+			<div class="tabbar">
+				<span style="font-weight: bold; float: left; margin-left: 10px;">TABLA DE CONTENIDO</span>
+				<div class="dropdown-content" id="dropdownContent"></div>
+			</div>
+		</a>
+		<div id="contenido">
+			<h5>Jaula CHROOT [SFTP-SSH]</h5>
+			<div style="border-top: 1px solid #000; width: 100%; margin: 10px 0;"></div>
+			<a href="#intro" style="text-decoration: none;"><p style="margin-bottom: 6px; font-size: 16px;">☰ Intro</p></a>
+			<a href="#subsystem" style="text-decoration: none;"><p style="margin-bottom: 6px; font-size: 16px;">☰ Configurar el Servidor SFTP</p></a>
+			<a href="#sftp" style="text-decoration: none;"><p style="margin-bottom: 6px; font-size: 16px;">☰ Conexión SFTP</p></a>
+			<a href="#ssh" style="text-decoration: none;"><p style="margin-bottom: 6px; font-size: 16px;">☰ Habilitar conexiones SSH</p></a>
+			<a href="#bash" style="text-decoration: none;"><p style="margin-bottom: 6px; font-size: 16px;">☰ Habilitar Bash en la jaula chroot</p></a>
+		</div>
+	</div><!-- END TABBAR -->
+
 	<div class="content-body">
+		<div id="main" style="position: sticky; top: 0;">
+			<button class="openbtn" onclick="toggleNav()">☰</button>  
+		</div><br>
+		<div id="mySidebar" class="sidebar" style="position: sticky; top: 0; margin-top: -24px; display: none;">
+			<a href="javascript:void(0)" class="closebtn" onclick="toggleNav()">×</a>
+			<span style="font-size: 25px; color: rgb(255, 0, 255, 1);"><b>&nbsp;✎</b></span><span style="font-size: 25px; color: white;"> <b>Notas</b></span>
+			<hr style="color: #FF00FF;">
+			<a><span style="color: #E5D400;">chroot</span><span class="spanx">: Ejecuta un comando o shell interactivo en directorio raíz especial</span></a>
+			<a><span style="color: #E5D400;">ChrootDirectory</span><span class="spanx">: Especifica la ruta de un directorio al que hacer chroot tras la autenticación</span></a>
+			<a><span style="color: #E5D400;">Subsystem</span><span class="spanx">: Configura un subsistema externo</span></a>
+			<a><span style="color: #E5D400;">sftp-server</span><span class="spanx">: Implementa el subsistema de transferencia de archivos SFTP</span></a>
+			<a><span style="color: #E5D400;">internal-sftp</span><span class="spanx">: Implementa un servidor SFTP</span></a>
+			<a><span style="color: #E5D400;">ldd</span><span class="spanx">: Herramienta que imprime dependencias de objetos y librerías invocadas por un programa al ejecutarse</span></a>
+		</div>
 		<div class="container">
 			<div class="row">
-				<main class="col-md-8">
+				<main class="col-md-8" style="margin-left: auto; margin-right: auto;">
 					<article class="post post-1">
 						<header  class="entry-header">
 							<h1 class="blh1">Jaula CHROOT</h1>
@@ -713,12 +760,25 @@
 			<div class="row">
 				<div class="col-md-12">
 					<div class="copyright">
-						<a class="nodeco" href="/index"><img style="margin-top: -5px;" src="/blog/img/skull.png" weight="19px" height="19px"> ØxBogart</a>
+						<a class="nodeco" href="#"><img src="/blog/img/skull.png" class="imgmax" style="width: 10%"></a>
 					</div>
 				</div>
 			</div>
 		</div>
 	</footer>
 	<a href="#" id="scrollToTopButtonPurple"><i class="fas fa-arrow-up"></i></a>
+<script>
+function toggleNav() {
+  var sidebar = document.getElementById("mySidebar");
+  var sidebarDisplay = window.getComputedStyle(sidebar).display;
+
+  if (sidebarDisplay === "none") {
+    sidebar.style.display = "block";
+    sidebar.style.width = "200px";
+  } else {
+    sidebar.style.display = "none";
+  }
+}
+</script>
 </body>
 </html>

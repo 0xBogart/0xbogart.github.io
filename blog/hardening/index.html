@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-	<title>ØxBogart | ☰Hardening</title>
+	<title>ØxBogart | Hardening</title>
 
 	<!-- meta -->
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0,user-scalable=no,viewport-fit=cover">
+	<link rel="icon" type="/image/png" href="/blog/img/skull.png">
 	<meta name="description" content="Hardening">
 	<meta name="keywords" content="Hardening">
 
 	<!-- css -->
-	<link rel="icon" type="/image/png" href="/blog/img/skull.png">
 	<link rel="stylesheet" href="/css/bootstrap.min.css">
 	<link rel="stylesheet" href="/css/ionicons.min.css">
 	<link rel="stylesheet" href="/css/pace.css">
@@ -23,20 +23,130 @@
 	<script src="/js/bootstrap.min.js"></script>
 	<script src="/js/pace.min.js"></script>
 	<script src="/js/modernizr.custom.js"></script>
+<style>
+.contenedor > div {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 2em;
+	color: #ffeead;
+}
+
+
+.contenedor > div > img {
+	width: 100%; /* Ancho de la imágen dentro del contenedor */
+	height: 100%;
+	object-fit: cover;
+}
+
+/* Grid */
+.contenedor {
+	display: grid;
+	grid-gap: 5px;
+	/*grid-template-columns: repeat(auto-fit, minmax(215px, 1fr));*/
+	grid-auto-rows: 125px;
+	grid-auto-flow: dense;
+}
+
+.horizontal {
+	grid-column: span 2;
+}
+
+.vertical {
+	grid-row: span 2;
+}
+
+.big {
+	grid-column: span 2;
+	grid-row: span 2;
+}
+
+/* Media Queries */
+@media screen and (min-width: 1024px){
+	.wrappper{
+		width: 660px;
+		margin: 0 auto;
+	}
+}
+
+.wr {
+	margin-left: 0.5%;
+	position: relative;
+	display: inline-block;
+	overflow: hidden;
+	width: auto;
+	border: 1px solid black;
+}
+
+.zum:hover img {
+	transition: transform 5.9s;
+	-ms-transform: scale(2); /* IE 9 */
+	-webkit-transform: scale(2); /* Safari 3-8 & Chrome*/
+	-moz-transform:scale(2); /* Firefox */
+	-o-transform:scale(2); /* Opera */
+	transform: scale(2); 
+}
+
+.zum h3 {
+	text-align: left;
+	color: #fff;
+	font-size: 17px;
+	text-shadow: 2px 2px 4px #000;
+	left: 0;
+	bottom: 0;
+	position: absolute;
+	padding-top: 20px;
+	width: 100%;
+	background: linear-gradient(68deg, rgba(255,255,255,0) 0%, rgba(0,0,0,0.8911939775910365) 0%, rgba(0,0,0,0.5130427170868348) 50%, rgba(203,203,203,0.4290091036414566) 100%);
+	font-family: 'Courier New', Courier, monospace;
+	transition: background 0.5s ease;
+}
+
+.zum:hover h3 {
+	text-align: left;
+	color: #d8ffd8;
+	text-shadow: 2px 2px 4px #000;
+	left: 0;
+	width: 100%;
+	padding-top: 20px;
+	position: absolute;
+	background: linear-gradient(68deg, rgba(255,255,255,0) 0%, rgba(0,0,0,0.8911939775910365) 0%, rgba(0,0,0,0.5130427170868348) 50%, rgba(203,203,203,0.4290091036414566) 100%);
+	transition: background 0.5s ease;
+	z-index: 1;
+}
+
+.wrp {
+	position: relative;
+	display: inline-flex;
+	overflow: hidden;
+	border: 1px solid black; /* Color del borde de los Grids */
+}
+
+@media (max-width: 600px) {
+  .imgmax {
+    min-width: 25%;
+  }
+}
+
+.bg {
+	border: 3px solid black;
+	width: 100%;
+	height: 100%;
+}
+</style>
 </head>
 
-<body>
+<body class="bg">
 	<div class="container">	
 		<header id="site-header">
 			<div class="row">
 				<div class="col-md-4 col-sm-5 col-8">
-					<div class="logo">
-						<a href="/index" style="margin-left: 36px; margin-bottom: 3px;"><img src="/blog/img/skull.png" width="55px"height="70px"></a><br>
+					<div class="logo" style="margin-bottom: -11px;">
+						<a href="/index" style="margin-left: 50px; margin-bottom: 3px;"><img src="/blog/img/skull.png" style="width: 55%; margin-top: 16px;"></a>
 					</div>
-					<h5><b>Hardening Blog<br><span style="color: #8B0092; font-size: 16px; margin-left: 20px;">Øx</span>Bogart</b></h5>
 				</div><!-- col-md-4 -->
 					
-				<div class="col-md-8 col-sm-7 col-4" style="margin-top: 20px;">
+				<div class="col-md-8 col-sm-7 col-4" style="margin-top: 5px;">
 					<nav class="navbar navbar-expand-lg navbar-light">
 						<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#bs-example-navbar-collapse-1" aria-controls="bs-example-navbar-collapse-1" aria-expanded="false" aria-label="Toggle navigation">
 							<span class="navbar-toggler-icon"></span>
@@ -47,16 +157,16 @@
 									<a style="font-size: 25px;" class="nav-link" href="/index" data-hover="Home">Home</a>
 								</li>
 								<li class="nav-item">
-									<a style="font-size: 25px;" class="nav-link" href="/blog/linux" data-hover="☣Linux"><span style="color: rgb(82, 163, 0); font-size: 25px;">☣</span>Linux</a>
+									<a style="font-size: 25px;" class="nav-link" href="/blog/linux" data-hover="☣Linux">☣ Linux</a>
 								</li>
 								<li class="nav-item">
-									<a style="font-size: 25px;" class="nav-link" href="/blog/devops" data-hover="Dev∅ps">Dev<span style="color: #b57c02; font-size: 25px;">∅</span>ps</a>
+									<a style="font-size: 25px;" class="nav-link" href="/blog/devops" data-hover="Dev∅ps">Dev∞ps</a>
 								</li>
 						<!--	<li class="nav-item">
 								<a style="font-size: 25px;" class="nav-link" href="ctf" data-hover="☢CTF"><span style="color: rgba(255,191,0,1);; font-size: 25px;">☢</span>CTF</a>
 							</li> -->
 								<li class="nav-item">
-									<a style="font-size: 25px;" class="nav-link" href="/blog/hacking" data-hover="H☠cking">H<span style="color: #DB0000; font-size: 25px;">☠</span>cking</a>
+									<a style="font-size: 25px;" class="nav-link" href="/blog/hacking" data-hover="H☠cking">H☠cking</a>
 								</li>
 							</ul>
 						</div><!--- .navbar-collapse --->
@@ -66,187 +176,38 @@
 		</header>
 	</div>
 
+	<div style="border-top: 2px solid #000; width: 100%; margin-bottom: 50px; margin-top: -29px; position: sticky; top: 0; z-index: 1"></div>
+	<h1 style="text-align: center; margin-bottom: 30px;"><a style="color: rgb(194, 0, 194);">☰</a>HARDENING</h1>
+
 <div class="content-body">
 	<div class="container">
 		<div class="row">
-			<main class="col-md-8">
-				<article class="post post-1">
-					<header class="entry-header">
-						<h1 class="entry-purple">
-							<a class="nodeco" href="/blog/hardening/openscap">OpenSCAP | Auditorías de Cumplimiento de Configuración y Vulnerabilidades</a>
-						</h1>
-						<div class="entry-meta">
-									<!--<span class="post-category"><a href="devops.html">DevOps</a></span>			
-									<span class="post-date"><a href="#"><time class="entry-date" datetime="2012-11-09T23:15:57+00:00">February 2, 2013</time></a></span>
-									<span class="post-author"><a href="#">Bogart</a></span> -->
-								</div>
-							</header>
-							<div class="entry-content clearfix">
-								<div class="wrapperhd">
-									<img class="zoom" src="/blog/img/openscap.avif" alt="openscap">
-								</div>
-								<p>Una auditoría de cumplimiento es un proceso para determinar si un sistema o infraestructura sigue todas las reglas especificadas en una política de cumplimiento.
-									La política de cumplimiento la definen los profesionales de la seguridad que especifican las configuraciones o parches necesarios, que debe utilizar un entorno informático.
-									Existen herramientas basadas en el estándar Security Content Automation Protocol [SCAP] que permiten realizar auditorías de cumplimiento, de forma automatizada:</p>
-									<div class="read-more cl-effect-102">
-										<a class="nodeco" href="/blog/hardening/openscap" class="more-link">Continue reading <span class="meta-nav">☰</span></a>
-									</div>
-								</div>
-							</article><br>
-							
-							<article class="post post-1">
-								<header class="entry-header">
-									<h1 class="entry-purple">
-										<a class="nodeco" href="/blog/hardening/chroot">JAULA CHROOT [SFTP-SSH]</a>
-									</h1>
-									<div class="entry-meta">
-									<!--<span class="post-category"><a href="devops.html">DevOps</a></span>			
-									<span class="post-date"><a href="#"><time class="entry-date" datetime="2012-11-09T23:15:57+00:00">February 2, 2013</time></a></span>
-									<span class="post-author"><a href="#">Bogart</a></span> -->
-								</div>
-							</header>
-							<div class="entry-content clearfix">
-								<div class="wrapperhd">
-									<img class="zoom" src="/blog/img/chroot.avif" alt="chroot">
-								</div>
-								<p>Una jaula chroot es un mecanismo de seguridad que consiste en crear un entorno aislado para un usuario, a fin de que este, al iniciar sesión en el sistema, se encuentre literalmente enjaulado en un directorio donde dispondrá de permisos limitados para realizar acciones concretas.</p>
-								<div class="read-more cl-effect-102">
-									<a class="nodeco" href="/blog/hardening/chroot" class="more-link">Continue reading <span class="meta-nav">☰</span></a>
-								</div>
-							</div>
-						</article><br>
+			<main class="col-md-12" style="margin-left: auto; margin-right: auto;">
+				<div class="wrappper">
+					<div class="contenedor">
+						<div class="vertical zum wr"><a href="/blog/hardening/openscap"><h3>OpenSCAP [Auditorías de Cumplimiento de Configuración y Vulnerabilidades]</h3></a><img src="/blog/img/openscap.avif" alt="openscap"></div>
+						<div class="big zum wr"><a href="/blog/hardening/chroot"><h3>Jaula CHROOT [SFTP-SSH]</h3></a><img src="/blog/img/chroot.avif" alt="chroot"></div>
+						<div class="vertical zum wr"><a href="/blog/hardening/lock-session"><h3>BLØQUEØ DE SESIØN [TMOUT | vLock | i3Lock]</h3></a><img src="/blog/img/session-locked.avif" alt="lock session"></div>
+						<div class="vertical zum wr"><a href="/blog/hardening/gpg"><h3>GPG [Cifradø y Firma de Ficherøs]</h3></a><img src="/blog/img/gpg.webp" alt="gpg"></div>
+						<div class="vertical zum wr"><a href="/blog/hardening/luks"><h3>Luks + dm-crypt [Encriptar d1sc0$ &amp; p4rt1c10n3$]</h3></a><img src="/blog/img/luks-dmcrypt.avif" alt="luks"></div>
+					</div>
+				</div> <!--------- END GRID --------->
+			</main>					  
+		</div>
+		<div class="prv"><a href="page/6/index"></a></div>
+	</div>
+</div><br>
 
-						<article class="post post-1">
-							<header class="entry-header">
-								<h1 class="entry-purple">
-									<a class="nodeco" href="/blog/hardening/lock-session">BLØQUEØ DE SESIØN: TMOUT | VLOCK | I3LOCK</a>
-								</h1>
-								<div class="entry-meta">
-									<!--<span class="post-category"><a href="devops.html">DevOps</a></span>			
-									<span class="post-date"><a href="#"><time class="entry-date" datetime="2012-11-09T23:15:57+00:00">February 2, 2013</time></a></span>
-									<span class="post-author"><a href="#">Bogart</a></span> -->
-								</div>
-							</header>
-							<div class="entry-content clearfix">
-								<div class="wrapperhd">
-								<img class="zoom" src="/blog/img/session-locked.avif">
-								</div>
-								<p>Por más medidas de seguridad que se tomen, si dejas una sesión abierta en el trabajo o en un lugar público y abandonas tu puesto, te expones a que cualquier persona en cuestión de segundos se haga con información sensible de tu sistema.</p>
-								<div class="read-more cl-effect-102">
-									<a class="nodeco" href="/blog/hardening/lock-session" class="more-link">Continue reading <span class="meta-nav">☰</span></a>
-								</div>
-							</div>
-						</article><br>
-
-						<article class="post post-1">
-							<header class="entry-header">
-								<h1 class="entry-purple">
-									<a class="nodeco" href="/blog/hardening/gpg">GPG | Cifradø y Firma de Ficherøs</a>
-								</h1>
-								<div class="entry-meta">
-									<!--<span class="post-category"><a href="devops.html">DevOps</a></span>			
-									<span class="post-date"><a href="#"><time class="entry-date" datetime="2012-11-09T23:15:57+00:00">February 2, 2013</time></a></span>
-									<span class="post-author"><a href="#">Bogart</a></span> -->
-								</div>
-							</header>
-							<div class="entry-content clearfix">
-								<div class="wrapperhd">
-								<img class="zoom" src="/blog/img/gpg.webp" alt="gpg">
-								</div>
-								<p>GPG [GNU Privacy Guard] Se trata de una herramienta de cifrado y firmado de ficheros, sucesor de PGP [Pretty Good Privacy] ¿QUÉ PERMITE HACER GPG?</p>
-								<div class="read-more cl-effect-102">
-									<a class="nodeco" href="/blog/hardening/gpg" class="more-link">Continue reading <span class="meta-nav">☰</span></a>
-								</div>
-							</div>
-						</article><br>
-
-						<article class="post post-1">
-							<header class="entry-header">
-								<h1 class="entry-purple">
-									<a class="nodeco" href="/blog/hardening/luks">LUKS+DM-CRYPT | ‘Encriptar d1sc0$ &amp; p4rt1c10n3$’</a>
-								</h1>
-								<div class="entry-meta">
-									<!--<span class="post-category"><a href="devops.html">DevOps</a></span>			
-									<span class="post-date"><a href="#"><time class="entry-date" datetime="2012-11-09T23:15:57+00:00">February 2, 2013</time></a></span>
-									<span class="post-author"><a href="#">Bogart</a></span> -->
-								</div>
-							</header>
-							<div class="entry-content clearfix">
-								<div class="wrapperhd">
-								<img class="zoom" src="/blog/img/luks-dmcrypt.avif">
-								</div>
-								<p>LUKS [Linux Unified Key Setup] Se trata de una especificación de cifrado de discos totalmente independiente de la plataforma sobre la que trabaja. Esta artilugio se utiliza para cifrar dispositivos de bloque y permite la especificación de algoritmos de cifrado, modos de cifrado, passphrases, vectores de inicialización [IV´s]</p>
-								<div class="read-more cl-effect-102">
-									<a class="nodeco" href="/blog/hardening/luks" class="more-link">Continue reading <span class="meta-nav">☰</span></a>
-								</div>
-							</div>
-						</article>
-
-						<br>
-					<!--	<article class="post post-1">
-							<header class="entry-header">
-								<h1 class="entry-purple">
-									<a class="nodeco" href="single.html">GRUB2 [Prøtecciøn del gestor de arranque]</a>
-								</h1>
-								<div class="entry-meta">
-									<span class="post-category"><a href="devops.html">DevOps</a></span>			
-									<span class="post-date"><a href="#"><time class="entry-date" datetime="2012-11-09T23:15:57+00:00">February 2, 2013</time></a></span>
-									<span class="post-author"><a href="#">Bogart</a></span>
-								</div>
-							</header>
-							<div class="entry-content clearfix">
-								<div class="wrapperhd">
-								<img class="zoom" src="/blog/img/grub2-hardening.png">
-								</div>
-								<p>Imagina que una persona o varias personas saben que guardas en tu sistema información valiosa (proyectos, negocios, datos bancarios…) e idean una estrategia de ingeniería social con la que consiguen engañarte para quedarse a solas con tu PC o incluso robártelo.</p>
-								<div class="read-more cl-effect-102">
-									<a class="nodeco" href="single.html" class="more-link">Continue reading <span class="meta-nav">☰</span></a>
-								</div>
-							</div>
-						</article> -->
-					</main>					  
-
-					<aside class="col-md-4 stk-idx-hd">
-						<div class="widget widget-recent-posts">		
-							<h3 class="widget-title"><a style="color: rgb(194, 0, 194);">☰</a>HARDENING POSTS</h3>		
-							<ul>
-								<li>
-									<a class="nodeco" href="/blog/hardening/openscap">OpenSCAP: Auditorías de Cumplimiento de Configuración y Vulnerabilidades</a>
-								</li>
-								<li>
-									<a class="nodeco" href="/blog/hardening/chroot">JAULA CHROOT [SFTP-SSH]</a>
-								</li>
-								<li>
-									<a class="nodeco" href="/blog/hardening/lock-session">BLØQUEØ DE SESIØN: TMOUT | VLOCK | I3LOCK</a>
-								</li>
-								<li>
-									<a class="nodeco" href="/blog/hardening/gpg">GPG | Cifradø y Firma de Ficherøs</a>
-								</li>
-								<li>
-									<a class="nodeco" href="/blog/hardening/luks">LUKS+DM-CRYPT | Encriptar d1sc0$ &amp; p4rt1c10n3$</a>
-								</li>
-							<!--	<li>
-									<a class="nodeco" href="#">GRUB2 [Prøtecciøn del gestor de arranque]</a>
-								</li> -->
-							</ul>
-						</div>
-					</aside>
+<footer id="site-footer">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="copyright">
+					<a href="#"><img src="/blog/img/skull.png" class="imgmax" style="width: 10%"></a>
 				</div>
-				<div class="prv"><a href="page/6/index"></a></div>
 			</div>
 		</div>
-		<br>
-
-		<footer id="site-footer">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-12">
-						<div class="copyright">
-							<a class="nodeco" href=/index"><img style="margin-top: -5px;" src="/blog/img/skull.png" weight="19px" height="19px">&nbsp;ØxBogart</a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</footer>
-	</body>
+	</div>
+</footer>
+</body>
 </html>

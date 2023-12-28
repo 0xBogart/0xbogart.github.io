@@ -1,32 +1,34 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-	<title>GPG: Cifrado y Firma de Ficheros | ØxBogart</title>
-	
+	<meta charset="utf-8">
+	<title>GPG [Cifrado y Firma de Ficheros] | ØxBogart</title>
+
 	<!-- meta -->
-	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0,user-scalable=no,viewport-fit=cover">
 	<link rel="icon" type="/image/png" href="/blog/img/skull.png">
 	<link rel="canonical" href="https://0xbogart.github.io/blog/hardening/gpg">
 	<meta name="author" content="Bogart">
-	<meta name="keywords" content="GPG: Cifrado y Firma de ficheros">
-	<meta name="description" content="GPG: Cifrado y Firma de ficheros">
+	<meta name="keywords" content="GPG [Cifrado y Firma de Ficheros]">
+	<meta name="description" content="GPG [Cifrado y Firma de Ficheros]">
 
 	<!-- Twitter Tags -->
-	<meta property="og:title" content="GPG: Cifrado y Firma de ficheros">
-	<meta property="og:description" content="GPG: Cifrado y Firma de ficheros">
+	<meta property="og:title" content="GPG [Cifrado y Firma de Ficheros]">
+	<meta property="og:description" content="GPG [Cifrado y Firma de Ficheros]">
 	<meta property="og:url" content="https://0xbogart.github.io/blog/hardening/gpg">
 	<meta property="og:image" content="https://0xbogart.github.io/blog/img/gpg.webp">
 	<meta name="twitter:card" content="summary_large_image">
 	<meta name="twitter:site" content="@jfb0gart">
 	<meta name="twitter:creator" content="@jfb0gart">
-	<meta name="twitter:title" content="GPG: Cifrado y Firma de ficheros | ØxBogart">
-	<meta name="twitter:description" content="GPG: Cifrado y Firma de ficheros | ØxBogart">
+	<meta name="twitter:title" content="GPG [Cifrado y Firma de Ficheros] | ØxBogart">
+	<meta name="twitter:description" content="GPG [Cifrado y Firma de Ficheros] | ØxBogart">
 	<meta name="twitter:image" content="https://0xbogart.github.io/blog/img/gpg.webp">
 		
 	<!-- css -->
 	<link rel="stylesheet" href="/css/bootstrap.min.css">
 	<link rel="stylesheet" href="/css/ionicons.min.css">
+	<link rel="stylesheet" href="/css/tabbarpurple.css">
+	<link rel="stylesheet" href="/css/sidebarpurple.css">
 	<link rel="stylesheet" href="/css/pace.css">
 	<link rel="stylesheet" href="/css/custom.css">
 	<link rel="stylesheet" href="/css/lithiumterm.css">
@@ -35,23 +37,43 @@
 	<!-- js -->
 	<script src="/js/jquery-2.1.3.min.js"></script>
 	<script src="/js/bootstrap.min.js"></script>
+	<script src="/js/tabbar.js"></script>
+	<script src="/js/aspurplelight.js"></script>
 	<script src="/js/pace.min.js"></script>
 	<script src="/js/modernizr.custom.js"></script>
-	<script src="/js/aspurplelight.js"></script>
+<style>
+@media (max-width: 600px) {
+  .icomax {
+    min-width: 25%;
+  }
+}
+
+@media (max-width: 600px) {
+  .imgmax {
+    min-width: 100%;
+  }
+}
+	
+.bg {
+	border: 5px solid black;
+	width: 100%;
+	height: 100%;
+}
+</style>
 </head>
 
-<body>
+<body class="bg">
 	<div class="container">	
 		<header id="site-header">
 			<div class="row">
-				<div style="margin-top: -2%; margin-bottom: -3%;">
+				<div style="margin-bottom: -10%;">
 					<h1><a class="nodeco" href="/blog/hardening" style="color: rgb(194, 0, 194);">☰</a>Hardening</h1>
 				</div><!-- col-4 -->
 			</div>
 			<div class="row justify-content-end">
-				<div style="margin-top: -3%; margin-bottom: -3%;" class="col-3">
+				<div class="col-1">
 					<nav class="navbar navbar-expand-lg navbar-light">
-						<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#bs-example-navbar-collapse-1" aria-controls="bs-example-navbar-collapse-1" aria-expanded="false" aria-label="Toggle navigation">
+						<button style="border: 1px solid rgb(194, 0, 194);" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#bs-example-navbar-collapse-1" aria-controls="bs-example-navbar-collapse-1" aria-expanded="false" aria-label="Toggle navigation">
 							<span class="navbar-toggler-icon"></span>
 						</button>
 						<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -80,13 +102,13 @@
 						<div class="entry-content clearfix">
 							<!--- INTRO --->
 							<section style="margin-top: 50px;" id="intro">
-								<div class="centext">
+								<div class="leftl">
 									<span>Se trata de una herramienta de cifrado y firmado de ficheros, sucesor de <b>PGP</b> [<b>P</b>retty <b>G</b>ood <b>P</b>rivacy]</span>
 								</div>
 							</section>
 							<!--- ./INTRO --->
 								
-							<section style="margin-top: 150px;" id="gpg">
+							<section style="margin-top: 130px;" id="gpg">
 								<div class="centext">
 									<a style="font-size: 19px; color: rgb(194, 0, 194);">☰ </a><span class="purple-bg" style="font-size: 19px;">¿QUÉ PERMITE HACER GPG?</span>
 								</div><p></p>
@@ -99,12 +121,12 @@
 							</section>
 							<hr>
 
-							<section style="margin-top: 160px;" id="passphrase">
+							<section style="margin-top: 130px;" id="passphrase">
 								<div class="centext">
 									<a style="font-size: 19px; color: rgb(194, 0, 194);">☰ </a><span class="purple-bg" style="font-size: 19px;">CIFRADO SIMÉTRICO [PASSPHRASE]</span><p></p>
 								</div><br>
 
-								<div class="centext">
+								<div class="leftl">
 									<span>Crear un archivo <b>.txt</b>, editarlo para escribir algún texto en él y cifrarlo simétricamente con <b>gpg</b></span>
 								</div><p></p>
 
@@ -136,10 +158,10 @@
 									  </section>
 								</div><br><p></p>
 								
-								<div class="centext">
-									<img src="/blog/hardening/img/gpg1-1.jpg" width="70%"><p></p>
-									<img src="/blog/hardening/img/gpg2.jpg" width="70%"><br><br>
-									
+									<img src="/blog/hardening/img/gpg1-1.jpg" class="imgmax" width="70%"><p></p>
+									<img src="/blog/hardening/img/gpg2.jpg" class="imgmax" width="70%"><br><br>
+								
+								<div class="leftl">
 									<span><b>gpg</b> ha generado un fichero de extensión <b>.gpg</b> con el mismo nombre que el archivo en texto plano:</span><br>
 								</div><p></p>
 
@@ -173,7 +195,7 @@
 									  </section>
 								</div><br><br>
 								
-								<div class="centext">
+								<div class="leftl">
 									<span>Al volcar el contenido del fichero <b>cifrado-simetrico.txt.gpg</b> con el comando <b>cat</b>, el contenido se muestra cifrado.</span>
 								</div><p></p>
 								
@@ -203,7 +225,7 @@
 									<span><b><a style="color: #FF00FF;">⦾</a> DESENCRIPTAR EL FICHERO</b></span>
 								</div><p></p>
 								
-								<div class="centext">
+								<div class="leftl">
 									<span><b>gpg --decrypt</b> solicitará la passphrase previamente configurada y el comando <b>cat</b> podrá leer el fichero desencriptado.</span>
 								</div>
 								
@@ -244,12 +266,12 @@
 								</section>
 							<hr>
 								
-								<section style="margin-top: 160px;" id="asimetrico">
+								<section style="margin-top: 130px;" id="asimetrico">
 								<div class="centext">
 									<a style="font-size: 19px; color: rgb(194, 0, 194);">☰ </a><span class="purple-bg" style="font-size: 19px;">CIFRADO ASIMÉTRICO [CLAVE PÚBLICA + FIRMA]</span>
 								</div><p></p>
 								
-								<div class="centext">
+								<div class="leftl">
 									<span>En este caso creo un archivo de texto plano llamado <b>cifrado-asimetrico.txt</b> con el texto "<b>Mensaje Cifrado</b>" en su interior.</span>
 								</div><p></p>
 								
@@ -280,7 +302,7 @@
 									<span><b><a style="color: #FF00FF;">⦾</a> GENERAR EL PAR DE CLAVES</b></span>
 								</div><p></p>
 								
-								<div class="centext">
+								<div class="leftl">
 									<span>La opción <b>--full-generate-key</b> se encarga de la generación completa de pares de claves.</span><p></p>
 									<span>Esta opción necesita generar muchos bytes aleatorios. Es recomendable realizar
 acciones como escribir en el teclado, mover el ratón o utilizar los discos durante la generación de primos. Esto da al generador de números aleatorios mayor aleatoriedad para generar suficiente entropía.</span>
@@ -465,7 +487,7 @@ acciones como escribir en el teclado, mover el ratón o utilizar los discos dura
 									  </section>
 								</div><br><br> <!--- full-generate-key --->
 								
-								<div class="centext">
+								<div class="leftl">
 									<span><b>gpg</b> ha generado el certificado <b>E6A5759973DDAE37BEB6D8B2A9B12CFFF586A5F9.rev</b> en <b>$HOME/.gnupg/openpgp-revocs.d/</b> que contiene el <b>tipo de encriptación</b>, <b>fecha</b> de <b>creación</b> y <b>expiración</b>, el <b>UID</b> y la <b>clave pública</b></span>
 								</div><p></p>
 								
@@ -571,7 +593,7 @@ acciones como escribir en el teclado, mover el ratón o utilizar los discos dura
 									<span><b><a style="color: #AD009E;">⦾</a> CIFRAR EL FICHERO POR USER-ID</b></span>
 								</div><p></p>
 								
-								<div class="centext">
+								<div class="leftl">
 									<span>Cifrar el fichero por <b>USER-ID</b> es un modo de corroborar su autenticidad, siempre que el <b>USER-ID</b> del fichero coincida con el del <b>certificado</b> generado previamente.</span>
 								</div><p></p>
 								
@@ -597,7 +619,7 @@ acciones como escribir en el teclado, mover el ratón o utilizar los discos dura
 									<span><b><a style="color: #AD009E;">⦾</a> DESENCRIPTAR EL FICHERO</b></span>
 								</div><p></p>
 								
-								<div class="centext">
+								<div class="leftl">
 									<span>Al desencriptar el fichero, <b>gpg</b> devolverá el tipo de encriptación, la fecha de creación y el <b>UID</b> adherido al fichero, para corroborar su autenticidad.</span>
 								</div><p></p>
 								
@@ -629,81 +651,46 @@ acciones como escribir en el teclado, mover el ratón o utilizar los discos dura
 								</section>
 									<hr>
 
-								<section style="margin-top: 160px;" id="conclusion">
+								<section style="margin-top: 130px;" id="conclusion">
 									<div class="centext">
 										<a style="font-size: 19px; color: rgb(194, 0, 194);">☰ </a><span class="purple-bg" style="font-size: 19px;">CONCLUSIÓN</span>
 									</div><p></p>
 								
-									<div class="centext">
+									<div class="leftl">
 										<span><b>GPG</b>, al contrario que <b>PKI</b> [<b>P</b>rivate <b>K</b>ey <b>I</b>nfraestructure], no posee una autoridad certificadora [<b>CA</b>]. La única forma de verificar lo que denominamos relaciones de confianza, se basa en que el usuario verifica mediante passphrase, calves pública, fecha de creación\expiración y la firma del fichero, que este proviene de quien dice.</span>
 									</div>
 								</section>
-							</div>
-						</article>
+						</div>
+					</article>
 				</main>
-					
-<!--- aside --->
-<aside class="col-md-4 stk-post-hd">
-	<div class="widget widget-recent-posts">
-		<h3 class="widget-title"><a style="color: rgb(195, 0, 189);">↳</a> Tabla de Contenido:</h3>		
-		<ul>
-			<li>
-				<a class="nodeco" href="#intro">INTRO</a>
-			</li>
-			<li>
-				<a class="nodeco" href="#gpg">¿QUÉ PERMITE HACER GPG?</a>
-			</li>
-			<li>
-				<a class="nodeco" href="#passphrase">CIFRADO SIMÉTRICO [PASSPHRASE]</a>
-			</li>
-			<li>
-				<a class="nodeco" href="#asimetrico">CIFRADO ASIMÉTRICO [CLAVE PÚBLICA + FIRMA]</a>
-			</li>
-			<li>
-				<a class="nodeco" href="#conclusion">CONCLUSIÓN</a>
-			</li>
-		</ul>
-	</div><!--- ./aside --->
-						
-	<div class="widget widget-category">
-		<h3 class="widget-title"><a style="color: rgb(195, 0, 189);">✎</a> Notas:</h3>		
-		<ul>
-			<li>
-				<a><b>gpg</b>: Herramienta de cifrado y firma OpenPGP</a>
-			</li>
-			<li>
-				<a><b>--symmetric</b>: Encriptación sólo con cifrado simétrico</a>
-			</li>
-			<li>
-				<a><b>-r</b>: Encriptación para USER-ID</a>
-			</li>
-			<li>
-				<a><b>--decrypt</b>: Desencriptar datos</a>
-			</li>
-			<li>
-				<a><b>-o</b>: Escribir la salida en un Archivo</a>
-			</li>
-			<li>
-				<a><b>--full-generate-key</b>: Generación completa de pares de claves</a>
-			</li>
-		</ul>
+			</div>
+		</div>
 	</div>
-</aside>
-</div>
-</div>
-</div>
 
 <footer id="site-footer">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
 				<div class="copyright">
-					<a class="nodeco" href="/index"><img style="margin-top: -5px;" src="/blog/img/skull.png" weight="19px" height="19px"> ØxBogart</a>
+						<a href="#"><img src="/blog/img/skull.png" class="icomax" style="width: 10%"></a>
 				</div>
 			</div>
 		</div>
 	</div>
 </footer>
 	<a href="#" id="scrollToTopButtonPurple"><i class="fas fa-arrow-up"></i></a>
+<script>
+function toggleNav() {
+  var sidebar = document.getElementById("mySidebar");
+  var sidebarDisplay = window.getComputedStyle(sidebar).display;
+
+  if (sidebarDisplay === "none") {
+    sidebar.style.display = "block";
+    sidebar.style.width = "200px";
+  } else {
+    sidebar.style.display = "none";
+  }
+}
+</script>
 </body>
 </html>

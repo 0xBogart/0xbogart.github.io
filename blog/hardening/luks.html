@@ -28,6 +28,8 @@
 	<!-- css -->
 	<link rel="stylesheet" href="/css/bootstrap.min.css">
 	<link rel="stylesheet" href="/css/ionicons.min.css">
+	<link rel="stylesheet" href="/css/tabbarpurple.css">
+	<link rel="stylesheet" href="/css/sidebarpurple.css">
 	<link rel="stylesheet" href="/css/pace.css">
 	<link rel="stylesheet" href="/css/custom.css">
 	<link rel="stylesheet" href="/css/lithiumterm.css">
@@ -35,23 +37,43 @@
 	<!-- js -->
 	<script src="/js/jquery-2.1.3.min.js"></script>
 	<script src="/js/bootstrap.min.js"></script>
+	<script src="/js/tabbar.js"></script>
 	<script src="/js/pace.min.js"></script>
 	<script src="/js/modernizr.custom.js"></script>
 	<script src="/js/aspurplelight.js"></script>
+<style>
+@media (max-width: 600px) {
+  .icomax {
+    min-width: 25%;
+  }
+}
+
+@media (max-width: 600px) {
+  .imgmax {
+    min-width: 100%;
+  }
+}
+
+.bg {
+	border: 5px solid black;
+	width: 100%;
+	height: 100%;
+}
+</style>
 </head>
 
-<body>
+<body class="bg">
 	<div class="container">	
 		<header id="site-header">
 			<div class="row">
-				<div style="margin-top: -2%; margin-bottom: -3%;">
+				<div style="margin-bottom: -10%;">
 					<h1><a class="nodeco" href="/blog/hardening" style="color: rgb(194, 0, 194);">☰</a>Hardening</h1>
 				</div><!-- col-4 -->
 			</div>
 			<div class="row justify-content-end">
-				<div style="margin-top: -3%; margin-bottom: -3%;" class="col-3">
+				<div class="col-1">
 					<nav class="navbar navbar-expand-lg navbar-light">
-						<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#bs-example-navbar-collapse-1" aria-controls="bs-example-navbar-collapse-1" aria-expanded="false" aria-label="Toggle navigation">
+						<button style="border: 1px solid rgb(194, 0, 194);" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#bs-example-navbar-collapse-1" aria-controls="bs-example-navbar-collapse-1" aria-expanded="false" aria-label="Toggle navigation">
 							<span class="navbar-toggler-icon"></span>
 						</button>
 						<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -67,10 +89,48 @@
 		</header>
 	</div>
 
+	<!-- TABBAR -->
+	<div style="position: sticky; top: -1px; width: auto;">
+		<a onclick="toggleDropdown()">
+			<div class="tabbar">
+				<span style="font-weight: bold; float: left; margin-left: 10px;">TABLA DE CONTENIDO</span>
+				<div class="dropdown-content" id="dropdownContent"></div>
+			</div>
+		</a>
+		<div id="contenido">
+			<h5>OpenSCAP [Auditorías de cumplimiento de Configuración y Vulnerabilidades]</h5>
+			<div style="border-top: 1px solid #000; width: 100%; margin: 10px 0;"></div>
+			<a href="#INTRO" style="text-decoration: none;"><p style="margin-bottom: 6px; font-size: 16px;">☰ Intro</p></a>
+			<a href="#componentes" style="text-decoration: none;"><p style="margin-bottom: 6px; font-size: 16px;">☰ Componentes de LUKS</p></a>
+			<a href="#cryptsetup" style="text-decoration: none;"><p style="margin-bottom: 6px; font-size: 16px;">☰ Encriptar una partición con LUKS</p></a>
+			<a href="#luksformat" style="text-decoration: none;"><p style="margin-bottom: 6px; font-size: 16px;">☰ Formatos LUKS</p></a>
+			<a href="#benchmark" style="text-decoration: none;"><p style="margin-bottom: 6px; font-size: 16px;">☰ Benchmark Ciphers</p></a>
+			<a href="#luksDump" style="text-decoration: none;"><p style="margin-bottom: 6px; font-size: 16px;">☰ Volcar información de una partición LUKS</p></a>
+			<a href="#passphrases" style="text-decoration: none;"><p style="margin-bottom: 6px; font-size: 16px;">☰ Gestión de Passphrases</p></a>
+			<a href="#xfs" style="text-decoration: none;"><p style="margin-bottom: 6px; font-size: 16px;">☰ Mapear y Formatear la partición encriptada</p></a>
+			<a href="#crypttab" style="text-decoration: none;"><p style="margin-bottom: 6px; font-size: 16px;">☰ Montar la partición LUKS [crypttab &amp; fstab]</p></a>
+		</div>
+	</div><!-- END TABBAR -->
+
 	<div class="content-body">
+		<div id="main" style="position: sticky; top: 0;">
+			<button class="openbtn" onclick="toggleNav()">☰</button>  
+		</div><br>
+		<div id="mySidebar" class="sidebar" style="position: sticky; top: 0; margin-top: -24px; display: none;">
+			<a href="javascript:void(0)" class="closebtn" onclick="toggleNav()">×</a>
+			<span style="font-size: 25px; color: rgb(255, 0, 255, 1);"><b>&nbsp;✎</b></span><span style="font-size: 25px; color: white;"> <b>Notas</b></span>
+			<hr style="color: #FF00FF;">
+			<a><span style="color: #E5D400;">luksFormat</span><span class="spanx">: Configura el encabezado del dispositivo LUKS y establece la passphrase con las opciones criptográficas deseadas</span></a>
+			<a><span style="color: #E5D400;">luksDump</span><span class="spanx">: Muestra información sobre la clave maestra, tipo de cifrado, checksum y Keyslots de la partición LUKS</span></a>
+			<a><span style="color: #E5D400;">luksAddKey</span><span class="spanx">: Añade una clave a dispositivos LUKS</span></a>
+			<a><span style="color: #E5D400;">open</span><span class="spanx">: Libera el dispositivo LUKS asignandole un nombre mapeado</span></a>
+			<a><span style="color: #E5D400;">shred</span><span class="spanx">: Sobrescribe un archivo o dispositivo con datos aleatorios</span></a>
+			<a><span style="color: #E5D400;">luksUUID</span><span class="spanx">: Imprime el UUID del dispositivo LUKS</span></a>
+			<a><span style="color: #E5D400;">crypttab</span><span class="spanx">: Información estática sobre filesystems encriptados</span></a>
+		</div>
 		<div class="container">
 			<div class="row">
-				<main class="col-md-8">
+				<main class="col-md-8" style="margin-left: auto; margin-right: auto;">
 					<article class="post post-1">
 						<header  class="entry-header">
 							<h1 class="blh1">LUKS &amp; dm-crypt</h1>
@@ -85,7 +145,7 @@
 								</div><!--- ./INTRO --->
 							</section>
 
-							<section style="margin-top: 160px;" id="componentes">
+							<section style="margin-top: 130px;" id="componentes">
 								<div class="centext">
 									<a style="font-size: 19px; color: rgb(194, 0, 194);">☰ </a><span class="purple-bg" style="font-size: 19px;">COMPONENTES DE LUKS</span>
 								</div><p></p>
@@ -96,23 +156,23 @@
 									<span><b><a style="color: #AD009E;">⦾</a> cryptsetup:</b> Es la herramienta en línea de comandos encargada de interactuar con dm-crypt simple para crear, gestionar y acceder a dispositivos cifrados. Admite diferentes modos de cifrado que dependen de los módulos del Kernel de Linux.</span>
 								</div><br><br>
 								
-								<div class="centext">
+								<div class="leftl">
 									<span>El método más sencillo para cifrar discos y particiones se da durante la instalación del S.O.</span><p></p>
-									<a href="/blog/hardening/img/lukslvm.jpg" target="_blank"><img src="/blog/hardening/img/lukslvm.jpg" width="100%"></a>
 								</div>
+									<a href="/blog/hardening/img/lukslvm.jpg" target="_blank"><img src="/blog/hardening/img/lukslvm.jpg" width="100%"></a>
 							</section>
-							<hr>
+							<div style="border-top: 1px solid #000; width: 100%; margin: 10px 0;"></div>
 
-							<section style="margin-top: 160px;" id="cryptsetup">
+							<section style="margin-top: 130px;" id="cryptsetup">
 								<div class="centext">
 									<a style="font-size: 19px; color: rgb(194, 0, 194);">☰ </a><span class="purple-bg" style="font-size: 19px;">ENCRIPTAR UNA PARTICIÓN CON LUKS</span>
 								</div><p></p>
 								
-								<div class="centext">
+								<div class="leftl">
 									<span>Parto de un disco <b>sdb</b> con una partición <b>/dev/sdb1</b></span>
 								</div><p></p>
 
-								<div id="terminal">   
+								<div id="long-terminal">   
 									<!-- Terminal Bar -->       
 									<section id="terminal__bar">          
 										<div id="bar__buttons">            
@@ -154,22 +214,22 @@
 									  </section>
 								</div><br><br>
 								
-								<div class="left">
+								<div class="leftl">
 									<span><b><a style="color: #FF00FF;">⦾</a> luksFormat:</b> Configura el encabezado del dispositivo LUKS y establece la passphrase con las opciones criptográficas deseadas.</span>
 								</div>
 								
-								<div style="margin-top: 68px;" class="centext">
+								<div style="margin-top: 68px;" class="leftl">
 									<span>El valor por defecto actual en las fuentes distribuidas es <b>aes-cbc-essiv:sha256</b> para <b>dm-crypt simple</b> y <b>aes-xts-plain64</b> para LUKS.</span>
 								</div>
 								</section>
-								<hr>
+								<div style="border-top: 1px solid #000; width: 100%; margin: 10px 0;"></div>
 								
-								<section style="margin-top: 160px;" id="luksformat">
+								<section style="margin-top: 130px;" id="luksformat">
 									<div class="centext">
 										<a style="font-size: 19px; color: rgb(194, 0, 194);">☰ </a><span class="purple-bg" style="font-size: 19px;">FORMATOS LUKS</span>
 									</div><br><p></p>
 								
-									<div class="left">
+									<div class="leftl">
 										<span><b><a style="color: #FF00FF;">⦾</a> LUKS:</b> aes-xts-plain64, Key: 256 bits, LUKS header hashing: sha256, RNG: /dev/urandom</span><p></p>
 									
 										<span><b><a style="color: #FF00FF;">⦾</a> LUKS1:</b> pbkdf2, iteration time: 2000 (ms)</span><p></p>
@@ -181,20 +241,21 @@
 										<span><b><a style="color: #FF00FF;">⦾</a> tcrypt:</b> Modo de compatibilidad con <b>TrueCrypt</b></span><p></p>
 									</div>
 								</section>
-									<hr>
+							
+							<div style="border-top: 1px solid #000; width: 100%; margin: 10px 0;"></div>
 								
-								<section style="margin-top: 160px;" id="benchmark">
+								<section style="margin-top: 130px;" id="benchmark">
 								<div class="centext">
 									<a style="font-size: 19px; color: rgb(194, 0, 194);">☰ </a><span class="purple-bg" style="font-size: 19px;">BENCHMARK CIPHERS</span>
 								</div><p></p>
 								
-								<div class="centext">
+								<div class="leftl">
 									<span>La opción <b>benchmark</b> de <b>cryptsetup</b> imprime en pantalla los <b>algoritmos</b> y <b>cifrados de referencia</b> que se cargan en tiempo de ejecución.</span>
 								</div><p></p>
 								
 								
 								
-								<div id="terminal">   
+								<div id="long-terminal">   
 									  <!-- Terminal Bar -->       
 									  <section id="terminal__bar">          
 										<div id="bar__buttons">            
@@ -215,9 +276,9 @@
 								<a href="/blog/hardening/img/benchmark1.png" target="_blank"><img src="/blog/hardening/img/benchmark1.png" width="100%"></a><p></p>
 								<a href="/blog/hardening/img/benchmark2.png" target="_blank"><img src="/blog/hardening/img/benchmark2.png" width="88%"></a>
 								</section>
-									<hr>
+									<div style="border-top: 1px solid #000; width: 100%; margin: 10px 0;"></div>
 								
-								<section style="margin-top: 160px;" id="luksDump">
+								<section style="margin-top: 130px;" id="luksDump">
 								<div class="centext">
 									<a style="font-size: 19px; color: rgb(194, 0, 194);">☰ </a><span class="purple-bg" style="font-size: 19px;">VOLCAR INFORMACIÓN DE UNA PARTICIÓN LUKS</span>
 								</div>
@@ -243,28 +304,27 @@
 								<div style="margin-top: 10px;" class="leftl">
 									<span><b><a style="color: #FF00FF;">⦾</a> luksDump:</b> Muestra información sobre la clave maestra, tipo de cifrado, checksum y Keyslots de la partición LUKS</span>
 								</div>
-								
-								<div style="margin-top: 30px;" class="centext">
 									<a href="/blog/hardening/img/luksDump1.png" target="_blank"><img src="/blog/hardening/img/luksDump1.png" width="80%"></a><p></p>
 									<a href="/blog/hardening/img/luksDump2.png" target="_blank"><img src="/blog/hardening/img/luksDump2.png" width="80%"></a><br><br>
-									
-									<span>Un <b>Keyslot</b> almacena el <b>hash</b> de la <b>passphrase</b> configurada y LUKS admite hasta <b>8</b> Keyslots {<b>0-7</b>}</span><p></p>
-									
-									<span>Esto significa que diferentes personas podrían desbloquear el disco para acceder a él, con <b>passphrases</b> distintas e <b>independientes</b>.</span>
-								</div>
-								</section>
-									<hr>
 								
-								<section style="margin-top: 160px;" id="passphrases">
+									<div style="margin-top: 30px;" class="centext">
+										<span>Un <b>Keyslot</b> almacena el <b>hash</b> de la <b>passphrase</b> configurada y LUKS admite hasta <b>8</b> Keyslots {<b>0-7</b>}</span><p></p>
+										<span>Esto significa que diferentes personas podrían desbloquear el disco para acceder a él, con <b>passphrases</b> distintas e <b>independientes</b>.</span>
+									</div>
+								</section>
+							
+							<div style="border-top: 1px solid #000; width: 100%; margin: 10px 0;"></div>
+								
+								<section style="margin-top: 130px;" id="passphrases">
 								<div class="centext">
 									<a style="font-size: 19px; color: rgb(194, 0, 194);">☰ </a><span class="purple-bg" style="font-size: 19px;">GESTIÓN DE PASSPHRASES</span>
 								</div>
 								
-								<div style="margin-top: 10px;" class="centext">
+								<div style="margin-top: 10px;" class="leftl">
 									<span>Para añadir una nueva key, será necesario ingresar una passphrase válida configurada anteriormente.</span>
 								</div>
 								
-								<div id="terminal">   
+								<div id="long-terminal">   
 									  <!-- Terminal Bar -->       
 									  <section id="terminal__bar">          
 										<div id="bar__buttons">            
@@ -298,11 +358,11 @@
 									<span><b><a style="color: #B100A6;">⦾</a> luksAddKey:</b> Añade una clave a dispositivos LUKS</span>
 								</div><p></p><br>
 								
-								<div class="centext">
+								<div class="leftl">
 									<span>Desde este momento la partición <b>/dev/sdb1</b> puede ser desbloqueada con <b>2 claves</b> distintas, ubicadas en los key slots <b>0</b> y <b>1</b></span>
 								</div><p></p>
 								
-								<div id="terminal">   
+								<div id="long-terminal">   
 									  <!-- Terminal Bar -->       
 									  <section id="terminal__bar">          
 										<div id="bar__buttons">            
@@ -322,14 +382,14 @@
 								<img src="/blog/hardening/img/keyslot0.png" width="80%"><p></p>
 								<img src="/blog/hardening/img/keyslot1.png" width="80%">
 								</section>
-									<hr>
+									<div style="border-top: 1px solid #000; width: 100%; margin: 10px 0;"></div>
 								
-								<section style="margin-top: 160px;" id="xfs">
+								<section style="margin-top: 130px;" id="xfs">
 								<div class="centext">
 									<a style="font-size: 19px; color: rgb(194, 0, 194);">☰ </a><span class="purple-bg" style="font-size: 19px;">MAPEAR Y FORMATEAR LA PARTICIÓN ENCRIPTADA</span>
 								</div>
 								
-								<div style="margin-top: 20px;" class="left">
+								<div style="margin-top: 20px;" class="leftl">
 									<span><b><a style="color: #FF00FF;">⦾</a> MAPEAR PARTICIÓN LUKS</b></span>
 								</div><p></p>
 								
@@ -372,7 +432,7 @@
 									<span><b><a style="color: #FF00FF;">⦾</a> INYECTAR DATOS ALEATORIOS EN EL ENCABEZADO DEL DISPOSITIVO</b></span>
 								</div>
 								
-								<div id="terminal">   
+								<div id="long-terminal">   
 									  <!-- Terminal Bar -->       
 									  <section id="terminal__bar">          
 										<div id="bar__buttons">            
@@ -494,7 +554,7 @@
 									  </section>
 								</div>
 								
-								<div style="margin-top: 10px;" class="centext">
+								<div style="margin-top: 10px;" class="leftl">
 									<span><b><a style="color: #B100A6;">⦾</a> shred</b> Sobrescribe un archivo o dispositivo con datos aleatorios para ocultar su contenido y hacerlo más ilegible, lo que dificultaría la labor de desencriptación o lectura por parte de personas ajenas.</span>
 								</div>
 								
@@ -502,7 +562,7 @@
 									<span><b><a style="color: #FF5FFA;">⦾</a> FORMATEAR LA PARTICIÓN EN XFS</b></span>
 								</div><p></p>
 								
-								<div id="terminal">   
+								<div id="long-terminal">   
 									  <!-- Terminal Bar -->       
 									  <section id="terminal__bar">          
 										<div id="bar__buttons">            
@@ -522,22 +582,19 @@
 								
 								<img src="/blog/hardening/img/xfs.png" width="100%">
 								</section>
-									<hr>
+									<div style="border-top: 1px solid #000; width: 100%; margin: 10px 0;"></div>
 
-								<section style="margin-top: 160px;" id="crypttab">
+								<section style="margin-top: 130px;" id="crypttab">
 								<div class="centext">
 								<a style="font-size: 19px; color: rgb(194, 0, 194);">☰ </a><span class="purple-bg" style="font-size: 19px;">MONTAR LA PARTICIÓN LUKS [CRYPTTAB &amp; FSTAB]</span>
 								</div>
 								
 								<div style="margin-top: 28px;" class="left">
-									<span><b><a style="color: #FF5FFA;">⦾</a> MONTAR LA PARTICIÓN EN CALIENTE</b></span>
-								</div>
-								
-								<div style="margin-bottom: 5px;" class="centext">
+									<span><b><a style="color: #FF5FFA;">⦾</a> MONTAR LA PARTICIÓN EN CALIENTE</b></span><br>
 									<span>Ahora que la partición está liberada y mapeada, es posible montarla.</span>
 								</div>
 								
-								<div id="terminal">   
+								<div id="long-terminal">   
 									  <!-- Terminal Bar -->       
 									  <section id="terminal__bar">          
 										<div id="bar__buttons">            
@@ -573,13 +630,12 @@
 									<span><b><a style="color: #FF5FFA;">⦾</a> AUTOMONTAR PARTICIÓN AL INICIO</b></span>
 								</div>
 								
-								<div style="margin-bottom: 5px;" class="centext">
+								<div style="margin-bottom: 5px;" class="leftl">
 									<span>Para que la partición o el dispositivo LUKS se monte automáticamente tras reiniciar o iniiciar el sistema, entran en juego <b>crypttab</b> y <b>fstab.</b></span><p></p><br>
-									
 									<span>El primer paso es localizar el <b>luksUUID</b> de la <b>partición LUKS</b> para configurar el fichero <b>/etc/crypttab</b></span>
 								</div>
 								
-								<div id="terminal">   
+								<div id="long-terminal">   
 									  <!-- Terminal Bar -->       
 									  <section id="terminal__bar">          
 										<div id="bar__buttons">            
@@ -626,13 +682,12 @@
 									<span><b><a style="color: #B100A6 ;">⦾</a> luks: </b>Fuerza el modo LUKS. Cuando se utiliza este modo, las opciones <b>cipher=</b>, <b>hash=</b>, <b>size=</b> son ignoradas ya que son proporcionadas por la cabecera LUKS en el dispositivo: </span>
 								</div>
 							
-							<div style="margin-top: 85px;" class="centext">
+							<div style="margin-top: 85px;" class="leftl">
 								<span>Ahora se configura el dispositivo mapeado {<b>DM</b>} en <b>/etc/fstab</b></span><p></p>
-								
 								<span>Para ello localizamos el <b>UUID</b> del <b>DM</b></span>
 							</div>
 							
-							<div id="terminal">   
+							<div id="long-terminal">   
 									  <!-- Terminal Bar -->       
 									  <section id="terminal__bar">          
 										<div id="bar__buttons">            
@@ -691,77 +746,14 @@
 									</section>
 								</div>
 								
-								<div style="margin-top: 80px;" class="centext">
+								<div style="margin-top: 80px;" class="leftl">
 									<span>Al reiniciar el sistema, <b>crypttab</b> solicitará la <b>passphrase</b> para descifrar y montar el dispositivo</span>
-									
-									<a href="/blog/hardening/img/lvcryptpwd.png" target="_blank"><img src="/blog/hardening/img/lvcryptpwd.png" width="105%"></a>
 								</div>
+									<a href="/blog/hardening/img/lvcryptpwd.png" target="_blank"><img src="/blog/hardening/img/lvcryptpwd.png" class="imgmax" width="105%"></a>
 								</section>
 							</div>
 						</article>
 					</main>
-					<!--- aside --->
-					<aside class="col-md-4 stk-post-hd">
-						<div class="widget widget-recent-posts">
-							<h3 class="widget-title"><a style="color: rgb(195, 0, 189);">↳</a> Tabla de Contenido:</h3>		
-							<ul>
-								<li>
-									<a class="nodeco" href="#INTRO">INTRO</a>
-								</li>
-								<li>
-									<a class="nodeco" href="#componentes">COMPONENTES DE LUKS</a>
-								</li>
-								<li>
-									<a class="nodeco" href="#cryptsetup">ENCRIPTAR UNA PARTICIÓN CON LUKS</a>
-								</li>
-								<li>
-									<a class="nodeco" href="#luksformat">FORMATOS LUKS</a>
-								</li>
-								<li>
-									<a class="nodeco" href="#benchmark">BENCHMARK CIPHERS</a>
-								</li>
-								<li>
-									<a class="nodeco" href="#luksDump">VOLCAR INFORMACIÓN DE UNA PARTICIÓN LUKS</a>
-								</li>
-								<li>
-									<a class="nodeco" href="#passphrases">GESTIÓN DE PASSPHRASES</a>
-								</li>
-								<li>
-									<a class="nodeco" href="#xfs">MAPEAR Y FORMATEAR LA PARTICIÓN ENCRIPTADA</a>
-								</li>
-								<li>
-									<a class="nodeco" href="#crypttab">MONTAR LA PARTICIÓN LUKS [CRYPTTAB & FSTAB]</a>
-								</li>
-							</ul>
-						</div><!--- ./aside --->
-						
-						<div class="widget widget-category">
-							<h3 class="widget-title"><a style="color: rgb(195, 0, 189);">✎</a> Notas:</h3>		
-							<ul>
-								<li>
-									<a><b>luksFormat</b>: Configura el encabezado del dispositivo LUKS y establece la passphrase con las opciones criptográficas deseadas.</a>
-								</li>
-								<li>
-									<a><b>luksDump</b>: Muestra información sobre la clave maestra, tipo de cifrado, checksum y Keyslots de la partición LUKS.</a>
-								</li>
-								<li>
-									<a><b>luksAddKey</b>: Añade una clave a dispositivos LUKS.</a>
-								</li>
-								<li>
-									<a><b>open</b>: Libera el dispositivo LUKS asignandole un nombre mapeado.</a>
-								</li>
-								<li>
-									<a><b>shred</b>: Sobrescribe un archivo o dispositivo con datos aleatorios.</a>
-								</li>
-								<li>
-									<a><b>luksUUID</b>: Imprime el UUID del dispositivo LUKS.</a>
-								</li>
-								<li>
-									<a><b>crypttab</b>: Información estática sobre filesystems encriptados.</a>
-								</li>
-							</ul>
-						</div>
-					</aside>
 				</div>
 			</div>
 		</div>
@@ -771,12 +763,25 @@
 				<div class="row">
 					<div class="col-md-12">
 						<div class="copyright">
-							<a class="nodeco" href="/index"><img style="margin-top: -5px;" src="/blog/img/skull.png" weight="19px" height="19px"> ØxBogart</a>
+						<a href="#"><img src="/blog/img/skull.png" class="icomax" style="width: 10%"></a>
 						</div>
 					</div>
 				</div>
 			</div>
 		</footer>
 		<a href="#" id="scrollToTopButtonPurple"><i class="fas fa-arrow-up"></i></a>
-	</body>
+<script>
+function toggleNav() {
+  var sidebar = document.getElementById("mySidebar");
+  var sidebarDisplay = window.getComputedStyle(sidebar).display;
+
+  if (sidebarDisplay === "none") {
+    sidebar.style.display = "block";
+    sidebar.style.width = "200px";
+  } else {
+    sidebar.style.display = "none";
+  }
+}
+</script>
+</body>
 </html>

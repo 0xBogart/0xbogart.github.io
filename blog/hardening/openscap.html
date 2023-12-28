@@ -27,8 +27,8 @@
 	<!-- css -->
 	<link rel="stylesheet" href="/css/bootstrap.min.css">
 	<link rel="stylesheet" href="/css/ionicons.min.css">
-	<link rel="stylesheet" href="/css/tabbar.css">
-	<link rel="stylesheet" href="/css/sidebar.css">
+	<link rel="stylesheet" href="/css/tabbarpurple.css">
+	<link rel="stylesheet" href="/css/sidebarpurple.css">
 	<link rel="stylesheet" href="/css/pace.css">
 	<link rel="stylesheet" href="/css/custom.css">
 	<link rel="stylesheet" href="/css/rhterm.css">
@@ -85,7 +85,7 @@
 	</div>
 
 	<!-- TABBAR -->
-	<div style="position: sticky; top: 0; width: auto;">
+	<div style="position: sticky; top: -1px; width: auto;">
 		<a onclick="toggleDropdown()">
 			<div class="tabbar">
 				<span style="font-weight: bold; float: left; margin-left: 10px;">TABLA DE CONTENIDO</span>
@@ -93,32 +93,32 @@
 			</div>
 		</a>
 		<div id="contenido">
-			<h5>Instalar Wordpress en Debian 10 [Buster]</h5>
+			<h5>OpenSCAP [Auditorías de cumplimiento de Configuración y Vulnerabilidades]</h5>
 			<div style="border-top: 1px solid #000; width: 100%; margin: 10px 0;"></div>
-			<a href="#intro" style="text-decoration: none;"><p style="margin-bottom: 6px; font-size: larger">☣ Intro</p></a>
-			<a href="#openscap" style="text-decoration: none;"><p style="margin-bottom: 6px; font-size: larger">☣ Instalación de Guías de Seguridad</p></a>
-			<a href="#modulos" style="text-decoration: none;"><p style="margin-bottom: 6px; font-size: larger">☣ Módulos OpenSCAP</p></a>
-			<a href="#remediate" style="text-decoration: none;"><p style="margin-bottom: 6px; font-size: larger">☣ Bastionar el Sistema [remediate]</p></a>
+			<a href="#intro" style="text-decoration: none;"><p style="margin-bottom: 6px; font-size: larger">☰ Intro</p></a>
+			<a href="#openscap" style="text-decoration: none;"><p style="margin-bottom: 6px; font-size: larger">☰ Instalación de Guías de Seguridad</p></a>
+			<a href="#modulos" style="text-decoration: none;"><p style="margin-bottom: 6px; font-size: larger">☰ Módulos OpenSCAP</p></a>
+			<a href="#remediate" style="text-decoration: none;"><p style="margin-bottom: 6px; font-size: larger">☰ Bastionar el Sistema [remediate]</p></a>
 		</div>
 	</div><!-- END TABBAR -->
 
 	<div class="content-body">
 		<div id="main" style="position: sticky; top: 0;">
-				<button class="openbtn" onclick="toggleNav()">☣</button>  
-			</div><br>
-			<div id="mySidebar" class="sidebar" style="position: sticky; top: 0; margin-top: -18px; display: none;">
-				<a href="javascript:void(0)" class="closebtn" onclick="toggleNav()">×</a>
-				<span style="font-size: 25px; color: rgb(255, 0, 255, 1);"><b>&nbsp;✎</b></span><span style="font-size: 25px; color: white;"> <b>Notas</b></span>
-				<hr style="color: rgb(194, 0, 194);"><br>
-				<a><span style="color: #E5D400;">INFO</span><span class="spanx">: Determinar el tipo e imprimir información sobre un archivo</span></a>
-				<a><span style="color: #E5D400;">XCCDF</span><span class="spanx">: Formato de descripción de la lista de comprobación de la configuración eXtensible</span></a>
-				<a><span style="color: #E5D400;">OVAL</span><span class="spanx">: enguaje abierto de evaluación y vulnerabilidad</span></a>
-				<a><span style="color: #E5D400;">DS</span><span class="spanx">: Flujo de datos SCAP</span></a>
-				<a><span style="color: #E5D400;">CPE</span><span class="spanx">: Enumeración de plataformas comunes</span></a>
-				<a><span style="color: #E5D400;">CVSS</span><span class="spanx">: Sistema común de puntuación de vulnerabilidades</span></a>
-				<a><span style="color: #E5D400;">CVE</span><span class="spanx">: Vulnerabilidades y exposiciones comunes</span></a>
-				<a><span style="color: #E5D400;">CVRF</span><span class="spanx">: Marco común de notificación de vulnerabilidades</span></a>
-			</div>
+			<button class="openbtn" onclick="toggleNav()">☰</button>  
+		</div><br>
+		<div id="mySidebar" class="sidebar" style="position: sticky; top: 0; margin-top: -24px; display: none;">
+			<a href="javascript:void(0)" class="closebtn" onclick="toggleNav()">×</a>
+			<span style="font-size: 25px; color: rgb(255, 0, 255, 1);"><b>&nbsp;✎</b></span><span style="font-size: 25px; color: white;"> <b>Notas</b></span>
+			<hr style="color: rgb(194, 0, 194);"><br>
+			<a><span style="color: #E5D400;">INFO</span><span class="spanx">: Determinar el tipo e imprimir información sobre un archivo</span></a>
+			<a><span style="color: #E5D400;">XCCDF</span><span class="spanx">: Formato de descripción de la lista de comprobación de la configuración eXtensible</span></a>
+			<a><span style="color: #E5D400;">OVAL</span><span class="spanx">: enguaje abierto de evaluación y vulnerabilidad</span></a>
+			<a><span style="color: #E5D400;">DS</span><span class="spanx">: Flujo de datos SCAP</span></a>
+			<a><span style="color: #E5D400;">CPE</span><span class="spanx">: Enumeración de plataformas comunes</span></a>
+			<a><span style="color: #E5D400;">CVSS</span><span class="spanx">: Sistema común de puntuación de vulnerabilidades</span></a>
+			<a><span style="color: #E5D400;">CVE</span><span class="spanx">: Vulnerabilidades y exposiciones comunes</span></a>
+			<a><span style="color: #E5D400;">CVRF</span><span class="spanx">: Marco común de notificación de vulnerabilidades</span></a>
+		</div>
 		<div class="container">
 			<div class="row">
 				<main class="col-md-8" style="margin-left: auto; margin-right: auto;">
@@ -528,7 +528,7 @@
 			<div class="row">
 				<div class="col-md-12">
 					<div class="copyright">
-						<a class="nodeco" href="#"><img src="/blog/img/skull.png" class="imgmax" style="width: 15%"></a>
+						<a class="nodeco" href="#"><img src="/blog/img/skull.png" class="imgmax" style="width: 10%"></a>
 					</div>
 				</div>
 			</div>

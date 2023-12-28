@@ -89,10 +89,43 @@
 		</header>
 	</div>
 
+	<!-- TABBAR -->
+	<div style="position: sticky; top: -1px; width: auto;">
+		<a onclick="toggleDropdown()">
+			<div class="tabbar">
+				<span style="font-weight: bold; float: left; margin-left: 10px;">TABLA DE CONTENIDO</span>
+				<div class="dropdown-content" id="dropdownContent"></div>
+			</div>
+		</a>
+		<div id="contenido">
+			<h5>OpenSCAP [Auditorías de cumplimiento de Configuración y Vulnerabilidades]</h5>
+			<div style="border-top: 1px solid #000; width: 100%; margin: 10px 0;"></div>
+			<a href="#intro" style="text-decoration: none;"><p style="margin-bottom: 6px; font-size: 16px;">☰ Intro</p></a>
+			<a href="#gpg" style="text-decoration: none;"><p style="margin-bottom: 6px; font-size: 16px;">☰ ¿Qué permite hacer GPG?</p></a>
+			<a href="#passphrase" style="text-decoration: none;"><p style="margin-bottom: 6px; font-size: 16px;">☰ Cifrado Simétrico [PASSPHRASE]</p></a>
+			<a href="#asimetrico" style="text-decoration: none;"><p style="margin-bottom: 6px; font-size: 16px;">☰ Cifrado Asimétrico [Clave pública + Firma]</p></a>
+			<a href="#conclusion" style="text-decoration: none;"><p style="margin-bottom: 6px; font-size: 16px;">☰ Conclusión</p></a>
+		</div>
+	</div><!-- END TABBAR -->
+
 	<div class="content-body">
+		<div id="main" style="position: sticky; top: 0;">
+			<button class="openbtn" onclick="toggleNav()">☰</button>  
+		</div><br>
+		<div id="mySidebar" class="sidebar" style="position: sticky; top: 0; margin-top: -24px; display: none;">
+			<a href="javascript:void(0)" class="closebtn" onclick="toggleNav()">×</a>
+			<span style="font-size: 25px; color: rgb(255, 0, 255, 1);"><b>&nbsp;✎</b></span><span style="font-size: 25px; color: white;"> <b>Notas</b></span>
+			<hr style="color: #FF00FF;">
+			<a><span style="color: #E5D400;">gpg</span><span class="spanx">: Herramienta de cifrado y firma OpenPGP</span></a>
+			<a><span style="color: #E5D400;">--symmetric</span><span class="spanx">: Encriptación sólo con cifrado simétrico</span></a>
+			<a><span style="color: #E5D400;">-r</span><span class="spanx">: Encriptación para USER-ID</span></a>
+			<a><span style="color: #E5D400;">--decrypt</span><span class="spanx">: Desencriptar datos</span></a>
+			<a><span style="color: #E5D400;">-o</span><span class="spanx">: Escribir la salida en un fichero</span></a>
+			<a><span style="color: #E5D400;">--full-generate-key</span><span class="spanx">: Generación completa de pares de claves</span></a>
+		</div>
 		<div class="container">
 			<div class="row">
-				<main class="col-md-8">
+				<main class="col-md-8" style="margin-left: auto; margin-right: auto;">
 					<article class="post post-1">
 						<header  class="entry-header">
 							<h1 class="blh1">GPG [GNU Privacy Guard]</h1>
@@ -119,7 +152,7 @@
 									<span><b><a style="color: #AD009E;">⦾</a> Firmar ficheros por clave privada:</b> Verifica si el fichero pertenece a quien debería.</span>
 								</div>
 							</section>
-							<hr>
+							<div style="border-top: 1px solid #000; width: 100%; margin: 10px 0;"></div>
 
 							<section style="margin-top: 130px;" id="passphrase">
 								<div class="centext">
@@ -264,7 +297,7 @@
 									  </section>
 								</div>
 								</section>
-							<hr>
+							<div style="border-top: 1px solid #000; width: 100%; margin: 10px 0;"></div>
 								
 								<section style="margin-top: 130px;" id="asimetrico">
 								<div class="centext">
@@ -649,7 +682,7 @@ acciones como escribir en el teclado, mover el ratón o utilizar los discos dura
 									</section>
 									</div>
 								</section>
-									<hr>
+									<div style="border-top: 1px solid #000; width: 100%; margin: 10px 0;"></div>
 
 								<section style="margin-top: 130px;" id="conclusion">
 									<div class="centext">

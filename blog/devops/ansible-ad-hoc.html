@@ -27,6 +27,8 @@
 	<!-- css -->
 	<link rel="stylesheet" href="/css/bootstrap.min.css">
 	<link rel="stylesheet" href="/css/ionicons.min.css">
+	<link rel="stylesheet" href="/css/tabbargold.css">
+	<link rel="stylesheet" href="/css/sidebargold.css">
 	<link rel="stylesheet" href="/css/pace.css">
 	<link rel="stylesheet" href="/css/custom.css">
 	<link rel="stylesheet" href="/css/lithiumwhiterm.css">
@@ -36,23 +38,43 @@
 	<!-- js -->
 	<script src="/js/jquery-2.1.3.min.js"></script>
 	<script src="/js/bootstrap.min.js"></script>
+	<script src="/js/tabbar.js"></script>
 	<script src="/js/pace.min.js"></script>
 	<script src="/js/modernizr.custom.js"></script>
 	<script src="/js/asgoldlight.js"></script>
+<style>
+@media (max-width: 600px) {
+  .icomax {
+    min-width: 25%;
+  }
+}
+
+@media (max-width: 600px) {
+  .imgmax {
+    min-width: 100%;
+  }
+}
+	
+.bg {
+	border: 5px solid black;
+	width: 100%;
+	height: 100%;
+}
+</style>
 </head>
 
-<body>
+<body class="bg">
 	<div class="container">	
 		<header id="site-header">
 			<div class="row">
-				<div style="margin-top: -2%; margin-bottom: -3%;">
-					<h1>Dev<a style="text-decoration: none; color: #b57c02;" href="/blog/devops">∅</a>ps</h1>
+				<div style="margin-bottom: -10%; margin-top: 6px;">
+					<h1>Dev<a style="text-decoration: none; color: #b57c02;" href="/blog/devops">∞</a>ps</h1>
 				</div><!-- col-4 -->
 			</div>
 			<div class="row justify-content-end">
-				<div style="margin-top: -3%; margin-bottom: -3%;" class="col-3">
-					<nav class="navbar navbar-expand-lg navbar-light">
-						<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#bs-example-navbar-collapse-1" aria-controls="bs-example-navbar-collapse-1" aria-expanded="false" aria-label="Toggle navigation">
+				<div class="col-1">
+					<nav class="navbar navbar-expand-lg navbar-light" style="margin-top: 2px;">
+						<button style="border: 1px solid #b57c02; margin-top: 1px;" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#bs-example-navbar-collapse-1" aria-controls="bs-example-navbar-collapse-1" aria-expanded="false" aria-label="Toggle navigation">
 							<span class="navbar-toggler-icon"></span>
 						</button>
 						<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -68,10 +90,46 @@
 		</header>
 	</div>
 
+	<!-- TABBAR -->
+	<div style="position: sticky; top: -1px; width: auto;">
+		<a onclick="toggleDropdown()">
+			<div class="tabbar">
+				<span style="font-weight: bold; float: left; margin-left: 10px;">TABLA DE CONTENIDO</span>
+				<div class="dropdown-content" id="dropdownContent"></div>
+			</div>
+		</a>
+		<div id="contenido">
+			<h5>Ansible [AD HOC]</h5>
+			<div style="border-top: 1px solid #000; width: 100%; margin: 10px 0;"></div>
+			<a href="#WHY" style="text-decoration: none;"><p style="margin-bottom: 6px; font-size: 16px;">∞ ¿Por qué AD HOC?</p></a>
+			<a href="#BUILTIN" style="text-decoration: none;"><p style="margin-bottom: 6px; font-size: 16px;">∞ Reiniciar Servidores</p></a>
+			<a href="#COPY" style="text-decoration: none;"><p style="margin-bottom: 6px; font-size: 16px;">∞ Administrar Ficheros</p></a>
+			<a href="#USER" style="text-decoration: none;"><p style="margin-bottom: 6px; font-size: 16px;">∞ Administrar Usuarios y Grupos</p></a>
+			<a href="#SERVICE" style="text-decoration: none;"><p style="margin-bottom: 6px; font-size: 16px;">∞ Administrar Servicios</p></a>
+			<a href="#FACTS" style="text-decoration: none;"><p style="margin-bottom: 6px; font-size: 16px;">∞ Facts</p></a>
+		</div>
+	</div><!-- END TABBAR -->
+
 	<div class="content-body">
+		<div id="main" style="position: sticky; top: 0;">
+			<button class="openbtn" onclick="toggleNav()">∞</button>  
+		</div><br>
+		<div id="mySidebar" class="sidebar" style="position: sticky; top: 0; margin-top: -24px; display: none;">
+			<a href="javascript:void(0)" class="closebtn" onclick="toggleNav()">×</a>
+			<span style="font-size: 25px; color: rgb(255, 0, 255, 1);"><b>&nbsp;✎</b></span><span style="font-size: 25px; color: white;"> <b>Notas</b></span>
+			<hr style="color: #FF00FF;">
+			<a><span style="color: #E5D400;">192.168.1.115</span><span class="spanx">: IP del nodo administrado</span></a>
+			<a><span style="color: #E5D400;">-i</span><span class="spanx">: Opción de Ansible para especificar la ruta al inventario con el que se quiere trabajar</span></a>
+			<a><span style="color: #E5D400;">-m</span><span class="spanx">: Opción de Ansible para especificar un módulo</span></a>
+			<a><span style="color: #E5D400;">ansible_user</span><span class="spanx">: Variable del inventario que define el usuario que por defecto ejecutará las tareas en el nodo administrado</span></a>
+			<a><span style="color: #E5D400;">ansible_python_interpreter</span><span class="spanx">: Variable del inventario que define la ruta del intérprete de Python en el nodo administrado</span></a>
+			<a><span style="color: #E5D400;">--become</span><span class="spanx">: Ejecuta tareas como usuario con privilegios sudo</span></a>
+			<a><span style="color: #E5D400;">--ask-become-pass</span><span class="spanx">: Solicita la password del usuario con privilegios sudo</span></a>
+			<a><span style="color: #E5D400;">-K</span><span class="spanx">: Opción abreviada de --ask-become-pass</span></a>
+		</div>
 		<div class="container">
 			<div class="row">
-				<main class="col-md-8">
+				<main class="col-md-8" style="margin-left: auto; margin-right: auto;">
 					<article class="post post-1">
 						<header  class="entry-header">
 							<h1 class="blh1">Ansible</h1>
@@ -80,7 +138,9 @@
 						<div class="entry-content clearfix"><br><br>
 							<section id="WHY">
 								<div class="centext">
-									<span style="color: #b57c02;">∅ </span><span class="white-bg" style="font-size: 19px;">¿POR QUÉ AD HOC?</span><p></p>
+									<span style="color: #b57c02;">∞ </span><span class="white-bg" style="font-size: 19px;">¿POR QUÉ AD HOC?</span><p></p>
+								</div>
+								<div class="leftl">
 									<span>Un comando <b>ad hoc</b> de Ansible utiliza la herramienta de línea de comandos <b>/usr/bin/ansible</b> para automatizar una única tarea en uno o más nodos gestionados.</span><p></p>
 									<span>Los comandos <b>ad hoc</b> son rápidos y fáciles, pero no son reutilizables.</span><p></p>
 									<span>Entonces, ¿<b>por qué</b> aprender primero los comandos <b>ad hoc</b>? Los comandos ad hoc demuestran la <b>simplicidad</b> y el poder de Ansible. Los conceptos que se aprenden aquí se trasladan directamente al lenguaje de <b>playbook</b>.</span><p></p>
@@ -88,7 +148,7 @@
 								</div>
 								<p></p>
 								
-								<div id="terminal">
+								<div id="long-terminal">
 									  <!-- Terminal Bar -->       
 									  <section id="terminal__bar">          
 										<div id="bar__buttons">            
@@ -100,17 +160,20 @@
 									  <!-- Terminal Body -->
 									  <section id="terminal__body">
 										<div id="terminal__prompt">
-											<span id="terminal__prompt--location">∅&nbsp;</span>
+											<span id="terminal__prompt--location">∞&nbsp;</span>
 											<span id="terminal__prompt--bling"><a style="color: #b57c02;">ansible</a> [pattern]<a style="color: #000;">-m </a>[module] <a style="color: #000;">-a</a> "[<a style="color: #000;">module-options</a>]"&nbsp;</span>
 										</div>
 									  </section>
 									</div>
 								</section>
-							<hr>
+							<div style="border-top: 1px solid #000; width: 100%; margin: 10px 0;"></div>
 
-								<section style="margin-top: 160px;" id="BUILTIN">
+							<section style="margin-top: 130px;" id="BUILTIN">
 								<div class="centext">
-									<span style="color: #b57c02;">∅ </span><span class="white-bg" style="font-size: 19px;">REINICIAR SERVIDORES</span><p></p>
+									<span style="color: #b57c02;">∞ </span><span class="white-bg" style="font-size: 19px;">REINICIAR SERVIDORES</span><p></p>
+								</div>
+								
+								<div class="leftl">
 									<span>El <b>módulo por defecto</b> para la utilidad de línea de comandos de Ansible es el módulo <b>ansible.builtin.command</b>.</span><p></p>
 									<span>Una tarea ad hoc puede llamar al módulo de comandos y reiniciar todos los servidores web del grupo <b>[laboratorio]</b>, de <b>10 en 10</b>.</span><br><br>
 									<span>Antes de que Ansible pueda hacer esto, se debe <b>crear un inventario</b> con todos los servidores listados en un grupo llamado, por ejemplo, <b>[laboratorio]</b>, y se debe copiar la <b>ssh-key</b> del nodo de control en el fichero <b>authorized_keys</b> de los nodos administrados.</span>
@@ -120,13 +183,13 @@
 									<span style="color: #b57c02">⦾</span><span><b> INVENTARIO:</b></span>
 								</div><p></p>
 								
-								<div class="centext">
+								<div class="leftl">
 									<span>El inventario de este post contiene un nodo administrado con dirección IP <b>192.168.1.115</b> y versión <b>Python39</b> instalada</span><p></p>
 									<span><b>ansible_python_interpreter</b> indica en qué ruta se encuentra Python en el nodo administrado.</span><p></p>
 									<span><b>ansible_user</b> especifica el usuario que ejecutará las tareas en el nodo administrado.</span>
 								</div>
 								
-								<div id="terminal">
+								<div id="long-terminal">
 									  <!-- Terminal Bar -->       
 									  <section id="terminal__bar">          
 										<div id="bar__buttons">            
@@ -138,7 +201,7 @@
 									  <!-- Terminal Body -->
 									  <section id="terminal__body">
 										<div id="terminal__prompt">
-											<span id="terminal__prompt--location"><b>∅&nbsp;</b></span>
+											<span id="terminal__prompt--location"><b>∞&nbsp;</b></span>
 											<span id="terminal__prompt--bling"><a style="color: #b57c02;">cat </a>/tmp/inventario</span>
 										  </div><p></p>
 										  
@@ -156,11 +219,11 @@
 									<span style="color: #b57c02">⦾</span><span><b> SSH-KEYS:</b></span>
 								</div><p></p>
 								
-								<div class="centext">
+								<div class="leftl">
 									<span>Es necesario copiar las <b>ssh-keys</b> del nodo de gestión a los nodos administrados para que Ansible pueda comunicarse con ellos:</span>
 								</div><p></p>
 								
-								<div id="terminal">
+								<div id="long-terminal">
 									  <!-- Terminal Bar -->       
 									  <section id="terminal__bar">          
 										<div id="bar__buttons">            
@@ -172,7 +235,7 @@
 									  <!-- Terminal Body -->
 									  <section id="terminal__body">
 										<div id="terminal__prompt">
-											<span id="terminal__prompt--location"><b>∅&nbsp;</b></span>
+											<span id="terminal__prompt--location"><b>∞&nbsp;</b></span>
 											<span id="terminal__prompt--bling"><a style="color: #b57c02;">ssh-copy-id </a>root<a style="color: #000;">@</a>192.168.1.115</span>
 										  </div><p></p>
 										  
@@ -190,11 +253,11 @@
 									  </section>
 									</div><br><br>
 								
-							<div class="centext">
-									<span>Para reiniciar todos los servidores del grupo <b>[laboratorio]</b>:</span>
-								</div>
+							<div class="leftl">
+								<span>Para reiniciar todos los servidores del grupo <b>[laboratorio]</b>:</span>
+							</div>
 
-								<div id="terminal">
+								<div id="long-terminal">
 									  <!-- Terminal Bar -->       
 									  <section id="terminal__bar">          
 										<div id="bar__buttons">            
@@ -206,19 +269,19 @@
 									  <!-- Terminal Body -->
 									  <section id="terminal__body">
 										<div id="terminal__prompt">
-											<span id="terminal__prompt--location"><b>∅&nbsp;</b></span>
+											<span id="terminal__prompt--location"><b>∞&nbsp;</b></span>
 											<span id="terminal__prompt--bling"><a style="color: #b57c02;">ansible</a> laboratorio <a style="color: #000;">-i </a>/tmp/inventario <a style="color: #000;">-a </a> <b>"</b>/sbin/reboot<b>"</b>&nbsp;</span>
 										</div>
 									  </section>
 									</div>
 								<br><br>
 
-								<div class="centext">
+								<div class="leftl">
 									<span>Por defecto, Ansible realiza <b>5</b> procesos simultáneos <b>{forks}</b>.</span><p></p>
 									<span>Si el inventario contiene, por ejemplo, <b>10 hosts</b>, para reiniciar los servidores del grupo <b>[laboratorio]</b> de <b>10 en 10</b>:</span>
 								</div>
 
-								<div id="terminal">
+								<div id="long-terminal">
 									  <!-- Terminal Bar -->       
 									  <section id="terminal__bar">          
 										<div id="bar__buttons">            
@@ -230,17 +293,17 @@
 									  <!-- Terminal Body -->
 									  <section id="terminal__body">
 										<div id="terminal__prompt">
-											<span id="terminal__prompt--location"><b>∅&nbsp;</b></span>
+											<span id="terminal__prompt--location"><b>∞&nbsp;</b></span>
 											<span id="terminal__prompt--bling"><a style="color: #b57c02;">ansible</a> laboratorio <a style="color: #000;">-i </a>/tmp/inventario <a style="color: #000;">-a </a> <b>"</b>/sbin/reboot<b>"</b> <a style="color: #000;">-f</a> 10&nbsp;</span>
 										</div>
 									  </section>
 									</div><br><br><br>
 								
-								<div class="centext">
+								<div class="leftl">
 									<span>Si no se ha definido un usuario en la variable <b>ansible_user</b> del <b>inventario</b>, se deberá especificar el usuario usando la opción <b>-u</b> en cada tarea:</span>
 								</div>
 								
-								<div id="terminal">
+								<div id="long-terminal">
 									  <!-- Terminal Bar -->       
 									  <section id="terminal__bar">          
 										<div id="bar__buttons">            
@@ -252,13 +315,13 @@
 									  <!-- Terminal Body -->
 									  <section id="terminal__body">
 										<div id="terminal__prompt">
-											<span id="terminal__prompt--location">∅&nbsp;</span>
+											<span id="terminal__prompt--location">∞&nbsp;</span>
 											<span id="terminal__prompt--bling"><a style="color: #b57c02;">ansible</a> laboratorio <a style="color: #000;">-i </a>/tmp/inventario <a style="color: #000;">-a </a> <b>"</b>whoami<b>"</b> <a style="color: #000;">-u </a>usuario&nbsp;</span>
 										</div>
 									  </section>
 									</div><br><br>
 								
-								<div class="centext">
+								<div class="leftl">
 									<span>Tareas como el reinicio de servidores pueden requerir <b>privilegios</b> elevados como <b>sudo</b>, por parte de un usuario.</span><p></p>
 									<span>La opción <b>become</b> le dice a Ansible que la tarea requiere una <b>escalada de privilegios</b> para llevarse a cabo, pero <b>no pedirá la password</b> del usuario privilegiado:</span>
 								</div><p></p>
@@ -275,13 +338,13 @@
 									  <!-- Terminal Body -->
 									  <section id="terminal__body">
 										<div id="terminal__prompt">
-											<span id="terminal__prompt--location">∅&nbsp;</span>
+											<span id="terminal__prompt--location">∞&nbsp;</span>
 											<span id="terminal__prompt--bling"><a style="color: #b57c02;">ansible</a> laboratorio <a style="color: #000;">-i </a>/tmp/inventario <a style="color: #000;">-a </a> <b>"</b>/sbin/reboot<b>"</b> <a style="color: #000;">-f</a> 10 <a style="color: #000;">-u</a> usuario <a style="color: #000;">--become</a></span>
 										</div>
 									  </section>
 									</div><br><br>
 								
-								<div class="centext">
+								<div class="leftl">
 									<span>Si la tarea requiere introducir la password del usuario privilegiado, será necesaria la opción <b>--ask-become-pass</b> o <b>-K</b>:</span>
 								</div><p></p>
 								
@@ -297,21 +360,22 @@
 									  <!-- Terminal Body -->
 									  <section id="terminal__body">
 										<div id="terminal__prompt">
-											<span id="terminal__prompt--location"><b>∅&nbsp;</b></span>
+											<span id="terminal__prompt--location"><b>∞&nbsp;</b></span>
 											<span id="terminal__prompt--bling"><a style="color: #b57c02;">ansible</a> laboratorio <a style="color: #000;">-i </a>/tmp/inventario <a style="color: #000;">-a </a> <b>"</b>/sbin/reboot<b>"</b> <a style="color: #000;">-f</a> 10 <a style="color: #000;">-u</a> usuario <a style="color: #000;">--become -K</a></span>
 										</div>
 									  </section>
 								</div><p></p>
 								
-								<div class="centext">
+								<div class="leftl">
 									<span><b>NOTA</b>: Si el usuario especificado <b>no</b> tiene privilegios <b>sudo</b> en el nodo administrado, la tarea <b>no se ejecutará</b> aún especificando la opción <b>--become</b>.</span>
 									</div>
 								</section>
-									<hr>
+									
+							<div style="border-top: 1px solid #000; width: 100%; margin: 10px 0;"></div>
 								
-								<section style="margin-top: 160px;" id="COPY">
+								<section style="margin-top: 130px;" id="COPY">
 								<div class="centext">
-									<span style="color: #b57c02;">∅ </span><span class="white-bg" style="font-size: 19px;">ADMINISTRAR FICHEROS</span><p></p>
+									<span style="color: #b57c02;">∞ </span><span class="white-bg" style="font-size: 19px;">ADMINISTRAR FICHEROS</span><p></p>
 								</div>
 								<p></p>
 								
@@ -319,7 +383,7 @@
 									<span style="color: #b57c02">⦾</span><span><b> TRANSFERIR ARCHIVOS:</b></span>
 								</div><p></p>
 								
-								<div class="centext">
+								<div class="leftl">
 									<span>Una tarea ad hoc puede aprovechar la potencia de <b>Ansible</b> y <b>SCP</b> para <b>transferir múltiples archivos</b> a varias máquinas <b>en paralelo</b>. Para transferir un archivo directamente a todos los servidores del grupo <b>[laboratorio]</b> con el módulo <b>ansible.builtin.copy</b>:</span>
 								</div><p></p>
 								
@@ -335,7 +399,7 @@
 									  <!-- Terminal Body -->
 									  <section id="terminal__body">
 										<div id="terminal__prompt">
-											<span id="terminal__prompt--location"><b>∅&nbsp;</b></span>
+											<span id="terminal__prompt--location"><b>∞&nbsp;</b></span>
 											<span id="terminal__prompt--bling">ansible laboratorio <a style="color: #000;">-i </a>/tmp/inventario <a style="color: #000;">-m </a> copy <a style="color: #000;">-a</a> <b>"</b>src=/etc/hosts dest=/tmp<b>"</b> <a style="color: #000;">-u</a> usuario</span>
 										</div>
 										
@@ -401,7 +465,7 @@
 									<span style="color: #b57c02">⦾</span><span><b> MODIFICAR ARCHIVOS:</b></span>
 								</div><p></p>
 								
-								<div class="centext">
+								<div class="leftl">
 									<span>El módulo <b>ansible.builtin.file</b> permite modificar los permisos de archivos:</span>
 								</div><p></p>
 								
@@ -417,7 +481,7 @@
 									  <!-- Terminal Body -->
 									  <section id="terminal__body">
 										<div id="terminal__prompt">
-											<span id="terminal__prompt--location">∅&nbsp;</span>
+											<span id="terminal__prompt--location">∞&nbsp;</span>
 											<span id="terminal__prompt--bling"><a style="color: #b57c02;">ansible</a> laboratorio <a style="color: #000;">-i </a>/tmp/inventario <a style="color: #000;">-m </a> file <a style="color: #000;">-a</a> <b>"</b>dest=/tmp/hosts mode=600<b>"</b> <a style="color: #000;">-u </a>usuario <a style="color: #000;">--become -K</a>&nbsp;</span>
 										</div>
 										  
@@ -488,7 +552,7 @@
 									  <!-- Terminal Body -->
 									  <section id="terminal__body">
 										<div id="terminal__prompt">
-											<span id="terminal__prompt--location">∅&nbsp;</span>
+											<span id="terminal__prompt--location">∞&nbsp;</span>
 											<span id="terminal__prompt--bling"><a style="color: #b57c02;">ansible</a> laboratorio <a style="color: #000;">-i </a>/tmp/inventario <a style="color: #000;">-m </a> file <a style="color: #000;">-a</a> <b>"</b>dest=/tmp/hosts mode=777 owner=usuario group=grupousuario<b>"</b> <a style="color: #000;">-u </a>usuario <a style="color: #000;">--become -K</a>&nbsp;</span>
 										</div>
 										  
@@ -546,7 +610,7 @@
 									<span style="color: #b57c02">⦾</span><span><b> ELIMINAR ARCHIVOS:</b></span>
 								</div><p></p>
 								
-								<div class="centext">
+								<div class="leftl">
 									<span><b>NOTA</b>: Para eliminar el archivo <b>/tmp/hosts</b> en este punto, <b>no</b> será necesario especificar la opción <b>--become</b> porque en el paso anterior le hemos dado <b>permisos 777</b>. Cualquier usuario puede manipular el fichero <b>sin</b> necesidad de <b>privilegios</b>:</span>
 								</div>
 								
@@ -563,7 +627,7 @@
 									  <!-- Terminal Body -->
 									  <section id="terminal__body">
 										<div id="terminal__prompt">
-											<span id="terminal__prompt--location">∅&nbsp;</span>
+											<span id="terminal__prompt--location">∞&nbsp;</span>
 											<span id="terminal__prompt--bling"><a style="color: #b57c02;">ansible</a> laboratorio <a style="color: #000;">-i </a>/tmp/inventario <a style="color: #000;">-m </a> file <a style="color: #000;">-a</a> <b>"</b>dest=/tmp/hosts state=absent<b>"</b> <a style="color: #000;">-u </a>usuario&nbsp;</span>
 										</div>
 										  
@@ -589,19 +653,20 @@
 									</section>
 									</div>
 								</section>
-									<hr>
+									
+							<div style="border-top: 1px solid #000; width: 100%; margin: 10px 0;"></div>
 								<!-- **** END TERMINAL ELIMINAR ARCHIVOS **** -->
 								
-								<section style="margin-top: 160px;" id="USER">
+								<section style="margin-top: 130px;" id="USER">
 									<div class="centext">
-										<span style="color: #b57c02;">∅ </span><span class="white-bg" style="font-size: 19px;">ADMINISTRAR USUARIOS Y GRUPOS</span>
+										<span style="color: #b57c02;">∞ </span><span class="white-bg" style="font-size: 19px;">ADMINISTRAR USUARIOS Y GRUPOS</span>
 									</div><br>
 								
 									<div class="leftl">
 										<span style="color: #b57c02">⦾</span><span><b> CREAR NUEVO USUARIO:</b></span>
 									</div><p></p>
 								
-									<div class="centext">
+									<div class="leftl">
 										<span>Nombre del nuevo usuario creado: <b>ansible3</b></span>
 									</div>
 								
@@ -617,7 +682,7 @@
 										<!-- Terminal Body -->
 									  <section id="terminal__body">
 										<div id="terminal__prompt">
-											<span id="terminal__prompt--location">∅&nbsp;</span>
+											<span id="terminal__prompt--location">∞&nbsp;</span>
 											<span id="terminal__prompt--bling"><a style="color: #b57c02;">ansible</a> laboratorio <a style="color: #000;">-i </a>/tmp/inventario <a style="color: #000;">-m </a> user <a style="color: #000;">-a</a> <b>"</b>name=ansible3 password=P4ssw0rd<b>"</b> <a style="color: #000;">--become -K</a>&nbsp;</span>
 										</div>
 										  
@@ -683,7 +748,7 @@
 									<span style="color: #b57c02">⦾</span><span><b> ELIMINAR USUARIO:</b></span>
 								</div><p></p>
 								
-								<div class="centext">
+								<div class="leftl">
 									<span>Usuario eliminado: <b>ansible3</b></span>
 								</div>
 								
@@ -699,7 +764,7 @@
 									  <!-- Terminal Body -->
 									  <section id="terminal__body">
 										<div id="terminal__prompt">
-											<span id="terminal__prompt--location">∅&nbsp;</span>
+											<span id="terminal__prompt--location">∞&nbsp;</span>
 											<span id="terminal__prompt--bling"><a style="color: #b57c02;">ansible</a> laboratorio <a style="color: #000;">-i </a>/tmp/inventario <a style="color: #000;">-m </a> user <a style="color: #000;">-a</a> <b>"</b>name=ansible3 state=absent remove=yes<b>"</b> <a style="color: #000;">--become -K</a>&nbsp;</span>
 										</div>
 										  
@@ -745,20 +810,24 @@
 									  </section>
 								</div><p></p>
 								
-								<div class="centext">
+								<div class="leftl">
 									<span><b>Nota</b>: Si el usuario tiene una sesión iniciada en el nodo administrado, al momento de eliminarlo, arrojará un error similar a:</span>
 									<span><b>"msg": "userdel: user ansible3 is currently used by process 16575\n"</b></span>
 								</div>
 								</section>
-							<hr>
+							
+							<div style="border-top: 1px solid #000; width: 100%; margin: 10px 0;"></div>
 								
-								<section style="margin-top: 160px;" id="SERVICE">
+							<section style="margin-top: 130px;" id="SERVICE">
 								<div class="centext">
-									<span style="color: #b57c02;">∅ </span><span class="white-bg" style="font-size: 19px;">ADMINISTRAR SERVICIOS</span><p></p>
+									<span style="color: #b57c02;">∞ </span><span class="white-bg" style="font-size: 19px;">ADMINISTRAR SERVICIOS</span><p></p>
+								</div>
+									
+								<div class="leftl">
 									<span>El módulo <b>service</b> permite administrar servicios en el nodo adminsitrado.</span>
 								</div><br>
 								
-								<div class="left">
+								<div class="leftl">
 									<span style="color: #b57c02">⦾</span><span><b> INICIAR UN SERVICIO:</b></span>
 								</div><p></p>
 								
@@ -774,7 +843,7 @@
 									  <!-- Terminal Body -->
 									  <section id="terminal__body">
 										<div id="terminal__prompt">
-											<span id="terminal__prompt--location">∅&nbsp;</span>
+											<span id="terminal__prompt--location">∞&nbsp;</span>
 											<span id="terminal__prompt--bling"><a style="color: #b57c02;">ansible</a> laboratorio <a style="color: #000;">-i </a>/tmp/inventario <a style="color: #000;">-m </a> service <a style="color: #000;">-a</a> <b>"</b>name=nginx state=started<b>"</b> <a style="color: #000;">--become -K</a>&nbsp;</span>
 										</div>
 										  
@@ -812,7 +881,7 @@
 									<span style="color: #b57c02">⦾</span><span><b> REINICIAR UN SERVICIO:</b></span>
 								</div><p></p>
 								
-								<div id="terminal">
+								<div id="long-terminal">
 									  <!-- Terminal Bar -->       
 									  <section id="terminal__bar">          
 										<div id="bar__buttons">            
@@ -824,7 +893,7 @@
 									  <!-- Terminal Body -->
 									  <section id="terminal__body">
 										<div id="terminal__prompt">
-											<span id="terminal__prompt--location">∅&nbsp;</span>
+											<span id="terminal__prompt--location">∞&nbsp;</span>
 											<span id="terminal__prompt--bling"><a style="color: #b57c02;">ansible</a> laboratorio <a style="color: #000;">-i </a>/tmp/inventario <a style="color: #000;">-m </a> service <a style="color: #000;">-a</a> <b>"</b>name=nginx state=restarted<b>"</b> <a style="color: #000;">--become -K</a>&nbsp;</span>
 										</div>
 										  
@@ -858,7 +927,7 @@
 									  </section>
 								</div><br>
 								
-								<div class="left">
+								<div class="leftl">
 									<span style="color: #b57c02">⦾</span><span><b> DETENER UN SERVICIO:</b></span>
 								</div><p></p>
 								
@@ -874,7 +943,7 @@
 									  <!-- Terminal Body -->
 									  <section id="terminal__body">
 										<div id="terminal__prompt">
-											<span id="terminal__prompt--location">∅&nbsp;</span>
+											<span id="terminal__prompt--location">∞&nbsp;</span>
 											<span id="terminal__prompt--bling"><a style="color: #b57c02;">ansible</a> laboratorio <a style="color: #000;">-i </a>/tmp/inventario <a style="color: #000;">-m </a> service <a style="color: #000;">-a</a> <b>"</b>name=nginx state=stopped<b>"</b> <a style="color: #000;">--become -K</a>&nbsp;</span>
 										</div>
 										  
@@ -908,17 +977,20 @@
 									  </section>
 								</div>
 								</section>
-									<hr>
+							
+							<div style="border-top: 1px solid #000; width: 100%; margin: 10px 0;"></div>
 								
-								<section style="margin-top: 160px;" id="FACTS">
+							<section style="margin-top: 130px;" id="FACTS">
 								<div class="centext">
-									<span style="color: #b57c02;">∅ </span><span class="white-bg" style="font-size: 19px;">FACTS</span><p></p>
+									<span style="color: #b57c02;">∞ </span><span class="white-bg" style="font-size: 19px;">FACTS</span><p></p>
+								</div>
+								<div class="leftl">
 									<span>Los <b>facts</b> representan <b>variables descubiertas</b> sobre un sistema. Los facts permiten implementar la ejecución condicional de tareas y obtener información ad hoc sobre los sistemas.</span>
 									<p></p>
 									<span>El módulo <b>ansible.builtin.setup</b> es el encargado de trabajar con <b>facts</b>:</span>
 								</div><br>
 								
-								<div id="terminal">
+								<div id="long-terminal">
 									  <!-- Terminal Bar -->       
 									  <section id="terminal__bar">          
 										<div id="bar__buttons">            
@@ -930,7 +1002,7 @@
 									  <!-- Terminal Body -->
 									  <section id="terminal__body">
 										<div id="terminal__prompt">
-											<span id="terminal__prompt--location">∅&nbsp;</span>
+											<span id="terminal__prompt--location">∞&nbsp;</span>
 											<span id="terminal__prompt--bling"><a style="color: #b57c02;">ansible</a> laboratorio <a style="color: #000;">-i </a>/tmp/inventario <a style="color: #000;">-m </a> setup&nbsp;</span>
 										</div>
 										  
@@ -982,85 +1054,39 @@
 											  <span id="terminal__prompt--location">&nbsp;&nbsp;"<a style="color: #b57c02;">ansible_bios_version</a>": "VirtualBox"&nbsp;</span>
 										  </div>
 									</section>
-									</div>
-								</section>
-							</div>
-						</article>
-					</main>
-					<!--- ASIDE --->
-					<aside class="col-md-4 stk-post-dv">
-						<div class="widget widget-recent-posts">
-							<h3 class="widget-title">↳ Tabla de Contenido:</h3>		
-							<ul>
-								<li>
-									<a class="nodeco" href="#WHY">¿POR QUÉ AD-HOC?</a>
-								</li>
-								<li>
-									<a class="nodeco" href="#BUILTIN">REINICIAR SERVIDORES</a>
-								</li>
-								<li>
-									<a class="nodeco" href="#COPY">ADMINISTRAR FICHEROS</a>
-								</li>
-								<li>
-									<a class="nodeco" href="#USER">ADMINISTRAR USUARIOS Y GRUPOS</a>
-								</li>
-								<li>
-									<a class="nodeco" href="#SERVICE">ADMINISTRAR SERVICIOS</a>
-								</li>
-								<li>
-									<a class="nodeco" href="#FACTS">FACTS</a>
-								</li>
-							</ul>
+								</div>
+							</section>
 						</div>
-						
-						<div class="widget widget-category">
-							<h3 class="widget-title">✎ Notas:</h3>		
-							<ul>
-								<li>
-									<a><b>192.168.1.115</b>: IP del nodo administrado</a>
-								</li>
-								<li>
-									<a><b>-i</b>: Inventario</a>
-								</li>
-								<li>
-									<a><b>-m</b>: Módulo</a>
-								</li>
-								<li>
-									<a><b>-m</b>: Forks</a>
-								</li>
-								<li>
-									<a><b>ansible_python_interpreter</b>: Variable del inventario que define la ruta del intérprete de Python en el nodo administrado</a>
-								</li>
-								<li>
-									<a><b>ansible_user</b>: Variable del inventario que define el usuario que por defecto ejecutará las tareas en el nodo administrado</a>
-								</li>
-								<li>
-									<a><b>--become</b>: Ejecuta tareas como usuario sudo</a>
-								</li>
-								<li>
-									<a><b>--ask-become-pass</b>: Solicita la password del usuario sudo</a>
-								</li>
-								<li>
-									<a><b>-K</b>: Opción abreviada de --ask-become-pass</a>
-								</li>
-							</ul>
-						</div>
-					</aside>
-				</div>
+					</article>
+				</main>
 			</div>
 		</div>
+	</div>
 
-		<footer id="site-footer">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-12">
-						<div class="copyright">
-							<a class="nodeco" href="/index"><img style="margin-top: -5px;" src="/blog/img/skull.png" weight="19px" height="19px"> ØxBogart</a>
-						</div>
+	<footer id="site-footer">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="copyright">
+						<a href="#"><img src="/blog/img/skull.png" class="icomax" style="width: 10%"></a>
 					</div>
 				</div>
 			</div>
-		</footer>
-		<a href="#" id="scrollToTopButtonGold"><i class="fas fa-arrow-up"></i></a>
-	</body>
+		</div>
+	</footer>
+	<a href="#" id="scrollToTopButtonGold"><i class="fas fa-arrow-up"></i></a>
+<script>
+function toggleNav() {
+  var sidebar = document.getElementById("mySidebar");
+  var sidebarDisplay = window.getComputedStyle(sidebar).display;
+
+  if (sidebarDisplay === "none") {
+    sidebar.style.display = "block";
+    sidebar.style.width = "200px";
+  } else {
+    sidebar.style.display = "none";
+  }
+}
+</script>
+</body>
 </html>

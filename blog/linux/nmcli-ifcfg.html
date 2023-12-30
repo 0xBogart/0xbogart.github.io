@@ -264,7 +264,7 @@
 							</div><br><br>
 
 							<div class="leftl">
-								<span><b>⦾ Añadir una dirección IPv4 secundaria a la interfaz enp0s3:</b></span>
+								<span><b>⦾ Añadir una dirección IPv4 secundaria a la interfaz enp0s3 y decirle a NetworkManager que vuelva a leer los perfiles de conexión del disco cuando se realice un cambio en ellos:</b></span>
 							</div>
 
 							<div id="long-terminal" style="margin-top: 10px;">
@@ -378,144 +378,125 @@
 							<div style="border-top: 1px solid #000; width: 100%; margin: 10px 0;"></div>
 		   
 							<div style="margin-top: 130px;" class="centext" id="nmclipv6">
-								<a style="font-size: 19px; color: rgb(88, 177, 0);">☣ </a><span class="green-bg" style="font-size: 19px;">MÉTODO 2: nmcli [IPv6]</span>
+								<a style="font-size: 19px; color: rgb(88, 177, 0);">☣ </a><span class="green-bg" style="font-size: 19px;">nmcli [IPv6]</span>
 							</div><br>
-								
-							<div id="long-terminal">   
+
+							<div class="leftl">
+								<span><b>⦾ Añadir dirección IPv6 a la interfaz de red enp3s0:</b></span>
+							</div>
+							
+							<div id="long-terminal">
+								<!-- Terminal Bar -->       
+								<section id="terminal__bar">          
+									<div id="bar__buttons">            
+										<button class="bar__button" id="bar__button--exit">&#10005;</button>            
+										<button class="bar__button">&#9472;</button>                
+										<button class="bar__button">&#9723;</button>          
+									</div>
+								</section>      
 								<!-- Terminal Body -->
-								<section id="terminal_body">
+								<section id="terminal__body">
 									<div id="terminal__prompt">
-										<span id="terminal__prompt--bling"><b>·&nbsp;</b></span>
-										<span id="terminal__prompt--location"><b>nmcli connection modify enp0s3 ipv6.method manual ipv6.addresses fd01::100/64 
-&nbsp;</b></span>
-										<span id="terminal__prompt--user-white">Añadir dirección IPv6.&nbsp;</span>					
+										<span id="terminal__prompt--user"><a style="color: #3EFF00;">☣</a>&nbsp;</span>
+										<span id="terminal__prompt--bling"><b>nmcli connection modify enp0s3 ipv6.method manual ipv6.addresses <a style="color: #3EFF00;">fd01::100/64</a>&nbsp;</b></span>				
 									</div>
 									<div id="terminal__prompt">
-										<span id="terminal__prompt--bling"><b>·&nbsp;</b></span>
-										<span id="terminal__prompt--location"><b>nmcli connection reload&nbsp;</b></span>
-										<span id="terminal__prompt--user-white">Actualizar la configuración de Red.&nbsp;</span>					
+										<span id="terminal__prompt--user"><a style="color: #3EFF00;">☣</a>&nbsp;</span>
+										<span id="terminal__prompt--bling"><b>nmcli connection reload&nbsp;</b></span>				
+									</div>
+								</section>
+							</div><br><br>
+
+							<div class="leftl">
+								<span><b>⦾ Comprobar que nmcli ha actualizado los cambios y reconoce la dirección IPv6 secundaria:</b></span>
+							</div>
+								
+							<div id="long-terminal">
+								<!-- Terminal Bar -->       
+								<section id="terminal__bar">          
+									<div id="bar__buttons">            
+										<button class="bar__button" id="bar__button--exit">&#10005;</button>            
+										<button class="bar__button">&#9472;</button>                
+										<button class="bar__button">&#9723;</button>          
+									</div>
+								</section>      
+								<!-- Terminal Body -->
+								<section id="terminal__body">
+									<div id="terminal__prompt">
+										<span id="terminal__prompt--user"><a style="color: #3EFF00;">☣</a>&nbsp;</span>
+										<span id="terminal__prompt--bling"><b>nmcli connection show enp0s3&nbsp;</b></span>				
+									</div>
+									<br>
+									<div id="terminal__prompt">
+										<span id="terminal__prompt--bling"><b>ipv6.dns-priority:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0</b></span>				
 									</div>
 									<div id="terminal__prompt">
-										<span id="terminal__prompt--bling"><b>·&nbsp;</b></span>
-										<span id="terminal__prompt--location"><b>nmcli connection show enp0s3</b></span>
-										<span id="terminal__prompt--user-white">&nbsp;Comprobar que nmcli ha actualizado los cambios y reconoce la dirección IPv6 secundaria&nbsp;</span>
+										<span id="terminal__prompt--bling"><b>ipv6.addresses:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a style="color: #3EFF00">fd01::100/64</a>&nbsp;</b></span>				
 									</div>
 									<div id="terminal__prompt">
-										<span id="terminal__prompt--bling"><b>·&nbsp;</b></span>
-										<span id="terminal__prompt--location"><b>ifdown enp0s3 &amp;&amp; ifup enp0s3&nbsp;</b></span>
-										<span id="terminal__prompt--user-white">Reiniciar la interfaz para aplicar los cambios.&nbsp;</span>					
+										<span id="terminal__prompt--bling"><b>ipv6.gateway:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--</b></span>				
+									</div>
+									<div id="terminal__prompt">
+										<span id="terminal__prompt--bling"><b>ipv6.routes:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--</b></span>				
+									</div>
+									<div id="terminal__prompt">
+										<span id="terminal__prompt--bling"><b>ipv6.routes-metric:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-1</b></span>				
+									</div>
+									<div id="terminal__prompt">
+										<span id="terminal__prompt--bling"><b>ipv6.route-table:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0(unspec)</b>&nbsp;</span>				
+									</div>
+									<div id="terminal__prompt">
+										<span id="terminal__prompt--bling"><b>ipv6.routing-rules:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--</b></span>
+									</div>
+									<div id="terminal__prompt">
+										<span id="terminal__prompt--bling"><b>ipv6.ignore-auto-routes:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;no</b></span>
+									</div>
+									<div id="terminal__prompt">
+										<span id="terminal__prompt--bling"><b>ipv6.ignore-auto-dns:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;no</b></span>
+									</div>
+									<div id="terminal__prompt">
+										<span id="terminal__prompt--bling"><b>ipv6.never-default:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;no</b></span>
+									</div>
+									<br>
+									<div id="terminal__prompt">
+										<span id="terminal__prompt--bling"><b>IPV4.ADDRESS[1]:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;192.168.1.52/24</b></span>
+									</div>
+									<div id="terminal__prompt">
+										<span id="terminal__prompt--bling"><b>IPV4.ADDRESS[2]:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;192.168.1.45/24</b></span>
+									</div>
+									<div id="terminal__prompt">
+										<span id="terminal__prompt--bling"><b>IPV6.ADDRESS[1]:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fe80::a00:27ff:fed8:630e/64&nbsp;</b></span>
+									</div>
+								</section>
+							</div><br><br>
+
+							<div class="leftl">
+								<span><b>⦾ Reiniciar la interfaz para aplicar los cambios:</b></span>
+							</div>
+
+							<div id="long-terminal" style="margin-top: 10px;">   
+								<!-- Terminal Body -->
+								<!-- Terminal Bar -->       
+								<section id="terminal__bar">          
+									<div id="bar__buttons">            
+										<button class="bar__button" id="bar__button--exit">&#10005;</button>            
+										<button class="bar__button">&#9472;</button>                
+										<button class="bar__button">&#9723;</button>          
+									</div>
+								</section>  
+								<section id="terminal__body">
+									<div id="terminal__prompt">
+										<span id="terminal__prompt--user"><b><a style="color: #3EFF00;">☣</a>&nbsp;</b></span>
+										<span id="terminal__prompt--bling"><b>ifdown enp0s3 <a style="color: #3EFF00;">&amp;&amp; </a>ifup enp0s3&nbsp;</b></span>
 									</div>
 								</section>
 							</div>
-							<br><br>
-							
-							<div id="long-terminal">
-			    <!-- Terminal Bar -->       
-			    <section id="terminal__bar">          
-				    <div id="bar__buttons">            
-					    <button class="bar__button" id="bar__button--exit">&#10005;</button>            
-					    <button class="bar__button">&#9472;</button>                
-					    <button class="bar__button">&#9723;</button>          
-				    </div>
-			    </section>      
-			    <!-- Terminal Body -->
-			    <section id="terminal__body">
-				    <div id="terminal__prompt">
-					    <span id="terminal__prompt--user"><a style="color: #3EFF00;">☣</a>&nbsp;</span>
-					    <span id="terminal__prompt--bling"><b>nmcli connection modify enp0s3 ipv6.method manual ipv6.addresses <a style="color: #3EFF00;">fd01::100/64</a>&nbsp;</b></span>				
-				    </div>
-				    <div id="terminal__prompt">
-					    <span id="terminal__prompt--user"><a style="color: #3EFF00;">☣</a>&nbsp;</span>
-					    <span id="terminal__prompt--bling"><b>nmcli connection reload&nbsp;</b></span>				
-				    </div>
-			    </section>
-		    </div>
-		    <br><br>
-								
-		    <div id="long-terminal">
-			    <!-- Terminal Bar -->       
-			    <section id="terminal__bar">          
-				    <div id="bar__buttons">            
-					    <button class="bar__button" id="bar__button--exit">&#10005;</button>            
-					    <button class="bar__button">&#9472;</button>                
-					    <button class="bar__button">&#9723;</button>          
-				    </div>
-			    </section>      
-			    <!-- Terminal Body -->
-			    <section id="terminal__body">
-				    <div id="terminal__prompt">
-					    <span id="terminal__prompt--user"><a style="color: #3EFF00;">☣</a>&nbsp;</span>
-					    <span id="terminal__prompt--bling"><b>nmcli connection show enp0s3&nbsp;</b></span>				
-				    </div>
-				    <br>
-				    <div id="terminal__prompt">
-					    <span id="terminal__prompt--bling"><b>ipv6.dns-priority:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0</b></span>				
-				    </div>
-				    <div id="terminal__prompt">
-					    <span id="terminal__prompt--bling"><b>ipv6.addresses:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a style="color: #3EFF00">fd01::100/64</a>&nbsp;</b></span>				
-				    </div>
-				    <div id="terminal__prompt">
-					    <span id="terminal__prompt--bling"><b>ipv6.gateway:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--</b></span>				
-				    </div>
-				    <div id="terminal__prompt">
-					    <span id="terminal__prompt--bling"><b>ipv6.routes:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--</b></span>				
-				    </div>
-				    <div id="terminal__prompt">
-					    <span id="terminal__prompt--bling"><b>ipv6.routes-metric:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-1</b></span>				
-				    </div>
-				    <div id="terminal__prompt">
-					    <span id="terminal__prompt--bling"><b>ipv6.route-table:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0(unspec)</b>&nbsp;</span>				
-				    </div>
-				    <div id="terminal__prompt">
-					    <span id="terminal__prompt--bling"><b>ipv6.routing-rules:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--</b></span>
-				    </div>
-				    <div id="terminal__prompt">
-					    <span id="terminal__prompt--bling"><b>ipv6.ignore-auto-routes:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;no</b></span>
-				    </div>
-				    <div id="terminal__prompt">
-					    <span id="terminal__prompt--bling"><b>ipv6.ignore-auto-dns:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;no</b></span>
-				    </div>
-				    <div id="terminal__prompt">
-					    <span id="terminal__prompt--bling"><b>ipv6.never-default:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;no</b></span>
-				    </div>
-				    <br>
-				    <div id="terminal__prompt">
-					    <span id="terminal__prompt--bling"><b>IPV4.ADDRESS[1]:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;192.168.1.52/24</b></span>
-				    </div>
-				    <div id="terminal__prompt">
-					    <span id="terminal__prompt--bling"><b>IPV4.ADDRESS[2]:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;192.168.1.45/24</b></span>
-				    </div>
-				    <div id="terminal__prompt">
-					    <span id="terminal__prompt--bling"><b>IPV6.ADDRESS[1]:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fe80::a00:27ff:fed8:630e/64&nbsp;</b></span>
-				    </div>
-			    </section>
-		    </div>
-		    <br><br>
-
-		    <div id="long-terminal">   
-			    <!-- Terminal Body -->
-			    <!-- Terminal Bar -->       
-			    <section id="terminal__bar">          
-				    <div id="bar__buttons">            
-					    <button class="bar__button" id="bar__button--exit">&#10005;</button>            
-					    <button class="bar__button">&#9472;</button>                
-					    <button class="bar__button">&#9723;</button>          
-				    </div>
-			    </section>  
-			    <section id="terminal__body">
-				    <div id="terminal__prompt">
-					    <span id="terminal__prompt--user"><b><a style="color: #3EFF00;">☣</a>&nbsp;</b></span>
-					    <span id="terminal__prompt--bling"><b>ifdown enp0s3 <a style="color: #3EFF00;">&amp;&amp; </a>ifup enp0s3&nbsp;</b></span>
-				    </div>
-			    </section>
-		    </div>
-	    </div>
-	  </article>
+						</div>
+					</article>
 				</main>
-      </div>
-
-</div>
-  </div>
+			</div>
+		</div>
+	</div>
 
 <footer id="site-footer">
 	<div class="container">

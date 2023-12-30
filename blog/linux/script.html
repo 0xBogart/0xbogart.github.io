@@ -118,213 +118,213 @@
 
   <div class="container">
     <div class="row">
-				<main class="col-md-8" style="margin-left: auto; margin-right: auto;">
-            <article class="post post-1">
-              <header  class="entry-header">
-                <h1 class="blh1">SCRIPT</h1>
-                <h2 class="blh2">GRABAR SESIONES DE TERMINAL EN TIEMPO REAL</h2>
-              </header>
+	    <main class="col-md-8" style="margin-left: auto; margin-right: auto;">
+		    <article class="post post-1">
+			    <header  class="entry-header">
+				    <h1 class="blh1">SCRIPT</h1>
+				    <h2 class="blh2">GRABAR SESIONES DE TERMINAL EN TIEMPO REAL</h2>
+			    </header>
 
-							<div class="entry-content clearfix">
-                <div style="margin-top: 50px;" class="leftl" id="INTRO">
-									<span><b>script</b> es una herramienta que realiza una composición tipográfica de todo lo que hay en tu sesión de terminal.</span><br><br>
-									<span>Los datos de la terminal se almacenan en bruto en el archivo de registro y la información sobre la temporización en otro archivo de registro estructurado {opcional}</span><br><br>
-									<span>El archivo de registro de tiempo es necesario para reproducir la sesión posteriormente mediante <b>scriptreplay</b> y para almacenar información adicional sobre la sesión.</span><br><br>
-									<span>El comando <b>exit</b> o presionar las teclas <b>Ctrl+D</b> finalizarán la grabación de sesión.</span>
-                </div>
+			    <div class="entry-content clearfix">
+				    <div style="margin-top: 50px;" class="leftl" id="INTRO">
+					    <span><b>script</b> es una herramienta que realiza una composición tipográfica de todo lo que hay en tu sesión de terminal.</span><br><br>
+					    <span>Los datos de la terminal se almacenan en bruto en el archivo de registro y la información sobre la temporización en otro archivo de registro estructurado [opcional]</span><br><br>
+					    <span>El archivo de registro de tiempo es necesario para reproducir la sesión posteriormente mediante <b>scriptreplay</b> y para almacenar información adicional sobre la sesión.</span><br><br>
+					    <span>El comando <b>exit</b> o presionar las teclas <b>Ctrl+D</b> finalizarán la grabación de sesión.</span>
+				    </div>
 
-                <div style="border-top: 1px solid #000; width: 100%; margin: 10px 0;"></div>
+				    <div style="border-top: 1px solid #000; width: 100%; margin: 10px 0;"></div>
 								
-								<div style="margin-top: 130px;" class="centext" id="script">
-									<a style="font-size: 19px; color: rgb(88, 177, 0);">☣ </a><span class="green-bg" style="font-size: 19px;">INICIAR GRABACIÓN</span>
-								</div><p></p>
+				    <div style="margin-top: 130px;" class="centext" id="script">
+					    <a style="font-size: 19px; color: rgb(88, 177, 0);">☣ </a><span class="green-bg" style="font-size: 19px;">INICIAR GRABACIÓN</span>
+				    </div><p></p>
 
-									<div id="terminal">
-									  <!-- Terminal Bar -->
-									  <section id="terminal__bar">
-										<div id="bar__buttons">
-										  <button class="bar__button" id="bar__button--exit">&#10005;</button>
-										  <button class="bar__button">&#9472;</button>
-										  <button class="bar__button">&#9723;</button>
-										</div>
-									  </section>        
-									  <!-- Terminal Body -->
-									  <section style="background-color: #22363f;" id="terminal__body">
-										<div id="terminal__prompt">
-											<span id="terminal__prompt--user"><a style="color: #3EFF00;">☣</a>&nbsp;</span>
-											<span id="terminal__prompt--bling"><b>script<a style="color: #3EFF00"> --timing</a>=<a style="color: #3EFF00">time_log sesion-1</a></b></span>
-										</div>
+				    <div id="terminal">
+					    <!-- Terminal Bar -->
+					    <section id="terminal__bar">
+						    <div id="bar__buttons">
+							    <button class="bar__button" id="bar__button--exit">&#10005;</button>
+							    <button class="bar__button">&#9472;</button>
+							    <button class="bar__button">&#9723;</button>
+						    </div>
+					    </section>        
+					    <!-- Terminal Body -->
+					    <section style="background-color: #22363f;" id="terminal__body">
+						    <div id="terminal__prompt">
+							    <span id="terminal__prompt--user"><a style="color: #3EFF00;">☣</a>&nbsp;</span>
+							    <span id="terminal__prompt--bling"><b>script<a style="color: #3EFF00"> --timing</a>=<a style="color: #3EFF00">time_log sesion-1</a></b></span>
+						    </div>
 
-										  <div id="terminal__prompt">
-											  <span id="terminal__prompt--bling"><b>Script starded, output log file is 'sesion-1'</b>&nbsp;</span>
-										  </div><p></p>
-										  
-										  <div id="terminal__prompt">
-											  <span id="terminal__prompt--user"><a style="color: #3EFF00;">☣</a>&nbsp;</span>
-											  <span id="terminal__prompt--bling"><b>ls<a style="color: #3EFF00;"> -l</a></b></span>
-										  </div>
-										  
-										  <div id="terminal__prompt">
-											  <span id="terminal__prompt--bling"><b>-rw-r--r-- 13 skxll skxll 13 Apr 8 a.txt</b></span>
-										  </div>
-										  
-										  <div id="terminal__prompt">
-											  <span id="terminal__prompt--bling"><b>-rw-r--r-- 6 skxll skxll 6 Apr 8 b.txt</b></span>
-										  </div>
-										  
-										  <div id="terminal__prompt">
-											  <span id="terminal__prompt--bling"><b>-rw-r--r-- 5 skxll skxll 5 Apr 8 c.txt</b></span>
-										  </div>
-										  
-										  <div id="terminal__prompt">
-											  <span id="terminal__prompt--bling"><b>-rw-r--r-- 0 skxll skxll 5 Apr 9 <a style="color: #3EFF00;">sesion-1</a></b>&nbsp;</span>
-										  </div>
-										  
-										  <div id="terminal__prompt">
-											  <span id="terminal__prompt--bling"><b>-rw-r--r-- 0 skxll skxll 5 Apr 9 <a style="color: #3EFF00;">time_log</a></b>&nbsp;</span>
-										  </div><p></p>
-										  
-										  <div id="terminal__prompt">
-											  <span id="terminal__prompt--user"><a style="color: #3EFF00;">☣</a>&nbsp;</span>
-											  <span id="terminal__prompt--bling"><b>cat <a style="color: #3EFF00;">a.txt b.txt c.txt</a></b></span>
-										  </div>
-										  
-										  <div id="terminal__prompt">
-											  <span id="terminal__prompt--bling"><b>Bienvenido a</b></span>
-										  </div>
-										  
-										  <div id="terminal__prompt">
-											  <span id="terminal__prompt--bling"><b>skxll</b></span>
-										  </div>
-										  
-										  <div id="terminal__prompt">
-											  <span id="terminal__prompt--bling"><b>.net</b></span>
-										  </div><p></p>
-										  
-										  <div id="terminal__prompt">
-											  <span id="terminal__prompt--user"><a style="color: #3EFF00;">☣</a>&nbsp;</span>
-											  <span id="terminal__prompt--bling"><b>date</b></span>
-										  </div>
-										  
-										  <div id="terminal__prompt">
-											  <span id="terminal__prompt--bling"><b>Sat Apr  8 04:03:41 PM CEST 2023</b></span>
-										  </div><p></p>
-										  
-										  <div id="terminal__prompt">
-											  <span id="terminal__prompt--user"><a style="color: #3EFF00;">☣</a>&nbsp;</span>
-											  <span id="terminal__prompt--bling"><b>exit</b></span>
-										  </div>
-										  
-										  <div id="terminal__prompt">
-											  <span id="terminal__prompt--bling"><b>Script done.</b></span>
-										  </div>
-									  </section>
-								</div>
+						    <div id="terminal__prompt">
+							    <span id="terminal__prompt--bling"><b>Script starded, output log file is 'sesion-1'</b>&nbsp;</span>
+						    </div><p></p>
 
-								<div style="border-top: 1px solid #000; width: 100%; margin: 10px 0;"></div>
-								
-								<div style="margin-top: 130px;" id="scriptreplay">
-								<a style="font-size: 19px; color: rgb(88, 177, 0);">☣ </a><span  class="green-bg" style="font-size: 19px;">SCRIPTREPLAY</span>
-								</div><p></p>
-								
-								<div class="leftl">
-									<span>Esta herramienta repite una secuencia de comandos, utilizando la información de tiempo para asegurar que la salida se produce al mismo tempo que originalmente se grabó la sesión.</span>
-								</div><br>
-								
-								<div class="leftl">
-									<span><b>⦾ --timing</b>: Archivo de registro de temporización de secuencias de comandos</span><br>
-									<span><b>⦾ sesion-1</b>: Nombre de la sesión previamente grabada</span>
-								</div><p></p>
-								
-								<div id="terminal">
-									  <!-- Terminal Bar -->
-									  <section id="terminal__bar">
-										<div id="bar__buttons">
-										  <button class="bar__button" id="bar__button--exit">&#10005;</button>
-										  <button class="bar__button">&#9472;</button>
-										  <button class="bar__button">&#9723;</button>
-										</div>
-									  </section>        
-									  <!-- Terminal Body -->
-									  <section style="background-color: #22363f;" id="terminal__body">
-										<div id="terminal__prompt">
-											<span id="terminal__prompt--user"><a style="color: #3EFF00;">☣</a>&nbsp;</span>
-											<span id="terminal__prompt--bling"><b>scriptreplay<a style="color: #3EFF00"> --timing=time_log sesion-1</a></b>&nbsp;</span>
-										</div>
+						    <div id="terminal__prompt">
+							    <span id="terminal__prompt--user"><a style="color: #3EFF00;">☣</a>&nbsp;</span>
+							    <span id="terminal__prompt--bling"><b>ls<a style="color: #3EFF00;"> -l</a></b></span>
+						    </div>
 										  
-										  <div id="terminal__prompt">
-											  <span id="terminal__prompt--user"><a style="color: #3EFF00;">☣</a>&nbsp;</span>
-											  <span id="terminal__prompt--bling"><b>ls<a style="color: #3EFF00;"> -l</a></b></span>
-										  </div>
+						    <div id="terminal__prompt">
+							    <span id="terminal__prompt--bling"><b>-rw-r--r-- 13 skxll skxll 13 Apr 8 a.txt</b></span>
+						    </div>
 										  
-										  <div id="terminal__prompt">
-											  <span id="terminal__prompt--bling"><b>-rw-r--r-- 13 skxll skxll 13 Apr 8 a.txt</b></span>
-										  </div>
+						    <div id="terminal__prompt">
+							    <span id="terminal__prompt--bling"><b>-rw-r--r-- 6 skxll skxll 6 Apr 8 b.txt</b></span>
+						    </div>
 										  
-										  <div id="terminal__prompt">
-											  <span id="terminal__prompt--bling"><b>-rw-r--r-- 6 skxll skxll 6 Apr 8 b.txt</b></span>
-										  </div>
+						    <div id="terminal__prompt">
+							    <span id="terminal__prompt--bling"><b>-rw-r--r-- 5 skxll skxll 5 Apr 8 c.txt</b></span>
+						    </div>
 										  
-										  <div id="terminal__prompt">
-											  <span id="terminal__prompt--bling"><b>-rw-r--r-- 5 skxll skxll 5 Apr 8 c.txt</b></span>
-										  </div>
+						    <div id="terminal__prompt">
+							    <span id="terminal__prompt--bling"><b>-rw-r--r-- 0 skxll skxll 5 Apr 9 <a style="color: #3EFF00;">sesion-1</a></b>&nbsp;</span>
+						    </div>
 										  
-										  <div id="terminal__prompt">
-											  <span id="terminal__prompt--bling"><b>-rw-r--r-- 0 skxll skxll 5 Apr 9 <a style="color: #3EFF00;">sesion-1</a></b>&nbsp;</span>
-										  </div>
+						    <div id="terminal__prompt">
+							    <span id="terminal__prompt--bling"><b>-rw-r--r-- 0 skxll skxll 5 Apr 9 <a style="color: #3EFF00;">time_log</a></b>&nbsp;</span>
+						    </div><p></p>
 										  
-										  <div id="terminal__prompt">
-											  <span id="terminal__prompt--bling"><b>-rw-r--r-- 0 skxll skxll 5 Apr 9 <a style="color: #3EFF00;">time_log</a></b>&nbsp;</span>
-										  </div><p></p>
+						    <div id="terminal__prompt">
+							    <span id="terminal__prompt--user"><a style="color: #3EFF00;">☣</a>&nbsp;</span>
+							    <span id="terminal__prompt--bling"><b>cat <a style="color: #3EFF00;">a.txt b.txt c.txt</a></b></span>
+						    </div>
 										  
-										  <div id="terminal__prompt">
-											  <span id="terminal__prompt--user"><a style="color: #3EFF00;">☣</a>&nbsp;</span>
-											  <span id="terminal__prompt--bling"><b>cat <a style="color: #3EFF00;">a.txt b.txt c.txt</a></b></span>
-										  </div>
+						    <div id="terminal__prompt">
+							    <span id="terminal__prompt--bling"><b>Bienvenido a</b></span>
+						    </div>
 										  
-										  <div id="terminal__prompt">
-											  <span id="terminal__prompt--bling"><b>Bienvenido a</b></span>
-										  </div>
+						    <div id="terminal__prompt">
+							    <span id="terminal__prompt--bling"><b>skxll</b></span>
+						    </div>
 										  
-										  <div id="terminal__prompt">
-											  <span id="terminal__prompt--bling"><b>skxll</b></span>
-										  </div>
+						    <div id="terminal__prompt">
+							    <span id="terminal__prompt--bling"><b>.net</b></span>
+						    </div><p></p>
 										  
-										  <div id="terminal__prompt">
-											  <span id="terminal__prompt--bling"><b>.net</b></span>
-										  </div><p></p>
+						    <div id="terminal__prompt">
+							    <span id="terminal__prompt--user"><a style="color: #3EFF00;">☣</a>&nbsp;</span>
+							    <span id="terminal__prompt--bling"><b>date</b></span>
+						    </div>
 										  
-										  <div id="terminal__prompt">
-											  <span id="terminal__prompt--user"><a style="color: #3EFF00;">☣</a>&nbsp;</span>
-											  <span id="terminal__prompt--bling"><b>date</b></span>
-										  </div>
+						    <div id="terminal__prompt">
+							    <span id="terminal__prompt--bling"><b>Sat Apr  8 04:03:41 PM CEST 2023</b></span>
+						    </div><p></p>
 										  
-										  <div id="terminal__prompt">
-											  <span id="terminal__prompt--bling"><b>Sat Apr  8 04:03:41 PM CEST 2023</b></span>
-										  </div><p></p>
+						    <div id="terminal__prompt">
+							    <span id="terminal__prompt--user"><a style="color: #3EFF00;">☣</a>&nbsp;</span>
+							    <span id="terminal__prompt--bling"><b>exit</b></span>
+						    </div>
 										  
-										  <div id="terminal__prompt">
-											  <span id="terminal__prompt--user"><a style="color: #3EFF00;">☣</a>&nbsp;</span>
-											  <span id="terminal__prompt--bling"><b>exit</b></span>
-										  </div>
-									  </section>
-								</div>
+						    <div id="terminal__prompt">
+							    <span id="terminal__prompt--bling"><b>Script done.</b></span>
+						    </div>
+					    </section>
+				    </div>
 
-								<div style="border-top: 1px solid #000; width: 100%; margin: 10px 0;"></div>
+				    <div style="border-top: 1px solid #000; width: 100%; margin: 10px 0;"></div>
 								
-								<div style="margin-top: 130px;" id="video">
-								<a style="font-size: 19px; color: rgb(88, 177, 0);">☣ </a><span  class="green-bg" style="font-size: 19px;">VIDEO DEMOSTRATIVO</span>
-								</div><p></p>
+				    <div style="margin-top: 130px;" id="scriptreplay">
+					    <a style="font-size: 19px; color: rgb(88, 177, 0);">☣ </a><span  class="green-bg" style="font-size: 19px;">SCRIPTREPLAY</span>
+				    </div><p></p>
+								
+				    <div class="leftl">
+					    <span>Esta herramienta repite una secuencia de comandos, utilizando la información de tiempo para asegurar que la salida se produce al mismo tempo que originalmente se grabó la sesión.</span>
+				    </div><br>
+								
+				    <div class="leftl">
+					    <span><b>⦾ --timing</b>: Archivo de registro de temporización de secuencias de comandos</span><br>
+					    <span><b>⦾ sesion-1</b>: Nombre de la sesión previamente grabada</span>
+				    </div><p></p>
+								
+				    <div id="terminal">
+					    <!-- Terminal Bar -->
+					    <section id="terminal__bar">
+						    <div id="bar__buttons">
+							    <button class="bar__button" id="bar__button--exit">&#10005;</button>
+							    <button class="bar__button">&#9472;</button>
+							    <button class="bar__button">&#9723;</button>
+						    </div>
+					    </section>        
+					    <!-- Terminal Body -->
+					    <section style="background-color: #22363f;" id="terminal__body">
+						    <div id="terminal__prompt">
+							    <span id="terminal__prompt--user"><a style="color: #3EFF00;">☣</a>&nbsp;</span>
+							    <span id="terminal__prompt--bling"><b>scriptreplay<a style="color: #3EFF00"> --timing=time_log sesion-1</a></b>&nbsp;</span>
+						    </div>
+										  
+						    <div id="terminal__prompt">
+							    <span id="terminal__prompt--user"><a style="color: #3EFF00;">☣</a>&nbsp;</span>
+							    <span id="terminal__prompt--bling"><b>ls<a style="color: #3EFF00;"> -l</a></b></span>
+						    </div>
+										  
+						    <div id="terminal__prompt">
+							    <span id="terminal__prompt--bling"><b>-rw-r--r-- 13 skxll skxll 13 Apr 8 a.txt</b></span>
+						    </div>
+										  
+						    <div id="terminal__prompt">
+							    <span id="terminal__prompt--bling"><b>-rw-r--r-- 6 skxll skxll 6 Apr 8 b.txt</b></span>
+						    </div>
+										  
+						    <div id="terminal__prompt">
+							    <span id="terminal__prompt--bling"><b>-rw-r--r-- 5 skxll skxll 5 Apr 8 c.txt</b></span>
+						    </div>
+										  
+						    <div id="terminal__prompt">
+							    <span id="terminal__prompt--bling"><b>-rw-r--r-- 0 skxll skxll 5 Apr 9 <a style="color: #3EFF00;">sesion-1</a></b>&nbsp;</span>
+						    </div>
+										  
+						    <div id="terminal__prompt">
+							    <span id="terminal__prompt--bling"><b>-rw-r--r-- 0 skxll skxll 5 Apr 9 <a style="color: #3EFF00;">time_log</a></b>&nbsp;</span>
+						    </div><p></p>
+										  
+						    <div id="terminal__prompt">
+							    <span id="terminal__prompt--user"><a style="color: #3EFF00;">☣</a>&nbsp;</span>
+							    <span id="terminal__prompt--bling"><b>cat <a style="color: #3EFF00;">a.txt b.txt c.txt</a></b></span>
+						    </div>
+										  
+						    <div id="terminal__prompt">
+							    <span id="terminal__prompt--bling"><b>Bienvenido a</b></span>
+						    </div>
+										  
+						    <div id="terminal__prompt">
+							    <span id="terminal__prompt--bling"><b>skxll</b></span>
+						    </div>
+										  
+						    <div id="terminal__prompt">
+							    <span id="terminal__prompt--bling"><b>.net</b></span>
+						    </div><p></p>
+										  
+						    <div id="terminal__prompt">
+							    <span id="terminal__prompt--user"><a style="color: #3EFF00;">☣</a>&nbsp;</span>
+							    <span id="terminal__prompt--bling"><b>date</b></span>
+						    </div>
+										  
+						    <div id="terminal__prompt">
+							    <span id="terminal__prompt--bling"><b>Sat Apr  8 04:03:41 PM CEST 2023</b></span>
+						    </div><p></p>
+										  
+						    <div id="terminal__prompt">
+							    <span id="terminal__prompt--user"><a style="color: #3EFF00;">☣</a>&nbsp;</span>
+							    <span id="terminal__prompt--bling"><b>exit</b></span>
+						    </div>
+					    </section>
+				    </div>
+
+				    <div style="border-top: 1px solid #000; width: 100%; margin: 10px 0;"></div>
+								
+				    <div style="margin-top: 130px;" id="video">
+					    <a style="font-size: 19px; color: rgb(88, 177, 0);">☣ </a><span  class="green-bg" style="font-size: 19px;">VIDEO DEMOSTRATIVO</span>
+				    </div><p></p>
                 
-								<video width="100%" controls>
-										<source src="/blog/v/scriptreplay.mp4" type="video/mp4">
-								</video>
-							</div>
-						</article>
-					</main>
-				</div>
-			</div>
-			</div>
+				    <video width="100%" controls>
+					    <source src="/blog/v/scriptreplay.mp4" type="video/mp4">
+				    </video>
+			    </div>
+		    </article>
+	    </main>
+    </div>
+  </div>
+  </div>
 
 <footer id="site-footer">
 	<div class="container">

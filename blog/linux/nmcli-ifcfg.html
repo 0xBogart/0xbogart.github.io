@@ -129,14 +129,10 @@
 
 							<div class="leftl">
 								<span>Los archivos de configuración de interfaz controlan las interfaces de software para dispositivos de red individuales. Cuando el sistema arranca, utiliza estos archivos para determinar qué interfaces mostrar y cómo configurarlas. Estos archivos suelen llamarse <b>ifcfg-name</b>, donde name se refiere al nombre del dispositivo que controla el archivo de configuración.</span><br><br>
-								<span>La interfaz enp0s3 tiene una dirección IPv4 e IPv6 configuradas por DHCP:</span><br>
-							</div><br>
-							
-							<div class="leftl">
-								<span>⦾ <b>Crear y configurar un script con el mismo nombre que el de la interfaz original, pero acabado en :1</b></span><br>
+								<span>La interfaz <b>enp0s3</b> tiene una dirección <b>IPv4</b> e <b>IPv6</b> configuradas por <b>DHCP</b>:</span>
 							</div>
-
-							<div id="long-terminal">
+							
+							<div id="long-terminal" style="margin-top: 10px;">
 								<!-- Terminal Bar -->       
 								<section id="terminal__bar">          
 									<div id="bar__buttons">            
@@ -173,111 +169,117 @@
 								<span>⦾ <b>Crear y configurar un script con el mismo nombre que el de la interfaz original, pero acabado en :1</b></span>
 							</div>
 
-							<div id="long-terminal">
+							<div id="terminal" style="margin-top: 10px;">
 								<!-- Terminal Bar -->       
 								<section id="terminal__bar">          
-                <div id="bar__buttons">            
-			<button class="bar__button" id="bar__button--exit">&#10005;</button>            
-			<button class="bar__button">&#9472;</button>                
-			<button class="bar__button">&#9723;</button>          
-		</div>
-	      </section>        
-		    <!-- Terminal Body -->
-		    <section id="terminal__body">
-			    <div id="terminal__prompt">
-				    <span id="terminal__prompt--user"><b><a style="color: #3EFF00;">☣</a>&nbsp;</b></span>
-				    <span id="terminal__prompt--bling"><b>vim /etc/sysconfig/network-scripts/ifcfg-enp0s3<a style="color: #3EFF00;">:1</a></b></span>
-			    </div>
-			    <br>
-			    <div id="terminal__prompt">
-				    <span id="terminal__prompt--bling"><b>DEVICE<a style="color: #3EFF00;">=</a>ifcfg-enp0s3:1</b></span>				
-			    </div>
-			    <div id="terminal__prompt">
-				    <span id="terminal__prompt--bling"><b>TYPE<a style="color: #3EFF00;">=</a>Ethernet</b></span>				
-			    </div>
-			    <div id="terminal__prompt">
-				    <span id="terminal__prompt--bling"><b>ONBOOT<a style="color: #3EFF00:">=</a>yes</b></span>				
-			    </div>
-			    <div id="terminal__prompt">
-				    <span id="terminal__prompt--bling"><b>BOOTPROTO<a style="color: #3EFF00;">=</a>none</b></span>				
-			    </div>
-			    <div id="terminal__prompt">
-				    <span id="terminal__prompt--bling"><b>IPADDR<a style="color: #3EFF00;">=</a>192.168.1.45</b></span>				
-			    </div>
-			    <div id="terminal__prompt">
-				    <span id="terminal__prompt--bling"><b>PREFIX<a style="color: #3EFF00;">=</a>24</b></span>				
-			    </div>
-		    </section>
-	    </div>
-		    <br><br>
+									<div id="bar__buttons">            
+										<button class="bar__button" id="bar__button--exit">&#10005;</button>            
+										<button class="bar__button">&#9472;</button>                
+										<button class="bar__button">&#9723;</button>          
+									</div>
+								</section>        
+								<!-- Terminal Body -->
+								<section id="terminal__body">
+									<div id="terminal__prompt">
+										<span id="terminal__prompt--user"><b><a style="color: #3EFF00;">☣</a>&nbsp;</b></span>
+										<span id="terminal__prompt--bling"><b>vim /etc/sysconfig/network-scripts/ifcfg-enp0s3<a style="color: #3EFF00;">:1</a></b></span>
+									</div>
+									<br>
+									<div id="terminal__prompt">
+										<span id="terminal__prompt--bling"><b>DEVICE<a style="color: #3EFF00;">=</a>ifcfg-enp0s3:1</b></span>				
+									</div>
+									<div id="terminal__prompt">
+										<span id="terminal__prompt--bling"><b>TYPE<a style="color: #3EFF00;">=</a>Ethernet</b></span>				
+									</div>
+									<div id="terminal__prompt">
+										<span id="terminal__prompt--bling"><b>ONBOOT<a style="color: #3EFF00:">=</a>yes</b></span>				
+									</div>
+									<div id="terminal__prompt">
+										<span id="terminal__prompt--bling"><b>BOOTPROTO<a style="color: #3EFF00;">=</a>none</b></span>				
+									</div>
+									<div id="terminal__prompt">
+										<span id="terminal__prompt--bling"><b>IPADDR<a style="color: #3EFF00;">=</a>192.168.1.45</b></span>				
+									</div>
+									<div id="terminal__prompt">
+										<span id="terminal__prompt--bling"><b>PREFIX<a style="color: #3EFF00;">=</a>24</b></span>				
+									</div>
+								</section>
+							</div>
+							<br><br>
+							
 							<div class="leftl">
 								<span>⦾ <b>Reiniciar la interfaz para aplicar los cambios:</b></span>
 							</div>
 
-		    <div id="long-terminal">   
-			    <!-- Terminal Body -->
-			    <!-- Terminal Bar -->       
-			    <section id="terminal__bar">          
-				    <div id="bar__buttons">            
-					    <button class="bar__button" id="bar__button--exit">&#10005;</button>            
-					    <button class="bar__button">&#9472;</button>                
-					    <button class="bar__button">&#9723;</button>          
-				    </div>
-			    </section>  
-			    <section id="terminal__body">
-				    <div id="terminal__prompt">
-					    <span id="terminal__prompt--user"><b><a style="color: #3EFF00;">☣</a>&nbsp;</b></span>
-					    <span id="terminal__prompt--bling"><b>ifdown enp0s3 <a style="color: #3EFF00;">&amp;&amp; </a>ifup enp0s3&nbsp;</b></span>
-				    </div>
-			    </section>
-		    </div>
+							<div id="terminal" style="margin-top: 10px;">   
+								<!-- Terminal Body -->
+								<!-- Terminal Bar -->       
+								<section id="terminal__bar">          
+									<div id="bar__buttons">            
+										<button class="bar__button" id="bar__button--exit">&#10005;</button>            
+										<button class="bar__button">&#9472;</button>                
+										<button class="bar__button">&#9723;</button>          
+									</div>
+								</section>  
+								<section id="terminal__body">
+									<div id="terminal__prompt">
+										<span id="terminal__prompt--user"><b><a style="color: #3EFF00;">☣</a>&nbsp;</b></span>
+										<span id="terminal__prompt--bling"><b>ifdown enp0s3 <a style="color: #3EFF00;">&amp;&amp; </a>ifup enp0s3&nbsp;</b></span>
+									</div>
+								</section>
+							</div>
+							
+							<div style="border-top: 1px solid #000; width: 100%; margin: 10px 0;"></div>
 
-		    <div style="margin-top: 130px;" class="centext" id="nmclipv4">
-			    <a style="font-size: 19px; color: rgb(88, 177, 0);">☣ </a><span class="green-bg" style="font-size: 19px;">MÉTODO 2: nmcli [IPv4]</span><p></p>
-			    <span><a style="color: #3C8800;"><strong>nmcli </strong></a>es una herramienta en línea de comandos para el control de <strong>NetworkManager</strong> y reportes de estado de la Red</span>
-		    </div><br>
+							<div style="margin-top: 130px;" class="centext" id="nmclipv4">
+								<a style="font-size: 19px; color: rgb(88, 177, 0);">☣ </a><span class="green-bg" style="font-size: 19px;">MÉTODO 2: nmcli [IPv4]</span>
+							</div>
 
-		    <div id="long-terminal">   
-			    <!-- Terminal Body -->
-			    <section id="terminal_body">
-				    <div id="terminal__prompt">
-					    <span id="terminal__prompt--bling"><b>·&nbsp;</b></span>
-					    <span id="terminal__prompt--location"><b>nmcli connection show</b></span>
-					    <span id="terminal__prompt--user-white">&nbsp;&nbsp;Mostrar las conexiones de red IPv4&nbsp;</span>					
-				    </div>
-				    <div id="terminal__prompt">
-					    <span id="terminal__prompt--bling"><b>·&nbsp;</b></span>
-					    <span id="terminal__prompt--location"><b>nmcli connection modify +ipv4.address 192.168.1.45/24</b></span>
-					    <span id="terminal__prompt--user-white">&nbsp;&nbsp;Añadir una dirección IPv4 secundaria a la interfaz enp0s3 &nbsp;</span>
-				    </div>
-				    <div id="terminal__prompt">
-					    <span id="terminal__prompt--bling"><b>·&nbsp;</b></span>
-					    <span id="terminal__prompt--location"><b>nmcli connection reload</b></span>
-					    <span id="terminal__prompt--user-white">&nbsp;&nbsp;Reiniciar servicio de Red&nbsp;</span>					
-				    </div>
-				    <div id="terminal__prompt">
-					    <span id="terminal__prompt--bling"><b>·&nbsp;</b></span>
-					    <span id="terminal__prompt--location"><b>nmcli connection show enp0s3</b></span>
-					    <span id="terminal__prompt--user-white">&nbsp;&nbsp;Verificar que la configuración se ha actualizado&nbsp;</span>
-				    </div>
-				    <div id="terminal__prompt">
-					    <span id="terminal__prompt--bling"><b>·&nbsp;</b></span>
-					    <span id="terminal__prompt--location"><b>ifdown enp0s3 &amp;&amp; ifup enp0s3</b></span>
-					    <span id="terminal__prompt--user-white">&nbsp;&nbsp;Reiniciar la interfaz para aplicar los cambios&nbsp;</span>
-				    </div>
-			    </section>
-		    </div>
+							<div class="leftl">
+								<span><a style="color: #3C8800;"><strong>nmcli </strong></a>es una herramienta en línea de comandos para el control de <strong>NetworkManager</strong> y reportes de estado de la Red</span>
+							</div>
 
-		    <br><br>
-		    <div id="long-terminal">
-			    <!-- Terminal Bar -->       
-			    <section id="terminal__bar">          
-				    <div id="bar__buttons">            
-					    <button class="bar__button" id="bar__button--exit">&#10005;</button>            
-					    <button class="bar__button">&#9472;</button>                
-					    <button class="bar__button">&#9723;</button>          
-				    </div>
-			    </section>        
+							<div id="long-terminal" style="margin-top: 10px;">   
+								<!-- Terminal Body -->
+								<section id="terminal_body">
+									<div id="terminal__prompt">
+										<span id="terminal__prompt--bling"><b>·&nbsp;</b></span>
+										<span id="terminal__prompt--location"><b>nmcli connection show</b></span>
+										<span id="terminal__prompt--user-white">&nbsp;&nbsp;Mostrar las conexiones de red IPv4&nbsp;</span>					
+									</div>
+									<div id="terminal__prompt">
+										<span id="terminal__prompt--bling"><b>·&nbsp;</b></span>
+										<span id="terminal__prompt--location"><b>nmcli connection modify +ipv4.address 192.168.1.45/24</b></span>
+										<span id="terminal__prompt--user-white">&nbsp;&nbsp;Añadir una dirección IPv4 secundaria a la interfaz enp0s3 &nbsp;</span>
+									</div>
+									<div id="terminal__prompt">
+										<span id="terminal__prompt--bling"><b>·&nbsp;</b></span>
+										<span id="terminal__prompt--location"><b>nmcli connection reload</b></span>
+										<span id="terminal__prompt--user-white">&nbsp;&nbsp;Reiniciar servicio de Red&nbsp;</span>					
+									</div>
+									<div id="terminal__prompt">
+										<span id="terminal__prompt--bling"><b>·&nbsp;</b></span>
+										<span id="terminal__prompt--location"><b>nmcli connection show enp0s3</b></span>
+										<span id="terminal__prompt--user-white">&nbsp;&nbsp;Verificar que la configuración se ha actualizado&nbsp;</span>
+									</div>
+									<div id="terminal__prompt">
+										<span id="terminal__prompt--bling"><b>·&nbsp;</b></span>
+										<span id="terminal__prompt--location"><b>ifdown enp0s3 &amp;&amp; ifup enp0s3</b></span>
+										<span id="terminal__prompt--user-white">&nbsp;&nbsp;Reiniciar la interfaz para aplicar los cambios&nbsp;</span>
+									</div>
+								</section>
+							</div>
+							<br><br>
+							
+							<div id="long-terminal">
+								<!-- Terminal Bar -->       
+								<section id="terminal__bar">          
+									<div id="bar__buttons">            
+										<button class="bar__button" id="bar__button--exit">&#10005;</button>            
+										<button class="bar__button">&#9472;</button>                
+										<button class="bar__button">&#9723;</button>          
+									</div>
+								</section>        
 			    <!-- Terminal Body -->
 			    <section id="terminal__body">
 				    <div id="terminal__prompt">

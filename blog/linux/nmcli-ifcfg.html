@@ -96,9 +96,9 @@
 		<div id="contenido">
 			<h5>Configurar varias IP con nmcli y network-scripts</h5>
 			<div style="border-top: 1px solid #000; width: 100%; margin: 10px 0;"></div>
-			<a href="#networkscripts" style="text-decoration: none;"><p style="margin-bottom: 6px; font-size: 16px;">☣ Método 1: Network-Scripts</p></a>
-			<a href="#nmclipv4" style="text-decoration: none;"><p style="margin-bottom: 6px; font-size: 16px;">☣ Método 2: nmcli IPv4</p></a>
-			<a href="#nmclipv6" style="text-decoration: none;"><p style="margin-bottom: 6px; font-size: 16px;">☣ Método 3: nmcli IPv6</p></a>
+			<a href="#networkscripts" style="text-decoration: none;"><p style="margin-bottom: 6px; font-size: 16px;">☣ Network-Scripts</p></a>
+			<a href="#nmclipv4" style="text-decoration: none;"><p style="margin-bottom: 6px; font-size: 16px;">☣ nmcli IPv4</p></a>
+			<a href="#nmclipv6" style="text-decoration: none;"><p style="margin-bottom: 6px; font-size: 16px;">☣ nmcli IPv6</p></a>
 		</div>
 	</div><!-- END TABBAR -->
 
@@ -110,6 +110,7 @@
 			<a href="javascript:void(0)" class="closebtn" onclick="toggleNav()">×</a>
 			<span style="font-size: 25px; color: #27B700;"><b>&nbsp;✎</b></span><span style="font-size: 25px; color: white;"> <b>Notas</b></span>
 			<hr style="color: #DECD00;">
+			<a><span style="color: #E5D400;">ifcfg-enp3s0</span><span class="spanx">: Nombre de la Interfaz de Red</span></a>
 			<a><span style="color: #E5D400;">network-scripts</span><span class="spanx">: /etc/sysconfig/network-scripts/ es el directorio donde se encuentran los archivos de configuración de interfaces de red en sistemas CentOS\RedHat</span></a>
 			<a><span style="color: #E5D400;">nmcli</span><span class="spanx">: Herramienta para el control de NetworkManager</span></a>
 		</div>
@@ -124,7 +125,7 @@
 						<div class="entry-content clearfix">
 							<br><br>
 							<div class="centext" id="networkscripts">
-								<a style="font-size: 19px; color: rgb(88, 177, 0);">☣ </a><span class="green-bg" style="font-size: 19px;">MÉTODO 1: Network-Scripts</span>
+								<a style="font-size: 19px; color: rgb(88, 177, 0);">☣ </a><span class="green-bg" style="font-size: 19px;">Network-Scripts</span>
 							</div>
 
 							<div class="leftl">
@@ -373,6 +374,10 @@
 										<span id="terminal__prompt--bling"><b>&nbsp;&nbsp;inet 192.168.1.45/24 brd 192.168.1.255&nbsp;</b></span>
 									</div>
 								</section>
+							</div><br><br>
+
+							<div class="leftl">
+								<span><b>NOTA: </b>Los comandos <b>ifdown</b> e <b>ifup</b> se emplean en sistemas <b>CentOS\RedHat</b> y <b>Debian\Ubutu</b>. En sistemas como <b>ArchLinux</b> se pueden utilizar los comandos <b>ip link set [nombre_de_la_interfaz] down</b> y <b>ip link set [nombre_de_la_interfaz] up</b></span>
 							</div>
 
 							<div style="border-top: 1px solid #000; width: 100%; margin: 10px 0;"></div>

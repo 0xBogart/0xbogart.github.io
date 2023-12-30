@@ -236,7 +236,8 @@
 							</div>
 
 							<div class="leftl">
-								<span><a style="color: #3C8800;"><strong>nmcli </strong></a>es una herramienta en línea de comandos para el control de <strong>NetworkManager</strong> y reportes de estado de la Red</span>
+								<span><a style="color: #3C8800;"><strong>nmcli </strong></a>es una herramienta en línea de comandos para el control de <strong>NetworkManager</strong> y reportes de estado de la Red</span><br><br>
+								<span><b>⦾ Mostrar las conexiones de red IPv4:</b></span>
 							</div>
 
 							<div id="long-terminal" style="margin-top: 10px;">   
@@ -269,9 +270,12 @@
 									</div>
 								</section>
 							</div>
-							<br><br>
+
+							<div class="leftl">
+								<span><b>⦾ Añadir una dirección IPv4 secundaria a la interfaz enp0s3:</b></span>
+							</div>
 							
-							<div id="long-terminal">
+							<div id="long-terminal" style="margin-top: 10px;">
 								<!-- Terminal Bar -->       
 								<section id="terminal__bar">          
 									<div id="bar__buttons">            
@@ -280,65 +284,71 @@
 										<button class="bar__button">&#9723;</button>          
 									</div>
 								</section>        
-			    <!-- Terminal Body -->
-			    <section id="terminal__body">
-				    <div id="terminal__prompt">
-					    <span id="terminal__prompt--user"><a style="color: #3EFF00;">☣</a>&nbsp;</span>
-					    <span id="terminal__prompt--bling"><b>nmcli connection show</b></span>
-				    </div>
-				    <div id="terminal__prompt">
-<span id="terminal__prompt--bling"><b>NAME</b>&nbsp;&nbsp;&nbsp;<b>UUID</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>TYPE</b>&nbsp;&nbsp;&nbsp;&nbsp;<b>DEVICE</b></span>
-				    </div>
-				    <div id="terminal__prompt">
-<span id="terminal__prompt--bling"><b>enp0s3&nbsp;0eff2e08-8562-4965-19b517237ba1&nbsp;ethernet&nbsp;enp0s3&nbsp;</b></span>										</div>
-			    </section>
-		    </div>
+								<!-- Terminal Body -->
+								<section id="terminal__body">
+									<div id="terminal__prompt">
+										<span id="terminal__prompt--user"><a style="color: #3EFF00;">☣</a>&nbsp;</span>
+										<span id="terminal__prompt--bling"><b>nmcli connection show</b></span>
+									</div>
+									<div id="terminal__prompt">
+										<span id="terminal__prompt--bling"><b>NAME</b>&nbsp;&nbsp;&nbsp;<b>UUID</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>TYPE</b>&nbsp;&nbsp;&nbsp;&nbsp;<b>DEVICE</b></span>
+									</div>
+									<div id="terminal__prompt">
+										<span id="terminal__prompt--bling"><b>enp0s3&nbsp;0eff2e08-8562-4965-19b517237ba1&nbsp;ethernet&nbsp;enp0s3&nbsp;</b></span>										</div>
+								</section>
+							</div><br><br>
+							
+							<div class="leftl">
+								<span><b>⦾ Reiniciar servicio de Red:</b></span>
+							</div>
 
-		    <br><br>
-		    <div id="long-terminal">
-			    <!-- Terminal Bar -->       
-			    <section id="terminal__bar">          
-				    <div id="bar__buttons">            
-					    <button class="bar__button" id="bar__button--exit">&#10005;</button>            
-					    <button class="bar__button">&#9472;</button>                
-					    <button class="bar__button">&#9723;</button>          
-				    </div>
-			    </section>      
-			    <!-- Terminal Body -->
-			    <section id="terminal__body">
-				    <div id="terminal__prompt">
-					    <span id="terminal__prompt--user"><a style="color: #3EFF00;">☣</a>&nbsp;</span>
-					    <span id="terminal__prompt--bling"><b>nmcli connection modify <a style="color: #3EFF00">+</a>ipv4.address <a style="color: #3EFF00">192.168.1.45/24</a>&nbsp;</b></span>				
-				    </div>
-				    <div id="terminal__prompt">
-					    <span id="terminal__prompt--user"><a style="color: #3EFF00;">☣</a>&nbsp;</span>
-					    <span id="terminal__prompt--bling"><b>nmcli connection reload&nbsp;</b></span>				
-				    </div>
-			    </section>
-		    </div>
+							<div id="long-terminal" style="margin-top: 10px;">
+								<!-- Terminal Bar -->       
+								<section id="terminal__bar">          
+									<div id="bar__buttons">            
+										<button class="bar__button" id="bar__button--exit">&#10005;</button>            
+										<button class="bar__button">&#9472;</button>                
+										<button class="bar__button">&#9723;</button>          
+									</div>
+								</section>      
+								<!-- Terminal Body -->
+								<section id="terminal__body">
+									<div id="terminal__prompt">
+										<span id="terminal__prompt--user"><a style="color: #3EFF00;">☣</a>&nbsp;</span>
+										<span id="terminal__prompt--bling"><b>nmcli connection modify <a style="color: #3EFF00">+</a>ipv4.address <a style="color: #3EFF00">192.168.1.45/24</a>&nbsp;</b></span>				
+									</div>
+									<div id="terminal__prompt">
+										<span id="terminal__prompt--user"><a style="color: #3EFF00;">☣</a>&nbsp;</span>
+										<span id="terminal__prompt--bling"><b>nmcli connection reload&nbsp;</b></span>				
+									</div>
+								</section>
+							</div><br><br>
 
-		    <br><br>
-		    <div id="long-terminal">
-			    <!-- Terminal Bar -->       
-			    <section id="terminal__bar">          
-				    <div id="bar__buttons">            
-					    <button class="bar__button" id="bar__button--exit">&#10005;</button>            
-					    <button class="bar__button">&#9472;</button>                
-					    <button class="bar__button">&#9723;</button>          
-				    </div>
-			    </section>      
-			    <!-- Terminal Body -->
-			    <section id="terminal__body">
-				    <div id="terminal__prompt">
-					    <span id="terminal__prompt--user"><a style="color: #3EFF00;">☣</a>&nbsp;</span>
-					    <span id="terminal__prompt--bling"><b>nmcli connection show enp0s3&nbsp;</b></span>				
-				    </div>
-				    <div id="terminal__prompt">
-					    <span id="terminal__prompt--bling"><b>ipv4.method:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;manual</b></span>				
-				    </div>
-				    <div id="terminal__prompt">
-					    <span id="terminal__prompt--bling"><b>ipv4.dns:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--</b></span>				
-				    </div>
+							<div class="leftl">
+								<span><b>⦾ Verificar que la configuración se ha actualizado:</b></span>
+							</div>
+
+							<div id="long-terminal" style="margin-top: 10px;">
+								<!-- Terminal Bar -->       
+								<section id="terminal__bar">          
+									<div id="bar__buttons">            
+										<button class="bar__button" id="bar__button--exit">&#10005;</button>            
+										<button class="bar__button">&#9472;</button>                
+										<button class="bar__button">&#9723;</button>          
+									</div>
+								</section>      
+								<!-- Terminal Body -->
+								<section id="terminal__body">
+									<div id="terminal__prompt">
+										<span id="terminal__prompt--user"><a style="color: #3EFF00;">☣</a>&nbsp;</span>
+										<span id="terminal__prompt--bling"><b>nmcli connection show enp0s3&nbsp;</b></span>				
+									</div>
+									<div id="terminal__prompt">
+										<span id="terminal__prompt--bling"><b>ipv4.method:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;manual</b></span>				
+									</div>
+									<div id="terminal__prompt">
+										<span id="terminal__prompt--bling"><b>ipv4.dns:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--</b></span>				
+									</div>
 				    <div id="terminal__prompt">
 					    <span id="terminal__prompt--bling"><b>ipv4.dns-search:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--</b></span>				
 				    </div>
@@ -363,42 +373,48 @@
 			    </section>
 		    </div>
 		    <br><br>
+
+							<div class="leftl">
+								<span><b>⦾ Reiniciar la interfaz para aplicar los cambios:</b></span>
+							</div>
 								
-		    <div id="long-terminal">
-			    <!-- Terminal Bar -->       
-			    <section id="terminal__bar">          
-				    <div id="bar__buttons">            
-					    <button class="bar__button" id="bar__button--exit">&#10005;</button>            
-					    <button class="bar__button">&#9472;</button>                
-					    <button class="bar__button">&#9723;</button>          
-				    </div>
-			    </section>      
-			    <!-- Terminal Body -->
-			    <section id="terminal__body">
-				    <div id="terminal__prompt">
-					    <span id="terminal__prompt--user"><a style="color: #3EFF00;">☣</a>&nbsp;</span>
-					    <span id="terminal__prompt--bling"><b>ifdown enp0s3 <a style="color: #3EFF00">&amp;&amp; </a>ifup enp0s3</b></span>
-				    </div>
-				    <div id="terminal__prompt">
-					    <span id="terminal__prompt--user"><a style="color: #3EFF00;">☣</a>&nbsp;</span>
-					    <span id="terminal__prompt--bling"><b>ip a</b></span>				
-				    </div>
-				    <br>
-				    <div id="terminal__prompt">
-					    <span id="terminal__prompt--bling"><b>enp0s3: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500&nbsp;</b></span>
-				    </div>
-				    <div id="terminal__prompt">
-					    <span id="terminal__prompt--bling"><b>&nbsp;&nbsp;inet 192.168.1.52/24 brd 192.168.1.255&nbsp;</b></span>
-				    </div>
-				    <div id="terminal__prompt">
-					    <span id="terminal__prompt--bling"><b>&nbsp;&nbsp;inet 192.168.1.45/24 brd 192.168.1.255&nbsp;</b></span>
-				    </div>
-			    </section>
-		    </div>
-								
-		    <div style="margin-top: 130px;" class="centext" id="nmclipv6">
-			    <a style="font-size: 19px; color: rgb(88, 177, 0);">☣ </a><span class="green-bg" style="font-size: 19px;">MÉTODO 2: nmcli [IPv6]</span>
-		    </div><br>
+							<div id="long-terminal" style="margin-top: 10px;">
+								<!-- Terminal Bar -->       
+								<section id="terminal__bar">          
+									<div id="bar__buttons">            
+										<button class="bar__button" id="bar__button--exit">&#10005;</button>            
+										<button class="bar__button">&#9472;</button>                
+										<button class="bar__button">&#9723;</button>          
+									</div>
+								</section>      
+								<!-- Terminal Body -->
+								<section id="terminal__body">
+									<div id="terminal__prompt">
+										<span id="terminal__prompt--user"><a style="color: #3EFF00;">☣</a>&nbsp;</span>
+										<span id="terminal__prompt--bling"><b>ifdown enp0s3 <a style="color: #3EFF00">&amp;&amp; </a>ifup enp0s3</b></span>
+									</div>
+									<div id="terminal__prompt">
+										<span id="terminal__prompt--user"><a style="color: #3EFF00;">☣</a>&nbsp;</span>
+										<span id="terminal__prompt--bling"><b>ip a</b></span>				
+									</div>
+									<br>
+									<div id="terminal__prompt">
+										<span id="terminal__prompt--bling"><b>enp0s3: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500&nbsp;</b></span>
+									</div>
+									<div id="terminal__prompt">
+										<span id="terminal__prompt--bling"><b>&nbsp;&nbsp;inet 192.168.1.52/24 brd 192.168.1.255&nbsp;</b></span>
+									</div>
+									<div id="terminal__prompt">
+										<span id="terminal__prompt--bling"><b>&nbsp;&nbsp;inet 192.168.1.45/24 brd 192.168.1.255&nbsp;</b></span>
+									</div>
+								</section>
+							</div>
+
+							<div style="border-top: 1px solid #000; width: 100%; margin: 10px 0;"></div>
+		   
+							<div style="margin-top: 130px;" class="centext" id="nmclipv6">
+								<a style="font-size: 19px; color: rgb(88, 177, 0);">☣ </a><span class="green-bg" style="font-size: 19px;">MÉTODO 2: nmcli [IPv6]</span>
+							</div><br>
 								
 		    <div id="long-terminal">   
 			    <!-- Terminal Body -->

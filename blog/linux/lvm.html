@@ -143,13 +143,14 @@
 								</div>
 								<br>
 								<div class="leftl">
-                  <span>⦾ <b>PV</b>: Pyhisical Volume {Volúmenes físicos}</span><br>
-                  <span>⦾ <b>VG</b>: Volume Group {Colección de uno o más dispositivos físicos, cada uno llamado 'PV'}</span><br>
-                  <span>⦾ <b>LV</b>: Logical Volume {Es el dispositivo de bloque virtual que puede ser utilizado por el sistema o las aplicaciones. Cada bloque de datos en LV se almacena en uno o más PV del VG acorde a los algoritmos implementados por Device Mapper ‘DM‘ en el Kernel}</span>
+									<span>⦾ <b>PV</b>: Pyhisical Volume {Volúmenes físicos}</span><br>
+									<span>⦾ <b>VG</b>: Volume Group {Colección de uno o más dispositivos físicos, cada uno llamado 'PV'}</span><br>
+									<span>⦾ <b>LV</b>: Logical Volume {Es el dispositivo de bloque virtual que puede ser utilizado por el sistema o las aplicaciones. Cada bloque de datos en LV se almacena en uno o más PV del VG acorde a los algoritmos implementados por Device Mapper ‘DM‘ en el Kernel}</span>
 								</div>
-								<br><br><br>
 
-								<div class="centext" id="PVCREATE">
+								<div style="border-top: 1px solid #000; width: 100%; margin: 10px 0;"></div>
+
+								<div class="centext" id="PVCREATE" style="margin-top: 130px;">
 									<a style="font-size: 19px; color: rgb(88, 177, 0);">☣ </a><span class="green-bg" style="font-size: 19px;">CREAR PV</span>
 								</div>
 								<span>Unidad Física <b>sdb</b> de <b>8GB</b></span><br>
@@ -357,9 +358,11 @@
 										<span id="terminal__prompt--bling"><b>tpPa5X-Zo53-Bvf8-wxnV-v6Zt-8</b></span>
 										</div>
 									  </section>
-									</div><br><br><br><br>
+									</div>
 
-								<div class="centext" id="VGCREATE">
+								<div style="border-top: 1px solid #000; width: 100%; margin: 10px 0;"></div>
+
+								<div class="centext" id="VGCREATE" style="margin-top: 130px;">
 									<a style="font-size: 19px; color: rgb(88, 177, 0);">☣ </a><span class="green-bg" style="font-size: 19px;">CREAR VG</span>
 								</div>
 
@@ -645,12 +648,12 @@
 									</div>
 								<!-- END LV TERMINAL -->
 
-                <div style="border-top: 1px solid #000; width: 100%; margin: 10px 0;"></div>
+								<div style="border-top: 1px solid #000; width: 100%; margin: 10px 0;"></div>
 
-					<div class="centext" id="XFS" style="margin-top: 130px;">
+								<div class="centext" id="XFS" style="margin-top: 130px;">
 									<a style="font-size: 19px; color: rgb(88, 177, 0);">☣ </a><span class="green-bg" style="font-size: 19px;">FORMATEAR Y MONTAR EL LV</span>
 								</div>
-								<div class="left">
+								<div class="leftl">
 									<span>⦾ Formatear el LV <b><a style="color: #179700;">/dev/mapper/NEW-VG/NEW-LV</a></b> en <b><a style="color: #179700;">XFS</a></b></span><br>
 									<span>⦾ Crear punto de montaje en <b><a style="color: #179700;">/LVM</a></b></span><br>
 									<span>⦾ Montar el LV en <b><a style="color: #179700;">/LVM</a></b></span>
@@ -708,21 +711,17 @@
 											<span id="terminal__prompt--bling"><b>/LVM</b></span>
 										</div>
 									  </section>
-									</div><br><br><br><br>
+									</div>
 								<!--- END TERMINAL FORMATEO Y MONTAJE --->
 
-								<div class="centext" id="VGEXTEND">
+								<div class="centext" id="VGEXTEND" style="margin-top: 130px;">
 									<a style="font-size: 19px; color: rgb(88, 177, 0);">☣ </a><span class="green-bg" style="font-size: 19px;">EXTENDER EL VOLUME GROUP</span>
 								</div>
-								<div class="centext">
-									<span>Esta parte del post se centra en la <b>ampliación de volúmenes</b> creados anteriormente, partiendo de los puntos siguientes:</span>
-								</div><br>
-								<div class="left">
+								<div class="leftl">
+									<span>Esta parte del post se centra en la <b>ampliación de volúmenes</b> creados anteriormente, partiendo de los puntos siguientes:</span><br><br>
 									<span>⦾ Nueva partición <b><a style="color: #179700;">/dev/sdb2</a></b> de <b><a style="color: #179700;">4G</a></b></span><br>
 									<span>⦾ <b>PV</b> creado sobre <b>/dev/sdb2</b></span><br>
-									<span>⦾ Extender el <b><a style="color: #179700;">VG</a></b> creado anteriormente: <b><a style="color: #179700;">NEW-VG</a></b></span>
-								</div><br>
-								<div class="centext">
+									<span>⦾ Extender el <b><a style="color: #179700;">VG</a></b> creado anteriormente: <b><a style="color: #179700;">NEW-VG</a></b></span><br><br>
 									<span>En este punto, el Volume Group <b>NEW-VG</b> no tiene espacio libre.</span><br>
 									<span>Tras extender el espacio disponible de <b>/dev/sdb2</b> al Volume Group <b>NEW-VG</b>, volverá a disponer de <b>4G</b> libres para extender posteriormente el <b>LV</b>:</span>
 								</div>
@@ -872,16 +871,13 @@
 									  </section>
 									</div>
 
-                <div style="border-top: 1px solid #000; width: 100%; margin: 10px 0;"></div>
+								<div style="border-top: 1px solid #000; width: 100%; margin: 10px 0;"></div>
 
 								<div class="centext" id="LVEXTEND" style="margin-top: 130px;">
 									<a style="font-size: 19px; color: rgb(88, 177, 0);">☣ </a><span class="green-bg" style="font-size: 19px;">EXTENDER EL LOGICAL VOLUME</span>
 								</div>
-								<div class="centext">
-									<span>Ahora que el VG se ha extendido con 4G adicionales, es posible extender el Logical Volume.</span>
-								</div><br>
-
 								<div class="leftl">
+									<span>Ahora que el VG se ha extendido con 4G adicionales, es posible extender el Logical Volume.</span><br><br>
 									<span>⦾ Extender el LV <b>NEW-LV</b> con el <b>100%</b> del espacio disponible.</span><br>
 									<span>⦾ Extender el Filesystem montado en <b>/LVM</b>.</span>
 								</div>
@@ -962,7 +958,7 @@
 									  </section>
 									</div>
 
-                <div style="border-top: 1px solid #000; width: 100%; margin: 10px 0;"></div>
+								<div style="border-top: 1px solid #000; width: 100%; margin: 10px 0;"></div>
 								
 								<div class="centext" id="VGRENAME" style="margin-top: 130px;">
 									<a style="font-size: 19px; color: rgb(88, 177, 0);">☣ </a><span class="green-bg" style="font-size: 19px;">RENOMBRAR VOLUME GROUP</span>
@@ -1024,19 +1020,15 @@
 									</div>
 								<!--- END VGRENAME --->
 
-                <div style="border-top: 1px solid #000; width: 100%; margin: 10px 0;"></div>
+								<div style="border-top: 1px solid #000; width: 100%; margin: 10px 0;"></div>
 								
 								<div class="centext" id="LVRENAME" style="margin-top: 130px;">
 									<a style="font-size: 19px; color: rgb(88, 177, 0);">☣ </a><span class="green-bg" style="font-size: 19px;">RENOMBRAR EL LOGICAL VOLUME</span>
 								</div>
 								<div class="leftl">
-									<span>Para renombrar el Logical Volume usar <b>lvrename</b></span>
-								</div><br>
-								
-								<div class="left">
+									<span>Para renombrar el Logical Volume usar <b>lvrename</b></span><br><br>
 									<span>⦾ Renombrar <b>NEW-LV</b> a <b><a style="color: #179700;">lv_bogart</a></b></span>
 								</div>
-								
 								
 								<!--- LVRENAME --->
 								<div id="terminal">

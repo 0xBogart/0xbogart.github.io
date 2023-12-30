@@ -1,0 +1,1116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<title>LVM [Logical Volume Manager] | ØxBogart</title>
+
+	<!-- meta -->
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0,user-scalable=no,viewport-fit=cover">
+	<link rel="icon" type="/image/png" href="/blog/img/skull.png">
+	<link rel="canonical" href="https://0xbogart.github.io/blog/linux/lvm">
+	<meta name="author" content="Bogart">
+	<meta name="delvmion" content="LVM [Logical Volume Manager] | ØxBogart">
+	<meta name="keywords" content="LVM [Logical Volume Manager] | ØxBogart">
+
+	<!-- Twitter Tags -->
+	<meta property="og:title" content="LVM [Logical Volume Manager] | ØxBogart">
+	<meta property="og:delvmion" content="LVM [Logical Volume Manager] | ØxBogart">
+	<meta property="og:url" content="https://0xbogart.github.io/blog/linux/lvm">
+	<meta property="og:image" content="https://0xbogart.github.io/blog/img/lvm.avif">
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:site" content="@jfb0gart">
+	<meta name="twitter:creator" content="@jfb0gart">
+	<meta name="twitter:title" content="LVM [Logical Volume Manager] | ØxBogart">
+	<meta name="twitter:delvmion" content="LVM [Logical Volume Manager] | ØxBogart">
+	<meta name="twitter:image" content="https://0xbogart.github.io/blog/img/lvm.avif">
+	
+	<!-- css -->
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/ionicons.min.css">
+  <link rel="stylesheet" href="/css/tabbar.css">
+	<link rel="stylesheet" href="/css/sidebar.css">
+  <link rel="stylesheet" href="/css/pace.css">
+  <link rel="stylesheet" href="/css/custom.css">
+  <link rel="stylesheet" href="/css/lithiumterm.css">
+  <link rel="stylesheet" href="/css/lithiumvoid.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+	
+	<!-- js -->
+	<lvm src="/js/jquery-2.1.3.min.js"></lvm>
+	<lvm src="/js/bootstrap.min.js"></lvm>
+	<lvm src="/js/tabbar.js"></lvm>
+	<lvm src="/js/pace.min.js"></lvm>
+	<lvm src="/js/modernizr.custom.js"></lvm>
+	<lvm src="/js/asgreenlight.js"></lvm>
+
+<style>
+@media (max-width: 600px) {
+  .icomax {
+    min-width: 25%;
+  }
+}
+
+.bg {
+	border: 5px solid black;
+	width: 100%;
+	height: 100%;
+}
+</style>
+</head>
+
+<body class="bg">
+  <div class="container">	
+    <header id="site-header">
+      <div class="row">
+	      <div style="margin-bottom: -10%; margin-top: 6px;">
+		      <h1><a class="nodeco" href="/blog/linux" style="color: rgb(88, 177, 0);">☣</a>LINUX</h1>
+	      </div><!-- col-4 -->
+      </div>
+	    <div class="row justify-content-end">
+		    <div class="col-1">
+			    <nav class="navbar navbar-expand-lg navbar-light" style="margin-top: 2px;">
+				    <button style="border: 1px solid rgb(88, 177, 0); margin-top: 1px;" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#bs-example-navbar-collapse-1" aria-controls="bs-example-navbar-collapse-1" aria-expanded="false" aria-label="Toggle navigation">
+					    <span class="navbar-toggler-icon"></span>
+				    </button>
+				    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					    <ul class="navbar-nav">
+						    <li class="nav-item">
+							    <a style="font-size: 25px;" class="nav-link" href="/index" data-hover="Home">Home</a>
+						    </li>
+					    </ul>
+				    </div><!--- .navbar-collapse --->
+			    </nav>
+		    </div><!-- col-md-8 -->
+	    </div>
+    </header>
+  </div>
+
+  <!-- TABBAR -->
+	<div style="position: sticky; top: -1px; width: auto;">
+		<a onclick="toggleDropdown()">
+			<div class="tabbar">
+				<span style="font-weight: bold; float: left; margin-left: 10px;">TABLA DE CONTENIDO</span>
+				<div class="dropdown-content" id="dropdownContent"></div>
+			</div>
+		</a>
+		<div id="contenido">
+			<h5>LVM [Logical Volume Manager]</h5>
+			<div style="border-top: 1px solid #000; width: 100%; margin: 10px 0;"></div>
+			<a href="#LVM" style="text-decoration: none;"><p style="margin-bottom: 6px; font-size: 16px;">☣ Componentes de LVM</p></a>
+			<a href="#PVCREATE" style="text-decoration: none;"><p style="margin-bottom: 6px; font-size: 16px;">☣ Crear el PhysicalVolume</p></a>
+			<a href="#VGCREATE" style="text-decoration: none;"><p style="margin-bottom: 6px; font-size: 16px;">☣ Crear el VolumeGroup</p></a>
+      <a href="#LVCREATE" style="text-decoration: none;"><p style="margin-bottom: 6px; font-size: 16px;">☣ Crear el LogicalVolume</p></a>
+      <a href="#XFS" style="text-decoration: none;"><p style="margin-bottom: 6px; font-size: 16px;">☣ Formatear y Montar el LV</p></a>
+      <a href="#VGEXTEND" style="text-decoration: none;"><p style="margin-bottom: 6px; font-size: 16px;">☣ Extender el VolumeGroup</p></a>
+      <a href="#LVEXTEND" style="text-decoration: none;"><p style="margin-bottom: 6px; font-size: 16px;">☣ Extender el LogicalVolume</p></a>
+      <a href="#VGRENAME" style="text-decoration: none;"><p style="margin-bottom: 6px; font-size: 16px;">☣ Renombrar el VolulmeGroup</p></a>
+      <a href="#LVRENAME" style="text-decoration: none;"><p style="margin-bottom: 6px; font-size: 16px;">☣ Renombrar el LogicalVolume</p></a>
+		</div>
+	</div><!-- END TABBAR -->
+  
+  <div class="content-body">
+    <div id="main" style="position: sticky; top: 0;">
+      <button class="openbtn" onclick="toggleNav()">☣</button>  
+    </div><br>
+    <div id="mySidebar" class="sidebar" style="position: sticky; top: 0; margin-top: -24px; display: none;">
+      <a href="javascript:void(0)" class="closebtn" onclick="toggleNav()">×</a>
+      <span style="font-size: 25px; color: #27B700;"><b>&nbsp;✎</b></span><span style="font-size: 25px; color: white;"> <b>Notas</b></span>
+      <hr style="color: #DECD00;">
+      <a><span style="color: #E5D400;">PV</span><span class="spanx">: Physical Volume [/dev/sdb1 y /dev/sdb2]</span></a>
+			<a><span style="color: #E5D400;">VG</span><span class="spanx">: Volume Group [NEW-VG y vg_bogart]</span></a>
+			<a><span style="color: #E5D400;">LV</span><span class="spanx">: Logical Volume [NEW-LV y lv_bogart]</span></a>
+    </div>
+			<div class="container">
+				<div class="row">
+          <main class="col-md-8" style="margin-left: auto; margin-right: auto;">
+						<article class="post post-1">
+							<header  class="entry-header">
+								<h1 class="blh1">LVM [Logical Volume Manager]</h1>
+								<h2 class="blh2">Crear, Extender y Renombrar Volúmenes</h2>
+							</header>
+							<br><br>
+
+							<div class="leftl">
+								<p>El gestor de volúmenes lógicos {<b>LVM</b>} proporciona herramientas para crear dispositivos de bloque virtuales a partir de dispositivos físicos.</p>
+							<br>
+							<p>Los dispositivos virtuales pueden ser más fáciles de gestionar que los dispositivos físicos, y pueden tener capacidades más allá de lo que los dispositivos físicos proporcionan por sí mismos.</p>
+							</div>
+
+							<div class="entry-content clearfix">								
+								<br><br>
+								<div class="centext" id="LVM">
+									<a style="font-size: 19px; color: rgb(88, 177, 0);">☣ </a><span class="green-bg" style="font-size: 19px;">COMPONENTES DE LVM</span>
+								</div>
+								<br>
+								<div class="leftl">
+                  <span>⦾ <b>PV</b>: Pyhisical Volume {Volúmenes físicos}</span><br>
+                  <span>⦾ <b>VG</b>: Volume Group {Colección de uno o más dispositivos físicos, cada uno llamado 'PV'}</span><br>
+                  <span>⦾ <b>LV</b>: Logical Volume {Es el dispositivo de bloque virtual que puede ser utilizado por el sistema o las aplicaciones. Cada bloque de datos en LV se almacena en uno o más PV del VG acorde a los algoritmos implementados por Device Mapper ‘DM‘ en el Kernel}</span>
+								</div>
+								<br><br><br>
+
+								<div class="centext" id="PVCREATE">
+									<a style="font-size: 19px; color: rgb(88, 177, 0);">☣ </a><span class="green-bg" style="font-size: 19px;">CREAR PV</span>
+								</div>
+								<span>Unidad Física <b>sdb</b> de <b>8GB</b></span><br>
+
+								<div id="terminal">
+									  <!-- Terminal Bar -->       
+									  <section id="terminal__bar">          
+										<div id="bar__buttons">            
+										  <button class="bar__button" id="bar__button--exit">&#10005;</button>            
+										  <button class="bar__button">&#9472;</button>                
+										  <button class="bar__button">&#9723;</button>          
+										</div>
+									  </section>        
+									  <!-- Terminal Body -->
+									  <section id="terminal__body" class="wrapperlx">
+										<div id="terminal__prompt">
+											<span id="terminal__prompt--location"><a style="color: #71FF00;">☣</a>&nbsp;</span>
+										<span id="terminal__prompt--bling" style="color: #fff;"><b>lsblk</b></span>
+										</div>
+										  <div id="terminal__prompt">
+										      <span id="terminal__prompt--bling">&nbsp;<b>NAME</b>&nbsp;&nbsp;&nbsp;</span>
+											  <span id="terminal__prompt--bling"><b>MAJ:MIN</b>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+											  <span id="terminal__prompt--bling"><b>RM</b>&nbsp;&nbsp;&nbsp;</span>
+											  <span id="terminal__prompt--bling"><b>SIZE</b>&nbsp;&nbsp;&nbsp;</span>
+											  <span id="terminal__prompt--bling"><b>RO</b>&nbsp;&nbsp;&nbsp;</span>
+											  <span id="terminal__prompt--bling"><b>TYPE</b>&nbsp;&nbsp;&nbsp;</span>
+											  <span id="terminal__prompt--bling"><b>MOUNTPOINT</b>&nbsp;&nbsp;&nbsp;</span>
+										</div>
+										  <div id="terminal__prompt">
+										      <span id="terminal__prompt--bling">&nbsp;<b>sdb</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+											  <span id="terminal__prompt--bling"><b>8:16</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+											  <span id="terminal__prompt--bling"><b>0</b>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+											  <span id="terminal__prompt--bling"><b>8G</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+											  <span id="terminal__prompt--bling"><b>0</b>&nbsp;&nbsp;&nbsp;</span>
+											  <span id="terminal__prompt--bling"><b>disk</b></span>
+										</div>
+									  </section>
+									</div>
+
+								<br>
+								<br>
+
+								<div class="centext">
+									<span>Creada la partición <b>GPT</b> en <b>/dev/sdb1</b> de <b>4G</b> tipo <b>Linux LVM</b></span><br>
+									<span><b>Link to Post</b>: <a style="color: #00837F;" href="/blog/article/linux/mbr-gpt"><b>Crear Particiones MBR y GPT</b></a></span><br>
+								</div>
+
+								<div id="terminal">
+									  <!-- Terminal Bar -->       
+									  <section id="terminal__bar">          
+										<div id="bar__buttons">            
+										  <button class="bar__button" id="bar__button--exit">&#10005;</button>            
+										  <button class="bar__button">&#9472;</button>                
+										  <button class="bar__button">&#9723;</button>          
+										</div>
+									  </section>        
+									  <!-- Terminal Body -->
+									  <section id="terminal__body">
+										<div id="terminal__prompt">
+											<span id="terminal__prompt--location-orange"><b><a style="color: #71FF00;">☣</a>&nbsp;</b></span>
+											<span id="terminal__prompt--bling" style="color: #fff;"><b>fdisk <a style="color: #71FF00;">-l</a></b></span>					
+										</div>
+										<div id="terminal__prompt">
+											<span id="terminal__prompt--bling">&nbsp;<b>Disk /dev/sdb: 8GiB, 8589934592 bytes, 16777216 sectors</b>&nbsp;</span>
+										</div>
+										<div id="terminal__prompt">
+											<span id="terminal__prompt--bling">&nbsp;<b>Disk model: VBOX HARDDISK</b></span>
+										</div>
+										<div id="terminal__prompt">
+											<span id="terminal__prompt--bling">&nbsp;<b>Units: sectors of 1 * 512 = 512 bytes</b></span>
+										</div>
+										<div id="terminal__prompt">
+											<span id="terminal__prompt--bling">&nbsp;<b>Sector size (logical/physical): 512 bytes / 512 bytes</b></span>
+										</div>
+										<div id="terminal__prompt">
+											<span id="terminal__prompt--bling">&nbsp;<b>I/O size (minimum/optimal): 512 bytes / 512 bytes</b></span>
+										</div>
+									    <div id="terminal__prompt">
+											<span id="terminal__prompt--bling">&nbsp;<b>Disklabel type: gpt</b></span>
+										</div>
+										<div id="terminal__prompt">
+											<span id="terminal__prompt--bling">&nbsp;<b>Disk identifier: E5E25F62-A301-404B-BF59-B176C85357A1</b></span>
+										</div><br>
+									    <div id="terminal__prompt">
+											<span id="terminal__prompt--bling">&nbsp;<b>Device</b>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+											<span id="terminal__prompt--bling">&nbsp;<b>Start</b>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+											<span id="terminal__prompt--bling">&nbsp;<b>End</b>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+											<span id="terminal__prompt--bling">&nbsp;<b>Sectors</b>&nbsp;&nbsp;</span>
+											<span id="terminal__prompt--bling">&nbsp;<b>Size</b>&nbsp;&nbsp;&nbsp;</span>
+											<span id="terminal__prompt--bling">&nbsp;<b>Type</b>&nbsp;&nbsp;</span>
+										</div>
+										<div id="terminal__prompt">
+											<span id="terminal__prompt--bling">&nbsp;<b>/dev/sdb1</b>&nbsp;&nbsp;</span>
+											<span id="terminal__prompt--bling">&nbsp;<b>2048</b>&nbsp;&nbsp;</span>
+											<span id="terminal__prompt--bling">&nbsp;<b>8390655</b>&nbsp;&nbsp;</span>
+											<span id="terminal__prompt--bling">&nbsp;<b>83388608</b>&nbsp;&nbsp;</span>
+											<span id="terminal__prompt--bling">&nbsp;<b>4G</b>&nbsp;&nbsp;</span>
+											<span id="terminal__prompt--bling">&nbsp;<b>Linux LVM</b>&nbsp;&nbsp;</span>
+										</div>
+									  </section>
+									</div>
+								<br><br>
+								
+								<div class="leftl">
+									<span>⦾ Crear el <b>Physical Volume</b> en <b><a style="color: #179700;">/dev/sdb1</a></b></span><br>
+									<span>⦾ Capacidad del Physical Volume: <b><a style="color: #179700;">4G</a></b></span>
+								</div>
+								
+								<div id="terminal">
+									  <!-- Terminal Bar -->       
+									  <section id="terminal__bar">          
+										<div id="bar__buttons">            
+										  <button class="bar__button" id="bar__button--exit">&#10005;</button>            
+										  <button class="bar__button">&#9472;</button>                
+										  <button class="bar__button">&#9723;</button>          
+										</div>
+									  </section>        
+									  <!-- Terminal Body -->
+									  <section id="terminal__body" class="wrapperlx">
+										<div id="terminal__prompt">
+											<span id="terminal__prompt--location"><a style="color: #71FF00;">☣</a>&nbsp;</span>
+										<span id="terminal__prompt--bling" style="color: #fff;"><b>pvcreate /dev/sdb1</b></span>
+										</div>
+
+										<div id="terminal__prompt">
+										<span id="terminal__prompt--bling">&nbsp;<b>Physical Volume "/dev/sdb1" successfully created.</b></span>
+										</div><br>
+
+										<div id="terminal__prompt">
+									    <span id="terminal__prompt--location"><a style="color: #71FF00;">☣</a>&nbsp;</span>
+										<span id="terminal__prompt--bling" style="color: #fff;"><b>pvs</b>&nbsp;</span>
+										</div>
+
+										<div id="terminal__prompt">
+										<span id="terminal__prompt--bling">&nbsp;<b>PV</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+										<span id="terminal__prompt--bling">&nbsp;<b>VG</b>&nbsp;&nbsp;&nbsp;</span>
+									    <span id="terminal__prompt--bling">&nbsp;<b>Fmt</b>&nbsp;&nbsp;&nbsp;</span>
+										<span id="terminal__prompt--bling">&nbsp;<b>Attr</b>&nbsp;&nbsp;&nbsp;</span>
+										<span id="terminal__prompt--bling">&nbsp;<b>PSize</b>&nbsp;&nbsp;&nbsp;</span>
+										<span id="terminal__prompt--bling">&nbsp;<b>PFree</b></span>
+										</div>
+
+										<div id="terminal__prompt">
+										<span id="terminal__prompt--bling">&nbsp;<b>/dev/sdb1</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+									    <span id="terminal__prompt--bling">&nbsp;<b>lvm2</b>&nbsp;&nbsp;&nbsp;</span>
+										<span id="terminal__prompt--bling">&nbsp;<b>---</b>&nbsp;&nbsp;&nbsp;</span>
+										<span id="terminal__prompt--bling">&nbsp;<b>4.00g</b>&nbsp;&nbsp;&nbsp;</span>
+										<span id="terminal__prompt--bling">&nbsp;<b>4.00g</b></span>
+										</div><br>
+
+										<div id="terminal__prompt">
+										<span id="terminal__prompt--location"><a style="color: #71FF00;">☣</a>&nbsp;</span>
+									    <span id="terminal__prompt--bling" style="color: #fff;"><b>pvdisplay</b></span>
+										</div>
+
+										<div id="terminal__prompt">
+									    <span id="terminal__prompt--bling">&nbsp;<b>"/dev/sdb1" is a new physical volume of "<b>4.00 GiB</b>"</b>&nbsp;</span>
+										</div>
+
+										<div id="terminal__prompt">
+									    <span id="terminal__prompt--bling">&nbsp;<b>--- NEW Physical volume ---</b></span>
+										</div>
+
+										<div id="terminal__prompt">
+									    <span id="terminal__prompt--bling">&nbsp;<b>PV Name</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+										<span id="terminal__prompt--bling"><b>/dev/sdb1</b></span>
+										</div>
+
+										<div id="terminal__prompt">
+									    <span id="terminal__prompt--bling">&nbsp;<b>VG Name</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+										</div>
+
+										<div id="terminal__prompt">
+									    <span id="terminal__prompt--bling">&nbsp;<b>PV Size</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+										<span id="terminal__prompt--bling"><b>4.00 GiB</b></span>
+										</div>
+
+										<div id="terminal__prompt">
+									    <span id="terminal__prompt--bling">&nbsp;<b>Allocatable</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+										<span id="terminal__prompt--bling"><b>NO</b></span>
+										</div>
+
+										<div id="terminal__prompt">
+									    <span id="terminal__prompt--bling">&nbsp;<b>PE Size</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+										<span id="terminal__prompt--bling"><b>0</b></span>
+										</div>
+
+										<div id="terminal__prompt">
+									    <span id="terminal__prompt--bling">&nbsp;<b>Total PE</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+										<span id="terminal__prompt--bling"><b>0</b></span>
+										</div>
+
+										<div id="terminal__prompt">
+									    <span id="terminal__prompt--bling">&nbsp;<b>Free PE</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+										<span id="terminal__prompt--bling"><b>0</b></span>
+										</div>
+
+										<div id="terminal__prompt">
+									    <span id="terminal__prompt--bling">&nbsp;<b>Allocated PE</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+										<span id="terminal__prompt--bling"><b>0</b></span>
+										</div>
+
+										<div id="terminal__prompt">
+									    <span id="terminal__prompt--bling">&nbsp;<b>PV UUID</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+										<span id="terminal__prompt--bling"><b>tpPa5X-Zo53-Bvf8-wxnV-v6Zt-8</b></span>
+										</div>
+									  </section>
+									</div><br><br><br><br>
+
+								<div class="centext" id="VGCREATE">
+									<a style="font-size: 19px; color: rgb(88, 177, 0);">☣ </a><span class="green-bg" style="font-size: 19px;">CREAR VG</span>
+								</div>
+
+								<div class="left">
+									<span>⦾ Crear <b>Volume Group</b> llamado: <b><a style="color: #179700;">NEW-VG</a></b></span><br>
+									<span>⦾ Capacidad del Volume Group: <b><a style="color: #179700;">4G</a></b></span>
+								</div>
+								
+								<div id="terminal">
+									  <!-- Terminal Bar -->       
+									  <section id="terminal__bar">          
+										<div id="bar__buttons">            
+										  <button class="bar__button" id="bar__button--exit">&#10005;</button>            
+										  <button class="bar__button">&#9472;</button>                
+										  <button class="bar__button">&#9723;</button>          
+										</div>
+									  </section>        
+									  <!-- Terminal Body -->
+									  <section id="terminal__body" class="wrapperlx">
+										<div id="terminal__prompt">
+											<span id="terminal__prompt--location"><a style="color: #71FF00;">☣</a>&nbsp;</span>
+											<span id="terminal__prompt--bling" style="color: #fff;"><b>vgcreate <a style="color: #23E500;">NEW-VG</a> /dev/sdb1</b></span>
+										</div>
+
+										<div id="terminal__prompt">
+										<span id="terminal__prompt--bling">&nbsp;<b>Volume group "NEW-VG" successfully created.</b></span>
+										</div><br>
+
+										<div id="terminal__prompt">
+									    <span id="terminal__prompt--location"><a style="color: #71FF00;">☣</a>&nbsp;</span>
+										<span id="terminal__prompt--bling" style="color: #fff;"><b>vgs</b>&nbsp;</span>
+										</div>
+
+										<div id="terminal__prompt">
+										<span id="terminal__prompt--bling">&nbsp;<b>VG</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+										<span id="terminal__prompt--bling">&nbsp;<b>#PV</b>&nbsp;&nbsp;&nbsp;</span>
+									    <span id="terminal__prompt--bling">&nbsp;<b>#LV</b>&nbsp;&nbsp;&nbsp;</span>
+										<span id="terminal__prompt--bling">&nbsp;<b>#SN</b>&nbsp;&nbsp;&nbsp;</span>
+										<span id="terminal__prompt--bling">&nbsp;<b>Attr</b>&nbsp;&nbsp;&nbsp;</span>
+										<span id="terminal__prompt--bling">&nbsp;<b>VSize</b>&nbsp;&nbsp;</span>
+										<span id="terminal__prompt--bling">&nbsp;<b>VFree</b></span>
+										</div>
+
+										<div id="terminal__prompt">
+										<span id="terminal__prompt--bling">&nbsp;<b>NEW-VG</b>&nbsp;&nbsp;&nbsp;</span>
+									    <span id="terminal__prompt--bling">&nbsp;<b>1</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+										<span id="terminal__prompt--bling">&nbsp;<b>1</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+										<span id="terminal__prompt--bling">&nbsp;<b>0</b>&nbsp;&nbsp;&nbsp;</span>
+										<span id="terminal__prompt--bling">&nbsp;<b>wz--n-</b>&nbsp;&nbsp;&nbsp;</span>
+										<span id="terminal__prompt--bling">&nbsp;<b>&lt;4.00g</b>&nbsp;</span>
+										<span id="terminal__prompt--bling">&nbsp;<b>4.00m</b>&nbsp;</span>
+										</div><br>
+
+										<div id="terminal__prompt">
+										<span id="terminal__prompt--location"><a style="color: #71FF00;">☣</a>&nbsp;</span>
+									    <span id="terminal__prompt--bling" style="color: #fff;"><b>vgdisplay</b></span>
+										</div>
+
+										<div id="terminal__prompt">
+									    <span id="terminal__prompt--bling">&nbsp;<b>--- Volume group ---</b></span>
+										</div>
+
+										<div id="terminal__prompt">
+									    <span id="terminal__prompt--bling">&nbsp;<b>VG Name</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+										<span id="terminal__prompt--bling"><b>NEW-VG</b></span>
+										</div>
+
+										<div id="terminal__prompt">
+									    <span id="terminal__prompt--bling">&nbsp;<b>System ID</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+										</div>
+
+										<div id="terminal__prompt">
+									    <span id="terminal__prompt--bling">&nbsp;<b>Format</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+										<span id="terminal__prompt--bling"><b>lvm2</b></span>
+										</div>
+
+										<div id="terminal__prompt">
+									    <span id="terminal__prompt--bling">&nbsp;<b>Metadata Areas</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+										<span id="terminal__prompt--bling"><b>1</b></span>
+										</div>
+
+										<div id="terminal__prompt">
+									    <span id="terminal__prompt--bling">&nbsp;<b>Metadata Sequence No</b>&nbsp;&nbsp;&nbsp;</span>
+										<span id="terminal__prompt--bling"><b>1</b></span>
+										</div>
+										  
+										<div id="terminal__prompt">
+									    <span id="terminal__prompt--bling">&nbsp;<b>VG Access</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+										<span id="terminal__prompt--bling"><b>read/write</b></span>
+										</div>
+										  
+										<div id="terminal__prompt">
+									    <span id="terminal__prompt--bling">&nbsp;<b>VG Status</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+										<span id="terminal__prompt--bling"><b>resizable</b></span>
+										</div>
+										  
+										<div id="terminal__prompt">
+									    <span id="terminal__prompt--bling">&nbsp;<b>MAX LV</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+										<span id="terminal__prompt--bling"><b>0</b></span>
+										</div>
+										  
+										<div id="terminal__prompt">
+									    <span id="terminal__prompt--bling">&nbsp;<b>Cur LV</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+										<span id="terminal__prompt--bling"><b>0</b></span>
+										</div>
+										  
+										<div id="terminal__prompt">
+									    <span id="terminal__prompt--bling">&nbsp;<b>Open LV</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+										<span id="terminal__prompt--bling"><b>0</b></span>
+										</div>
+										  
+										<div id="terminal__prompt">
+									    <span id="terminal__prompt--bling">&nbsp;<b>Max PV</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+										<span id="terminal__prompt--bling"><b>0</b></span>
+										</div>
+
+										<div id="terminal__prompt">
+									    <span id="terminal__prompt--bling">&nbsp;<b>Cur PV</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+										<span id="terminal__prompt--bling"><b>1</b></span>
+										</div>
+
+										<div id="terminal__prompt">
+									    <span id="terminal__prompt--bling">&nbsp;<b>Act PV</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+										<span id="terminal__prompt--bling"><b>1</b></span>
+										</div>
+										  
+										<div id="terminal__prompt">
+									    <span id="terminal__prompt--bling">&nbsp;<b>VG Size</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+										<span id="terminal__prompt--bling"><b>&lt;4.00 GiB</b></span>
+										</div>
+
+										<div id="terminal__prompt">
+									    <span id="terminal__prompt--bling">&nbsp;<b>PE Size</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+										<span id="terminal__prompt--bling"><b>4.00 MiB</b></span>
+										</div>
+
+										<div id="terminal__prompt">
+									    <span id="terminal__prompt--bling">&nbsp;<b>Total PE</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+										<span id="terminal__prompt--bling"><b>1023</b></span>
+										</div>
+
+										<div id="terminal__prompt">
+									    <span id="terminal__prompt--bling">&nbsp;<b>Alloc PE / Size</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+										<span id="terminal__prompt--bling"><b>0 / 0</b></span>
+										</div>
+
+										<div id="terminal__prompt">
+									    <span id="terminal__prompt--bling">&nbsp;<b>Free PE / Size</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+										<span id="terminal__prompt--bling"><b>1023 / &lt;4.00 GiB</b></span>
+										</div>
+
+										<div id="terminal__prompt">
+									    <span id="terminal__prompt--bling">&nbsp;<b>VG UUID</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+										<span id="terminal__prompt--bling"><b>fIv3AQ-UjU6-D3OP</b></span>
+										</div>
+									  </section>
+									</div>
+
+                <div style="border-top: 1px solid #000; width: 100%; margin: 10px 0;"></div>
+
+								<div class="centext" id="LVCREATE" style="margin-top: 130px;">
+									<a style="font-size: 19px; color: rgb(88, 177, 0);">☣ </a><span class="green-bg" style="font-size: 19px;">CREAR LV</span>
+								</div>
+								<div class="leftl">
+									<span>⦾ Crear un <b>Logical Volume</b> llamado: <b><a style="color: #179700;">NEW-LV</a></b></span><br>
+									<span>⦾ Capacidad del Logical Volume: <b><a style="color: #179700;">4G</a></b></span>
+								</div>
+
+								<!------ LV TERMINAL ------>
+								<div id="terminal">
+									  <!-- Terminal Bar -->       
+									  <section id="terminal__bar">          
+										<div id="bar__buttons">            
+										  <button class="bar__button" id="bar__button--exit">&#10005;</button>            
+										  <button class="bar__button">&#9472;</button>                
+										  <button class="bar__button">&#9723;</button>          
+										</div>
+									  </section>        
+									  <!-- Terminal Body -->
+									  <section id="terminal__body" class="wrapperlx">
+										<div id="terminal__prompt">
+											<span id="terminal__prompt--location"><a style="color: #71FF00;">☣</a>&nbsp;</span>
+											<span id="terminal__prompt--bling" style="color: #fff;"><b>lvcreate NEW-VG -l+100%FREE -n <a style="color: #23E500;">NEW-LV</a></b></span>
+										</div>
+
+										<div id="terminal__prompt">
+											<span id="terminal__prompt--bling">&nbsp;<b>Logical volume "NEW-LV" created.</b></span>
+										</div><br>
+
+										<div id="terminal__prompt">
+									    <span id="terminal__prompt--location"><a style="color: #71FF00;">☣</a>&nbsp;</span>
+										<span id="terminal__prompt--bling" style="color: #fff;"><b>lvs</b></span>
+										</div>
+
+										<div id="terminal__prompt">
+										<span id="terminal__prompt--bling">&nbsp;<b>LV</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+										<span id="terminal__prompt--bling">&nbsp;<b>VG</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+									    <span id="terminal__prompt--bling">&nbsp;<b>Attr</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+										<span id="terminal__prompt--bling">&nbsp;<b>LSize</b></span>
+										</div>
+
+										<div id="terminal__prompt">
+										<span id="terminal__prompt--bling">&nbsp;<b>NEW-LV</b>&nbsp;&nbsp;&nbsp;</span>
+									    <span id="terminal__prompt--bling">&nbsp;<b>NEW-VG</b>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+										<span id="terminal__prompt--bling">&nbsp;<b>-wi-a-----</b>&nbsp;&nbsp;&nbsp;</span>
+										<span id="terminal__prompt--bling">&nbsp;<b>&lt;4.00g</b></span>
+										</div><br>
+
+										<div id="terminal__prompt">
+										<span id="terminal__prompt--location"><a style="color: #71FF00;">☣</a>&nbsp;</span>
+									    <span id="terminal__prompt--bling" style="color: #fff;"><b>lvdisplay</b></span>
+										</div>
+
+										<div id="terminal__prompt">
+									    <span id="terminal__prompt--bling">&nbsp;<b>--- Logical volume ---</b></span>
+										</div>
+
+										<div id="terminal__prompt">
+									    <span id="terminal__prompt--bling">&nbsp;<b>LV Path</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+										<span id="terminal__prompt--bling"><b>/dev/NEW-VG/NEW-LV</b></span>
+										</div>
+
+										<div id="terminal__prompt">
+									    <span id="terminal__prompt--bling">&nbsp;<b>LV Name</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+										<span id="terminal__prompt--bling"><b>NEW-LV</b></span>
+										</div>
+
+										<div id="terminal__prompt">
+									    <span id="terminal__prompt--bling">&nbsp;<b>VG Name</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+										<span id="terminal__prompt--bling"><b>NEW-VG</b></span>
+										</div>
+
+										<div id="terminal__prompt">
+									    <span id="terminal__prompt--bling">&nbsp;<b>LV UUID</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+										<span id="terminal__prompt--bling"><b>oEnTWH-Euj0-OPxG-ZMKm-fa8i-duBu-OfKH3V</b>&nbsp;</span>
+										</div>
+
+										<div id="terminal__prompt">
+									    <span id="terminal__prompt--bling">&nbsp;<b>LV Write Access</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+										<span id="terminal__prompt--bling"><b>read/write</b></span>
+										</div>
+
+										<div id="terminal__prompt">
+									    <span id="terminal__prompt--bling">&nbsp;<b>LV Status</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+										<span id="terminal__prompt--bling"><b>available</b></span>
+										</div>
+
+										<div id="terminal__prompt">
+									    <span id="terminal__prompt--bling">&nbsp;<b>LV Size</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+										<span id="terminal__prompt--bling"><b>&lt;4.00 GiB</b></span>
+										</div>
+
+										<div id="terminal__prompt">
+									    <span id="terminal__prompt--bling">&nbsp;<b>Current LE</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+										<span id="terminal__prompt--bling"><b>1023</b></span>
+										</div>
+										  
+										<div id="terminal__prompt">
+									    <span id="terminal__prompt--bling">&nbsp;<b>Segments</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+										<span id="terminal__prompt--bling"><b>1</b></span>
+										</div>
+
+										<div id="terminal__prompt">
+									    <span id="terminal__prompt--bling">&nbsp;<b>Allocation</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+										<span id="terminal__prompt--bling"><b>inherit</b></span>
+										</div>
+
+										<div id="terminal__prompt">
+									    <span id="terminal__prompt--bling">&nbsp;<b>Read ahead sectors</b>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+										<span id="terminal__prompt--bling"><b>auto</b></span>
+										</div>
+
+										<div id="terminal__prompt">
+									    <span id="terminal__prompt--bling">&nbsp;<b>- currently set to</b>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+										<span id="terminal__prompt--bling"><b>256</b></span>
+										</div>
+
+										<div id="terminal__prompt">
+									    <span id="terminal__prompt--bling">&nbsp;<b>Block device</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+										<span id="terminal__prompt--bling"><b>254:1</b></span>
+										</div>
+									  </section>
+									</div>
+								<!-- END LV TERMINAL -->
+
+                <div style="border-top: 1px solid #000; width: 100%; margin: 10px 0;"></div>
+
+					<div class="centext" id="XFS" style="margin-top: 130px;">
+									<a style="font-size: 19px; color: rgb(88, 177, 0);">☣ </a><span class="green-bg" style="font-size: 19px;">FORMATEAR Y MONTAR EL LV</span>
+								</div>
+								<div class="left">
+									<span>⦾ Formatear el LV <b><a style="color: #179700;">/dev/mapper/NEW-VG/NEW-LV</a></b> en <b><a style="color: #179700;">XFS</a></b></span><br>
+									<span>⦾ Crear punto de montaje en <b><a style="color: #179700;">/LVM</a></b></span><br>
+									<span>⦾ Montar el LV en <b><a style="color: #179700;">/LVM</a></b></span>
+								</div>
+
+								<!--- TERMINAL FORMATEO Y MONTAJE --->
+								<div id="long-terminal">
+									  <!-- Terminal Bar -->       
+									  <section id="terminal__bar">          
+										<div id="bar__buttons">            
+										  <button class="bar__button" id="bar__button--exit">&#10005;</button>            
+										  <button class="bar__button">&#9472;</button>                
+										  <button class="bar__button">&#9723;</button>          
+										</div>
+									  </section>        
+									  <!-- Terminal Body -->
+									  <section id="terminal__body" class="wrapperlx">
+										<div id="terminal__prompt">
+											<span id="terminal__prompt--location"><a style="color: #71FF00;">☣</a>&nbsp;</span>
+										<span id="terminal__prompt--bling" style="color: #fff;"><b>mkfs.xfs /dev/mapper/NEW-VG/NEW-LV</b></span>
+										</div>
+
+										<div id="terminal__prompt">
+											<span id="terminal__prompt--location"><a style="color: #71FF00;">☣</a>&nbsp;</span>
+										<span id="terminal__prompt--bling" style="color: #fff;"><b>mkdir /LVM</b></span>
+										</div>
+
+										<div id="terminal__prompt">
+											<span id="terminal__prompt--location"><a style="color: #71FF00;">☣</a>&nbsp;</span>
+										<span id="terminal__prompt--bling" style="color: #fff;"><b>mount /dev/mapper/NEW-VG/NEW-LV /LVM</b></span>
+										</div><br>
+
+										<div id="terminal__prompt">
+											<span id="terminal__prompt--location"><a style="color: #71FF00;">☣</a>&nbsp;</span>
+										<span id="terminal__prompt--bling" style="color: #fff;"><b>df -Th /LVM</b></span>
+										</div>
+
+										<div id="terminal__prompt">
+											<span id="terminal__prompt--bling"><b>Filesystem</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+											<span id="terminal__prompt--bling"><b>Type</b>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+											<span id="terminal__prompt--bling"><b>Size</b>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+											<span id="terminal__prompt--bling"><b>Used</b>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+											<span id="terminal__prompt--bling"><b>Avail</b>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+											<span id="terminal__prompt--bling"><b>Use%</b>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+											<span id="terminal__prompt--bling"><b>Mounted on</b>&nbsp;</span>
+										</div>
+										  
+										<div id="terminal__prompt">
+											<span id="terminal__prompt--bling"><b>/dev/mapper/NEW--VG/NEW--LV</b>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+											<span id="terminal__prompt--bling"><b>xfs</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+											<span id="terminal__prompt--bling"><b>4.0G</b>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+											<span id="terminal__prompt--bling"><b>37M</b>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+											<span id="terminal__prompt--bling"><b>4.0G</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+											<span id="terminal__prompt--bling"><b>1%</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+											<span id="terminal__prompt--bling"><b>/LVM</b></span>
+										</div>
+									  </section>
+									</div><br><br><br><br>
+								<!--- END TERMINAL FORMATEO Y MONTAJE --->
+
+								<div class="centext" id="VGEXTEND">
+									<a style="font-size: 19px; color: rgb(88, 177, 0);">☣ </a><span class="green-bg" style="font-size: 19px;">EXTENDER EL VOLUME GROUP</span>
+								</div>
+								<div class="centext">
+									<span>Esta parte del post se centra en la <b>ampliación de volúmenes</b> creados anteriormente, partiendo de los puntos siguientes:</span>
+								</div><br>
+								<div class="left">
+									<span>⦾ Nueva partición <b><a style="color: #179700;">/dev/sdb2</a></b> de <b><a style="color: #179700;">4G</a></b></span><br>
+									<span>⦾ <b>PV</b> creado sobre <b>/dev/sdb2</b></span><br>
+									<span>⦾ Extender el <b><a style="color: #179700;">VG</a></b> creado anteriormente: <b><a style="color: #179700;">NEW-VG</a></b></span>
+								</div><br>
+								<div class="centext">
+									<span>En este punto, el Volume Group <b>NEW-VG</b> no tiene espacio libre.</span><br>
+									<span>Tras extender el espacio disponible de <b>/dev/sdb2</b> al Volume Group <b>NEW-VG</b>, volverá a disponer de <b>4G</b> libres para extender posteriormente el <b>LV</b>:</span>
+								</div>
+
+								<!--- TERMINAL EXTENDER VOLUME GROUP --->
+								<div id="terminal">
+									  <!-- Terminal Bar -->       
+									  <section id="terminal__bar">          
+										<div id="bar__buttons">            
+										  <button class="bar__button" id="bar__button--exit">&#10005;</button>            
+										  <button class="bar__button">&#9472;</button>                
+										  <button class="bar__button">&#9723;</button>          
+										</div>
+									  </section>        
+									  <!-- Terminal Body -->
+									  <section id="terminal__body">
+										<div id="terminal__prompt">
+											<span id="terminal__prompt--location"><a style="color: #71FF00;">☣</a>&nbsp;</span>
+										<span id="terminal__prompt--bling" style="color: #fff;"><b>pvcreate /dev/sdb2</b></span>
+										</div>
+
+										<div id="terminal__prompt">
+										<span id="terminal__prompt--bling">&nbsp;<b>Physical Volume "/dev/sdb2" successfully created.</b></span>
+										</div><br>
+
+										<div id="terminal__prompt">
+									    <span id="terminal__prompt--location"><a style="color: #71FF00;">☣</a>&nbsp;</span>
+										<span id="terminal__prompt--bling" style="color: #fff;"><b>pvs</b>&nbsp;</span>
+										</div>
+
+										<div id="terminal__prompt">
+										<span id="terminal__prompt--bling">&nbsp;<b>PV</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+										<span id="terminal__prompt--bling">&nbsp;<b>VG</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+									    <span id="terminal__prompt--bling">&nbsp;<b>Fmt</b>&nbsp;&nbsp;&nbsp;</span>
+										<span id="terminal__prompt--bling">&nbsp;<b>Attr</b>&nbsp;&nbsp;&nbsp;</span>
+										<span id="terminal__prompt--bling">&nbsp;<b>PSize</b>&nbsp;&nbsp;&nbsp;</span>
+										<span id="terminal__prompt--bling">&nbsp;<b>PFree</b></span>
+										</div>
+
+										<div id="terminal__prompt">
+										<span id="terminal__prompt--bling">&nbsp;<b>/dev/sdb1</b>&nbsp;</span>
+										<span id="terminal__prompt--bling">&nbsp;<b>NEW-VG</b>&nbsp;&nbsp;&nbsp;</span>
+									    <span id="terminal__prompt--bling">&nbsp;<b>lvm2</b>&nbsp;&nbsp;&nbsp;</span>
+										<span id="terminal__prompt--bling">&nbsp;<b>---</b>&nbsp;&nbsp;&nbsp;</span>
+										<span id="terminal__prompt--bling">&nbsp;<b>&lt;4.00g</b>&nbsp;&nbsp;&nbsp;</span>
+										<span id="terminal__prompt--bling">&nbsp;<b>0</b></span>
+										</div>
+
+										<div id="terminal__prompt">
+										<span id="terminal__prompt--bling">&nbsp;<b>/dev/sdb2</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+									    <span id="terminal__prompt--bling">&nbsp;<b>lvm2</b>&nbsp;&nbsp;&nbsp;</span>
+										<span id="terminal__prompt--bling">&nbsp;<b>---</b>&nbsp;&nbsp;&nbsp;</span>
+										<span id="terminal__prompt--bling">&nbsp;<b>&lt;4.00g</b>&nbsp;&nbsp;&nbsp;</span>
+										<span id="terminal__prompt--bling">&nbsp;<b>&lt;4.00g</b>&nbsp;</span>
+										</div><br>
+
+										<div id="terminal__prompt">
+									    <span id="terminal__prompt--location"><a style="color: #71FF00;">☣</a>&nbsp;</span>
+										<span id="terminal__prompt--bling" style="color: #fff;"><b>vgs</b>&nbsp;</span>
+										</div>
+
+										<div id="terminal__prompt">
+										<span id="terminal__prompt--bling">&nbsp;<b>VG</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+										<span id="terminal__prompt--bling">&nbsp;<b>#PV</b>&nbsp;&nbsp;&nbsp;</span>
+									    <span id="terminal__prompt--bling">&nbsp;<b>#LV</b>&nbsp;&nbsp;&nbsp;</span>
+										<span id="terminal__prompt--bling">&nbsp;<b>#SN</b>&nbsp;&nbsp;&nbsp;</span>
+										<span id="terminal__prompt--bling">&nbsp;<b>Attr</b>&nbsp;&nbsp;&nbsp;</span>
+										<span id="terminal__prompt--bling">&nbsp;<b>VSize</b>&nbsp;&nbsp;</span>
+										<span id="terminal__prompt--bling">&nbsp;<b>VFree</b></span>
+										</div>
+
+										<div id="terminal__prompt">
+										<span id="terminal__prompt--bling">&nbsp;<b>NEW-VG</b>&nbsp;&nbsp;&nbsp;</span>
+									    <span id="terminal__prompt--bling">&nbsp;<b>1</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+										<span id="terminal__prompt--bling">&nbsp;<b>1</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+										<span id="terminal__prompt--bling">&nbsp;<b>0</b>&nbsp;&nbsp;&nbsp;</span>
+										<span id="terminal__prompt--bling">&nbsp;<b>wz--n-</b>&nbsp;&nbsp;&nbsp;</span>
+										<span id="terminal__prompt--bling">&nbsp;<b>&lt;4.00g</b>&nbsp;</span>
+										<span id="terminal__prompt--bling">&nbsp;<b>0</b>&nbsp;</span>
+										</div><br>
+
+										<div id="terminal__prompt">
+									    <span id="terminal__prompt--location"><a style="color: #71FF00;">☣</a>&nbsp;</span>
+										<span id="terminal__prompt--bling" style="color: #fff;"><b>vgextend NEW-VG /dev/sdb2</b>&nbsp;</span>
+										</div>
+
+										<div id="terminal__prompt">
+										<span id="terminal__prompt--bling">&nbsp;<b>Volume group "NEW-VG" successfully extended.</b></span>
+										</div><br>
+
+										<div id="terminal__prompt">
+									    <span id="terminal__prompt--location"><a style="color: #71FF00;">☣</a>&nbsp;</span>
+										<span id="terminal__prompt--bling" style="color: #fff;"><b>pvs</b>&nbsp;</span>
+										</div>
+										<div id="terminal__prompt">
+										<span id="terminal__prompt--bling">&nbsp;<b>PV</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+										<span id="terminal__prompt--bling">&nbsp;<b>VG</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+									    <span id="terminal__prompt--bling">&nbsp;<b>Fmt</b>&nbsp;&nbsp;&nbsp;</span>
+										<span id="terminal__prompt--bling">&nbsp;<b>Attr</b>&nbsp;&nbsp;&nbsp;</span>
+										<span id="terminal__prompt--bling">&nbsp;<b>PSize</b>&nbsp;&nbsp;&nbsp;</span>
+										<span id="terminal__prompt--bling">&nbsp;<b>PFree</b></span>
+										</div>
+										  
+										<div id="terminal__prompt">
+										<span id="terminal__prompt--bling">&nbsp;<b>/dev/sdb1</b>&nbsp;</span>
+										<span id="terminal__prompt--bling">&nbsp;<b>NEW-VG</b>&nbsp;&nbsp;&nbsp;</span>
+									    <span id="terminal__prompt--bling">&nbsp;<b>lvm2</b>&nbsp;&nbsp;&nbsp;</span>
+										<span id="terminal__prompt--bling">&nbsp;<b>---</b>&nbsp;&nbsp;&nbsp;</span>
+										<span id="terminal__prompt--bling">&nbsp;<b>&lt;4.00g</b>&nbsp;&nbsp;&nbsp;</span>
+										<span id="terminal__prompt--bling">&nbsp;<b>0</b></span>
+										</div>
+
+										<div id="terminal__prompt">
+										<span id="terminal__prompt--bling">&nbsp;<b>/dev/sdb2</b>&nbsp;</span>
+										<span id="terminal__prompt--bling">&nbsp;<b>NEW-VG</b>&nbsp;&nbsp;&nbsp;</span>
+									    <span id="terminal__prompt--bling">&nbsp;<b>lvm2</b>&nbsp;&nbsp;&nbsp;</span>
+										<span id="terminal__prompt--bling">&nbsp;<b>---</b>&nbsp;&nbsp;&nbsp;</span>
+										<span id="terminal__prompt--bling">&nbsp;<b>&lt;4.00g</b>&nbsp;&nbsp;&nbsp;</span>
+										<span id="terminal__prompt--bling">&nbsp;<b>&lt;4.00g</b>&nbsp;</span>
+										</div><br>
+
+										<div id="terminal__prompt">
+									    <span id="terminal__prompt--location"><a style="color: #71FF00;">☣</a>&nbsp;</span>
+										<span id="terminal__prompt--bling" style="color: #fff;"><b>vgs</b>&nbsp;</span>
+										</div>
+										  
+										<div id="terminal__prompt">
+										<span id="terminal__prompt--bling">&nbsp;<b>VG</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+										<span id="terminal__prompt--bling">&nbsp;<b>#PV</b>&nbsp;&nbsp;&nbsp;</span>
+									    <span id="terminal__prompt--bling">&nbsp;<b>#LV</b>&nbsp;&nbsp;&nbsp;</span>
+										<span id="terminal__prompt--bling">&nbsp;<b>#SN</b>&nbsp;&nbsp;&nbsp;</span>
+										<span id="terminal__prompt--bling">&nbsp;<b>Attr</b>&nbsp;&nbsp;&nbsp;</span>
+										<span id="terminal__prompt--bling">&nbsp;<b>VSize</b>&nbsp;&nbsp;</span>
+										<span id="terminal__prompt--bling">&nbsp;<b>VFree</b></span>
+										</div>
+										  
+										<div id="terminal__prompt">
+										<span id="terminal__prompt--bling">&nbsp;<b>NEW-VG</b>&nbsp;&nbsp;&nbsp;</span>
+									    <span id="terminal__prompt--bling">&nbsp;<b>2</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+										<span id="terminal__prompt--bling">&nbsp;<b>1</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+										<span id="terminal__prompt--bling">&nbsp;<b>0</b>&nbsp;&nbsp;&nbsp;</span>
+										<span id="terminal__prompt--bling">&nbsp;<b>wz--n-</b>&nbsp;&nbsp;&nbsp;</span>
+										<span id="terminal__prompt--bling">&nbsp;<b>&lt;8.00g</b>&nbsp;</span>
+										<span id="terminal__prompt--bling">&nbsp;<b>4.00g</b>&nbsp;</span>
+										</div>
+										  <!--- END TERMINAL EXTENDER VOLUME GROUP --->
+									  </section>
+									</div>
+
+                <div style="border-top: 1px solid #000; width: 100%; margin: 10px 0;"></div>
+
+								<div class="centext" id="LVEXTEND" style="margin-top: 130px;">
+									<a style="font-size: 19px; color: rgb(88, 177, 0);">☣ </a><span class="green-bg" style="font-size: 19px;">EXTENDER EL LOGICAL VOLUME</span>
+								</div>
+								<div class="centext">
+									<span>Ahora que el VG se ha extendido con 4G adicionales, es posible extender el Logical Volume.</span>
+								</div><br>
+
+								<div class="leftl">
+									<span>⦾ Extender el LV <b>NEW-LV</b> con el <b>100%</b> del espacio disponible.</span><br>
+									<span>⦾ Extender el Filesystem montado en <b>/LVM</b>.</span>
+								</div>
+
+							<div id="long-terminal">
+									  <!-- Terminal Bar -->       
+									  <section id="terminal__bar">          
+										<div id="bar__buttons">            
+										  <button class="bar__button" id="bar__button--exit">&#10005;</button>            
+										  <button class="bar__button">&#9472;</button>                
+										  <button class="bar__button">&#9723;</button>          
+										</div>
+									  </section>        
+									  <!-- Terminal Body -->
+									  <section id="terminal__body" class="wrapperlx">
+										<div id="terminal__prompt">
+											<span id="terminal__prompt--location"><a style="color: #71FF00;">☣</a>&nbsp;</span>
+											<span id="terminal__prompt--bling" style="color: #fff;"><b>lvextend <a style="color: #23E500;">-l+100%FREE</a> NEW-VG/NEW-LV</b></span>
+										</div>
+
+										<div id="terminal__prompt">
+											<span id="terminal__prompt--bling">&nbsp;<b>Size of logical volume NEW-VG/NEW-LV changed from &lt;4.00 GiB (1023 extents) to 8.00 GiB (2046 extents).</b>&nbsp;</span>
+										</div>
+
+										<div id="terminal__prompt">
+											<span id="terminal__prompt--bling">&nbsp;<b>Logical volume NEW-VG/NEW-LV successfully resized.</b>&nbsp;</span>
+										</div>  
+										  <br>
+
+										<div id="terminal__prompt">
+									    <span id="terminal__prompt--location"><a style="color: #71FF00;">☣</a>&nbsp;</span>
+										<span id="terminal__prompt--bling" style="color: #fff;"><b>lvs</b></span>
+										</div>
+										  
+										<div id="terminal__prompt">
+										<span id="terminal__prompt--bling">&nbsp;<b>LV</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+										<span id="terminal__prompt--bling">&nbsp;<b>VG</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+									    <span id="terminal__prompt--bling">&nbsp;<b>Attr</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+										<span id="terminal__prompt--bling">&nbsp;<b>LSize</b></span>
+										</div>
+
+										<div id="terminal__prompt">
+										<span id="terminal__prompt--bling">&nbsp;<b>NEW-LV</b>&nbsp;&nbsp;&nbsp;</span>
+									    <span id="terminal__prompt--bling">&nbsp;<b>NEW-VG</b>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+										<span id="terminal__prompt--bling">&nbsp;<b>-wi-a-----</b>&nbsp;&nbsp;&nbsp;</span>
+										<span id="terminal__prompt--bling">&nbsp;<b>&lt;8.00g</b>&nbsp;</span>
+										</div><br>
+
+										<div id="terminal__prompt">
+									    <span id="terminal__prompt--location"><a style="color: #71FF00;">☣</a>&nbsp;</span>
+										<span id="terminal__prompt--bling" style="color: #fff;"><b>xfs_growfs <a style="color: #23E500;">/LVM</a></b></span>
+										</div>
+
+										<div id="terminal__prompt">
+									    <span id="terminal__prompt--location"><a style="color: #71FF00;">☣</a>&nbsp;</span>
+										<span id="terminal__prompt--bling" style="color: #fff;"><b>df -Th <a style="color: #23E500;">/LVM</a></b></span>
+										</div>
+
+										<div id="terminal__prompt">
+											<span id="terminal__prompt--bling">&nbsp;<b>Filesystem</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+											<span id="terminal__prompt--bling"><b>Type</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+											<span id="terminal__prompt--bling"><b>Size</b>&nbsp;&nbsp;&nbsp;</span>
+											<span id="terminal__prompt--bling"><b>Used</b>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+											<span id="terminal__prompt--bling"><b>Avail</b>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+											<span id="terminal__prompt--bling"><b>Use%</b>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+											<span id="terminal__prompt--bling"><b>Mounted on</b>&nbsp;</span>
+										</div>
+
+										<div id="terminal__prompt">
+											<span id="terminal__prompt--bling">&nbsp;<b>/dev/mapper/NEW--VG/NEW--LV</b>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+											<span id="terminal__prompt--bling"><b>xfs</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+											<span id="terminal__prompt--bling"><b>8.0G</b>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+											<span id="terminal__prompt--bling"><b>37M</b>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+											<span id="terminal__prompt--bling"><b>8.0G</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+											<span id="terminal__prompt--bling"><b>1%</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+											<span id="terminal__prompt--bling"><b>/LVM</b></span>
+										</div>
+									  </section>
+									</div>
+
+                <div style="border-top: 1px solid #000; width: 100%; margin: 10px 0;"></div>
+								
+								<div class="centext" id="VGRENAME" style="margin-top: 130px;">
+									<a style="font-size: 19px; color: rgb(88, 177, 0);">☣ </a><span class="green-bg" style="font-size: 19px;">RENOMBRAR VOLUME GROUP</span>
+								</div>
+								<div class="centext">
+									<span>Para renombrar el Volume Group usar <b>vgrename</b></span>
+								</div><br>
+								
+								<div class="left">
+									<span>⦾ Renombrar <b>NEW-VG</b> a <b><a style="color: #179700;">vg_bogart</a></b></span>
+								</div>
+								
+								<!--- VGRENAME --->
+								<div id="terminal">
+									  <!-- Terminal Bar -->       
+									  <section id="terminal__bar">          
+										<div id="bar__buttons">            
+										  <button class="bar__button" id="bar__button--exit">&#10005;</button>            
+										  <button class="bar__button">&#9472;</button>                
+										  <button class="bar__button">&#9723;</button>          
+										</div>
+									  </section>        
+									  <!-- Terminal Body -->
+									  <section id="terminal__body" class="wrapperlx">
+										<div id="terminal__prompt">
+											<span id="terminal__prompt--location"><a style="color: #71FF00;">☣</a>&nbsp;</span>
+										<span id="terminal__prompt--bling" style="color: #fff;"><b>vgrename NEW-VG <a style="color: #23E500;">vg_bogart</a></b></span>
+										</div>
+										
+										<div id="terminal__prompt">
+										<span id="terminal__prompt--bling">&nbsp;<b>Volume group "NEW-VG" successfully renamed to "<a style="color: #23E500;">vg_bogart</a>"</b>&nbsp;</span>
+										</div><br>
+										  
+										<div id="terminal__prompt">
+									    <span id="terminal__prompt--location"><a style="color: #71FF00;">☣</a>&nbsp;</span>
+										<span id="terminal__prompt--bling" style="color: #fff;"><b>lvs</b>&nbsp;</span>
+										</div>
+										  
+										<div id="terminal__prompt">
+										<span id="terminal__prompt--bling">&nbsp;<b>VG</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+										<span id="terminal__prompt--bling">&nbsp;<b>#PV</b>&nbsp;&nbsp;&nbsp;</span>
+									    <span id="terminal__prompt--bling">&nbsp;<b>#LV</b>&nbsp;&nbsp;&nbsp;</span>
+										<span id="terminal__prompt--bling">&nbsp;<b>#SN</b>&nbsp;&nbsp;&nbsp;</span>
+										<span id="terminal__prompt--bling">&nbsp;<b>Attr</b>&nbsp;&nbsp;&nbsp;</span>
+										<span id="terminal__prompt--bling">&nbsp;<b>VSize</b>&nbsp;&nbsp;</span>
+										<span id="terminal__prompt--bling">&nbsp;<b>VFree</b></span>
+										</div>
+										  
+										<div id="terminal__prompt">
+										<span id="terminal__prompt--bling">&nbsp;<b>vg_bogart</b>&nbsp;</span>
+									    <span id="terminal__prompt--bling">&nbsp;<b>2</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+										<span id="terminal__prompt--bling">&nbsp;<b>1</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+										<span id="terminal__prompt--bling">&nbsp;<b>0</b>&nbsp;&nbsp;&nbsp;</span>
+										<span id="terminal__prompt--bling">&nbsp;<b>wz--n-</b>&nbsp;&nbsp;&nbsp;</span>
+										<span id="terminal__prompt--bling">&nbsp;<b>&lt;8.00g</b>&nbsp;</span>
+										<span id="terminal__prompt--bling">&nbsp;<b>0</b>&nbsp;</span>
+										</div>
+									  </section>
+									</div>
+								<!--- END VGRENAME --->
+
+                <div style="border-top: 1px solid #000; width: 100%; margin: 10px 0;"></div>
+								
+								<div class="centext" id="LVRENAME" style="margin-top: 130px;">
+									<a style="font-size: 19px; color: rgb(88, 177, 0);">☣ </a><span class="green-bg" style="font-size: 19px;">RENOMBRAR EL LOGICAL VOLUME</span>
+								</div>
+								<div class="leftl">
+									<span>Para renombrar el Logical Volume usar <b>lvrename</b></span>
+								</div><br>
+								
+								<div class="left">
+									<span>⦾ Renombrar <b>NEW-LV</b> a <b><a style="color: #179700;">lv_bogart</a></b></span>
+								</div>
+								
+								
+								<!--- LVRENAME --->
+								<div id="terminal">
+									  <!-- Terminal Bar -->       
+									  <section id="terminal__bar">          
+										<div id="bar__buttons">            
+										  <button class="bar__button" id="bar__button--exit">&#10005;</button>            
+										  <button class="bar__button">&#9472;</button>                
+										  <button class="bar__button">&#9723;</button>          
+										</div>
+									  </section>        
+									  <!-- Terminal Body -->
+									  <section id="terminal__body" class="wrapperlx">
+										<div id="terminal__prompt">
+											<span id="terminal__prompt--location"><a style="color: #71FF00;">☣</a>&nbsp;</span>
+										<span id="terminal__prompt--bling" style="color: #fff;"><b>lvrename NEW-LV <a style="color: #23E500;">lv_bogart</a></b></span>
+										</div>
+										
+										<div id="terminal__prompt">
+										<span id="terminal__prompt--bling"><b>&nbsp;Renamed "NEW-LV" to "<a style="color: #23E500;">lv_bogart</a>" in volume group "vg_bogart"</b>&nbsp;</span>
+										</div><br>
+										  
+										<div id="terminal__prompt">
+									    <span id="terminal__prompt--location"><a style="color: #71FF00;">☣</a>&nbsp;</span>
+										<span id="terminal__prompt--bling" style="color: #fff;"><b>lvs</b>&nbsp;</span>
+										</div>
+										  
+										<div id="terminal__prompt">
+										<span id="terminal__prompt--bling">&nbsp;<b>LV</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+										<span id="terminal__prompt--bling">&nbsp;<b>VG</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+									    <span id="terminal__prompt--bling">&nbsp;<b>Attr</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+										<span id="terminal__prompt--bling">&nbsp;<b>LSize</b></span>
+										</div>
+
+										<div id="terminal__prompt">
+										<span id="terminal__prompt--bling">&nbsp;<b>lv_bogart</b>&nbsp;&nbsp;&nbsp;</span>
+									    <span id="terminal__prompt--bling">&nbsp;<b>vg_bogart</b>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+										<span id="terminal__prompt--bling">&nbsp;<b>-wi-a-----</b>&nbsp;&nbsp;&nbsp;</span>
+										<span id="terminal__prompt--bling">&nbsp;<b>&lt;8.00g</b></span>
+										</div>
+									  </section>
+									</div>
+								<!--- END LVRENAME --->
+								</div>
+						</article>
+					</main>
+				</div>
+			</div>
+		</div>
+
+<footer id="site-footer">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="copyright">
+					<a href="#"><img src="/blog/img/skull.png" class="icomax" style="width: 10%"></a>
+				</div>
+			</div>
+		</div>
+	</div>
+</footer>				
+	<a href="#" id="scrollToTopButtonGreen"><i class="fas fa-arrow-up"></i></a>
+<script>
+function toggleNav() {
+  var sidebar = document.getElementById("mySidebar");
+  var sidebarDisplay = window.getComputedStyle(sidebar).display;
+
+  if (sidebarDisplay === "none") {
+    sidebar.style.display = "block";
+    sidebar.style.width = "200px";
+  } else {
+    sidebar.style.display = "none";
+  }
+}
+</script>
+</body>
+</html>

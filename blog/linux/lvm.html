@@ -99,129 +99,123 @@
 			<a href="#LVM" style="text-decoration: none;"><p style="margin-bottom: 6px; font-size: 16px;">☣ Componentes de LVM</p></a>
 			<a href="#PVCREATE" style="text-decoration: none;"><p style="margin-bottom: 6px; font-size: 16px;">☣ Crear el PhysicalVolume</p></a>
 			<a href="#VGCREATE" style="text-decoration: none;"><p style="margin-bottom: 6px; font-size: 16px;">☣ Crear el VolumeGroup</p></a>
-      <a href="#LVCREATE" style="text-decoration: none;"><p style="margin-bottom: 6px; font-size: 16px;">☣ Crear el LogicalVolume</p></a>
-      <a href="#XFS" style="text-decoration: none;"><p style="margin-bottom: 6px; font-size: 16px;">☣ Formatear y Montar el LV</p></a>
-      <a href="#VGEXTEND" style="text-decoration: none;"><p style="margin-bottom: 6px; font-size: 16px;">☣ Extender el VolumeGroup</p></a>
-      <a href="#LVEXTEND" style="text-decoration: none;"><p style="margin-bottom: 6px; font-size: 16px;">☣ Extender el LogicalVolume</p></a>
-      <a href="#VGRENAME" style="text-decoration: none;"><p style="margin-bottom: 6px; font-size: 16px;">☣ Renombrar el VolulmeGroup</p></a>
-      <a href="#LVRENAME" style="text-decoration: none;"><p style="margin-bottom: 6px; font-size: 16px;">☣ Renombrar el LogicalVolume</p></a>
+			<a href="#LVCREATE" style="text-decoration: none;"><p style="margin-bottom: 6px; font-size: 16px;">☣ Crear el LogicalVolume</p></a>
+			<a href="#XFS" style="text-decoration: none;"><p style="margin-bottom: 6px; font-size: 16px;">☣ Formatear y Montar el LV</p></a>
+			<a href="#VGEXTEND" style="text-decoration: none;"><p style="margin-bottom: 6px; font-size: 16px;">☣ Extender el VolumeGroup</p></a>
+			<a href="#LVEXTEND" style="text-decoration: none;"><p style="margin-bottom: 6px; font-size: 16px;">☣ Extender el LogicalVolume</p></a>
+			<a href="#VGRENAME" style="text-decoration: none;"><p style="margin-bottom: 6px; font-size: 16px;">☣ Renombrar el VolulmeGroup</p></a>
+			<a href="#LVRENAME" style="text-decoration: none;"><p style="margin-bottom: 6px; font-size: 16px;">☣ Renombrar el LogicalVolume</p></a>
 		</div>
 	</div><!-- END TABBAR -->
   
-  <div class="content-body">
-    <div id="main" style="position: sticky; top: 0;">
-      <button class="openbtn" onclick="toggleNav()">☣</button>  
-    </div><br>
-    <div id="mySidebar" class="sidebar" style="position: sticky; top: 0; margin-top: -24px; display: none;">
-      <a href="javascript:void(0)" class="closebtn" onclick="toggleNav()">×</a>
-      <span style="font-size: 25px; color: #27B700;"><b>&nbsp;✎</b></span><span style="font-size: 25px; color: white;"> <b>Notas</b></span>
-      <hr style="color: #DECD00;">
-      <a><span style="color: #E5D400;">PV</span><span class="spanx">: Physical Volume [/dev/sdb1 y /dev/sdb2]</span></a>
-			<a><span style="color: #E5D400;">VG</span><span class="spanx">: Volume Group [NEW-VG y vg_bogart]</span></a>
-			<a><span style="color: #E5D400;">LV</span><span class="spanx">: Logical Volume [NEW-LV y lv_bogart]</span></a>
-    </div>
-			<div class="container">
-				<div class="row">
-          <main class="col-md-8" style="margin-left: auto; margin-right: auto;">
-						<article class="post post-1">
-							<header  class="entry-header">
-								<h1 class="blh1">LVM [Logical Volume Manager]</h1>
-								<h2 class="blh2">Crear, Extender y Renombrar Volúmenes</h2>
-							</header>
-							<br><br>
+<div class="content-body">
+	<div id="main" style="position: sticky; top: 0;">
+		<button class="openbtn" onclick="toggleNav()">☣</button>  
+	</div><br>
+	<div id="mySidebar" class="sidebar" style="position: sticky; top: 0; margin-top: -24px; display: none;">
+		<a href="javascript:void(0)" class="closebtn" onclick="toggleNav()">×</a>
+		<span style="font-size: 25px; color: #27B700;"><b>&nbsp;✎</b></span><span style="font-size: 25px; color: white;"> <b>Notas</b></span>
+		<hr style="color: #DECD00;">
+		<a><span style="color: #E5D400;">PV</span><span class="spanx">: Physical Volume [/dev/sdb1 y /dev/sdb2]</span></a>
+		<a><span style="color: #E5D400;">VG</span><span class="spanx">: Volume Group [NEW-VG y vg_bogart]</span></a>
+		<a><span style="color: #E5D400;">LV</span><span class="spanx">: Logical Volume [NEW-LV y lv_bogart]</span></a>
+	</div>
+	<div class="container">
+		<div class="row">
+			<main class="col-md-8" style="margin-left: auto; margin-right: auto;">
+				<article class="post post-1">
+					<header  class="entry-header">
+						<h1 class="blh1">LVM [Logical Volume Manager]</h1>
+						<h2 class="blh2">Crear, Extender y Renombrar Volúmenes</h2>
+					</header><br><br>
 
-							<div class="leftl">
-								<p>El gestor de volúmenes lógicos {<b>LVM</b>} proporciona herramientas para crear dispositivos de bloque virtuales a partir de dispositivos físicos.</p>
-							<br>
-							<p>Los dispositivos virtuales pueden ser más fáciles de gestionar que los dispositivos físicos, y pueden tener capacidades más allá de lo que los dispositivos físicos proporcionan por sí mismos.</p>
-							</div>
+					<div class="leftl">
+						<p>El gestor de volúmenes lógicos {<b>LVM</b>} proporciona herramientas para crear dispositivos de bloque virtuales a partir de dispositivos físicos.</p><br>
+						<p>Los dispositivos virtuales pueden ser más fáciles de gestionar que los dispositivos físicos, y pueden tener capacidades más allá de lo que los dispositivos físicos proporcionan por sí mismos.</p>
+					</div>
 
-							<div class="entry-content clearfix">								
-								<br><br>
-								<div class="centext" id="LVM">
-									<a style="font-size: 19px; color: rgb(88, 177, 0);">☣ </a><span class="green-bg" style="font-size: 19px;">COMPONENTES DE LVM</span>
+					<div class="entry-content clearfix"><br><br>
+						<div class="centext" id="LVM">
+							<a style="font-size: 19px; color: rgb(88, 177, 0);">☣ </a><span class="green-bg" style="font-size: 19px;">COMPONENTES DE LVM</span>
+						</div>
+						<br>
+						<div class="leftl">
+							<span>⦾ <b>PV</b>: Pyhisical Volume [Volúmenes físicos]</span><br>
+							<span>⦾ <b>VG</b>: Volume Group [Colección de uno o más dispositivos físicos, cada uno llamado 'PV']</span><br>
+							<span>⦾ <b>LV</b>: Logical Volume [Es el dispositivo de bloque virtual que puede ser utilizado por el sistema o las aplicaciones. Cada bloque de datos en LV se almacena en uno o más PV del VG acorde a los algoritmos implementados por Device Mapper ‘DM‘ en el Kernel]</span>
+						</div>
+
+						<div style="border-top: 1px solid #000; width: 100%; margin: 10px 0;"></div>
+
+						<div class="centext" id="PVCREATE" style="margin-top: 130px;">
+							<a style="font-size: 19px; color: rgb(88, 177, 0);">☣ </a><span class="green-bg" style="font-size: 19px;">CREAR PV</span>
+						</div>
+						<span>Unidad Física <b>sdb</b> de <b>8GB</b></span><br>
+
+						<div id="terminal" style="margin-top: 10px;">
+							<!-- Terminal Bar -->       
+							<section id="terminal__bar">          
+								<div id="bar__buttons">            
+									<button class="bar__button" id="bar__button--exit">&#10005;</button>            
+									<button class="bar__button">&#9472;</button>                
+									<button class="bar__button">&#9723;</button>          
 								</div>
-								<br>
-								<div class="leftl">
-									<span>⦾ <b>PV</b>: Pyhisical Volume {Volúmenes físicos}</span><br>
-									<span>⦾ <b>VG</b>: Volume Group {Colección de uno o más dispositivos físicos, cada uno llamado 'PV'}</span><br>
-									<span>⦾ <b>LV</b>: Logical Volume {Es el dispositivo de bloque virtual que puede ser utilizado por el sistema o las aplicaciones. Cada bloque de datos en LV se almacena en uno o más PV del VG acorde a los algoritmos implementados por Device Mapper ‘DM‘ en el Kernel}</span>
+							</section>        
+							<!-- Terminal Body -->
+							<section id="terminal__body" class="wrapperlx">
+								<div id="terminal__prompt">
+									<span id="terminal__prompt--location"><a style="color: #71FF00;">☣</a>&nbsp;</span>
+									<span id="terminal__prompt--bling" style="color: #fff;"><b>lsblk</b></span>
 								</div>
-
-								<div style="border-top: 1px solid #000; width: 100%; margin: 10px 0;"></div>
-
-								<div class="centext" id="PVCREATE" style="margin-top: 130px;">
-									<a style="font-size: 19px; color: rgb(88, 177, 0);">☣ </a><span class="green-bg" style="font-size: 19px;">CREAR PV</span>
+								<div id="terminal__prompt">
+									<span id="terminal__prompt--bling">&nbsp;<b>NAME</b>&nbsp;&nbsp;&nbsp;</span>
+									<span id="terminal__prompt--bling"><b>MAJ:MIN</b>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+									<span id="terminal__prompt--bling"><b>RM</b>&nbsp;&nbsp;&nbsp;</span>
+									<span id="terminal__prompt--bling"><b>SIZE</b>&nbsp;&nbsp;&nbsp;</span>
+									<span id="terminal__prompt--bling"><b>RO</b>&nbsp;&nbsp;&nbsp;</span>
+									<span id="terminal__prompt--bling"><b>TYPE</b>&nbsp;&nbsp;&nbsp;</span>
+									<span id="terminal__prompt--bling"><b>MOUNTPOINT</b>&nbsp;&nbsp;&nbsp;</span>
 								</div>
-								<span>Unidad Física <b>sdb</b> de <b>8GB</b></span><br>
-
-								<div id="terminal">
-									  <!-- Terminal Bar -->       
-									  <section id="terminal__bar">          
-										<div id="bar__buttons">            
-										  <button class="bar__button" id="bar__button--exit">&#10005;</button>            
-										  <button class="bar__button">&#9472;</button>                
-										  <button class="bar__button">&#9723;</button>          
-										</div>
-									  </section>        
-									  <!-- Terminal Body -->
-									  <section id="terminal__body" class="wrapperlx">
-										<div id="terminal__prompt">
-											<span id="terminal__prompt--location"><a style="color: #71FF00;">☣</a>&nbsp;</span>
-										<span id="terminal__prompt--bling" style="color: #fff;"><b>lsblk</b></span>
-										</div>
-										  <div id="terminal__prompt">
-										      <span id="terminal__prompt--bling">&nbsp;<b>NAME</b>&nbsp;&nbsp;&nbsp;</span>
-											  <span id="terminal__prompt--bling"><b>MAJ:MIN</b>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-											  <span id="terminal__prompt--bling"><b>RM</b>&nbsp;&nbsp;&nbsp;</span>
-											  <span id="terminal__prompt--bling"><b>SIZE</b>&nbsp;&nbsp;&nbsp;</span>
-											  <span id="terminal__prompt--bling"><b>RO</b>&nbsp;&nbsp;&nbsp;</span>
-											  <span id="terminal__prompt--bling"><b>TYPE</b>&nbsp;&nbsp;&nbsp;</span>
-											  <span id="terminal__prompt--bling"><b>MOUNTPOINT</b>&nbsp;&nbsp;&nbsp;</span>
-										</div>
-										  <div id="terminal__prompt">
-										      <span id="terminal__prompt--bling">&nbsp;<b>sdb</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-											  <span id="terminal__prompt--bling"><b>8:16</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-											  <span id="terminal__prompt--bling"><b>0</b>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-											  <span id="terminal__prompt--bling"><b>8G</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-											  <span id="terminal__prompt--bling"><b>0</b>&nbsp;&nbsp;&nbsp;</span>
-											  <span id="terminal__prompt--bling"><b>disk</b></span>
-										</div>
-									  </section>
-									</div>
-
-								<br>
-								<br>
-
-								<div class="centext">
-									<span>Creada la partición <b>GPT</b> en <b>/dev/sdb1</b> de <b>4G</b> tipo <b>Linux LVM</b></span><br>
-									<span><b>Link to Post</b>: <a style="color: #00837F;" href="/blog/article/linux/mbr-gpt"><b>Crear Particiones MBR y GPT</b></a></span><br>
+								<div id="terminal__prompt">
+									<span id="terminal__prompt--bling">&nbsp;<b>sdb</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+									<span id="terminal__prompt--bling"><b>8:16</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+									<span id="terminal__prompt--bling"><b>0</b>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+									<span id="terminal__prompt--bling"><b>8G</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+									<span id="terminal__prompt--bling"><b>0</b>&nbsp;&nbsp;&nbsp;</span>
+									<span id="terminal__prompt--bling"><b>disk</b></span>
 								</div>
+							</section>
+						</div><br><br>
 
-								<div id="terminal">
-									  <!-- Terminal Bar -->       
-									  <section id="terminal__bar">          
-										<div id="bar__buttons">            
-										  <button class="bar__button" id="bar__button--exit">&#10005;</button>            
-										  <button class="bar__button">&#9472;</button>                
-										  <button class="bar__button">&#9723;</button>          
-										</div>
-									  </section>        
-									  <!-- Terminal Body -->
-									  <section id="terminal__body">
-										<div id="terminal__prompt">
-											<span id="terminal__prompt--location-orange"><b><a style="color: #71FF00;">☣</a>&nbsp;</b></span>
-											<span id="terminal__prompt--bling" style="color: #fff;"><b>fdisk <a style="color: #71FF00;">-l</a></b></span>					
-										</div>
-										<div id="terminal__prompt">
-											<span id="terminal__prompt--bling">&nbsp;<b>Disk /dev/sdb: 8GiB, 8589934592 bytes, 16777216 sectors</b>&nbsp;</span>
-										</div>
-										<div id="terminal__prompt">
-											<span id="terminal__prompt--bling">&nbsp;<b>Disk model: VBOX HARDDISK</b></span>
-										</div>
-										<div id="terminal__prompt">
-											<span id="terminal__prompt--bling">&nbsp;<b>Units: sectors of 1 * 512 = 512 bytes</b></span>
-										</div>
+						<div class="leftl">
+							<span>Creada la partición <b>GPT</b> en <b>/dev/sdb1</b> de <b>4G</b> tipo <b>Linux LVM</b></span><br>
+							<span><b>Link to Post</b>: <a style="color: #00837F;" href="/blog/article/linux/mbr-gpt"><b>Crear Particiones MBR y GPT</b></a></span><br>
+						</div>
+
+						<div id="terminal" style="margin-top: 10px;">
+							<!-- Terminal Bar -->       
+							<section id="terminal__bar">          
+								<div id="bar__buttons">            
+									<button class="bar__button" id="bar__button--exit">&#10005;</button>            
+									<button class="bar__button">&#9472;</button>                
+									<button class="bar__button">&#9723;</button>          
+								</div>
+							</section>        
+							<!-- Terminal Body -->
+							<section id="terminal__body">
+								<div id="terminal__prompt">
+									<span id="terminal__prompt--location-orange"><b><a style="color: #71FF00;">☣</a>&nbsp;</b></span>
+									<span id="terminal__prompt--bling" style="color: #fff;"><b>fdisk <a style="color: #71FF00;">-l</a></b></span>					
+								</div>
+								<div id="terminal__prompt">
+									<span id="terminal__prompt--bling">&nbsp;<b>Disk /dev/sdb: 8GiB, 8589934592 bytes, 16777216 sectors</b>&nbsp;</span>
+								</div>
+								<div id="terminal__prompt">
+									<span id="terminal__prompt--bling">&nbsp;<b>Disk model: VBOX HARDDISK</b></span>
+								</div>
+								<div id="terminal__prompt">
+									<span id="terminal__prompt--bling">&nbsp;<b>Units: sectors of 1 * 512 = 512 bytes</b></span>
+								</div>
 										<div id="terminal__prompt">
 											<span id="terminal__prompt--bling">&nbsp;<b>Sector size (logical/physical): 512 bytes / 512 bytes</b></span>
 										</div>
@@ -259,7 +253,7 @@
 									<span>⦾ Capacidad del Physical Volume: <b><a style="color: #179700;">4G</a></b></span>
 								</div>
 								
-								<div id="terminal">
+								<div id="terminal" style="margin-top: 10px;">
 									  <!-- Terminal Bar -->       
 									  <section id="terminal__bar">          
 										<div id="bar__buttons">            
@@ -371,7 +365,7 @@
 									<span>⦾ Capacidad del Volume Group: <b><a style="color: #179700;">4G</a></b></span>
 								</div>
 								
-								<div id="terminal">
+								<div id="terminal" style="margin-top: 10px;">
 									  <!-- Terminal Bar -->       
 									  <section id="terminal__bar">          
 										<div id="bar__buttons">            
@@ -532,7 +526,7 @@
 								</div>
 
 								<!------ LV TERMINAL ------>
-								<div id="terminal">
+								<div id="terminal" style="margin-top: 10px;">
 									  <!-- Terminal Bar -->       
 									  <section id="terminal__bar">          
 										<div id="bar__buttons">            
@@ -727,7 +721,7 @@
 								</div>
 
 								<!--- TERMINAL EXTENDER VOLUME GROUP --->
-								<div id="terminal">
+								<div id="terminal" style="margin-top: 10px;">
 									  <!-- Terminal Bar -->       
 									  <section id="terminal__bar">          
 										<div id="bar__buttons">            
@@ -963,16 +957,13 @@
 								<div class="centext" id="VGRENAME" style="margin-top: 130px;">
 									<a style="font-size: 19px; color: rgb(88, 177, 0);">☣ </a><span class="green-bg" style="font-size: 19px;">RENOMBRAR VOLUME GROUP</span>
 								</div>
-								<div class="centext">
-									<span>Para renombrar el Volume Group usar <b>vgrename</b></span>
-								</div><br>
 								
 								<div class="left">
 									<span>⦾ Renombrar <b>NEW-VG</b> a <b><a style="color: #179700;">vg_bogart</a></b></span>
 								</div>
 								
 								<!--- VGRENAME --->
-								<div id="terminal">
+								<div id="terminal" style="margin-top: 10px;">
 									  <!-- Terminal Bar -->       
 									  <section id="terminal__bar">          
 										<div id="bar__buttons">            
@@ -1026,12 +1017,11 @@
 									<a style="font-size: 19px; color: rgb(88, 177, 0);">☣ </a><span class="green-bg" style="font-size: 19px;">RENOMBRAR EL LOGICAL VOLUME</span>
 								</div>
 								<div class="leftl">
-									<span>Para renombrar el Logical Volume usar <b>lvrename</b></span><br><br>
 									<span>⦾ Renombrar <b>NEW-LV</b> a <b><a style="color: #179700;">lv_bogart</a></b></span>
 								</div>
 								
 								<!--- LVRENAME --->
-								<div id="terminal">
+								<div id="terminal" style="margin-top: 10px;">
 									  <!-- Terminal Bar -->       
 									  <section id="terminal__bar">          
 										<div id="bar__buttons">            

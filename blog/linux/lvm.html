@@ -130,7 +130,7 @@
 					</header><br><br>
 
 					<div class="leftl">
-						<p>El gestor de volúmenes lógicos {<b>LVM</b>} proporciona herramientas para crear dispositivos de bloque virtuales a partir de dispositivos físicos.</p><br>
+						<p>El gestor de volúmenes lógicos [<b>LVM</b>] proporciona herramientas para crear dispositivos de bloque virtuales a partir de dispositivos físicos.</p><br>
 						<p>Los dispositivos virtuales pueden ser más fáciles de gestionar que los dispositivos físicos, y pueden tener capacidades más allá de lo que los dispositivos físicos proporcionan por sí mismos.</p>
 					</div>
 
@@ -645,7 +645,7 @@
 								<div style="border-top: 1px solid #000; width: 100%; margin: 10px 0;"></div>
 
 								<div class="centext" id="XFS" style="margin-top: 130px;">
-									<a style="font-size: 19px; color: rgb(88, 177, 0);">☣ </a><span class="green-bg" style="font-size: 19px;">FORMATEAR Y MONTAR EL LV</span>
+									<a style="font-size: 19px; color: rgb(88, 177, 0);">☣ </a><span class="green-bg" style="font-size: 19px;">FORMATEAR Y MONTAR EL LV EN XFS</span>
 								</div>
 								<div class="leftl">
 									<span>⦾ Formatear el LV <b><a style="color: #179700;">/dev/mapper/NEW-VG/NEW-LV</a></b> en <b><a style="color: #179700;">XFS</a></b></span><br>
@@ -878,191 +878,178 @@
 									<span>⦾ Extender el Filesystem montado en <b>/LVM</b>.</span>
 								</div>
 
-							<div id="long-terminal" style="margin-top: 10px;">
-									  <!-- Terminal Bar -->       
-									  <section id="terminal__bar">          
-										<div id="bar__buttons">            
-										  <button class="bar__button" id="bar__button--exit">&#10005;</button>            
-										  <button class="bar__button">&#9472;</button>                
-										  <button class="bar__button">&#9723;</button>          
-										</div>
-									  </section>        
-									  <!-- Terminal Body -->
-									  <section id="terminal__body" class="wrapperlx">
-										<div id="terminal__prompt">
-											<span id="terminal__prompt--location"><a style="color: #71FF00;">☣</a>&nbsp;</span>
-											<span id="terminal__prompt--bling" style="color: #fff;"><b>lvextend <a style="color: #23E500;">-l+100%FREE</a> NEW-VG/NEW-LV</b></span>
-										</div>
-
-										<div id="terminal__prompt">
-											<span id="terminal__prompt--bling">&nbsp;<b>Size of logical volume NEW-VG/NEW-LV changed from &lt;4.00 GiB (1023 extents) to 8.00 GiB (2046 extents).</b>&nbsp;</span>
-										</div>
-
-										<div id="terminal__prompt">
-											<span id="terminal__prompt--bling">&nbsp;<b>Logical volume NEW-VG/NEW-LV successfully resized.</b>&nbsp;</span>
-										</div>  
-										  <br>
-
-										<div id="terminal__prompt">
-									    <span id="terminal__prompt--location"><a style="color: #71FF00;">☣</a>&nbsp;</span>
-										<span id="terminal__prompt--bling" style="color: #fff;"><b>lvs</b></span>
-										</div>
-										  
-										<div id="terminal__prompt">
-										<span id="terminal__prompt--bling">&nbsp;<b>LV</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-										<span id="terminal__prompt--bling">&nbsp;<b>VG</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-									    <span id="terminal__prompt--bling">&nbsp;<b>Attr</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-										<span id="terminal__prompt--bling">&nbsp;<b>LSize</b></span>
-										</div>
-
-										<div id="terminal__prompt">
-										<span id="terminal__prompt--bling">&nbsp;<b>NEW-LV</b>&nbsp;&nbsp;&nbsp;</span>
-									    <span id="terminal__prompt--bling">&nbsp;<b>NEW-VG</b>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-										<span id="terminal__prompt--bling">&nbsp;<b>-wi-a-----</b>&nbsp;&nbsp;&nbsp;</span>
-										<span id="terminal__prompt--bling">&nbsp;<b>&lt;8.00g</b>&nbsp;</span>
-										</div><br>
-
-										<div id="terminal__prompt">
-									    <span id="terminal__prompt--location"><a style="color: #71FF00;">☣</a>&nbsp;</span>
-										<span id="terminal__prompt--bling" style="color: #fff;"><b>xfs_growfs <a style="color: #23E500;">/LVM</a></b></span>
-										</div>
-
-										<div id="terminal__prompt">
-									    <span id="terminal__prompt--location"><a style="color: #71FF00;">☣</a>&nbsp;</span>
-										<span id="terminal__prompt--bling" style="color: #fff;"><b>df -Th <a style="color: #23E500;">/LVM</a></b></span>
-										</div>
-
-										<div id="terminal__prompt">
-											<span id="terminal__prompt--bling">&nbsp;<b>Filesystem</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-											<span id="terminal__prompt--bling"><b>Type</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-											<span id="terminal__prompt--bling"><b>Size</b>&nbsp;&nbsp;&nbsp;</span>
-											<span id="terminal__prompt--bling"><b>Used</b>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-											<span id="terminal__prompt--bling"><b>Avail</b>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-											<span id="terminal__prompt--bling"><b>Use%</b>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-											<span id="terminal__prompt--bling"><b>Mounted on</b>&nbsp;</span>
-										</div>
-
-										<div id="terminal__prompt">
-											<span id="terminal__prompt--bling">&nbsp;<b>/dev/mapper/NEW--VG/NEW--LV</b>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-											<span id="terminal__prompt--bling"><b>xfs</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-											<span id="terminal__prompt--bling"><b>8.0G</b>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-											<span id="terminal__prompt--bling"><b>37M</b>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-											<span id="terminal__prompt--bling"><b>8.0G</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-											<span id="terminal__prompt--bling"><b>1%</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-											<span id="terminal__prompt--bling"><b>/LVM</b></span>
-										</div>
-									  </section>
-									</div>
-
-								<div style="border-top: 1px solid #000; width: 100%; margin: 10px 0;"></div>
-								
-								<div class="centext" id="VGRENAME" style="margin-top: 130px;">
-									<a style="font-size: 19px; color: rgb(88, 177, 0);">☣ </a><span class="green-bg" style="font-size: 19px;">RENOMBRAR VOLUME GROUP</span>
+						<div id="long-terminal" style="margin-top: 10px;">
+							<!-- Terminal Bar -->       
+							<section id="terminal__bar">          
+								<div id="bar__buttons">            
+									<button class="bar__button" id="bar__button--exit">&#10005;</button>            
+									<button class="bar__button">&#9472;</button>                
+									<button class="bar__button">&#9723;</button>          
 								</div>
-								
-								<!--- VGRENAME --->
-								<div id="terminal" style="margin-top: 10px;">
-									  <!-- Terminal Bar -->       
-									  <section id="terminal__bar">          
-										<div id="bar__buttons">            
-										  <button class="bar__button" id="bar__button--exit">&#10005;</button>            
-										  <button class="bar__button">&#9472;</button>                
-										  <button class="bar__button">&#9723;</button>          
-										</div>
-									  </section>        
-									  <!-- Terminal Body -->
-									  <section id="terminal__body" class="wrapperlx">
-										<div id="terminal__prompt">
-											<span id="terminal__prompt--location"><a style="color: #71FF00;">☣</a>&nbsp;</span>
-										<span id="terminal__prompt--bling" style="color: #fff;"><b>vgrename NEW-VG <a style="color: #23E500;">vg_bogart</a></b></span>
-										</div>
-										
-										<div id="terminal__prompt">
-										<span id="terminal__prompt--bling">&nbsp;<b>Volume group "NEW-VG" successfully renamed to "<a style="color: #23E500;">vg_bogart</a>"</b>&nbsp;</span>
-										</div><br>
-										  
-										<div id="terminal__prompt">
-									    <span id="terminal__prompt--location"><a style="color: #71FF00;">☣</a>&nbsp;</span>
-										<span id="terminal__prompt--bling" style="color: #fff;"><b>lvs</b>&nbsp;</span>
-										</div>
-										  
-										<div id="terminal__prompt">
-										<span id="terminal__prompt--bling">&nbsp;<b>VG</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-										<span id="terminal__prompt--bling">&nbsp;<b>#PV</b>&nbsp;&nbsp;&nbsp;</span>
-									    <span id="terminal__prompt--bling">&nbsp;<b>#LV</b>&nbsp;&nbsp;&nbsp;</span>
-										<span id="terminal__prompt--bling">&nbsp;<b>#SN</b>&nbsp;&nbsp;&nbsp;</span>
-										<span id="terminal__prompt--bling">&nbsp;<b>Attr</b>&nbsp;&nbsp;&nbsp;</span>
-										<span id="terminal__prompt--bling">&nbsp;<b>VSize</b>&nbsp;&nbsp;</span>
-										<span id="terminal__prompt--bling">&nbsp;<b>VFree</b></span>
-										</div>
-										  
-										<div id="terminal__prompt">
-										<span id="terminal__prompt--bling">&nbsp;<b>vg_bogart</b>&nbsp;</span>
-									    <span id="terminal__prompt--bling">&nbsp;<b>2</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-										<span id="terminal__prompt--bling">&nbsp;<b>1</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-										<span id="terminal__prompt--bling">&nbsp;<b>0</b>&nbsp;&nbsp;&nbsp;</span>
-										<span id="terminal__prompt--bling">&nbsp;<b>wz--n-</b>&nbsp;&nbsp;&nbsp;</span>
-										<span id="terminal__prompt--bling">&nbsp;<b>&lt;8.00g</b>&nbsp;</span>
-										<span id="terminal__prompt--bling">&nbsp;<b>0</b>&nbsp;</span>
-										</div>
-									  </section>
-									</div>
-								<!--- END VGRENAME --->
-
-								<div style="border-top: 1px solid #000; width: 100%; margin: 10px 0;"></div>
-								
-								<div class="centext" id="LVRENAME" style="margin-top: 130px;">
-									<a style="font-size: 19px; color: rgb(88, 177, 0);">☣ </a><span class="green-bg" style="font-size: 19px;">RENOMBRAR EL LOGICAL VOLUME</span>
+							</section>        
+							<!-- Terminal Body -->
+							<section id="terminal__body" class="wrapperlx">
+								<div id="terminal__prompt">
+									<span id="terminal__prompt--location"><a style="color: #71FF00;">☣</a>&nbsp;</span>
+									<span id="terminal__prompt--bling" style="color: #fff;"><b>lvextend <a style="color: #23E500;">-l+100%FREE</a> NEW-VG/NEW-LV</b></span>
 								</div>
-								
-								<!--- LVRENAME --->
-								<div id="terminal" style="margin-top: 10px;">
-									  <!-- Terminal Bar -->       
-									  <section id="terminal__bar">          
-										<div id="bar__buttons">            
-										  <button class="bar__button" id="bar__button--exit">&#10005;</button>            
-										  <button class="bar__button">&#9472;</button>                
-										  <button class="bar__button">&#9723;</button>          
-										</div>
-									  </section>        
-									  <!-- Terminal Body -->
-									  <section id="terminal__body" class="wrapperlx">
-										<div id="terminal__prompt">
-											<span id="terminal__prompt--location"><a style="color: #71FF00;">☣</a>&nbsp;</span>
-										<span id="terminal__prompt--bling" style="color: #fff;"><b>lvrename NEW-LV <a style="color: #23E500;">lv_bogart</a></b></span>
-										</div>
-										
-										<div id="terminal__prompt">
-										<span id="terminal__prompt--bling"><b>&nbsp;Renamed "NEW-LV" to "<a style="color: #23E500;">lv_bogart</a>" in volume group "vg_bogart"</b>&nbsp;</span>
-										</div><br>
-										  
-										<div id="terminal__prompt">
-									    <span id="terminal__prompt--location"><a style="color: #71FF00;">☣</a>&nbsp;</span>
-										<span id="terminal__prompt--bling" style="color: #fff;"><b>lvs</b>&nbsp;</span>
-										</div>
-										  
-										<div id="terminal__prompt">
-										<span id="terminal__prompt--bling">&nbsp;<b>LV</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-										<span id="terminal__prompt--bling">&nbsp;<b>VG</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-									    <span id="terminal__prompt--bling">&nbsp;<b>Attr</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-										<span id="terminal__prompt--bling">&nbsp;<b>LSize</b></span>
-										</div>
-
-										<div id="terminal__prompt">
-										<span id="terminal__prompt--bling">&nbsp;<b>lv_bogart</b>&nbsp;&nbsp;&nbsp;</span>
-									    <span id="terminal__prompt--bling">&nbsp;<b>vg_bogart</b>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-										<span id="terminal__prompt--bling">&nbsp;<b>-wi-a-----</b>&nbsp;&nbsp;&nbsp;</span>
-										<span id="terminal__prompt--bling">&nbsp;<b>&lt;8.00g</b></span>
-										</div>
-									  </section>
-									</div>
-								<!--- END LVRENAME --->
+								<div id="terminal__prompt">
+									<span id="terminal__prompt--bling">&nbsp;<b>Size of logical volume NEW-VG/NEW-LV changed from &lt;4.00 GiB (1023 extents) to 8.00 GiB (2046 extents).</b>&nbsp;</span>
 								</div>
-						</article>
-					</main>
-				</div>
-			</div>
+								<div id="terminal__prompt">
+									<span id="terminal__prompt--bling">&nbsp;<b>Logical volume NEW-VG/NEW-LV successfully resized.</b>&nbsp;</span>
+								</div><br>
+								<div id="terminal__prompt">
+									<span id="terminal__prompt--location"><a style="color: #71FF00;">☣</a>&nbsp;</span>
+									<span id="terminal__prompt--bling" style="color: #fff;"><b>lvs</b></span>
+								</div>
+								<div id="terminal__prompt">
+									<span id="terminal__prompt--bling">&nbsp;<b>LV</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+									<span id="terminal__prompt--bling">&nbsp;<b>VG</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+									<span id="terminal__prompt--bling">&nbsp;<b>Attr</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+									<span id="terminal__prompt--bling">&nbsp;<b>LSize</b></span>
+								</div>
+
+								<div id="terminal__prompt">
+									<span id="terminal__prompt--bling">&nbsp;<b>NEW-LV</b>&nbsp;&nbsp;&nbsp;</span>
+									<span id="terminal__prompt--bling">&nbsp;<b>NEW-VG</b>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+									<span id="terminal__prompt--bling">&nbsp;<b>-wi-a-----</b>&nbsp;&nbsp;&nbsp;</span>
+									<span id="terminal__prompt--bling">&nbsp;<b>&lt;8.00g</b>&nbsp;</span>
+								</div><br>
+								<div id="terminal__prompt">
+									<span id="terminal__prompt--location"><a style="color: #71FF00;">☣</a>&nbsp;</span>
+									<span id="terminal__prompt--bling" style="color: #fff;"><b>xfs_growfs <a style="color: #23E500;">/LVM</a></b></span>
+								</div>
+								<div id="terminal__prompt">
+									<span id="terminal__prompt--location"><a style="color: #71FF00;">☣</a>&nbsp;</span>
+									<span id="terminal__prompt--bling" style="color: #fff;"><b>df -Th <a style="color: #23E500;">/LVM</a></b></span>
+								</div>
+								<div id="terminal__prompt">
+									<span id="terminal__prompt--bling">&nbsp;<b>Filesystem</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+									<span id="terminal__prompt--bling"><b>Type</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+									<span id="terminal__prompt--bling"><b>Size</b>&nbsp;&nbsp;&nbsp;</span>
+									<span id="terminal__prompt--bling"><b>Used</b>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+									<span id="terminal__prompt--bling"><b>Avail</b>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+									<span id="terminal__prompt--bling"><b>Use%</b>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+									<span id="terminal__prompt--bling"><b>Mounted on</b>&nbsp;</span>
+								</div>
+								<div id="terminal__prompt">
+									<span id="terminal__prompt--bling">&nbsp;<b>/dev/mapper/NEW--VG/NEW--LV</b>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+									<span id="terminal__prompt--bling"><b>xfs</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+									<span id="terminal__prompt--bling"><b>8.0G</b>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+									<span id="terminal__prompt--bling"><b>37M</b>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+									<span id="terminal__prompt--bling"><b>8.0G</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+									<span id="terminal__prompt--bling"><b>1%</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+									<span id="terminal__prompt--bling"><b>/LVM</b></span>
+								</div>
+							</section>
+						</div><br><br>
+
+						<div class="leftl">
+							<span><b>NOTA:</b> lvextend -l+100%free asignará el 100% del espacio libre que tenga el VG. Si se quiere asignar una cantidad de espacio específica, por ejemplo 2GB se utilizará <b>lvextend -r -L +2GB</b> /dev/mapper/NEW--VG/NEW--LV</span>
+						</div>
+
+						<div style="border-top: 1px solid #000; width: 100%; margin: 10px 0;"></div>
+								
+						<div class="centext" id="VGRENAME" style="margin-top: 130px;">
+							<a style="font-size: 19px; color: rgb(88, 177, 0);">☣ </a><span class="green-bg" style="font-size: 19px;">RENOMBRAR VOLUME GROUP</span>
+						</div>
+								
+						<!--- VGRENAME --->
+						<div id="terminal" style="margin-top: 10px;">
+							<!-- Terminal Bar -->       
+							<section id="terminal__bar">          
+								<div id="bar__buttons">            
+									<button class="bar__button" id="bar__button--exit">&#10005;</button>            
+									<button class="bar__button">&#9472;</button>                
+									<button class="bar__button">&#9723;</button>          
+								</div>
+							</section>        
+							<!-- Terminal Body -->
+							<section id="terminal__body" class="wrapperlx">
+								<div id="terminal__prompt">
+									<span id="terminal__prompt--location"><a style="color: #71FF00;">☣</a>&nbsp;</span>
+									<span id="terminal__prompt--bling" style="color: #fff;"><b>vgrename NEW-VG <a style="color: #23E500;">vg_bogart</a></b></span>
+								</div>
+								<div id="terminal__prompt">
+									<span id="terminal__prompt--bling">&nbsp;<b>Volume group "NEW-VG" successfully renamed to "<a style="color: #23E500;">vg_bogart</a>"</b>&nbsp;</span>
+								</div><br>
+								<div id="terminal__prompt">
+									<span id="terminal__prompt--location"><a style="color: #71FF00;">☣</a>&nbsp;</span>
+									<span id="terminal__prompt--bling" style="color: #fff;"><b>lvs</b>&nbsp;</span>
+								</div>
+								<div id="terminal__prompt">
+									<span id="terminal__prompt--bling">&nbsp;<b>VG</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+									<span id="terminal__prompt--bling">&nbsp;<b>#PV</b>&nbsp;&nbsp;&nbsp;</span>
+									<span id="terminal__prompt--bling">&nbsp;<b>#LV</b>&nbsp;&nbsp;&nbsp;</span>
+									<span id="terminal__prompt--bling">&nbsp;<b>#SN</b>&nbsp;&nbsp;&nbsp;</span>
+									<span id="terminal__prompt--bling">&nbsp;<b>Attr</b>&nbsp;&nbsp;&nbsp;</span>
+									<span id="terminal__prompt--bling">&nbsp;<b>VSize</b>&nbsp;&nbsp;</span>
+									<span id="terminal__prompt--bling">&nbsp;<b>VFree</b></span>
+								</div>
+								<div id="terminal__prompt">
+									<span id="terminal__prompt--bling">&nbsp;<b>vg_bogart</b>&nbsp;</span>
+									<span id="terminal__prompt--bling">&nbsp;<b>2</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+									<span id="terminal__prompt--bling">&nbsp;<b>1</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+									<span id="terminal__prompt--bling">&nbsp;<b>0</b>&nbsp;&nbsp;&nbsp;</span>
+									<span id="terminal__prompt--bling">&nbsp;<b>wz--n-</b>&nbsp;&nbsp;&nbsp;</span>
+									<span id="terminal__prompt--bling">&nbsp;<b>&lt;8.00g</b>&nbsp;</span>
+									<span id="terminal__prompt--bling">&nbsp;<b>0</b>&nbsp;</span>
+								</div>
+							</section>
+						</div>
+						<!--- END VGRENAME --->
+
+						<div style="border-top: 1px solid #000; width: 100%; margin: 10px 0;"></div>
+								
+						<div class="centext" id="LVRENAME" style="margin-top: 130px;">
+							<a style="font-size: 19px; color: rgb(88, 177, 0);">☣ </a><span class="green-bg" style="font-size: 19px;">RENOMBRAR EL LOGICAL VOLUME</span>
+						</div>
+								
+						<!--- LVRENAME --->
+						<div id="terminal" style="margin-top: 10px;">
+							<!-- Terminal Bar -->       
+							<section id="terminal__bar">          
+								<div id="bar__buttons">            
+									<button class="bar__button" id="bar__button--exit">&#10005;</button>            
+									<button class="bar__button">&#9472;</button>                
+									<button class="bar__button">&#9723;</button>          
+								</div>
+							</section>        
+							<!-- Terminal Body -->
+							<section id="terminal__body" class="wrapperlx">
+								<div id="terminal__prompt">
+									<span id="terminal__prompt--location"><a style="color: #71FF00;">☣</a>&nbsp;</span>
+									<span id="terminal__prompt--bling" style="color: #fff;"><b>lvrename NEW-LV <a style="color: #23E500;">lv_bogart</a></b></span>
+								</div>
+								<div id="terminal__prompt">
+									<span id="terminal__prompt--bling"><b>&nbsp;Renamed "NEW-LV" to "<a style="color: #23E500;">lv_bogart</a>" in volume group "vg_bogart"</b>&nbsp;</span>
+								</div><br>
+								<div id="terminal__prompt">
+									<span id="terminal__prompt--location"><a style="color: #71FF00;">☣</a>&nbsp;</span>
+									<span id="terminal__prompt--bling" style="color: #fff;"><b>lvs</b>&nbsp;</span>
+								</div>
+								<div id="terminal__prompt">
+									<span id="terminal__prompt--bling">&nbsp;<b>LV</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+									<span id="terminal__prompt--bling">&nbsp;<b>VG</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+									<span id="terminal__prompt--bling">&nbsp;<b>Attr</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+									<span id="terminal__prompt--bling">&nbsp;<b>LSize</b></span>
+								</div>
+								<div id="terminal__prompt">
+									<span id="terminal__prompt--bling">&nbsp;<b>lv_bogart</b>&nbsp;&nbsp;&nbsp;</span>
+									<span id="terminal__prompt--bling">&nbsp;<b>vg_bogart</b>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+									<span id="terminal__prompt--bling">&nbsp;<b>-wi-a-----</b>&nbsp;&nbsp;&nbsp;</span>
+									<span id="terminal__prompt--bling">&nbsp;<b>&lt;8.00g</b></span>
+								</div>
+							</section>
+						</div>
+						<!--- END LVRENAME --->
+					</div>
+				</article>
+			</main>
 		</div>
+	</div>
+</div>
 
 <footer id="site-footer">
 	<div class="container">

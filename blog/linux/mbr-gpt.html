@@ -130,16 +130,15 @@
 							</header>
 							
 							<div class="entry-content clearfix">
-								<br><br><br>
 								
-								<div class="leftl">
+								<div class="leftl" style="margin-top: 40px;">
 									<span>Una tarea bastante común como Administrador de Sistemas es lo que se conoce como Storage Management o Administración del almacenamiento.</span><p></p>
 									<span>Tareas como agregar/formatear discos/particiones [virtuales o físicos], liberar espacio, ampliar file systems y puntos de montaje, entre otras.</span><p></p>
 									<span>Principalmente se distinguen 2 tipos de particiones de disco, MBR y GPT.</span>
-								</div><br><br>
+								</div>
 								
-								<div class="centext" id="MBR">
-									<a style="font-size: 19px; color: rgb(88, 177, 0);">☣ </a><span class="green-bg" style="font-size: 19px;">MBR {MASTER BOOT RECORD}</span>
+								<div class="centext" id="MBR" style="margin-top: 130px;">
+									<a style="font-size: 19px; color: rgb(88, 177, 0);">☣ </a><span class="green-bg" style="font-size: 19px;">MBR [MASTER BOOT RECORD]</span>
 								</div><br>
 								
 								<div class="left">
@@ -193,7 +192,7 @@
 									  </section>
 									</div><br><br>
 								
-								<div class="left">
+								<div class="leftl">
 									<span><strong>⦾ PARTICIONAR EL DISCO:</strong></span><br>
 									<span>La nueva partición es <strong>/dev/nvme2n1p1</strong></span>
 								</div><p></p>
@@ -323,16 +322,18 @@
 										  </div>
 									  </section>
 									</div>
+
+								<div style="border-top: 1px solid #000; width: 100%; margin: 10px 0;"></div>
 								
 								<div class="centext" id="EXT4" style="margin-top: 130px;">
-								<a style="font-size: 19px; color: rgb(88, 177, 0);">☣ </a><span  class="green-bg" style="font-size: 19px;">FORMATEAR Y MONTAR LA PARTICIÓN MBR</span>
+									<a style="font-size: 19px; color: rgb(88, 177, 0);">☣ </a><span  class="green-bg" style="font-size: 19px;">FORMATEAR Y MONTAR LA PARTICIÓN MBR</span>
 								</div><br>
 								
 								<div class="leftl">
 									<span><strong>⦾ FORMATEAR PARTICIÓN EN EXT4</strong>:</span>
 								</div><p></p>
 								
-								<div id="terminal">
+								<div id="long-terminal">
 									  <!-- Terminal Bar -->       
 									  <section id="terminal__bar">          
 										<div id="bar__buttons">            
@@ -424,10 +425,12 @@
 											<span id="terminal__prompt--bling"><strong>/dev/nvme2n1p1&nbsp;&nbsp;ext4&nbsp;&nbsp;4.9G&nbsp;&nbsp;20M&nbsp;&nbsp;4.7G&nbsp;&nbsp;&nbsp;1%&nbsp;&nbsp;/mnt/MBRext4</strong>&nbsp;</span>
 									      </div>
 									  </section>
-									</div><br><br><br><br>
+								</div>
+
+								<div style="border-top: 1px solid #000; width: 100%; margin: 10px 0;"></div>
 								
-								<div class="centext" id="FSTAB">
-								<a style="font-size: 19px; color: rgb(88, 177, 0);">☣ </a><span  class="green-bg" style="font-size: 19px;">FSTAB</span><p></p>
+								<div class="centext" id="FSTAB" style="margin-top: 130px;">
+									<a style="font-size: 19px; color: rgb(88, 177, 0);">☣ </a><span  class="green-bg" style="font-size: 19px;">FSTAB</span><p></p>
 								</div>
 								<div class="leftl">
 									<span>Utiliza <strong><a style="color: #1FBA00;">blkid</a></strong> para imprimir el <strong>UUID</strong> {<strong>Identificador Único Universal</strong>} de un dispositivo. Puede utilizarse con <strong>UUID=</strong> como una forma más robusta de nombrar dispositivos que funciona incluso si se añaden y eliminan discos.</span>
@@ -455,7 +458,7 @@
 									  </section>
 									</div><br><br>
 								
-								<div class="centext">
+								<div class="leftl">
 									<span>Una vez identificado el <strong>UUID</strong> de la partición, se añade al fichero <strong>/etc/fstab</strong> para que se <strong>monte automáticamente</strong> tras reiniciar el Sistema Operativo.</span>
 								</div><p></p>
 
@@ -500,15 +503,20 @@
 										  </div>
 									  </section>
 									</div>
+
+								<div style="border-top: 1px solid #000; width: 100%; margin: 10px 0;"></div>
 								
 								<div id="GPT" class="centext" style="margin-top: 130px;">
-								<a style="font-size: 19px; color: rgb(88, 177, 0);">☣ </a><span class="green-bg" style="font-size: 19px;">GPT [GUID PARTITION TABLE]</span><p></p>
+									<a style="font-size: 19px; color: rgb(88, 177, 0);">☣ </a><span class="green-bg" style="font-size: 19px;">GPT [GUID PARTITION TABLE]</span><p></p>
 								</div>
+								
 								<div class="leftl">
 									<span>Se trata de una tabla de particiones, sucesor del antiguo MBR, que admite dispositivos de almacenamiento de <strong>+2TB</strong>. Además permite crear tantas particiones como sea necesario <strong>{</strong>Windows admite hasta 128 particiones GPT<strong>}</strong></span><br><br>
 									<span>El proceso de particionado es similar al de MBR, pero haciendo uso de la herramienta <strong><a style="color: #1EB200;">gdisk</a></strong>. En este caso trabajaré sobre el disco <strong>/dev/sdc</strong></span>
 								</div>
-								
+
+								<div style="border-top: 1px solid #000; width: 100%; margin: 10px 0;"></div>
+
 								<div class="centext" id="GDISK" style="margin-top: 130px;">
 									<a style="font-size: 19px; color: rgb(88, 177, 0);">☣ </a><span class="green-bg" style="font-size: 19px;">LISTAR Y CREAR PARTICIONES GPT</span>
 								</div><br>
@@ -551,7 +559,7 @@
 									  </section>
 									</div><br><br>
 								
-								<div class="left">
+								<div class="leftl">
 									<span><strong>⦾ PARTICIONAR EL DISCO:</strong></span><p></p>
 									<span>La nueva partición es <strong>/dev/sdc1</strong></span>
 								</div><p></p>
@@ -693,9 +701,11 @@
 										  </div>
 									  </section>
 									</div>
+
+								<div style="border-top: 1px solid #000; width: 100%; margin: 10px 0;"></div>
 								
 								<div class="centext" id="XFS" style="margin-top: 130px;">
-								<a style="font-size: 19px; color: rgb(88, 177, 0);">☣ </a><span  class="green-bg" style="font-size: 19px;">FORMATEAR Y MONTAR LA PARTICIÓN GPT</span>
+									<a style="font-size: 19px; color: rgb(88, 177, 0);">☣ </a><span  class="green-bg" style="font-size: 19px;">FORMATEAR Y MONTAR LA PARTICIÓN GPT</span>
 								</div><br>
 								
 								<div class="leftl">

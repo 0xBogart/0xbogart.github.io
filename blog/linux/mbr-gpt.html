@@ -142,12 +142,12 @@
 								</div><br>
 								
 								<div class="left">
-									<span>Esta tabla de particiones data de 1983 y se introdujo de la mano de IBM. Aunque a día de hoy sigue siendo funcional presenta ciertas limitaciones que actualmente te empujan con fuerza a GPT:</span>
-									<span><strong>⦾ CANTIDAD MÁXIMA DE PARTICIONES</strong>: 4 primarias. Si se necesitan más particiones, se debe convertir una de las particiones primarias a extendida. No obstante dentro de la partición extendida, se admiten entre 15 y 23 particiones lógicas.</span>
+									<span>Esta tabla de particiones data de 1983 y se introdujo de la mano de IBM. Aunque a día de hoy sigue siendo funcional presenta ciertas limitaciones que actualmente te empujan con fuerza a GPT:</span><br><br>
+									<span><b>⦾ CANTIDAD MÁXIMA DE PARTICIONES</b>: 4 primarias. Si se necesitan más particiones, se debe convertir una de las particiones primarias a extendida. No obstante dentro de la partición extendida, se admiten entre 15 y 23 particiones lógicas.</span>
 								</div><br>
 								
 								<div class="left">
-									<span><strong>⦾ TAMAÑO MÁXIMO DE LAS PARTICIONES</strong>: 2TB Aunque puede parecer una cantidad de espacio grande, actualmente en entornos productivos empresariales podría no ser suficiente.</span>
+									<span><b>⦾ TAMAÑO MÁXIMO DE LAS PARTICIONES</b>: 2TB Aunque puede parecer una cantidad de espacio grande, actualmente en entornos productivos empresariales podría no ser suficiente.</span>
 								</div><br><br><br>
 								
 								<div class="centext" id="FDISK">
@@ -155,8 +155,8 @@
 								</div><br>
 								
 								<div class="leftl">
-									<span><strong>⦾ LISTAR PROPIEDADES DEL DISCO:</strong></span><br>
-									<span>El disco <strong>/dev/nvme2n1</strong> dispone de <strong>5GB</strong> de capacidad.</span>
+									<span><b>⦾ LISTAR PROPIEDADES DEL DISCO:</b></span><br>
+									<span>El disco <b>/dev/nvme2n1</b> dispone de <b>5GB</b> de capacidad.</span>
 								</div><p></p>
 								
 									<div id="terminal">
@@ -193,8 +193,8 @@
 									</div><br><br>
 								
 								<div class="leftl">
-									<span><strong>⦾ PARTICIONAR EL DISCO:</strong></span><br>
-									<span>La nueva partición es <strong>/dev/nvme2n1p1</strong></span>
+									<span><b>⦾ PARTICIONAR EL DISCO:</b></span><br>
+									<span>La nueva partición es <b>/dev/nvme2n1p1</b></span>
 								</div><p></p>
 								
 								<div id="long-terminal">
@@ -257,7 +257,7 @@
 										  </div>
 										  
 										  <div id="terminal__prompt">
-											  <span id="terminal__prompt--bling">&nbsp;<strong>Partition 1 of type Linux and of size 5GiB is set</strong></span>
+											  <span id="terminal__prompt--bling">&nbsp;<b>Partition 1 of type Linux and of size 5GiB is set</b></span>
 										  </div><br>
 										  
 										  <div id="terminal__prompt">
@@ -265,7 +265,7 @@
 										  </div>
 										  
 										  <div id="terminal__prompt">
-											  <span id="terminal__prompt--bling">&nbsp;<strong>The partition table has been altered!</strong></span>
+											  <span id="terminal__prompt--bling">&nbsp;<b>The partition table has been altered!</b></span>
 										  </div>
 										  
 										  <div id="terminal__prompt">
@@ -306,11 +306,11 @@
 										</div>
 										  
 										  <div id="terminal__prompt">
-											  <span id="terminal__prompt--bling">&nbsp;<strong>Disk label type: dos</strong></span>
+											  <span id="terminal__prompt--bling">&nbsp;<b>Disk label type: dos</b></span>
 										  </div>
 										  
 										  <div id="terminal__prompt">
-											  <span id="terminal__prompt--bling">&nbsp;<strong>Disk identifier: 0xd9ad617f</strong></span>
+											  <span id="terminal__prompt--bling">&nbsp;<b>Disk identifier: 0xd9ad617f</b></span>
 										  </div><p></p>
 										  
 										  <div id="terminal__prompt">
@@ -330,7 +330,7 @@
 								</div><br>
 								
 								<div class="leftl">
-									<span><strong>⦾ FORMATEAR PARTICIÓN EN EXT4</strong>:</span>
+									<span><b>⦾ FORMATEAR PARTICIÓN EN EXT4</b>:</span>
 								</div><p></p>
 								
 								<div id="long-terminal">
@@ -370,25 +370,25 @@
 										  </div><br>
 										  
 										  <div id="terminal__prompt">
-											<span id="terminal__prompt--bling"><strong>Allocating group tables: done</strong></span>
+											<span id="terminal__prompt--bling"><b>Allocating group tables: done</b></span>
 										  </div>
 										  
 										  <div id="terminal__prompt">
-											<span id="terminal__prompt--bling"><strong>Writing inode tables: done</strong></span>
+											<span id="terminal__prompt--bling"><b>Writing inode tables: done</b></span>
 										  </div>
 										  
 										  <div id="terminal__prompt">
-											<span id="terminal__prompt--bling"><strong>Creating journal (32768 blocks): done</strong></span>
+											<span id="terminal__prompt--bling"><b>Creating journal (32768 blocks): done</b></span>
 										  </div>
 										  
 										  <div id="terminal__prompt">
-											<span id="terminal__prompt--bling"><strong>Writing superblocks and filesystem accounting information: done</strong>&nbsp;</span>
+											<span id="terminal__prompt--bling"><b>Writing superblocks and filesystem accounting information: done</b>&nbsp;</span>
 										  </div>
 									  </section>
 									</div><br><br>
 								
 								<div class="leftl">
-									<span><strong>⦾ MONTAR LA PARTICIÓN</strong>:</span>
+									<span><b>⦾ MONTAR LA PARTICIÓN</b>:</span>
 								</div><p></p>
 								
 								<div id="terminal">
@@ -422,7 +422,7 @@
 									      </div>
 										  
 										  <div id="terminal__prompt">
-											<span id="terminal__prompt--bling"><strong>/dev/nvme2n1p1&nbsp;&nbsp;ext4&nbsp;&nbsp;4.9G&nbsp;&nbsp;20M&nbsp;&nbsp;4.7G&nbsp;&nbsp;&nbsp;1%&nbsp;&nbsp;/mnt/MBRext4</strong>&nbsp;</span>
+											<span id="terminal__prompt--bling"><b>/dev/nvme2n1p1&nbsp;&nbsp;ext4&nbsp;&nbsp;4.9G&nbsp;&nbsp;20M&nbsp;&nbsp;4.7G&nbsp;&nbsp;&nbsp;1%&nbsp;&nbsp;/mnt/MBRext4</b>&nbsp;</span>
 									      </div>
 									  </section>
 								</div>
@@ -433,7 +433,7 @@
 									<a style="font-size: 19px; color: rgb(88, 177, 0);">☣ </a><span  class="green-bg" style="font-size: 19px;">FSTAB</span><p></p>
 								</div>
 								<div class="leftl">
-									<span>Utiliza <strong><a style="color: #1FBA00;">blkid</a></strong> para imprimir el <strong>UUID</strong> {<strong>Identificador Único Universal</strong>} de un dispositivo. Puede utilizarse con <strong>UUID=</strong> como una forma más robusta de nombrar dispositivos que funciona incluso si se añaden y eliminan discos.</span>
+									<span>Utiliza <b><a style="color: #1FBA00;">blkid</a></b> para imprimir el <b>UUID</b> {<b>Identificador Único Universal</b>} de un dispositivo. Puede utilizarse con <b>UUID=</b> como una forma más robusta de nombrar dispositivos que funciona incluso si se añaden y eliminan discos.</span>
 								</div><p></p>
 								
 								<div id="long-terminal">
@@ -459,10 +459,10 @@
 									</div><br><br>
 								
 								<div class="leftl">
-									<span>Una vez identificado el <strong>UUID</strong> de la partición, se añade al fichero <strong>/etc/fstab</strong> para que se <strong>monte automáticamente</strong> tras reiniciar el Sistema Operativo.</span>
+									<span>Una vez identificado el <b>UUID</b> de la partición, se añade al fichero <b>/etc/fstab</b> para que se <b>monte automáticamente</b> tras reiniciar el Sistema Operativo.</span>
 								</div><p></p>
 
-								<div id="terminal">
+								<div id="long-terminal">
 									  <!-- Terminal Bar -->
 									  <section id="terminal__bar">
 										<div id="bar__buttons">
@@ -495,7 +495,7 @@
 										  </div><br>
 										  
 										  <div id="terminal__prompt">
-											  <span id="terminal__prompt--bling"><strong># PARTICIÓN MBR</strong>&nbsp;</span>
+											  <span id="terminal__prompt--bling"><b># PARTICIÓN MBR</b>&nbsp;</span>
 										  </div>
 										  
 										  <div id="terminal__prompt">
@@ -511,8 +511,8 @@
 								</div>
 								
 								<div class="leftl">
-									<span>Se trata de una tabla de particiones, sucesor del antiguo MBR, que admite dispositivos de almacenamiento de <strong>+2TB</strong>. Además permite crear tantas particiones como sea necesario <strong>{</strong>Windows admite hasta 128 particiones GPT<strong>}</strong></span><br><br>
-									<span>El proceso de particionado es similar al de MBR, pero haciendo uso de la herramienta <strong><a style="color: #1EB200;">gdisk</a></strong>. En este caso trabajaré sobre el disco <strong>/dev/sdc</strong></span>
+									<span>Se trata de una tabla de particiones, sucesor del antiguo MBR, que admite dispositivos de almacenamiento de <b>+2TB</b>. Además permite crear tantas particiones como sea necesario <b>{</b>Windows admite hasta 128 particiones GPT<b>}</b></span><br><br>
+									<span>El proceso de particionado es similar al de MBR, pero haciendo uso de la herramienta <b><a style="color: #1EB200;">gdisk</a></b>. En este caso trabajaré sobre el disco <b>/dev/sdc</b></span>
 								</div>
 
 								<div style="border-top: 1px solid #000; width: 100%; margin: 10px 0;"></div>
@@ -522,8 +522,8 @@
 								</div><br>
 								
 								<div class="leftl">
-									<span>⦾ <strong>LISTAR PROPIEDADES DEL DISCO</strong>:</span><p></p>
-									<span>El disco <strong>/dev/sdc</strong> dispone de <strong>5GB</strong> de capacidad.</span><p></p>
+									<span>⦾ <b>LISTAR PROPIEDADES DEL DISCO</b>:</span><p></p>
+									<span>El disco <b>/dev/sdc</b> dispone de <b>5GB</b> de capacidad.</span><p></p>
 								</div>
 								
 								<div id="terminal">
@@ -560,8 +560,8 @@
 									</div><br><br>
 								
 								<div class="leftl">
-									<span><strong>⦾ PARTICIONAR EL DISCO:</strong></span><p></p>
-									<span>La nueva partición es <strong>/dev/sdc1</strong></span>
+									<span><b>⦾ PARTICIONAR EL DISCO:</b></span><p></p>
+									<span>La nueva partición es <b>/dev/sdc1</b></span>
 								</div><p></p>
 								
 								<div id="long-terminal">
@@ -600,11 +600,11 @@
 									  	  </div>
 										  
 										  <div id="terminal__prompt">
-											  <span id="terminal__prompt--bling">&nbsp;<strong>GPT: present</strong></span>
+											  <span id="terminal__prompt--bling">&nbsp;<b>GPT: present</b></span>
 									  	  </div><br>
 										  
 										  <div id="terminal__prompt">
-											  <span id="terminal__prompt--bling">&nbsp;<b>Found valid GPT with protective MBR; <strong>using GPT</strong>.</b></span>
+											  <span id="terminal__prompt--bling">&nbsp;<b>Found valid GPT with protective MBR; <b>using GPT</b>.</b></span>
 										  </div><br>
 										  
 										  <div id="terminal__prompt">
@@ -636,7 +636,7 @@
 										  </div>
 										  
 										  <div id="terminal__prompt">
-											  <span id="terminal__prompt--bling">&nbsp;<strong>Changed type of partition to 'Linux LVM'</strong></span>
+											  <span id="terminal__prompt--bling">&nbsp;<b>Changed type of partition to 'Linux LVM'</b></span>
 										  </div><br>
 										  
 										  <div id="terminal__prompt">
@@ -644,7 +644,7 @@
 										  </div><br>
 										  
 										  <div id="terminal__prompt">
-											  <span id="terminal__prompt--bling">&nbsp;<b>Final checks complete. About to write GPT data. <strong>THIS WILL OVERWRITE EXISTING PARTITIONS!!</strong></b></span>
+											  <span id="terminal__prompt--bling">&nbsp;<b>Final checks complete. About to write GPT data. <b>THIS WILL OVERWRITE EXISTING PARTITIONS!!</b></b></span>
 										  </div><br>
 										  
 										  <div id="terminal__prompt">
@@ -656,7 +656,7 @@
 										  </div><p></p>
 										  
 										  <div id="terminal__prompt">
-											  <span id="terminal__prompt--bling">&nbsp;<strong>The operation has completed successfully.</strong></span>
+											  <span id="terminal__prompt--bling">&nbsp;<b>The operation has completed successfully.</b></span>
 										  </div><br>
 										  
 										  <div id="terminal__prompt">
@@ -685,11 +685,11 @@
 										</div>
 										  
 										  <div id="terminal__prompt">
-											  <span id="terminal__prompt--bling">&nbsp;<strong>Disk label type: gpt</strong></span>
+											  <span id="terminal__prompt--bling">&nbsp;<b>Disk label type: gpt</b></span>
 										  </div>
 										  
 										  <div id="terminal__prompt">
-											  <span id="terminal__prompt--bling">&nbsp;<strong>Disk identifier: 975340ED-59DC-4E45-A2FF-98FA57F65800</strong></span>
+											  <span id="terminal__prompt--bling">&nbsp;<b>Disk identifier: 975340ED-59DC-4E45-A2FF-98FA57F65800</b></span>
 										  </div><p></p>
 										  
 										  <div id="terminal__prompt">
@@ -709,7 +709,7 @@
 								</div><br>
 								
 								<div class="leftl">
-									<span>⦾ <strong>FORMATEAR PARTICIÓN EN XFS</strong>:</span>
+									<span>⦾ <b>FORMATEAR PARTICIÓN EN XFS</b>:</span>
 								</div><p></p>
 								
 								<div id="terminal">
@@ -731,7 +731,7 @@
 									</div><br><br>
 								
 								<div class="leftl">
-									<span><strong>⦾ MONTAR LA PARTICIÓN</strong>:</span>
+									<span><b>⦾ MONTAR LA PARTICIÓN</b>:</span>
 								</div><p></p>
 								
 								<div id="terminal">
@@ -765,13 +765,13 @@
 									      </div>
 										  
 										  <div id="terminal__prompt">
-											<span id="terminal__prompt--bling"><strong>/dev/sdc1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;xfs&nbsp;&nbsp;3G&nbsp;&nbsp;&nbsp;&nbsp;20M&nbsp;&nbsp;2.8G&nbsp;&nbsp;&nbsp;1%&nbsp;&nbsp;/mnt/GPTxfs</strong>&nbsp;</span>
+											<span id="terminal__prompt--bling"><b>/dev/sdc1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;xfs&nbsp;&nbsp;3G&nbsp;&nbsp;&nbsp;&nbsp;20M&nbsp;&nbsp;2.8G&nbsp;&nbsp;&nbsp;1%&nbsp;&nbsp;/mnt/GPTxfs</b>&nbsp;</span>
 									      </div>
 									</section>
 								</div><br><br>
 
 								<div class="leftl">
-									<span>Utiliza <strong><a style="color: #1FBA00;">blkid</a></strong> para imprimir el <strong>UUID</strong> {<strong>Identificador Único Universal</strong>} de un dispositivo. Puede utilizarse con <strong>UUID=</strong> como una forma más robusta de nombrar dispositivos que funciona incluso si se añaden y eliminan discos.</span>
+									<span>Utiliza <b><a style="color: #1FBA00;">blkid</a></b> para imprimir el <b>UUID</b> [<b>Identificador Único Universal</b>] de un dispositivo. Puede utilizarse con <b>UUID=</b> como una forma más robusta de nombrar dispositivos que funciona incluso si se añaden y eliminan discos.</span>
 								</div><p></p>
 								
 								<div id="long-terminal">
@@ -791,13 +791,13 @@
 										  </div><p></p>
 										  
 										  <div id="terminal__prompt">
-											  <span id="terminal__prompt--bling"><b>/dev/sdc1 <a style="color: #3EFF00;">UUID="e4dc64a5-bd56-41c4-8f87-25993e4a7684"</a> TYPE="<strong>xfs</strong>" PARTLABEL="Linux LVM" PARTUUID="6f635e20-2d2e-4149-a63f-88c1ec23392e"</b>&nbsp;</span>
+											  <span id="terminal__prompt--bling"><b>/dev/sdc1 <a style="color: #3EFF00;">UUID="e4dc64a5-bd56-41c4-8f87-25993e4a7684"</a> TYPE="<b>xfs</b>" PARTLABEL="Linux LVM" PARTUUID="6f635e20-2d2e-4149-a63f-88c1ec23392e"</b>&nbsp;</span>
 										  </div>
 									  </section>
 									</div><br><br>
 
 								<div class="leftl">
-									<span>Una vez identificado el <strong>UUID</strong> de la partición, se añade al fichero <strong>/etc/fstab</strong> para que se <strong>monte automáticamente</strong> tras reiniciar el Sistema Operativo.</span>
+									<span>Una vez identificado el <b>UUID</b> de la partición, se añade al fichero <b>/etc/fstab</b> para que se <b>monte automáticamente</b> tras reiniciar el Sistema Operativo.</span>
 								</div><p></p>
 
 								<div id="terminal">
@@ -841,7 +841,7 @@
 										  </div><p></p>
 										  
 										  <div id="terminal__prompt">
-											  <span id="terminal__prompt--bling"><strong># PARTICIÓN GPT</strong>&nbsp;</span>
+											  <span id="terminal__prompt--bling"><b># PARTICIÓN GPT</b>&nbsp;</span>
 										  </div>
 										  
 										  <div id="terminal__prompt">

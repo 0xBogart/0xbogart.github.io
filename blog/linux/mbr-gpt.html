@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<title>Crear Particiones MBR y GPT | ØxBogart</title>
+
+	<!-- meta -->
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0,user-scalable=no,viewport-fit=cover">
+	<link rel="icon" type="/image/png" href="/blog/img/skull.png">
+	<link rel="canonical" href="https://0xbogart.github.io/blog/linux/mbr-gpt">
+	<meta name="author" content="Bogart">
+	<meta name="delvmion" content="Crear Particiones MBR y GPT | ØxBogart">
+	<meta name="keywords" content="Crear Particiones MBR y GPT | ØxBogart">
+
+	<!-- Twitter Tags -->
+	<meta property="og:title" content="Crear Particiones MBR y GPT | ØxBogart">
+	<meta property="og:delvmion" content="Crear Particiones MBR y GPT | ØxBogart">
+	<meta property="og:url" content="https://0xbogart.github.io/blog/linux/mbr-gpt">
+	<meta property="og:image" content="https://0xbogart.github.io/blog/img/mbrgpt.jpg">
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:site" content="@jfb0gart">
+	<meta name="twitter:creator" content="@jfb0gart">
+	<meta name="twitter:title" content="Crear Particiones MBR y GPT | ØxBogart">
+	<meta name="twitter:delvmion" content="Crear Particiones MBR y GPT | ØxBogart">
+	<meta name="twitter:image" content="https://0xbogart.github.io/blog/img/mbrgpt.jpg">
+
+  <!-- css -->
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/ionicons.min.css">
+  <link rel="stylesheet" href="/css/tabbar.css">
+	<link rel="stylesheet" href="/css/sidebar.css">
+  <link rel="stylesheet" href="/css/pace.css">
+  <link rel="stylesheet" href="/css/custom.css">
+  <link rel="stylesheet" href="/css/rhterm.css">
+  <link rel="stylesheet" href="/css/rhvoid.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+  <!-- js -->
+  <script src="/js/jquery-2.1.3.min.js"></script>
+  <script src="/js/bootstrap.min.js"></script>
+  <script src="/js/tabbar.js"></script>
+  <script src="/js/pace.min.js"></script>
+  <script src="/js/modernizr.custom.js"></script>
+  <script src="/js/asgreenlight.js"></script>
+<style>
+@media (max-width: 600px) {
+  .icomax {
+    min-width: 25%;
+  }
+}
+
+.bg {
+	border: 5px solid black;
+	width: 100%;
+	height: 100%;
+}
+</style>
+</head>
+
+<body class="bg">
+  <div class="container">	
+    <header id="site-header">
+      <div class="row">
+	      <div style="margin-bottom: -10%; margin-top: 6px;">
+		      <h1><a class="nodeco" href="/blog/linux" style="color: rgb(88, 177, 0);">☣</a>LINUX</h1>
+	      </div><!-- col-4 -->
+      </div>
+	    <div class="row justify-content-end">
+		    <div class="col-1">
+			    <nav class="navbar navbar-expand-lg navbar-light" style="margin-top: 2px;">
+				    <button style="border: 1px solid rgb(88, 177, 0); margin-top: 1px;" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#bs-example-navbar-collapse-1" aria-controls="bs-example-navbar-collapse-1" aria-expanded="false" aria-label="Toggle navigation">
+					    <span class="navbar-toggler-icon"></span>
+				    </button>
+				    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					    <ul class="navbar-nav">
+						    <li class="nav-item">
+							    <a style="font-size: 25px;" class="nav-link" href="/index" data-hover="Home">Home</a>
+						    </li>
+					    </ul>
+				    </div><!--- .navbar-collapse --->
+			    </nav>
+		    </div><!-- col-md-8 -->
+	    </div>
+    </header>
+  </div>
+
+  <!-- TABBAR -->
+	<div style="position: sticky; top: -1px; width: auto;">
+		<a onclick="toggleDropdown()">
+			<div class="tabbar">
+				<span style="font-weight: bold; float: left; margin-left: 10px;">TABLA DE CONTENIDO</span>
+				<div class="dropdown-content" id="dropdownContent"></div>
+			</div>
+		</a>
+		<div id="contenido">
+			<h5>Crear Particiones MBR y GPT</h5>
+			<div style="border-top: 1px solid #000; width: 100%; margin: 10px 0;"></div>
+			<a href="#MBR" style="text-decoration: none;"><p style="margin-bottom: 6px; font-size: 16px;">☣ MBR</p></a>
+			<a href="#FDISK" style="text-decoration: none;"><p style="margin-bottom: 6px; font-size: 16px;">☣ Listar y Crear Particiones</p></a>
+			<a href="#EXT4" style="text-decoration: none;"><p style="margin-bottom: 6px; font-size: 16px;">☣ Formatear y Montar Partición MBR</p></a>
+			<a href="#FSTAB" style="text-decoration: none;"><p style="margin-bottom: 6px; font-size: 16px;">☣ FSTAB</p></a>
+			<a href="#GPT" style="text-decoration: none;"><p style="margin-bottom: 6px; font-size: 16px;">☣ GPT</p></a>
+			<a href="#GDISK" style="text-decoration: none;"><p style="margin-bottom: 6px; font-size: 16px;">☣ Listar y Crear Particiones GPT</p></a>
+			<a href="#XFS" style="text-decoration: none;"><p style="margin-bottom: 6px; font-size: 16px;">☣ Formatear y Montar Partición GPT</p></a>
+		</div>
+	</div><!-- END TABBAR -->
+  
+<div class="content-body">
+	<div id="main" style="position: sticky; top: 0;">
+		<button class="openbtn" onclick="toggleNav()">☣</button>  
+	</div><br>
+	<div id="mySidebar" class="sidebar" style="position: sticky; top: 0; margin-top: -24px; display: none;">
+		<a href="javascript:void(0)" class="closebtn" onclick="toggleNav()">×</a>
+		<span style="font-size: 25px; color: #27B700;"><b>&nbsp;✎</b></span><span style="font-size: 25px; color: white;"> <b>Notas</b></span>
+		<hr style="color: #DECD00;">
+		<a><span style="color: #E5D400;">fdisk</span><span class="spanx">: Administrador de tablas de particiones de disco</span></a>
+		<a><span style="color: #E5D400;">partprobe</span><span class="spanx">: Programa que informa al Kernel de los cambios en la tabla de particione</span></a>
+		<a><span style="color: #E5D400;">mkfs</span><span class="spanx">: Se utiliza para crear un sistema de archivos Linux en un dispositivo</span></a>
+    <a><span style="color: #E5D400;">ext4</span><span class="spanx">: Sistema de archivos extendido</span></a>
+    <a><span style="color: #E5D400;">fstab</span><span class="spanx">: Archivo que contiene información descriptiva sobre los filesystem que el sistema puede montar</span></a>
+    <a><span style="color: #E5D400;">gdisk</span><span class="spanx">: Administrador interactivo de tablas de partición GUID [GPT]</span></a>
+	</div>
+	<div class="container">
+		<div class="row">
+			<main class="col-md-8" style="margin-left: auto; margin-right: auto;">
+						<article class="post post-1">
+							<header  class="entry-header">
+								<h1 class="blh1">CREAR PARTICIONES</h1>
+								<h2 class="blh2">MBR &amp; GPT</h2>
+							</header>
+							
+							<div class="entry-content clearfix">
+								<br><br><br>
+								
+								<div class="leftl">
+									<span>Una tarea bastante común como Administrador de Sistemas es lo que se conoce como Storage Management o Administración del almacenamiento.</span><p></p>
+									<span>Tareas como agregar/formatear discos/particiones {virtuales o físicos}, liberar espacio, ampliar file systems y puntos de montaje, entre otras.</span><p></p>
+									<span>Principalmente se distinguen 2 tipos de particiones de disco, MBR y GPT.</span>
+								</div><br><br>
+								
+								<div class="centext" id="MBR">
+									<a style="font-size: 19px; color: rgb(88, 177, 0);">☣ </a><span class="green-bg" style="font-size: 19px;">MBR {MASTER BOOT RECORD}</span><p></p>
+									<span>Esta tabla de particiones data de 1983 y se introdujo de la mano de IBM. Aunque a día de hoy sigue siendo funcional presenta ciertas limitaciones que actualmente te empujan con fuerza a GPT:</span>
+								</div><br>
+								
+								<div class="left">
+									<span><strong>• CANTIDAD MÁXIMA DE PARTICIONES</strong>: 4 primarias. Si se necesitan más particiones, se debe convertir una de las particiones primarias a extendida. No obstante dentro de la partición extendida, se admiten entre 15 y 23 particiones lógicas.</span>
+								</div><br>
+								
+								<div class="left">
+									<span><strong>• TAMAÑO MÁXIMO DE LAS PARTICIONES</strong>: 2TB Aunque puede parecer una cantidad de espacio grande, actualmente en entornos productivos empresariales podría no ser suficiente.</span>
+								</div><br><br><br>
+								
+								<div class="centext" id="FDISK">
+									<a style="font-size: 19px; color: rgb(88, 177, 0);">☣ </a><span class="green-bg" style="font-size: 19px;">LISTAR Y CREAR PARTICIONES MBR</span>
+								</div><br>
+								
+								<div class="left">
+									<span><strong>• LISTAR PROPIEDADES DEL DISCO:</strong></span>
+								</div><p></p>
+								
+								<div class="centext">
+									<span>El disco <strong>/dev/nvme2n1</strong> dispone de <strong>5GB</strong> de capacidad.</span>
+								</div><p></p>
+								
+									<div id="terminal">
+									  <!-- Terminal Bar -->
+									  <section id="terminal__bar">
+										<div id="bar__buttons">
+										  <button class="bar__button" id="bar__button--exit">&#10005;</button>
+										  <button class="bar__button">&#9472;</button>
+										  <button class="bar__button">&#9723;</button>
+										</div>
+									  </section>        
+									  <!-- Terminal Body -->
+									  <section id="terminal__body">
+										<div id="terminal__prompt">
+											<span id="terminal__prompt--user"><a style="color: #3EFF00;">☣</a>&nbsp;</span>
+											<span id="terminal__prompt--bling"><b>sudo <a style="color: #3EFF00">fdisk -l</a> /dev/nvme2n1</b></span>
+										  </div><p></p>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--bling">&nbsp;<b>Disk /dev/nvme2n1: <a style="color: #3EFF00">5638 MB</a></b></span>
+										</div>
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--bling">&nbsp;<b>Units = sectors of 1 * 512 = 512 bytes</b></span>
+										</div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--bling">&nbsp;<b>Sector size (logical/physical): 512 bytes / 512 bytes</b>&nbsp;</span>
+										</div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--bling">&nbsp;<b>I/O size (minimum/optimal): 512 bytes / 512 bytes</b></span>
+										</div>
+									  </section>
+									</div><br><br>
+								
+								<div class="left">
+									<span><strong>• PARTICIONAR EL DISCO:</strong></span>
+								</div><p></p>
+								
+								<div class="centext">
+									<span>La nueva partición es <strong>/dev/nvme2n1p1</strong></span>
+								</div><p></p>
+								
+								<div id="long-terminal">
+									  <!-- Terminal Bar -->
+									  <section id="terminal__bar">
+										<div id="bar__buttons">
+										  <button class="bar__button" id="bar__button--exit">&#10005;</button>
+										  <button class="bar__button">&#9472;</button>
+										  <button class="bar__button">&#9723;</button>
+										</div>
+									  </section>        
+									  <!-- Terminal Body -->
+									  <section id="terminal__body">
+										<div id="terminal__prompt">
+											<span id="terminal__prompt--user"><a style="color: #3EFF00;">☣</a>&nbsp;</span>
+											<span id="terminal__prompt--bling"><b>sudo <a style="color: #3EFF00;">fdisk</a> /dev/nvme2n1</b></span>
+										  </div><p></p>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--bling">&nbsp;<b>Welcome to fdisk (util-linux 2.38.1)</b></span>
+										</div>
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--bling">&nbsp;<b>Command (m for help): <a style="color: #3EFF00">n</a></b></span>
+									  	</div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--bling">&nbsp;<b>Partition type:</b></span>
+									  	</div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--bling">&nbsp;&nbsp;&nbsp;&nbsp;<b>p primary (0 primary, 0 extended, 4 free)</b></span>
+										  </div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--bling">&nbsp;&nbsp;&nbsp;&nbsp;<b>e extended</b></span>
+										  </div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--bling">&nbsp;<b>Select (default p): <a style="color: #3EFF00">p</a></b></span>
+										  </div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--bling">&nbsp;<b>Partition number (1-4, default 1): <a style="color: #3EFF00">1</a></b></span>
+										  </div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--bling">&nbsp;<b>First sector (2048-10485759, default 2048):</b></span>
+										  </div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--bling">&nbsp;<b>Using default value 2048</b></span>
+										  </div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--bling">&nbsp;<b>Last sector, +sectors or +size{K,M,G} (2048-10485759, default 10485759):</b></span>
+										  </div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--bling">&nbsp;<b>Using default value 10485759</b></span>
+										  </div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--bling">&nbsp;<strong>Partition 1 of type Linux and of size 5GiB is set</strong></span>
+										  </div><br>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--bling">&nbsp;<b>Command (m for help): <a style="color: #3EFF00">w</a></b></span>
+										  </div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--bling">&nbsp;<strong>The partition table has been altered!</strong></span>
+										  </div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--bling">&nbsp;<b>Calling ioctl() to re-read partition table.</b></span>
+										  </div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--bling">&nbsp;<b>Syncing disks.</b></span>
+										  </div><p></p>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--bling">&nbsp;<b>Command (m for help): <a style="color: #3EFF00">quit</a></b></span>
+										  </div><br>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--user"><a style="color: #3EFF00;">☣</a>&nbsp;</span>
+											  <span id="terminal__prompt--bling"><b>sudo <a style="color: #3EFF00;">partprobe</a></b></span>
+										  </div><p></p>
+										  
+										  <div id="terminal__prompt">
+											<span id="terminal__prompt--user"><a style="color: #3EFF00;">☣</a>&nbsp;</span>
+											<span id="terminal__prompt--bling"><b>sudo <a style="color: #3EFF00">fdisk -l</a> /dev/nvme2n1</b></span>
+										  </div><p></p>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--bling">&nbsp;<b>Disk /dev/nvme2n1: 5638 MB</b></span>
+										</div>
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--bling">&nbsp;<b>Units = sectors of 1 * 512 = 512 bytes</b></span>
+										</div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--bling">&nbsp;<b>Sector size (logical/physical): 512 bytes / 512 bytes</b>&nbsp;</span>
+										</div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--bling">&nbsp;<b>I/O size (minimum/optimal): 512 bytes / 512 bytes</b></span>
+										</div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--bling">&nbsp;<strong>Disk label type: dos</strong></span>
+										  </div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--bling">&nbsp;<strong>Disk identifier: 0xd9ad617f</strong></span>
+										  </div><p></p>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--bling">&nbsp;<b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Device Boot Start&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;End&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Blocks&nbsp;&nbsp;Id&nbsp;&nbsp;System</b></span>
+										  </div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--bling">&nbsp;<b><a style="color: #3EFF00;">/dev/nvme2n1p1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2048&nbsp;&nbsp;&nbsp;10485759&nbsp;&nbsp;&nbsp;5241856&nbsp;&nbsp;83&nbsp;&nbsp;Linux</a></b></span>
+										  </div>
+									  </section>
+									</div><br><br><br><br>
+								
+								<div class="centext" id="EXT4">
+								<a style="font-size: 19px; color: rgb(88, 177, 0);">☣ </a><span  class="green-bg" style="font-size: 19px;">FORMATEAR Y MONTAR LA PARTICIÓN MBR</span>
+								</div><br>
+								
+								<div class="left">
+									<span><strong>• FORMATEAR PARTICIÓN EN EXT4</strong>:</span>
+								</div><p></p>
+								
+								<div id="terminal">
+									  <!-- Terminal Bar -->       
+									  <section id="terminal__bar">          
+										<div id="bar__buttons">            
+										  <button class="bar__button" id="bar__button--exit">&#10005;</button>            
+										  <button class="bar__button">&#9472;</button>                
+										  <button class="bar__button">&#9723;</button>          
+										</div>
+									  </section>        
+									  <!-- Terminal Body -->
+									  <section id="terminal__body">
+										<div id="terminal__prompt">
+											<span id="terminal__prompt--user"><a style="color: #3EFF00;">☣&nbsp;</a></span>
+											<span id="terminal__prompt--bling"><b>sudo <a style="color: #3EFF00;">mkfs.ext4</a> /dev/nvme2n1p1</b></span>
+										  </div><p></p>
+
+										  <div id="terminal__prompt">
+											<span id="terminal__prompt--bling"><b>mkfs from util-linux 2.38.1</b></span>
+										  </div>
+
+										  <div id="terminal__prompt">
+											<span id="terminal__prompt--bling"><b>OS type: Linux</b></span>
+										  </div>
+										  
+										  <div id="terminal__prompt">
+											<span id="terminal__prompt--bling"><b>Block size=4096 (log=2)</b></span>
+										  </div>
+										  
+										  <div id="terminal__prompt">
+											<span id="terminal__prompt--bling"><b>Fragment size=4096 (log=2)</b></span>
+										  </div>
+										  
+										  <div id="terminal__prompt">
+											<span id="terminal__prompt--bling"><b>65523 blocks (5.00%) reserved for the super user</b></span>
+										  </div><br>
+										  
+										  <div id="terminal__prompt">
+											<span id="terminal__prompt--bling"><strong>Allocating group tables: done</strong></span>
+										  </div>
+										  
+										  <div id="terminal__prompt">
+											<span id="terminal__prompt--bling"><strong>Writing inode tables: done</strong></span>
+										  </div>
+										  
+										  <div id="terminal__prompt">
+											<span id="terminal__prompt--bling"><strong>Creating journal (32768 blocks): done</strong></span>
+										  </div>
+										  
+										  <div id="terminal__prompt">
+											<span id="terminal__prompt--bling"><strong>Writing superblocks and filesystem accounting information: done</strong>&nbsp;</span>
+										  </div>
+									  </section>
+									</div><br><br>
+								
+								<div class="left">
+									<span><strong>• MONTAR LA PARTICIÓN</strong>:</span>
+								</div><p></p>
+								
+								<div id="terminal">
+									  <!-- Terminal Bar -->       
+									  <section id="terminal__bar">          
+										<div id="bar__buttons">            
+										  <button class="bar__button" id="bar__button--exit">&#10005;</button>            
+										  <button class="bar__button">&#9472;</button>                
+										  <button class="bar__button">&#9723;</button>          
+										</div>
+									  </section>        
+									  <!-- Terminal Body -->
+									  <section id="terminal__body">
+										<div id="terminal__prompt">
+											<span id="terminal__prompt--user"><a style="color: #3EFF00;">☣</a>&nbsp;</span>
+											<span id="terminal__prompt--bling"><b>sudo <a style="color: #3EFF00;">mkdir</a> /mnt/MBRext4</b></span>
+										  </div><p></p>
+										  
+										  <div id="terminal__prompt">
+											<span id="terminal__prompt--user"><a style="color: #3EFF00;">☣</a>&nbsp;</span>
+											<span id="terminal__prompt--bling"><b>sudo <a style="color: #3EFF00;">mount</a> /dev/nvme2n1p1 /mnt/MBRext4</b></span>
+										  </div><p></p>
+										  
+										  <div id="terminal__prompt">
+											<span id="terminal__prompt--user"><a style="color: #3EFF00;">☣</a>&nbsp;</span>
+											<span id="terminal__prompt--bling"><b><a style="color: #3EFF00;">df -Th</a> /mnt/MBRext4</b></span>
+										  </div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--bling"><b>Filesystem&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Type&nbsp;&nbsp;Size&nbsp;&nbsp;Used&nbsp;Avail&nbsp;Use%&nbsp;Mounted on</b>&nbsp;</span>
+									      </div>
+										  
+										  <div id="terminal__prompt">
+											<span id="terminal__prompt--bling"><strong>/dev/nvme2n1p1&nbsp;&nbsp;ext4&nbsp;&nbsp;4.9G&nbsp;&nbsp;20M&nbsp;&nbsp;4.7G&nbsp;&nbsp;&nbsp;1%&nbsp;&nbsp;/mnt/MBRext4</strong>&nbsp;</span>
+									      </div>
+									  </section>
+									</div><br><br><br><br>
+								
+								<div class="centext" id="FSTAB">
+								<a style="font-size: 19px; color: rgb(88, 177, 0);">☣ </a><span  class="green-bg" style="font-size: 19px;">FSTAB</span><p></p>
+									<span>Utiliza <strong><a style="color: #1FBA00;">blkid</a></strong> para imprimir el <strong>UUID</strong> {<strong>Identificador Único Universal</strong>} de un dispositivo. Puede utilizarse con <strong>UUID=</strong> como una forma más robusta de nombrar dispositivos que funciona incluso si se añaden y eliminan discos.</span>
+								</div><p></p>
+								
+								<div id="long-terminal">
+									  <!-- Terminal Bar -->       
+									  <section id="terminal__bar">          
+										<div id="bar__buttons">            
+										  <button class="bar__button" id="bar__button--exit">&#10005;</button>            
+										  <button class="bar__button">&#9472;</button>                
+										  <button class="bar__button">&#9723;</button>          
+										</div>
+									  </section>        
+									  <!-- Terminal Body -->
+									  <section id="terminal__body">
+										<div id="terminal__prompt">
+											<span id="terminal__prompt--user"><a style="color: #3EFF00;">☣</a>&nbsp;</span>
+											<span id="terminal__prompt--bling"><b>sudo <a style="color: #3EFF00;">blkid</a> /dev/nvme2n1p1</b></span>					
+										  </div><p></p>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--bling"><b>/dev/nvme2n1p1 <a style="color: #3EFF00;">UUID="a57b0e02-1abb-4747-a13e-44c26d352bab"</a> BLOCK_SIZE="4096" TYPE="ext4" PARTUUID="e864414c-5a84-9041-8242-390e8bdb9031"</b>&nbsp;</span>
+										  </div>
+									  </section>
+									</div><br><br>
+								
+								<div class="centext">
+									<span>Una vez identificado el <strong>UUID</strong> de la partición, se añade al fichero <strong>/etc/fstab</strong> para que se <strong>monte automáticamente</strong> tras reiniciar el Sistema Operativo.</span>
+								</div><p></p>
+
+								<div id="terminal">
+									  <!-- Terminal Bar -->
+									  <section id="terminal__bar">
+										<div id="bar__buttons">
+										  <button class="bar__button" id="bar__button--exit">&#10005;</button>
+										  <button class="bar__button">&#9472;</button>
+										  <button class="bar__button">&#9723;</button>
+										</div>
+									  </section>
+									  <!-- Terminal Body -->
+									  <section id="terminal__body">
+										<div id="terminal__prompt">
+											<span id="terminal__prompt--user"><a style="color: #3EFF00;">☣</a>&nbsp;</span>
+											<span id="terminal__prompt--bling"><b>sudo <a style="color: #3EFF00;">vim</a> /etc/fstab</b></span>
+										  </div><p></p>
+
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--bling"><b># /etc/fstab: static file system information.</b></span>
+										  </div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--bling"><b>#</b></span>
+										  </div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--bling"><b>UUID=750D-7A59 /boot/efi vfat umask=0077 0 2</b></span>
+										  </div><p></p>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--bling"><b>UUID=293caccc-d9f3-4187-8d1b-f245b57713aa / xfs defaults 0 0</b></span>
+										  </div><br>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--bling"><strong># PARTICIÓN MBR</strong>&nbsp;</span>
+										  </div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--bling"><b><a style="color: #3EFF00;">UUID="a57b0e02-1abb-4747-a13e-44c26d352bab" /mnt/MBRext4 ext4 defaults 0 0</a></b>&nbsp;</span>
+										  </div>
+									  </section>
+									</div><br><br><br><br>
+								
+								<div id="GPT" class="centext">
+								<a style="font-size: 19px; color: rgb(88, 177, 0);">☣ </a><span class="green-bg" style="font-size: 19px;">GPT {GUID PARTITION TABLE}</span><p></p>
+	                <span>Se trata de una tabla de particiones, sucesor del antiguo MBR, que admite dispositivos de almacenamiento de <strong>+2TB</strong>. Además permite crear tantas particiones como sea necesario <strong>{</strong>Windows admite hasta 128 particiones GPT<strong>}</strong></span><br><br>
+									
+									<span>El proceso de particionado es similar al de MBR, pero haciendo uso de la herramienta <strong><a style="color: #1EB200;">gdisk</a></strong>. En este caso trabajaré sobre el disco <strong>/dev/sdc</strong></span>
+								</div><br><br>
+								
+								<div class="centext" id="GDISK">
+									<a style="font-size: 19px; color: rgb(88, 177, 0);">☣ </a><span class="green-bg" style="font-size: 19px;">LISTAR Y CREAR PARTICIONES GPT</span>
+								</div><br>
+								
+								<div class="left">
+									<span>• <strong>LISTAR PROPIEDADES DEL DISCO</strong>:</span>
+								</div><p></p>
+								
+								<div class="centext">
+									<span>El disco <strong>/dev/sdc</strong> dispone de <strong>5GB</strong> de capacidad.</span><p></p>
+								</div>
+								
+								<div id="terminal">
+									  <!-- Terminal Bar -->
+									  <section id="terminal__bar">
+										<div id="bar__buttons">
+										  <button class="bar__button" id="bar__button--exit">&#10005;</button>
+										  <button class="bar__button">&#9472;</button>
+										  <button class="bar__button">&#9723;</button>
+										</div>
+									  </section>        
+									  <!-- Terminal Body -->
+									  <section id="terminal__body">
+										<div id="terminal__prompt">
+											<span id="terminal__prompt--user"><a style="color: #3EFF00;">☣</a>&nbsp;</span>
+											<span id="terminal__prompt--bling"><b>sudo <a style="color: #3EFF00">fdisk -l</a> /dev/sdc</b></span>
+										  </div><p></p>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--bling">&nbsp;<b>Disk /dev/sdc: <a style="color: #3EFF00">5638 MB</a></b></span>
+										</div>
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--bling">&nbsp;<b>Units = sectors of 1 * 512 = 512 bytes</b></span>
+										</div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--bling">&nbsp;<b>Sector size (logical/physical): 512 bytes / 512 bytes</b>&nbsp;</span>
+										</div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--bling">&nbsp;<b>I/O size (minimum/optimal): 512 bytes / 512 bytes</b></span>
+										</div>
+									  </section>
+									</div><br><br>
+								
+								<div class="left">
+									<span><strong>• PARTICIONAR EL DISCO:</strong></span>
+								</div><p></p>
+								
+								<div class="centext">
+									<span>La nueva partición es <strong>/dev/sdc1</strong></span>
+								</div><p></p>
+								
+								<div id="long-terminal">
+									  <!-- Terminal Bar -->
+									  <section id="terminal__bar">
+										<div id="bar__buttons">
+										  <button class="bar__button" id="bar__button--exit">&#10005;</button>
+										  <button class="bar__button">&#9472;</button>
+										  <button class="bar__button">&#9723;</button>
+										</div>
+									  </section>        
+									  <!-- Terminal Body -->
+									  <section id="terminal__body">
+										<div id="terminal__prompt">
+											<span id="terminal__prompt--user"><a style="color: #3EFF00;">☣</a>&nbsp;</span>
+											<span id="terminal__prompt--bling"><b>sudo <a style="color: #3EFF00;">gdisk</a> /dev/sdc</b></span>
+										  </div><p></p>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--bling"><b>GPT fdisk (gdisk) version 1.0.3</b></span>
+									   	  </div><br>
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--bling"><b>Partition table scan:</b></span>
+									  	  </div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--bling">&nbsp;<b>MBR: protective</b></span>
+									  	  </div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--bling">&nbsp;<b>BSD: not present</b></span>
+									  	  </div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--bling">&nbsp;<b>APM: not present</b></span>
+									  	  </div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--bling">&nbsp;<strong>GPT: present</strong></span>
+									  	  </div><br>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--bling">&nbsp;<b>Found valid GPT with protective MBR; <strong>using GPT</strong>.</b></span>
+										  </div><br>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--bling">&nbsp;<b>Command (? for help): <a style="color: #3EFF00">n</a></b></span>
+										  </div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--bling">&nbsp;<b>Partition number (1-128, default 1): <a style="color: #3EFF00">1</a></b></span>
+										  </div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--bling">&nbsp;<b>First sector (34-1677182, default = 2048) or {+-}size{KMGTP}:</b></span>
+										  </div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--bling">&nbsp;<b>Using default value 2048</b></span>
+										  </div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--bling">&nbsp;<b>Last sector (2048-1677182, default = 1677182) or {+-}size{KMGTP}: <a style="color: #3EFF00">+3GiB</a></b>&nbsp;</span>
+										  </div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--bling">&nbsp;<b>Current type is 'Linux filesystem'</b></span>
+										  </div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--bling">&nbsp;<b>Hex code or GUID (L to show codes, Enter = 8300): <a style="color: #3EFF00">8e00</a></b></span>
+										  </div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--bling">&nbsp;<strong>Changed type of partition to 'Linux LVM'</strong></span>
+										  </div><br>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--bling">&nbsp;<b>Command (m for help): <a style="color: #3EFF00">w</a></b></span>
+										  </div><br>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--bling">&nbsp;<b>Final checks complete. About to write GPT data. <strong>THIS WILL OVERWRITE EXISTING PARTITIONS!!</strong></b></span>
+										  </div><br>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--bling">&nbsp;<b>Do you want to proceed? (Y/N): <a style="color: #3EFF00">y</a></b></span>
+										  </div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--bling">&nbsp;<b>OK; writing new GUID partition table (GPT) to /dev/sdc.</b></span>
+										  </div><p></p>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--bling">&nbsp;<strong>The operation has completed successfully.</strong></span>
+										  </div><br>
+										  
+										  <div id="terminal__prompt">
+											<span id="terminal__prompt--user"><a style="color: #3EFF00;">☣</a>&nbsp;</span>
+											<span id="terminal__prompt--bling"><b>sudo <a style="color: #3EFF00;">partprobe</a> </b></span>
+										  </div><p></p>
+										  
+										  <div id="terminal__prompt">
+											<span id="terminal__prompt--user"><a style="color: #3EFF00;">☣</a>&nbsp;</span>
+											<span id="terminal__prompt--bling"><b>sudo <a style="color: #3EFF00">fdisk -l</a> /dev/sdc</b></span>
+										  </div><p></p>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--bling">&nbsp;<b>Disk /dev/sdc: <a style="color: #3EFF00">5638 MB</a></b></span>
+										</div>
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--bling">&nbsp;<b>Units = sectors of 1 * 512 = 512 bytes</b></span>
+										</div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--bling">&nbsp;<b>Sector size (logical/physical): 512 bytes / 512 bytes</b>&nbsp;</span>
+										</div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--bling">&nbsp;<b>I/O size (minimum/optimal): 512 bytes / 512 bytes</b></span>
+										</div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--bling">&nbsp;<strong>Disk label type: gpt</strong></span>
+										  </div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--bling">&nbsp;<strong>Disk identifier: 975340ED-59DC-4E45-A2FF-98FA57F65800</strong></span>
+										  </div><p></p>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--bling">&nbsp;<b>&nbsp;Device&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Start&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;End&nbsp;&nbsp;&nbsp;Sectors&nbsp;&nbsp;Size&nbsp;&nbsp;Type</b></span>
+										  </div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--bling">&nbsp;<b><a style="color: #3EFF00;">/dev/sdc1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2048&nbsp;&nbsp;&nbsp;6293503&nbsp;&nbsp;&nbsp;6291456&nbsp;&nbsp;&nbsp;3G&nbsp;&nbsp;&nbsp;&nbsp;Linux LVM</a></b></span>
+										  </div>
+									  </section>
+									</div><br><br><br><br>
+								
+								<div class="centext" id="XFS">
+								<a style="font-size: 19px; color: rgb(88, 177, 0);">☣ </a><span  class="green-bg" style="font-size: 19px;">FORMATEAR Y MONTAR LA PARTICIÓN GPT</span>
+								</div><br>
+								
+								<div class="left">
+<span>• <strong>FORMATEAR PARTICIÓN EN XFS</strong>:</span>
+								</div><p></p>
+								
+								<div id="terminal">
+									  <!-- Terminal Bar -->       
+									  <section id="terminal__bar">          
+										<div id="bar__buttons">            
+										  <button class="bar__button" id="bar__button--exit">&#10005;</button>            
+										  <button class="bar__button">&#9472;</button>                
+										  <button class="bar__button">&#9723;</button>          
+										</div>
+									  </section>        
+									  <!-- Terminal Body -->
+									  <section id="terminal__body">
+										<div id="terminal__prompt">
+											<span id="terminal__prompt--user"><a style="color: #3EFF00;">☣</a>&nbsp;</span>
+											<span id="terminal__prompt--bling"><b>sudo <a style="color: #3EFF00;">mkfs.xfs</a> /dev/sdc1</b>&nbsp;</span>
+										  </div>
+									  </section>
+									</div><br><br>
+								
+								<div class="left">
+									<span><strong>• MONTAR LA PARTICIÓN</strong>:</span>
+								</div><p></p>
+								
+								<div id="terminal">
+									  <!-- Terminal Bar -->       
+									  <section id="terminal__bar">          
+										<div id="bar__buttons">            
+										  <button class="bar__button" id="bar__button--exit">&#10005;</button>            
+										  <button class="bar__button">&#9472;</button>                
+										  <button class="bar__button">&#9723;</button>          
+										</div>
+									  </section>        
+									  <!-- Terminal Body -->
+									  <section id="terminal__body">
+										<div id="terminal__prompt">
+											<span id="terminal__prompt--user"><a style="color: #3EFF00;">☣</a>&nbsp;</span>
+											<span id="terminal__prompt--bling"><b>sudo <a style="color: #3EFF00;">mkdir</a> /mnt/GPTxfs</b></span>
+										  </div><p></p>
+										  
+										  <div id="terminal__prompt">
+											<span id="terminal__prompt--user"><a style="color: #3EFF00;">☣</a>&nbsp;</span>
+											<span id="terminal__prompt--bling"><b>sudo <a style="color: #3EFF00;">mount</a> /dev/sdc1 /mnt/GPTxfs</b></span>
+										  </div><p></p>
+										  
+										  <div id="terminal__prompt">
+											<span id="terminal__prompt--user"><a style="color: #3EFF00;">☣</a>&nbsp;</span>
+											<span id="terminal__prompt--bling"><b><a style="color: #3EFF00;">df -Th</a> /mnt/GPTxfs</b></span>
+										  </div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--bling"><b>Filesystem&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Type&nbsp;&nbsp;Size&nbsp;&nbsp;Used&nbsp;Avail&nbsp;Use%&nbsp;Mounted on</b>&nbsp;</span>
+									      </div>
+										  
+										  <div id="terminal__prompt">
+											<span id="terminal__prompt--bling"><strong>/dev/sdc1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;xfs&nbsp;&nbsp;3G&nbsp;&nbsp;&nbsp;&nbsp;20M&nbsp;&nbsp;2.8G&nbsp;&nbsp;&nbsp;1%&nbsp;&nbsp;/mnt/GPTxfs</strong>&nbsp;</span>
+									      </div>
+									</section>
+								</div><br><br>
+
+								<div class="centext">
+									<span>Utiliza <strong><a style="color: #1FBA00;">blkid</a></strong> para imprimir el <strong>UUID</strong> {<strong>Identificador Único Universal</strong>} de un dispositivo. Puede utilizarse con <strong>UUID=</strong> como una forma más robusta de nombrar dispositivos que funciona incluso si se añaden y eliminan discos.</span>
+								</div><p></p>
+								
+								<div id="long-terminal">
+									  <!-- Terminal Bar -->       
+									  <section id="terminal__bar">          
+										<div id="bar__buttons">            
+										  <button class="bar__button" id="bar__button--exit">&#10005;</button>            
+										  <button class="bar__button">&#9472;</button>                
+										  <button class="bar__button">&#9723;</button>          
+										</div>
+									  </section>        
+									  <!-- Terminal Body -->
+									  <section id="terminal__body">
+										<div id="terminal__prompt">
+											<span id="terminal__prompt--user"><a style="color: #3EFF00;">☣</a>&nbsp;</span>
+											<span id="terminal__prompt--bling"><b>sudo <a style="color: #3EFF00;">blkid</a> /dev/sdc1</b></span>					
+										  </div><p></p>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--bling"><b>/dev/sdc1 <a style="color: #3EFF00;">UUID="e4dc64a5-bd56-41c4-8f87-25993e4a7684"</a> TYPE="<strong>xfs</strong>" PARTLABEL="Linux LVM" PARTUUID="6f635e20-2d2e-4149-a63f-88c1ec23392e"</b>&nbsp;</span>
+										  </div>
+									  </section>
+									</div><br><br>
+								
+								
+
+								<div class="centext">
+									<span>Una vez identificado el <strong>UUID</strong> de la partición, se añade al fichero <strong>/etc/fstab</strong> para que se <strong>monte automáticamente</strong> tras reiniciar el Sistema Operativo.</span>
+								</div><p></p>
+
+								<div id="terminal">
+									  <!-- Terminal Bar -->
+									  <section id="terminal__bar">
+										<div id="bar__buttons">
+										  <button class="bar__button" id="bar__button--exit">&#10005;</button>
+										  <button class="bar__button">&#9472;</button>
+										  <button class="bar__button">&#9723;</button>
+										</div>
+									  </section>
+									  <!-- Terminal Body -->
+									  <section id="terminal__body">
+										<div id="terminal__prompt">
+											<span id="terminal__prompt--user"><a style="color: #3EFF00;">☣</a>&nbsp;</span>
+											<span id="terminal__prompt--bling"><b>sudo <a style="color: #3EFF00;">vim</a> /etc/fstab</b></span>
+										  </div><p></p>
+
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--bling"><b># /etc/fstab: static file system information.</b></span>
+										  </div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--bling"><b>#</b></span>
+										  </div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--bling"><b>UUID=750D-7A59 /boot/efi vfat umask=0077 0 2</b></span>
+										  </div><p></p>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--bling"><b>UUID=293caccc-d9f3-4187-8d1b-f245b57713aa / xfs defaults 0 0</b></span>
+										  </div><br>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--bling"><b># PARTICIÓN MBR</b>&nbsp;</span>
+										  </div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--bling"><b>UUID="a57b0e02-1abb-4747-a13e-44c26d352bab" /mnt/MBRext4 ext4 defaults 0 0</b>&nbsp;</span>
+										  </div><p></p>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--bling"><strong># PARTICIÓN GPT</strong>&nbsp;</span>
+										  </div>
+										  
+										  <div id="terminal__prompt">
+											  <span id="terminal__prompt--bling"><b><a style="color: #3EFF00;">UUID="e4dc64a5-bd56-41c4-8f87-25993e4a7684" /mnt/GPTxfs ext4 defaults 0 0</a></b>&nbsp;</span>
+										  </div>
+									  </section>
+									</div>
+							</div>
+						</article>
+					</main>
+
+					<aside class="col-md-4 stk-post-lx">
+						<div class="widget widget-recent-posts">
+							<h3 class="widget-title"><a style="color: rgb(82, 163, 0);">↳ </a>Tabla de Contenido:</h3>		
+							<ul>
+								<li>
+									<a class="nodeco" href="#MBR">MBR</a>
+								</li>
+								<li>
+									<a class="nodeco" href="#FDISK">LISTAR Y CREAR PARTICIONES</a>
+								</li>
+								<li>
+									<a class="nodeco" href="#EXT4">FORMATEAR Y MONTAR PARTICIÓN MBR</a>
+								</li>
+								<li>
+									<a class="nodeco" href="#FSTAB">FSTAB</a>
+								</li>
+								<li>
+									<a class="nodeco" href="#GPT">GPT: </a>
+								</li>
+								<li>
+									<a class="nodeco" href="#GDISK">LISTAR Y CREAR PARTICIONES GPT</a>
+								</li>
+								<li>
+									<a class="nodeco" href="#XFS">FORMATEAR Y MONTAR PARTICIÓN GPT</a>
+								</li>
+							</ul>
+						</div>
+						
+						<div class="widget widget-category">
+							<h3 class="widget-title"><a style="color: rgb(82, 163, 0);">✎ </a>Notas:</h3>		
+							<ul>
+								<li>
+									<a><strong>fdisk</strong>: Administrador de tablas de particiones de disco</a>
+								</li>
+								<li>
+									<a><strong>partprobe</strong>: Programa que informa al Kernel de los cambios en la tabla de particiones</a>
+								</li>
+								<li>
+									<a><strong>mkfs</strong>: Se utiliza para crear un sistema de archivos Linux en un dispositivo</a>
+								</li>
+								<li>
+									<a><strong>ext4</strong>: Sistema de archivos extendido</a>
+								</li>
+								<li>
+									<a><strong>fstab</strong>: Archivo que contiene información descriptiva sobre los filesystem que el sistema puede montar</a>
+								</li>
+								<li>
+									<a><strong>gdisk</strong>: Administrador interactivo de tablas de partición GUID {GPT}</a>
+								</li>
+							</ul>
+						</div>
+					</aside>
+				</div>
+			</div>
+			</div>
+		</div>
+
+<footer id="site-footer">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="copyright">
+					<a href="#"><img src="/blog/img/skull.png" class="icomax" style="width: 10%"></a>
+				</div>
+			</div>
+		</div>
+	</div>
+</footer>				
+	<a href="#" id="scrollToTopButtonGreen"><i class="fas fa-arrow-up"></i></a>
+<script>
+function toggleNav() {
+  var sidebar = document.getElementById("mySidebar");
+  var sidebarDisplay = window.getComputedStyle(sidebar).display;
+
+  if (sidebarDisplay === "none") {
+    sidebar.style.display = "block";
+    sidebar.style.width = "200px";
+  } else {
+    sidebar.style.display = "none";
+  }
+}
+</script>
+</body>
+</html>

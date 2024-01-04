@@ -875,7 +875,7 @@
 								<div class="leftl">
 									<span>Ahora que el VG se ha extendido con 4G adicionales, es posible extender el Logical Volume.</span><br><br>
 									<span>⦾ Extender el LV <b>NEW-LV</b> con el <b>100%</b> del espacio disponible.</span><br>
-									<span>⦾ Extender el Filesystem montado en <b>/LVM</b>.</span>
+									<span>⦾ La opción <b>-r</b> redimensionará el sistema de archivos XFS para que ocupe todo el espacio disponible del volumen lógico extendido. Si se omite, será necesario usar el comando xfs_growfs /LVM después de haberlo extendido.</span>
 								</div>
 
 						<div id="long-terminal" style="margin-top: 10px;">
@@ -891,7 +891,7 @@
 							<section id="terminal__body" class="wrapperlx">
 								<div id="terminal__prompt">
 									<span id="terminal__prompt--location"><a style="color: #71FF00;">☣</a>&nbsp;</span>
-									<span id="terminal__prompt--bling" style="color: #fff;"><b>lvextend <a style="color: #23E500;">-l+100%FREE</a> NEW-VG/NEW-LV</b></span>
+									<span id="terminal__prompt--bling" style="color: #fff;"><b>lvextend -r <a style="color: #23E500;">-l+100%free</a> NEW-VG/NEW-LV</b></span>
 								</div>
 								<div id="terminal__prompt">
 									<span id="terminal__prompt--bling">&nbsp;<b>Size of logical volume NEW-VG/NEW-LV changed from &lt;4.00 GiB (1023 extents) to 8.00 GiB (2046 extents).</b>&nbsp;</span>
@@ -918,10 +918,6 @@
 								</div><br>
 								<div id="terminal__prompt">
 									<span id="terminal__prompt--location"><a style="color: #71FF00;">☣</a>&nbsp;</span>
-									<span id="terminal__prompt--bling" style="color: #fff;"><b>xfs_growfs <a style="color: #23E500;">/LVM</a></b></span>
-								</div>
-								<div id="terminal__prompt">
-									<span id="terminal__prompt--location"><a style="color: #71FF00;">☣</a>&nbsp;</span>
 									<span id="terminal__prompt--bling" style="color: #fff;"><b>df -Th <a style="color: #23E500;">/LVM</a></b></span>
 								</div>
 								<div id="terminal__prompt">
@@ -946,7 +942,7 @@
 						</div><br><br>
 
 						<div class="leftl">
-							<span><b>NOTA:</b> lvextend -l+100%free asignará el 100% del espacio libre que tenga el VG. Si se quiere asignar una cantidad de espacio específica, por ejemplo 2GB se utilizará <b>lvextend -r -L +2GB</b> /dev/mapper/NEW--VG/NEW--LV</span>
+							<span><b>NOTA:</b> lvextend -r -l+100%free asignará el 100% del espacio libre que tenga el VG. Si se quiere asignar una cantidad de espacio específica, por ejemplo 2GB se utilizará <b>lvextend -r -L +2GB</b> /dev/mapper/NEW--VG/NEW--LV</span>
 						</div>
 
 						<div style="border-top: 1px solid lightgray; width: 100%; margin: 10px 0;"></div>

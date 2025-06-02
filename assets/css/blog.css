@@ -1,0 +1,103 @@
+/* Estilo base para <strong> con la clase "hacking" */
+strong.hacking {
+  font-weight: bold; /* Puedes agregar más estilos si lo necesitas */
+  font-size: 1.1em;  /* Esto es solo un ejemplo, puedes ajustarlo según tus necesidades */
+}
+
+.lead {
+  font-family: initial;
+  font-size: 17px;
+  line-height: 1.9;
+}
+
+.mg {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 3%;
+}
+
+ul {
+  margin-left: 3%;
+}
+
+.twbalance {
+  text-wrap: balance;
+}
+
+.redboxsh {
+  box-shadow: rgba(255, 0, 0, 0.02) 0px 1px 3px 0px, rgb(206, 0, 0) 0px 0px 0px 1px;
+}
+
+a {
+  text-decoration: none;
+}
+
+.bglight {
+  background-color: rgb(233, 236, 239) !important;
+}
+
+.blackc {
+  color: #222;
+}
+
+.wd100pc {
+  width: 100%;
+}
+
+.redc {
+  color: #b90000;
+}
+
+.link-body-emphasis::hover {
+  color: #b90000;
+}
+
+.navred:hover {
+  color: #b90000 !important;
+}
+
+.p-md-5 {
+  padding: 0.3rem !important;
+}
+
+.blog-header-logo {
+  font-family: "Playfair Display", Georgia, "Times New Roman", serif/*rtl:Amiri, Georgia, "Times New Roman", serif*/;
+  font-size: 2.25rem;
+}
+
+.blog-header-logo:hover {
+  text-decoration: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Open Sans", "Arial", sans-serif;
+}
+
+/*h1, h2, h3, h4, h5, h6 {
+  font-family: "Playfair Display", Georgia, "Times New Roman", serif;
+}*/
+
+.flex-auto {
+  flex: 0 0 auto;
+}
+
+.h-250 { height: 250px; }
+@media (min-width: 768px) {
+  .h-md-250 { height: 250px; }
+}
+
+/* Pagination */
+.blog-pagination {
+  margin-bottom: 4rem;
+}
+
+/*
+ * Blog posts
+ */
+.blog-post {
+  margin-bottom: 4rem;
+}
+.blog-post-meta {
+  margin-bottom: 1.25rem;
+  color: #727272;
+}

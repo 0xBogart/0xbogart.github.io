@@ -23,15 +23,11 @@
 
 .b-example-divider {
     width: 100%;
-    height: 3rem;
-    background-color: rgb(255, 20, 147); /* Rojo neón */
-    border: solid rgb(255, 0, 0); /* Rojo clásico */
+    height: 1rem;
+    background-color: rgb(56 31 31);
+    /* border: solid rgb(255, 0, 0); */
     border-width: 1px 0;
-    box-shadow: 
-        0 0 10px rgb(255, 20, 147), /* Sombra de color neón */
-        0 0 20px rgb(255, 20, 147), /* Sombra más difusa para un toque neón más fuerte */
-        inset 0 .5em 1.5em rgba(0, 0, 0, .1), 
-        inset 0 .125em .5em rgba(0, 0, 0, .15);
+    box-shadow: 0 0 10px rgb(0 0 0), 0 0 20px rgb(255 255 255 / 62%), inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
 }
 
   .b-example-vr {

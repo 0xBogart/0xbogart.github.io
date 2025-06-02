@@ -48,16 +48,14 @@
 	/* Switch tabbar secciones: hacking */
 	const updateTabbarTheme = (theme) => {
 		const tabbar = document.getElementById('tabbar');
-		if (tabbar) { // Asegurarse de que `tabbar` exista antes de intentar cambiar el tema
-			if (theme === 'dark') {
-				tabbar.classList.add('dark-theme');
-			} else {
-				tabbar.classList.remove('dark-theme');
-			}
+		if (theme === 'dark') {
+			tabbar.classList.add('dark-theme');
+		} else {
+			tabbar.classList.remove('dark-theme');
 		}
 	}
 
-	setTheme(getPreferredTheme()); // Establecer el tema preferido al inicio
+	setTheme(getPreferredTheme());
 
 	const showActiveTheme = (theme, focus = false) => {
 		const themeSwitcher = document.querySelector('#bd-theme');
@@ -95,10 +93,7 @@
 	});
 
 	window.addEventListener('DOMContentLoaded', () => {
-		const preferredTheme = getPreferredTheme(); // Obtener el tema preferido
-		setTheme(preferredTheme); // Establecer el tema
-
-		showActiveTheme(preferredTheme); // Mostrar el tema activo
+		showActiveTheme(getPreferredTheme());
 
 		document.querySelectorAll('[data-bs-theme-value]')
 			.forEach(toggle => {
